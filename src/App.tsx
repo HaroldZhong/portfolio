@@ -22,7 +22,7 @@ function App() {
       }, []);
 
     return (
-    <BrowserRouter>
+    <BrowserRouter basename="/portfolio">
       <div className={`main-container ${mode === 'dark' ? 'dark-mode' : 'light-mode'}`}>
         <Navigation parentToChild={{mode}} modeChange={handleModeChange}/>
         <Routes>

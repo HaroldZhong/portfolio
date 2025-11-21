@@ -9,7 +9,6 @@ lerna-debug.log*
 
 # Dependencies
 node_modules
-dist
 dist-ssr
 *.local
 
@@ -34,8 +33,4 @@ debug_output.txt
 .env.local
 .env.production.local
 .env.development.local
-
-# Build outputs
-dist
-build
 
