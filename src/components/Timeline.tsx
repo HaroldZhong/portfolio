@@ -33,7 +33,7 @@ function Timeline() {
             iconStyle={{ background: '#5000ca', color: 'rgb(39, 40, 34)' }}
             icon={<FontAwesomeIcon icon={faBriefcase} />}
           >
-            <h3 className="vertical-timeline-element-title">Social Science Researcher</h3>
+            <h3 className="vertical-timeline-element-title">Data Analyst</h3>
             <h4 className="vertical-timeline-element-subtitle">UT Austin</h4>
             <p>
               Built SPSS cleaning and harmonization workflows with versioned QA logs, cutting reporting time by 40%. Also designed a 12-week online Statistical Methods course that raised A-minus-or-better performance from 40% to 75%.
@@ -47,7 +47,7 @@ function Timeline() {
             icon={<FontAwesomeIcon icon={faBriefcase} />}
           >
             <h3 className="vertical-timeline-element-title">Marketing Analytics Consultant</h3>
-            <h4 className="vertical-timeline-element-subtitle">Broadridge, Long Island NY</h4>
+            <h4 className="vertical-timeline-element-subtitle">Long Island, NY</h4>
             <p>
               Wealth clients needed better targeting and revenue forecasting. I built CLV models and RFM segmentation frameworks that raised high-net-worth conversion by 20% and cut $800K in acquisition costs.
             </p>
@@ -62,7 +62,7 @@ function Timeline() {
             <h3 className="vertical-timeline-element-title">Program Coordinator</h3>
             <h4 className="vertical-timeline-element-subtitle">Stony Brook University</h4>
             <p>
-              The client database was a mess — 12,000 duplicates and no consistent tagging. I rebuilt the SQL/CRM stack and added a 15-dimension taxonomy, which raised survey response from 8% to 50% and made revenue forecasting actually reliable.
+            40,000+ contacts lived in a 30-year CRM no one really trusted. I redesigned the database with a 15-dimension tagging system, cleaned up duplicates, lifted survey response from 8% to 50%, and made revenue forecasts reliable.
             </p>
           </VerticalTimelineElement>
 
