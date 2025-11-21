@@ -1,11 +1,16 @@
 import React from 'react';
 import { motion } from 'framer-motion';
+import { useEffect } from 'react';
 import BlogCard from '../components/BlogCard';
 import { getAllPosts } from '../utils/blogLoader';
 import '../assets/styles/Blog.scss';
 
 const BlogList: React.FC = () => {
   const allPosts = getAllPosts();
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   return (
     <div className="blog-list-page">
@@ -27,4 +32,3 @@ const BlogList: React.FC = () => {
 };
 
 export default BlogList;
-

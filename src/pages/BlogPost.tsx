@@ -5,11 +5,16 @@ import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
 import { ArrowLeft, Calendar } from 'lucide-react';
 import { getPostBySlug, formatDate } from '../utils/blogLoader';
+import { useEffect } from 'react';
 import '../assets/styles/Blog.scss';
 
 const BlogPost: React.FC = () => {
   const { slug } = useParams<{ slug: string }>();
   const post = slug ? getPostBySlug(slug) : undefined;
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [slug]);
 
   if (!post) {
     return (
@@ -59,4 +64,3 @@ const BlogPost: React.FC = () => {
 };
 
 export default BlogPost;
-
