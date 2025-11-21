@@ -10,6 +10,8 @@ function ScrollToTop() {
     const { pathname } = useLocation();
 
     useEffect(() => {
+        // Immediate scroll to top on mount and route change
+        window.history.scrollRestoration = 'manual';
         window.scrollTo(0, 0);
     }, [pathname]);
 

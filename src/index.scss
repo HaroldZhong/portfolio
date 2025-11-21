@@ -3,6 +3,10 @@
 @import './assets/styles/Blog.scss';
 @import './assets/styles/BackToTop.scss';
 
+html {
+  scroll-behavior: auto;
+}
+
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
