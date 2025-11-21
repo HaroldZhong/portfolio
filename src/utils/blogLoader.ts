@@ -1,3 +1,5 @@
+import openaiAnthropicImg from '../images/openai-anthropic.jpg';
+
 export interface BlogPost {
   slug: string;
   title: string;
@@ -15,7 +17,7 @@ const blogPosts: BlogPost[] = [
     date: '2025-11-21',
     category: 'AI Research',
     excerpt: 'OpenAI and Anthropic released major research on how people actually use AI in the real world, covering 700M+ weekly ChatGPT users and millions of Claude conversations.',
-    thumbnail: '/src/images/openai-anthropic.jpg',
+    thumbnail: openaiAnthropicImg,
     content: `# How 700M+ People Are Really Using AI: OpenAI vs Anthropic
 
 Recently, both OpenAI and Anthropic released major research on how people actually use AI in the real world.
