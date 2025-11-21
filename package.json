@@ -1,0 +1,45 @@
+{
+  "name": "harold-portfolio",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "homepage": "https://haroldzhong.github.io/portfolio",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "lint": "eslint . --ext js,jsx,ts,tsx --report-unused-disable-directives --max-warnings 0",
+    "preview": "vite preview",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d dist"
+  },
+  "dependencies": {
+    "@emailjs/browser": "^4.3.3",
+    "@emotion/react": "^11.11.4",
+    "@emotion/styled": "^11.11.5",
+    "@fortawesome/free-brands-svg-icons": "^6.5.2",
+    "@fortawesome/free-regular-svg-icons": "^6.5.2",
+    "@fortawesome/free-solid-svg-icons": "^6.5.2",
+    "@fortawesome/react-fontawesome": "^0.2.2",
+    "@mui/icons-material": "^5.15.19",
+    "@mui/material": "^5.15.19",
+    "framer-motion": "^10.16.4",
+    "gray-matter": "^4.0.3",
+    "lucide-react": "^0.292.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-markdown": "^9.0.0",
+    "react-router-dom": "^6.20.0",
+    "react-vertical-timeline-component": "^3.6.0",
+    "remark-gfm": "^4.0.0",
+    "sass": "^1.77.4",
+    "web-vitals": "^2.1.4"
+  },
+  "devDependencies": {
+    "@types/react": "^18.2.37",
+    "@types/react-dom": "^18.2.15",
+    "@vitejs/plugin-react": "^4.2.0",
+    "gh-pages": "^6.1.0",
+    "typescript": "^4.9.5",
+    "vite": "^5.0.0"
+  }
+}

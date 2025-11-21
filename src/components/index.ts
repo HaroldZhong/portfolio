@@ -1,0 +1,12 @@
+export { default as Navigation } from "./Navigation";
+export { default as Footer } from "./Footer";
+export { default as Main } from "./Main";
+export { default as Expertise } from "./Expertise";
+export { default as Timeline } from "./Timeline";
+export { default as Project } from "./Project";
+export { default as Contact } from "./Contact";
+export { default as AuroraBackground } from "./AuroraBackground";
+export { default as BlogCard } from "./BlogCard";
+export { default as RecentBlogs } from "./RecentBlogs";
+export { default as FadeIn } from "./FadeIn";
+export { default as BackToTop } from "./BackToTop";

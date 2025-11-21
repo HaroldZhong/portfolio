@@ -1,0 +1,115 @@
+.contact_wrapper {
+  max-width: 1200px;
+  margin: 0 auto;
+  width: 100%;
+  
+  .contact-intro {
+    font-family: 'Inter', sans-serif;
+    font-size: 1.15rem;
+    color: #E2E8F0;
+    line-height: 1.7;
+    margin-bottom: 30px;
+    text-align: center;
+  }
+  
+  svg {
+    font-size: 1em;
+    vertical-align: middle;
+    margin-right: 5px;
+  }
+}
+
+.contact-form {
+  padding-top: 20px;
+
+  button {
+    float: right;
+    background-color: white;
+    color: #050f0b;
+  }
+
+  button:hover {
+    background-color: #5000ca;
+    color: white;
+  }
+
+  // Material UI TextField styling
+  .MuiTextField-root {
+    .MuiInputBase-root {
+      background-color: white;
+      border-radius: 8px;
+      
+      input, textarea {
+        color: #1e293b;
+      }
+    }
+    
+    .MuiInputLabel-root {
+      color: #64748b;
+      background-color: white;
+      padding: 0 4px;
+      
+      &.Mui-focused {
+        color: #7c3aed;
+      }
+      
+      &.Mui-error {
+        color: #dc2626;
+      }
+    }
+    
+    .MuiOutlinedInput-notchedOutline {
+      border-color: rgba(0, 0, 0, 0.23);
+    }
+    
+    .MuiInputBase-root:hover .MuiOutlinedInput-notchedOutline {
+      border-color: #7c3aed;
+    }
+    
+    .MuiInputBase-root.Mui-focused .MuiOutlinedInput-notchedOutline {
+      border-color: #7c3aed;
+    }
+  }
+  
+  .MuiFormHelperText-root {
+    background-color: transparent;
+    margin-left: 0;
+    color: #64748b;
+    
+    &.Mui-error {
+      color: #dc2626;
+    }
+  }
+}
+
+label {
+  font-size: 1.2rem;
+  font-family: 'DomaineDispNar-Medium', sans-serif;
+}
+
+.form-flex {
+  display: flex;
+  gap: 15px;
+  padding-bottom: 15px;
+}
+
+.form-flex .MuiFormControl-root {
+  width: 100%;
+}
+
+form {
+  width: 100% !important;
+}
+
+.body-form {
+  width: 100% !important;
+  margin-bottom: 15px !important;
+}
+
+/* Light Mode Overrides */
+.light-mode {
+  .contact-intro {
+    color: #334155;
+  }
+}
+
