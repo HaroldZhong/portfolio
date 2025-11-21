@@ -45,10 +45,10 @@ function Main() {
             </div>
 
             {/* Main Description */}
-            <p className="subtitle">Research Associate at UT Austin, turning health data into AI tools for families and work.</p>
+            <p className="subtitle">Research Associate at UT Austin, building AI tools grounded in health data.</p>
             
             <p className="tagline">
-              I work where NHIS/NHANES datasets, real psychiatry and parenting challenges, and LLM systems collide — building tools that fit messy, real-world workflows.
+              I sit at the intersection of health data, mental health challenges and agentic LLM systems — designing tools that fit messy, real-world workflows.
             </p>
 
             {/* Badge Pills - Moved Below Description */}

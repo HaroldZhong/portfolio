@@ -80,7 +80,7 @@ function Project() {
     {
       title: "BRAT – Family Therapy Chatbot",
       role: "Lead, product & technical design",
-      summary: "Parents rehearse tough conversations with a realistic virtual child before trying at home.",
+      summary: "Boundary, Respect & Affection training for parents. Parents rehearse tough conversations with a realistic virtual child before trying at home.",
       fullDescription: "Parents in our study often struggle with tough conversations at home, so BRAT lets them rehearse with a realistic virtual 'child' first. It's a multi-agent LLM system used in an IRB-approved study. I co-designed the agents, workflows, and Azure/OpenAI setup so it's safe, research-grade, and actually usable.",
       tags: ["Multi-agent LLM", "IRB workflows", "Azure/OpenAI", "Whisper ASR", "RAG", "Qualtrics"],
       thumbnail: "https://images.unsplash.com/photo-1531746790731-6c087fecd65a?w=800&h=400&fit=crop"
