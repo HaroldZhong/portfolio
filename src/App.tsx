@@ -1,10 +1,20 @@
 import React, {useState, useEffect} from "react";
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom';
 import { Navigation, Footer, BackToTop } from "./components";
 import HomePage from './pages/HomePage';
 import BlogList from './pages/BlogList';
 import BlogPost from './pages/BlogPost';
 import './index.scss';
+
+function ScrollToTop() {
+    const { pathname } = useLocation();
+
+    useEffect(() => {
+        window.scrollTo(0, 0);
+    }, [pathname]);
+
+    return null;
+}
 
 function App() {
     const [mode, setMode] = useState<string>('dark');
@@ -17,17 +27,9 @@ function App() {
         }
     }
 
-    useEffect(() => {
-        window.scrollTo({top: 0, left: 0, behavior: 'auto'});
-      }, []);
-      
-    // Scroll to top on route change
-    useEffect(() => {
-        window.scrollTo({top: 0, left: 0, behavior: 'auto'});
-    }, [window.location.pathname]);
-
     return (
     <BrowserRouter basename="/portfolio">
+      <ScrollToTop />
       <div className={`main-container ${mode === 'dark' ? 'dark-mode' : 'light-mode'}`}>
         <Navigation parentToChild={{mode}} modeChange={handleModeChange}/>
         <Routes>

@@ -4,6 +4,7 @@ import LinkedInIcon from '@mui/icons-material/LinkedIn';
 import EmailIcon from '@mui/icons-material/Email';
 import { ArrowRight } from 'lucide-react';
 import AuroraBackground from './AuroraBackground';
+import profileImage from '../images/profile-headshot.jpg';
 import '../assets/styles/Main.scss';
 
 function Main() {
@@ -35,7 +36,7 @@ function Main() {
             {/* Headshot and Name */}
             <div className="hero-header">
               <div className="headshot-wrapper">
-                <img src="/portfolio/src/images/profile-headshot.jpg" alt="Harold Zhong" className="headshot" />
+                <img src={profileImage} alt="Harold Zhong" className="headshot" />
               </div>
               <div className="hero-text-wrapper">
                 <h1 className="hero-title">Harold Zhong</h1>
