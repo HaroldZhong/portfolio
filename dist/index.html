@@ -4,11 +4,26 @@
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Harold | Data, AI & Social Impact</title>
-    <script type="module" crossorigin src="/portfolio/assets/index-BXcrk3S3.js"></script>
-    <link rel="stylesheet" crossorigin href="/portfolio/assets/index-DTPC3XOt.css">
+    <title>Harold Zhong | Data, AI & Social Impact</title>
+    <style>
+      /* Prevent scroll restoration flash */
+      html {
+        scroll-behavior: auto !important;
+      }
+    </style>
+    <script type="module" crossorigin src="/portfolio/assets/index-Bm7bi136.js"></script>
+    <link rel="stylesheet" crossorigin href="/portfolio/assets/index-C4PdQ04W.css">
   </head>
   <body>
     <div id="root"></div>
+    <script>
+      // Force scroll to top on page load/refresh
+      if ('scrollRestoration' in history) {
+        history.scrollRestoration = 'manual';
+      }
+      window.addEventListener('beforeunload', function() {
+        window.scrollTo(0, 0);
+      });
+    </script>
   </body>
 </html>

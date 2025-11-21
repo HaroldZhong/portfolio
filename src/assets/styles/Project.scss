@@ -26,7 +26,7 @@
 
 .projects-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
+  grid-template-columns: repeat(3, 1fr);
   grid-gap: 40px;
   margin-top: 40px;
 }
@@ -108,6 +108,7 @@
 .project-card-back {
   transform: rotateY(180deg);
   overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
   
   .project-description {
     font-family: 'Inter', sans-serif;
@@ -186,44 +187,80 @@
   }
 }
 
-@media screen {
-  @media (max-width: 900px) {
-    .projects-grid {
-      grid-template-columns: 1fr;
-      grid-gap: 30px;
+/* Tablet: 2 columns */
+@media screen and (max-width: 1200px) {
+  .projects-grid {
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 35px;
+  }
+}
+
+/* Mobile: 1 column */
+@media screen and (max-width: 768px) {
+  .projects-grid {
+    grid-template-columns: 1fr;
+    grid-gap: 30px;
+  }
+  
+  .project-card-container {
+    height: auto;
+    min-height: 380px;
+  }
+  
+  .projects-container {
+    padding: 60px 5%;
+    
+    h1 {
+      font-size: 2.2rem;
     }
     
-    .project-card-container {
-      height: auto;
-      min-height: 350px;
+    .projects-intro {
+      font-size: 1rem;
+      margin-bottom: 40px;
     }
   }
   
-  @media (max-width: 700px) {
-    .projects-container {
-      padding: 60px 5%;
-      
-      h1 {
-        font-size: 2.2rem;
-      }
-      
-      .projects-intro {
-        font-size: 1rem;
-      }
+  .project-card-front,
+  .project-card-back {
+    padding: 25px;
+    
+    h3 {
+      font-size: 1.3rem;
+    }
+  }
+  
+  .project-card-front {
+    .project-summary {
+      font-size: 0.95rem;
     }
     
-    .project-card-front,
-    .project-card-back {
-      padding: 25px;
-      
-      h3 {
-        font-size: 1.3rem;
-      }
+    .hover-hint {
+      font-size: 0.85rem;
     }
-    
-    .project-tags .tag {
-      font-size: 0.8rem;
-      padding: 5px 12px;
+  }
+  
+  .project-card-back {
+    .project-description {
+      font-size: 0.95rem;
+    }
+  }
+  
+  .project-tags .tag {
+    font-size: 0.8rem;
+    padding: 5px 12px;
+  }
+}
+
+/* Touch device specific styles */
+@media (hover: none) and (pointer: coarse) {
+  .project-card {
+    cursor: pointer;
+  }
+  
+  .project-card-front,
+  .project-card-back {
+    &:hover {
+      border-color: rgba(255, 255, 255, 0.1);
     }
   }
 }

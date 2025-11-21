@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { Calendar, ArrowRight } from 'lucide-react';
@@ -12,6 +12,18 @@ interface BlogCardProps {
 
 const BlogCard: React.FC<BlogCardProps> = ({ post, index }) => {
   const [isFlipped, setIsFlipped] = useState(false);
+  const [isTouch, setIsTouch] = useState(false);
+
+  // Detect touch capability
+  useEffect(() => {
+    setIsTouch('ontouchstart' in window || navigator.maxTouchPoints > 0);
+  }, []);
+
+  const handleInteraction = () => {
+    if (isTouch) {
+      setIsFlipped(!isFlipped);
+    }
+  };
 
   return (
     <motion.div
@@ -20,8 +32,9 @@ const BlogCard: React.FC<BlogCardProps> = ({ post, index }) => {
       whileInView={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5, delay: index * 0.1 }}
       viewport={{ once: true }}
-      onHoverStart={() => setIsFlipped(true)}
-      onHoverEnd={() => setIsFlipped(false)}
+      onClick={handleInteraction}
+      onHoverStart={() => !isTouch && setIsFlipped(true)}
+      onHoverEnd={() => !isTouch && setIsFlipped(false)}
     >
       <motion.div
         className="blog-card"
@@ -41,7 +54,7 @@ const BlogCard: React.FC<BlogCardProps> = ({ post, index }) => {
               <span>{formatDate(post.date)}</span>
             </div>
             <p className="blog-excerpt">{post.excerpt}</p>
-            <div className="hover-hint">Hover to read more →</div>
+            <div className="hover-hint">{isTouch ? 'Tap to read more →' : 'Hover to read more →'}</div>
           </div>
         </div>
 

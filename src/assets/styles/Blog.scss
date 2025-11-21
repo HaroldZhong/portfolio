@@ -129,6 +129,8 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
   
   .blog-card-content {
     text-align: center;
@@ -197,7 +199,7 @@
 
 .blog-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  grid-template-columns: repeat(3, 1fr);
   grid-gap: 35px;
   margin-bottom: 50px;
 }
@@ -539,49 +541,94 @@
   }
 }
 
-@media screen {
-  @media (max-width: 768px) {
-    .blog-grid {
-      grid-template-columns: 1fr;
-      grid-gap: 25px;
+/* Tablet: 2 columns */
+@media screen and (max-width: 1200px) {
+  .blog-grid {
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 30px;
+  }
+}
+
+/* Mobile: 1 column */
+@media screen and (max-width: 768px) {
+  .blog-grid {
+    grid-template-columns: 1fr;
+    grid-gap: 25px;
+  }
+  
+  .blog-card-container {
+    height: auto;
+    min-height: 440px;
+  }
+  
+  .blog-card-content {
+    h3 {
+      font-size: 1.2rem;
+    }
+  }
+  
+  .blog-excerpt,
+  .blog-excerpt-full {
+    font-size: 0.9rem;
+  }
+  
+  .recent-blogs-section {
+    padding: 60px 5%;
+    
+    h2 {
+      font-size: 2.2rem;
     }
     
-    .blog-card-container {
-      height: auto;
-      min-height: 420px;
+    .section-subtitle {
+      font-size: 1rem;
+      margin-bottom: 40px;
+    }
+  }
+  
+  .blog-list-page {
+    padding: 100px 5% 60px;
+    
+    h1 {
+      font-size: 2.5rem;
+    }
+  }
+  
+  .blog-post-page {
+    padding: 100px 5% 60px;
+    
+    .post-header h1 {
+      font-size: 2rem;
     }
     
-    .recent-blogs-section {
-      padding: 60px 5%;
+    .post-content {
+      padding: 30px 25px;
       
-      h2 {
-        font-size: 2.2rem;
+      h1 { font-size: 1.8rem; }
+      h2 { font-size: 1.5rem; }
+      h3 { font-size: 1.2rem; }
+      
+      p {
+        font-size: 0.98rem;
       }
     }
-    
-    .blog-list-page {
-      padding: 100px 5% 60px;
-      
-      h1 {
-        font-size: 2.5rem;
-      }
+  }
+}
+
+/* Touch device specific styles */
+@media (hover: none) and (pointer: coarse) {
+  .blog-card {
+    cursor: pointer;
+  }
+  
+  .blog-card-front,
+  .blog-card-back {
+    &:hover {
+      border-color: rgba(255, 255, 255, 0.1);
     }
-    
-    .blog-post-page {
-      padding: 100px 5% 60px;
-      
-      .post-header h1 {
-        font-size: 2rem;
-      }
-      
-      .post-content {
-        padding: 30px 25px;
-      }
-    }
-    
-    .blog-list-page {
-      padding: 100px 5% 60px;
-    }
+  }
+  
+  .blog-thumbnail:hover img {
+    transform: scale(1);
   }
 }
 

@@ -28,7 +28,7 @@ function Main() {
               <a href="https://linkedin.com/in/haocong-zhong" target="_blank" rel="noreferrer" aria-label="LinkedIn">
                 <LinkedInIcon/>
               </a>
-              <a href="haocong.zhong.research@gmail.com" target="_blank" rel="noreferrer" aria-label="Email">
+              <a href="mailto:haocong.zhong.research@gmail.com" target="_blank" rel="noreferrer" aria-label="Email">
                 <EmailIcon/>
               </a>
             </div>
@@ -75,9 +75,9 @@ function Main() {
             </div>
 
             <div className="mobile_social_icons">
-              <a href="https://github.com" target="_blank" rel="noreferrer"><GitHubIcon/></a>
+              <a href="https://github.com/haroldzhong" target="_blank" rel="noreferrer"><GitHubIcon/></a>
               <a href="https://linkedin.com/in/haocong-zhong" target="_blank" rel="noreferrer"><LinkedInIcon/></a>
-              <a href="mailto:your.email@example.com" target="_blank" rel="noreferrer"><EmailIcon/></a>
+              <a href="mailto:haocong.zhong.research@gmail.com" target="_blank" rel="noreferrer"><EmailIcon/></a>
             </div>
           </div>
         </div>

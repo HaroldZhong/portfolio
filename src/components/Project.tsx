@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import '../assets/styles/Project.scss';
 
@@ -12,6 +12,18 @@ interface ProjectData {
 
 const ProjectCard: React.FC<{ project: ProjectData; index: number }> = ({ project, index }) => {
   const [isFlipped, setIsFlipped] = useState(false);
+  const [isTouch, setIsTouch] = useState(false);
+
+  // Detect touch capability
+  useEffect(() => {
+    setIsTouch('ontouchstart' in window || navigator.maxTouchPoints > 0);
+  }, []);
+
+  const handleInteraction = () => {
+    if (isTouch) {
+      setIsFlipped(!isFlipped);
+    }
+  };
 
   return (
     <motion.div
@@ -20,8 +32,9 @@ const ProjectCard: React.FC<{ project: ProjectData; index: number }> = ({ projec
       whileInView={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5, delay: index * 0.1 }}
       viewport={{ once: true }}
-      onHoverStart={() => setIsFlipped(true)}
-      onHoverEnd={() => setIsFlipped(false)}
+      onClick={handleInteraction}
+      onHoverStart={() => !isTouch && setIsFlipped(true)}
+      onHoverEnd={() => !isTouch && setIsFlipped(false)}
     >
       <motion.div
         className="project-card"
@@ -38,7 +51,7 @@ const ProjectCard: React.FC<{ project: ProjectData; index: number }> = ({ projec
               <span key={idx} className="tag">{tag}</span>
             ))}
           </div>
-          <div className="hover-hint">Hover for details →</div>
+          <div className="hover-hint">{isTouch ? 'Tap for details →' : 'Hover for details →'}</div>
         </div>
 
         {/* Back of card */}
