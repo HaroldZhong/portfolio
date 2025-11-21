@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
-import { Calendar, ArrowRight } from 'lucide-react';
+import { Calendar } from 'lucide-react';
 import { BlogPost, formatDate } from '../utils/blogLoader';
 import '../assets/styles/Blog.scss';
 
@@ -11,38 +11,17 @@ interface BlogCardProps {
 }
 
 const BlogCard: React.FC<BlogCardProps> = ({ post, index }) => {
-  const [isFlipped, setIsFlipped] = useState(false);
-  const [isTouch, setIsTouch] = useState(false);
-
-  // Detect touch capability
-  useEffect(() => {
-    setIsTouch('ontouchstart' in window || navigator.maxTouchPoints > 0);
-  }, []);
-
-  const handleInteraction = () => {
-    if (isTouch) {
-      setIsFlipped(!isFlipped);
-    }
-  };
-
   return (
-    <motion.div
-      className="blog-card-container"
-      initial={{ opacity: 0, y: 30 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.5, delay: index * 0.1 }}
-      viewport={{ once: true }}
-      onClick={handleInteraction}
-      onHoverStart={() => !isTouch && setIsFlipped(true)}
-      onHoverEnd={() => !isTouch && setIsFlipped(false)}
-    >
+    <Link to={`/blog/${post.slug}`} className="blog-card-link">
       <motion.div
-        className="blog-card"
-        animate={{ rotateY: isFlipped ? 180 : 0 }}
-        transition={{ duration: 0.6, type: "spring", stiffness: 100 }}
+        className="blog-card-container"
+        initial={{ opacity: 0, y: 30 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5, delay: index * 0.1 }}
+        viewport={{ once: true }}
+        whileHover={{ y: -4 }}
       >
-        {/* Front of card */}
-        <div className="blog-card-front">
+        <div className="blog-card">
           <div className="blog-thumbnail">
             <img src={post.thumbnail} alt={post.title} />
             <div className="blog-category-badge">{post.category}</div>
@@ -54,23 +33,11 @@ const BlogCard: React.FC<BlogCardProps> = ({ post, index }) => {
               <span>{formatDate(post.date)}</span>
             </div>
             <p className="blog-excerpt">{post.excerpt}</p>
-            <div className="hover-hint">{isTouch ? 'Tap to read more →' : 'Hover to read more →'}</div>
-          </div>
-        </div>
-
-        {/* Back of card */}
-        <div className="blog-card-back">
-          <div className="blog-card-content">
-            <div className="blog-category-badge">{post.category}</div>
-            <h3>{post.title}</h3>
-            <p className="blog-excerpt-full">{post.excerpt}</p>
-            <Link to={`/blog/${post.slug}`} className="read-more-btn">
-              Read Full Article <ArrowRight size={18} />
-            </Link>
+            <div className="hover-hint">Click to read more →</div>
           </div>
         </div>
       </motion.div>
-    </motion.div>
+    </Link>
   );
 };
 

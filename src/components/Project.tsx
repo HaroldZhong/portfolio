@@ -8,6 +8,7 @@ interface ProjectData {
   summary: string;
   fullDescription: string;
   tags: string[];
+  thumbnail: string;
 }
 
 const ProjectCard: React.FC<{ project: ProjectData; index: number }> = ({ project, index }) => {
@@ -43,15 +44,20 @@ const ProjectCard: React.FC<{ project: ProjectData; index: number }> = ({ projec
       >
         {/* Front of card */}
         <div className="project-card-front">
-          <h3>{project.title}</h3>
-          <p className="project-role">{project.role}</p>
-          <p className="project-summary">{project.summary}</p>
-          <div className="project-tags">
-            {project.tags.slice(0, 3).map((tag, idx) => (
-              <span key={idx} className="tag">{tag}</span>
-            ))}
+          <div className="project-thumbnail">
+            <img src={project.thumbnail} alt={project.title} />
           </div>
-          <div className="hover-hint">{isTouch ? 'Tap for details →' : 'Hover for details →'}</div>
+          <div className="project-card-content">
+            <h3>{project.title}</h3>
+            <p className="project-role">{project.role}</p>
+            <p className="project-summary">{project.summary}</p>
+            <div className="project-tags">
+              {project.tags.slice(0, 3).map((tag, idx) => (
+                <span key={idx} className="tag">{tag}</span>
+              ))}
+            </div>
+            <div className="hover-hint">{isTouch ? 'Tap for details →' : 'Hover for details →'}</div>
+          </div>
         </div>
 
         {/* Back of card */}
@@ -76,21 +82,24 @@ function Project() {
       role: "Lead, product & technical design",
       summary: "Parents rehearse tough conversations with a realistic virtual child before trying at home.",
       fullDescription: "Parents in our study often struggle with tough conversations at home, so BRAT lets them rehearse with a realistic virtual 'child' first. It's a multi-agent LLM system used in an IRB-approved study. I co-designed the agents, workflows, and Azure/OpenAI setup so it's safe, research-grade, and actually usable.",
-      tags: ["Multi-agent LLM", "IRB workflows", "Azure/OpenAI", "Whisper ASR", "RAG", "Qualtrics"]
+      tags: ["Multi-agent LLM", "IRB workflows", "Azure/OpenAI", "Whisper ASR", "RAG", "Qualtrics"],
+      thumbnail: "https://images.unsplash.com/photo-1531746790731-6c087fecd65a?w=800&h=400&fit=crop"
     },
     {
       title: "NHIS/NHANES Health Inequality Analysis",
       role: "Data workflow & harmonization lead",
       summary: "Producing equity metrics and reproducible findings from multi-year national health survey data.",
       fullDescription: "Our team studies how health outcomes differ by income and other factors over time. I build SAS workflows that produce equity metrics like SII/RII and ridit scores for our manuscripts.",
-      tags: ["SAS", "SPSS", "Complex Survey Design", "Data Harmonization", "Public Health", "Equity Metrics"]
+      tags: ["SAS", "SPSS", "Complex Survey Design", "Data Harmonization", "Public Health", "Equity Metrics"],
+      thumbnail: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&h=400&fit=crop"
     },
     {
       title: "Clinical Prompt Systems",
       role: "Prompt engineer & system designer",
       summary: "Turning expert psychiatric workflows into structured prompts with safety rules for AI systems.",
       fullDescription: "Clinicians know what they want to ask; AI often doesn't. I turn real-world expert psychiatric and care-planning workflows into structured prompts, templates with standardized variables library I designed, plus clear safety and formatting rules for downstream systems.",
-      tags: ["Prompt Engineering", "Clinical AI", "HIPAA-aligned", "System Design", "JSON", "Safety Constraints"]
+      tags: ["Prompt Engineering", "Clinical AI", "HIPAA-aligned", "System Design", "JSON", "Safety Constraints"],
+      thumbnail: "https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=800&h=400&fit=crop"
     }
   ];
 

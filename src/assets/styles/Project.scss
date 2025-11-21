@@ -33,7 +33,7 @@
 
 .project-card-container {
   perspective: 1000px;
-  height: 400px;
+  height: 500px;
 }
 
 .project-card {
@@ -51,7 +51,6 @@
   height: 100%;
   backface-visibility: hidden;
   border-radius: 20px;
-  padding: 35px;
   display: flex;
   flex-direction: column;
   background: rgba(30, 30, 30, 0.8);
@@ -60,6 +59,7 @@
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
   text-align: left;
   transition: border-color 0.3s ease;
+  overflow: hidden;
   
   &:hover {
     border-color: rgba(138, 43, 226, 0.4);
@@ -77,6 +77,35 @@
 
 .project-card-front {
   z-index: 2;
+  padding: 0;
+}
+
+.project-thumbnail {
+  position: relative;
+  width: 100%;
+  height: 180px;
+  min-height: 180px;
+  max-height: 180px;
+  overflow: hidden;
+  flex-shrink: 0;
+  
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+  }
+  
+  &:hover img {
+    transform: scale(1.05);
+  }
+}
+
+.project-card-content {
+  padding: 25px;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
   
   .project-role {
     font-family: 'Inter', sans-serif;
@@ -109,6 +138,7 @@
   transform: rotateY(180deg);
   overflow-y: auto;
   -webkit-overflow-scrolling: touch;
+  padding: 35px;
   
   .project-description {
     font-family: 'Inter', sans-serif;
@@ -195,6 +225,20 @@
   }
 }
 
+/* iPad specific fix (768px - 1024px) */
+@media screen and (min-width: 769px) and (max-width: 1024px) {
+  .project-card-container {
+    height: 520px;
+  }
+  
+  .project-card-content {
+    .hover-hint {
+      font-size: 0.8rem;
+      margin-top: 8px;
+    }
+  }
+}
+
 /* Mobile: 1 column */
 @media screen and (max-width: 768px) {
   .projects-grid {
@@ -204,7 +248,7 @@
   
   .project-card-container {
     height: auto;
-    min-height: 380px;
+    min-height: 460px;
   }
   
   .projects-container {
@@ -220,16 +264,19 @@
     }
   }
   
-  .project-card-front,
-  .project-card-back {
-    padding: 25px;
+  .project-thumbnail {
+    height: 160px;
+    min-height: 160px;
+    max-height: 160px;
+  }
+  
+  .project-card-content {
+    padding: 20px;
     
     h3 {
       font-size: 1.3rem;
     }
-  }
-  
-  .project-card-front {
+    
     .project-summary {
       font-size: 0.95rem;
     }
@@ -240,6 +287,12 @@
   }
   
   .project-card-back {
+    padding: 25px;
+    
+    h3 {
+      font-size: 1.3rem;
+    }
+    
     .project-description {
       font-size: 0.95rem;
     }
