@@ -1,0 +1,19 @@
+{
+  "slug": "nhis-nhanes-health-inequality",
+  "title": "NHIS/NHANES Health Inequality Analysis",
+  "role": "Data workflow & harmonization lead",
+  "summary": "Producing equity metrics and reproducible findings from multi-year national health survey data.",
+  "thumbnail": "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&h=400&fit=crop",
+  "tags": ["SAS", "SPSS", "Complex Survey Design", "Data Harmonization", "Public Health", "Equity Metrics"],
+  "overview": "This project analyzes multi-year data from the National Health Interview Survey (NHIS) and National Health and Nutrition Examination Survey (NHANES) to study health outcome disparities across income levels, race/ethnicity, and other social determinants. The work produces reproducible equity metrics for peer-reviewed research and policy recommendations.",
+  "myRole": "I lead the data workflow and harmonization efforts, building SAS and SPSS pipelines that process complex survey data from multiple years and produce standardized equity metrics. I developed workflows for calculating Slope Index of Inequality (SII), Relative Index of Inequality (RII), and ridit scores. I also manage data quality assurance, handle multi-year data harmonization challenges, and ensure reproducibility of all analyses for manuscript preparation.",
+  "technologies": ["SAS", "SPSS", "Complex Survey Design", "Data Harmonization", "SII/RII Calculations", "Ridit Scores", "NHIS/NHANES Datasets", "Statistical Analysis"],
+  "outcomes": [
+    "Built reproducible SAS workflows that cut analysis time by 40% and improved data quality",
+    "Harmonized 20+ years of NHIS data across multiple survey redesigns",
+    "Produced equity metrics (SII, RII, ridit scores) for multiple manuscripts in preparation",
+    "Established quality assurance protocols that caught and prevented data errors in published analyses",
+    "Created documentation and training materials for team members and collaborators"
+  ]
+}
+

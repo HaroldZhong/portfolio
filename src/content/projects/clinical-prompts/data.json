@@ -1,0 +1,20 @@
+{
+  "slug": "clinical-prompt-systems",
+  "title": "Clinical Prompt Systems",
+  "role": "Prompt engineer & system designer",
+  "summary": "Turning expert psychiatric workflows into structured prompts with safety rules for AI systems.",
+  "thumbnail": "https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=800&h=400&fit=crop",
+  "tags": ["Prompt Engineering", "Clinical AI", "HIPAA-aligned", "System Design", "JSON", "Safety Constraints"],
+  "overview": "This project translates expert psychiatric and care-planning workflows into structured, reliable prompts for AI systems used in clinical settings. The work involves converting implicit clinical knowledge into explicit prompt templates with standardized variable libraries, safety constraints, and formatting rules that ensure consistent, appropriate outputs for downstream healthcare applications.",
+  "myRole": "As prompt engineer and system designer, I work directly with clinical experts to understand their workflows and decision-making processes. I design prompt templates with standardized variable libraries, establish safety and formatting rules, and create JSON-based structures for easy integration with existing clinical systems. I also develop validation processes to ensure prompts produce clinically appropriate outputs while maintaining HIPAA compliance and patient safety standards.",
+  "technologies": ["Prompt Engineering", "Clinical AI", "HIPAA Compliance", "JSON Schema Design", "Safety Constraints", "Template Systems", "LLM Integration", "Clinical Workflow Analysis"],
+  "outcomes": [
+    "Created standardized prompt library used across multiple psychiatric care applications",
+    "Established safety constraints that prevent inappropriate clinical recommendations",
+    "Designed variable library system that enables non-technical clinicians to customize prompts safely",
+    "Built validation framework that ensures HIPAA compliance and clinical appropriateness",
+    "Reduced prompt engineering time by 60% through reusable template system",
+    "Documented best practices that inform organization-wide AI integration standards"
+  ]
+}
+

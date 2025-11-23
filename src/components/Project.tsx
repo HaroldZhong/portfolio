@@ -1,49 +1,21 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
+import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
+import { Project as ProjectType, getAllProjects } from '../utils/projectLoader';
 import '../assets/styles/Project.scss';
 
-interface ProjectData {
-  title: string;
-  role: string;
-  summary: string;
-  fullDescription: string;
-  tags: string[];
-  thumbnail: string;
-}
-
-const ProjectCard: React.FC<{ project: ProjectData; index: number }> = ({ project, index }) => {
-  const [isFlipped, setIsFlipped] = useState(false);
-  const [isTouch, setIsTouch] = useState(false);
-
-  // Detect touch capability
-  useEffect(() => {
-    setIsTouch('ontouchstart' in window || navigator.maxTouchPoints > 0);
-  }, []);
-
-  const handleInteraction = () => {
-    if (isTouch) {
-      setIsFlipped(!isFlipped);
-    }
-  };
-
+const ProjectCard: React.FC<{ project: ProjectType; index: number }> = ({ project, index }) => {
   return (
-    <motion.div
-      className="project-card-container"
-      initial={{ opacity: 0, y: 50 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.5, delay: index * 0.1 }}
-      viewport={{ once: true }}
-      onClick={handleInteraction}
-      onHoverStart={() => !isTouch && setIsFlipped(true)}
-      onHoverEnd={() => !isTouch && setIsFlipped(false)}
-    >
+    <Link to={`/project/${project.slug}`} className="project-card-link">
       <motion.div
-        className="project-card"
-        animate={{ rotateY: isFlipped ? 180 : 0 }}
-        transition={{ duration: 0.6, type: "spring", stiffness: 100 }}
+        className="project-card-container"
+        initial={{ opacity: 0, y: 50 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5, delay: index * 0.1 }}
+        viewport={{ once: true }}
+        whileHover={{ y: -4 }}
       >
-        {/* Front of card */}
-        <div className="project-card-front">
+        <div className="project-card">
           <div className="project-thumbnail">
             <img src={project.thumbnail} alt={project.title} />
           </div>
@@ -56,52 +28,16 @@ const ProjectCard: React.FC<{ project: ProjectData; index: number }> = ({ projec
                 <span key={idx} className="tag">{tag}</span>
               ))}
             </div>
-            <div className="hover-hint">{isTouch ? 'Tap for details →' : 'Hover for details →'}</div>
-          </div>
-        </div>
-
-        {/* Back of card */}
-        <div className="project-card-back">
-          <h3>{project.title}</h3>
-          <p className="project-description">{project.fullDescription}</p>
-          <div className="project-tags">
-            {project.tags.map((tag, idx) => (
-              <span key={idx} className="tag">{tag}</span>
-            ))}
+            <div className="view-details-hint">Click to view details →</div>
           </div>
         </div>
       </motion.div>
-    </motion.div>
+    </Link>
   );
 };
 
 function Project() {
-  const projects: ProjectData[] = [
-    {
-      title: "BRAT – Family Therapy Chatbot",
-      role: "Lead, product & technical design",
-      summary: "Parents rehearse tough conversations with a realistic virtual child before trying at home.",
-      fullDescription: "Boundary, Respect & Affection training for parents. Parents in our study often struggle with tough conversations at home, so BRAT lets them rehearse with a realistic virtual 'child' first. It's a multi-agent LLM system used in an IRB-approved study. I co-designed the agents, workflows, and Azure/OpenAI setup so it's safe, research-grade, and actually usable.",
-      tags: ["Multi-agent LLM", "IRB workflows", "Azure/OpenAI", "Whisper ASR", "RAG", "Qualtrics"],
-      thumbnail: "https://images.unsplash.com/photo-1531746790731-6c087fecd65a?w=800&h=400&fit=crop"
-    },
-    {
-      title: "NHIS/NHANES Health Inequality Analysis",
-      role: "Data workflow & harmonization lead",
-      summary: "Producing equity metrics and reproducible findings from multi-year national health survey data.",
-      fullDescription: "Our team studies how health outcomes differ by income and other factors over time. I build SAS workflows that produce equity metrics like SII/RII and ridit scores for our manuscripts.",
-      tags: ["SAS", "SPSS", "Complex Survey Design", "Data Harmonization", "Public Health", "Equity Metrics"],
-      thumbnail: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&h=400&fit=crop"
-    },
-    {
-      title: "Clinical Prompt Systems",
-      role: "Prompt engineer & system designer",
-      summary: "Turning expert psychiatric workflows into structured prompts with safety rules for AI systems.",
-      fullDescription: "Clinicians know what they want to ask; AI often doesn't. I turn real-world expert psychiatric and care-planning workflows into structured prompts, templates with standardized variables library I designed, plus clear safety and formatting rules for downstream systems.",
-      tags: ["Prompt Engineering", "Clinical AI", "HIPAA-aligned", "System Design", "JSON", "Safety Constraints"],
-      thumbnail: "https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=800&h=400&fit=crop"
-    }
-  ];
+  const projects = getAllProjects();
 
   return (
     <div className="projects-container" id="projects">

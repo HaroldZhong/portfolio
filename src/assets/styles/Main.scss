@@ -191,62 +191,6 @@
     }
 }
 
-.now-box {
-    background: rgba(255, 255, 255, 0.05);
-    backdrop-filter: blur(20px);
-    border: 1px solid rgba(255, 255, 255, 0.15);
-    border-radius: 20px;
-    padding: 35px 40px;
-    margin-top: 20px;
-    text-align: left;
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
-    transition: all 0.3s ease;
-    
-    &:hover {
-        background: rgba(255, 255, 255, 0.08);
-        border-color: rgba(255, 255, 255, 0.25);
-        box-shadow: 0 12px 48px rgba(0, 0, 0, 0.3);
-    }
-    
-    h3 {
-        font-family: 'Playfair Display', serif;
-        font-size: 1.6rem;
-        font-weight: 700;
-        color: #E2E8F0;
-        margin-bottom: 20px;
-        text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
-    }
-    
-    ul {
-        list-style: none;
-        padding: 0;
-        margin: 0;
-        
-        li {
-            font-family: 'Inter', sans-serif;
-            font-size: 1.05rem;
-            color: #E2E8F0;
-            line-height: 1.8;
-            padding-left: 28px;
-            position: relative;
-            margin-bottom: 14px;
-            
-            &:before {
-                content: "→";
-                position: absolute;
-                left: 0;
-                color: #a78bfa;
-                font-weight: bold;
-                font-size: 1.2rem;
-            }
-            
-            &:last-child {
-                margin-bottom: 0;
-            }
-        }
-    }
-}
-
 @media screen {
     @media (max-width: 768px) {
         .about-section {
@@ -277,18 +221,6 @@
         
         .tagline {
             font-size: 1.05rem;
-        }
-        
-        .now-box {
-            padding: 25px 30px;
-            
-            h3 {
-                font-size: 1.4rem;
-            }
-            
-            ul li {
-                font-size: 0.95rem;
-            }
         }
         
         .social_icons {
@@ -378,19 +310,6 @@
     .subtitle,
     .tagline {
         color: #334155;
-    }
-    
-    .now-box {
-        background: rgba(255, 255, 255, 0.7);
-        border-color: rgba(0, 0, 0, 0.1);
-        
-        h3, li {
-            color: #1e293b;
-        }
-        
-        li:before {
-            color: #7c3aed;
-        }
     }
     
     .badge-pill {

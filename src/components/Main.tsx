@@ -63,17 +63,6 @@ function Main() {
               View My Work <ArrowRight size={20} />
             </a>
 
-            {/* Now Box with Glassmorphism */}
-            <div className="now-box">
-              <h3>Now</h3>
-              <ul>
-                <li>Research Associate IV @ UT Austin School of Social Work</li>
-                <li>Leading and supporting NHIS/NHANES-based health inequality analyses</li>
-                <li>Refining BRAT, a family-therapy chatbot for parent–child role-play</li>
-                <li>Exploring future directions for AI × health and long-term product ideas</li>
-              </ul>
-            </div>
-
             <div className="mobile_social_icons">
               <a href="https://github.com/haroldzhong" target="_blank" rel="noreferrer"><GitHubIcon/></a>
               <a href="https://linkedin.com/in/haocong-zhong" target="_blank" rel="noreferrer"><LinkedInIcon/></a>
