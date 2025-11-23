@@ -1,5 +1,5 @@
 import React from 'react';
-import { useParams, Link, Navigate } from 'react-router-dom';
+import { useParams, useNavigate, Navigate } from 'react-router-dom';
 import { ArrowLeft } from 'lucide-react';
 import { getProjectBySlug } from '../utils/projectLoader';
 import '../assets/styles/Project.scss';
@@ -7,16 +7,27 @@ import '../assets/styles/Project.scss';
 const ProjectDetail: React.FC = () => {
   const { slug } = useParams<{ slug: string }>();
   const project = getProjectBySlug(slug || '');
+  const navigate = useNavigate();
 
   if (!project) {
-    return <Navigate to="/#projects" replace />;
+    return <Navigate to="/" replace />;
   }
+
+  const handleBackClick = () => {
+    navigate('/');
+    setTimeout(() => {
+      const projectsSection = document.getElementById('projects');
+      if (projectsSection) {
+        projectsSection.scrollIntoView({ behavior: 'smooth' });
+      }
+    }, 100);
+  };
 
   return (
     <div className="project-detail-page">
-      <Link to="/#projects" className="back-button">
+      <button onClick={handleBackClick} className="back-button">
         <ArrowLeft size={20} /> Back to Projects
-      </Link>
+      </button>
       
       <div className="project-header">
         <div className="project-thumbnail-large">
