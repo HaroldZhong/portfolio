@@ -20,19 +20,6 @@ function Main() {
         <div className="about-section">
           <div className="hero-content">
             
-            {/* Social Links ABOVE name */}
-            <div className="social_icons">
-              <a href="https://github.com/haroldzhong" target="_blank" rel="noreferrer" aria-label="GitHub">
-                <GitHubIcon/>
-              </a>
-              <a href="https://linkedin.com/in/haocong-zhong" target="_blank" rel="noreferrer" aria-label="LinkedIn">
-                <LinkedInIcon/>
-              </a>
-              <a href="mailto:haocong.zhong.research@gmail.com" target="_blank" rel="noreferrer" aria-label="Email">
-                <EmailIcon/>
-              </a>
-            </div>
-
             {/* Headshot and Name */}
             <div className="hero-header">
               <div className="headshot-wrapper">
@@ -63,10 +50,17 @@ function Main() {
               View My Work <ArrowRight size={20} />
             </a>
 
-            <div className="mobile_social_icons">
-              <a href="https://github.com/haroldzhong" target="_blank" rel="noreferrer"><GitHubIcon/></a>
-              <a href="https://linkedin.com/in/haocong-zhong" target="_blank" rel="noreferrer"><LinkedInIcon/></a>
-              <a href="mailto:haocong.zhong.research@gmail.com" target="_blank" rel="noreferrer"><EmailIcon/></a>
+            {/* Social Links - Below CTA */}
+            <div className="social_icons">
+              <a href="https://github.com/haroldzhong" target="_blank" rel="noreferrer" aria-label="GitHub">
+                <GitHubIcon/>
+              </a>
+              <a href="https://linkedin.com/in/haocong-zhong" target="_blank" rel="noreferrer" aria-label="LinkedIn">
+                <LinkedInIcon/>
+              </a>
+              <a href="mailto:haocong.zhong.research@gmail.com" target="_blank" rel="noreferrer" aria-label="Email">
+                <EmailIcon/>
+              </a>
             </div>
           </div>
         </div>
