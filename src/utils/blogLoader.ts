@@ -1,5 +1,6 @@
 // Import images
 import openaiAnthropicImg from '../images/openai-anthropic.jpg';
+import aiToolsFailedImg from '../images/why-so-many-new-ai-tools-failed.jpg';
 
 // Import metadata
 import aiToolsFailedMeta from '../content/blogs/why-so-many-new-ai-tools-failed/metadata.json';
@@ -28,7 +29,7 @@ export interface BlogPost {
 const blogPosts: BlogPost[] = [
   {
     ...aiToolsFailedMeta,
-    thumbnail: 'https://images.unsplash.com/photo-1677442136019-21780ecad995?w=800&q=80',
+    thumbnail: aiToolsFailedImg,
     content: aiToolsFailedContent
   },
   {

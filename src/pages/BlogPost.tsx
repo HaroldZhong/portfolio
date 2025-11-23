@@ -57,7 +57,14 @@ const BlogPost: React.FC = () => {
         </div>
 
         <div className="post-content">
-          <ReactMarkdown remarkPlugins={[remarkGfm]}>
+          <ReactMarkdown 
+            remarkPlugins={[remarkGfm]}
+            components={{
+              a: ({ node, ...props }) => (
+                <a {...props} target="_blank" rel="noopener noreferrer" />
+              )
+            }}
+          >
             {post.content}
           </ReactMarkdown>
         </div>

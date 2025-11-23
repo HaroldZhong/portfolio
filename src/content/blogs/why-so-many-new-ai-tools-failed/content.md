@@ -126,7 +126,7 @@ These successful products address specific, well-understood pain points:
 
 ### 2. Elegant Simplicity in Design
 
-At their core, these breakthrough products embody the ancient Chinese principle of **大道至简** (*dàdào zhì jiǎn*)—the idea that profound truths and effective tools are inherently simple.
+At their core, these breakthrough products embody the ancient Chinese principle of **大道至简** (*dà dào zhì jiǎn*)—the idea that profound truths and effective tools are inherently simple.
 
 * A single, uncluttered chat interface
 * Or a straightforward workflow: "Paste your outline, click a button, get slides."
