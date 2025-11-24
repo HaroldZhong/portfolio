@@ -75,16 +75,3 @@ If you're a researcher or grad student, here's a simple way to start:
 5. **Always verify** – Treat AI outputs as drafts, hypotheses, or scaffolding—not as ground truth.
 
 Good prompt engineering won't replace critical thinking, but it *will* give your critical thinking better raw material to work with.
-
----
-
-### References
-
-* Zhang, Y. et al. *Exploring the role of large language models in the scientific ecosystem.* Nature (2025). [Nature](https://www.nature.com/articles/s44387-025-00019-5)
-* Wei, J. et al. *Chain-of-Thought Prompting Elicits Reasoning in Large Language Models.* (2022). [arXiv](https://arxiv.org/abs/2201.11903)
-* Anh-Hoang, D. et al. *Survey and analysis of hallucinations in large language models.* (2025). [PMC](https://pmc.ncbi.nlm.nih.gov/articles/PMC12518350/)
-* OpenAI Documentation – Prompt engineering, reasoning best practices, and production guides. [OpenAI Platform](https://platform.openai.com/docs/guides/prompt-engineering)
-* Anthropic – Prompt engineering overview, interactive tutorial, and context engineering guidance. [Claude Docs](https://docs.claude.com/en/docs/build-with-claude/prompt-engineering/overview)
-* Shamim, A. *Prompt Engineering Guide for Data Scientists & ML Engineers.* (2025). [Medium](https://adilshamim8.medium.com/prompt-engineering-guide-for-data-scientists-ml-engineers-00f2ebf69d8e)
-* Royal Society Open Science study on LLM oversimplification of scientific findings. [Live Science](https://www.livescience.com/technology/artificial-intelligence/ai-chatbots-oversimplify-scientific-studies-and-gloss-over-critical-details-the-newest-models-are-especially-guilty)
-

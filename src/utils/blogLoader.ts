@@ -1,16 +1,16 @@
 // Import images
 import openaiAnthropicImg from '../images/openai-anthropic.jpg';
-import aiToolsFailedImg from '../images/why-so-many-new-ai-tools-failed.jpg';
+import aiToolsFailedImg from '../images/invisible-tax-ai-tools.jpg';
 
 // Import metadata
-import aiToolsFailedMeta from '../content/blogs/why-so-many-new-ai-tools-failed/metadata.json';
+import aiToolsFailedMeta from '../content/blogs/invisible-tax-ai-tools/metadata.json';
 import openaiAnthropicMeta from '../content/blogs/how-700m-people-use-ai/metadata.json';
 import promptEngineeringMeta from '../content/blogs/prompt-engineering-best-practices/metadata.json';
 import aiHealthcareMeta from '../content/blogs/ai-healthcare-ethics/metadata.json';
 import nhisNhanesMeta from '../content/blogs/working-with-nhis-nhanes/metadata.json';
 
 // Import markdown content  
-import aiToolsFailedContent from '../content/blogs/why-so-many-new-ai-tools-failed/content.md?raw';
+import aiToolsFailedContent from '../content/blogs/invisible-tax-ai-tools/content.md?raw';
 import openaiAnthropicContent from '../content/blogs/how-700m-people-use-ai/content.md?raw';
 import promptEngineeringContent from '../content/blogs/prompt-engineering-best-practices/content.md?raw';
 import aiHealthcareContent from '../content/blogs/ai-healthcare-ethics/content.md?raw';

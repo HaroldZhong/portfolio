@@ -100,14 +100,3 @@ When I'm evaluating or designing an AI tool for healthcare, I've found this shor
 3. **Equity & Governance** – Who benefits the most from this tool, and who might be left out or harmed?
 
 AI in healthcare doesn't have to be a choice between "move fast and break things" and "never ship anything." The real work is in building **boring, robust, ethically grounded infrastructure** around these powerful models—so that innovation and ethics are not in competition, but tightly coupled.
-
----
-
-### References
-
-* U.S. Department of Health & Human Services – HIPAA Privacy & Security Rules. [HHS Privacy](https://www.hhs.gov/hipaa/for-professionals/privacy/index.html) | [HHS Security](https://www.hhs.gov/hipaa/for-professionals/security/laws-regulations/index.html)
-* World Health Organization – *Ethics and Governance of Artificial Intelligence for Health* (2021) and guidance on large multimodal models in health. [WHO AI Ethics](https://www.ncdirindia.org/Downloads/WHO_AI_Ethics.pdf)
-* U.S. FDA – Discussion papers and Action Plan on AI/ML-Based Software as a Medical Device (SaMD) and total product lifecycle framework. [FDA AI/ML Discussion Paper](https://www.fda.gov/files/medical%20devices/published/US-FDA-Artificial-Intelligence-and-Machine-Learning-Discussion-Paper.pdf)
-* American Medical Association – Policies and principles on augmented intelligence in health care. [AMA H-480.939](https://policysearch.ama-assn.org/policyfinder/detail/H-480.939)
-* UNESCO – AI ethics guidance emphasizing human rights, safety, privacy, and multi-stakeholder governance. [UNESCO](https://www.unesco.org/en/artificial-intelligence/recommendation-ethics)
-

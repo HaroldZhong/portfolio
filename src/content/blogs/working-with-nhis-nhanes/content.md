@@ -118,17 +118,3 @@ If you're about to build your first multi-year NHIS/NHANES dataset:
 8. Treat harmonization as part of your methods section
 
 If you treat NHIS/NHANES harmonization like an actual sub-project, not a side-quest, you get something powerful: a reusable, well-documented dataset that can support multiple papers, student projects, and future updates.
-
----
-
-### References
-
-* National Center for Health Statistics. **NHANES Analytic and Reporting Guidelines** and related analytic notes. [CDC NHANES Guidelines](https://wwwn.cdc.gov/nchs/nhanes/analyticguidelines.aspx)
-* National Center for Health Statistics. **Guidelines for Analysis of Trends Using NCHS Data** (Series 2, No. 179). [CDC Trends Guidelines](https://www.cdc.gov/nchs/data/series/sr_02/sr02_179.pdf)
-* CDC / NCHS. **NHIS Survey Descriptions, Redesign Notes, and 2019 Questionnaire Redesign Documentation.** [CDC NHIS](https://www.cdc.gov/nchs/nhis/about/2019-questionnaire-redesign.html)
-* IPUMS NHIS. **User notes on pooling, weights, and variance estimation.** [IPUMS Weights](https://nhis.ipums.org/nhis/userNotes_weights.shtml)
-* Kindratt TB. *Big Data for Epidemiology* chapters on NHIS and NHANES survey methods. [UTA Pressbooks NHANES](https://uta.pressbooks.pub/bigdataforepidemiology/chapter/chapter10-nhanes/)
-* Harari L et al. "Intersectionality in Quantitative Health Disparities Research." *Annual Review of Public Health* (2021). [PMC](https://pmc.ncbi.nlm.nih.gov/articles/PMC8119321/)
-* Olisaeloka L et al. "Intersectional disparities in mental healthcare utilization by sex and race/ethnicity among U.S. adults: An NHANES study." (2025). [PLOS](https://journals.plos.org/globalpublichealth/article?id=10.1371%2Fjournal.pgph.0004682)
-* Taylor CL et al. "Critical data at the crossroads: the National Health and Nutrition Examination Survey." *American Journal of Clinical Nutrition* (2023). [AJCN](https://ajcn.nutrition.org/article/S0002-9165%2823%2946262-4/fulltext)
-
