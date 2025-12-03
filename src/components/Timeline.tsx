@@ -2,7 +2,7 @@ import React from "react";
 import '@fortawesome/free-regular-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBriefcase } from '@fortawesome/free-solid-svg-icons';
-import { VerticalTimeline, VerticalTimelineElement }  from 'react-vertical-timeline-component';
+import { VerticalTimeline, VerticalTimelineElement } from 'react-vertical-timeline-component';
 import 'react-vertical-timeline-component/style.min.css';
 import '../assets/styles/Timeline.scss'
 
@@ -20,10 +20,23 @@ function Timeline() {
             iconStyle={{ background: '#5000ca', color: 'rgb(39, 40, 34)' }}
             icon={<FontAwesomeIcon icon={faBriefcase} />}
           >
-            <h3 className="vertical-timeline-element-title">Social Science/Humanities Research Associate IV</h3>
+            <h3 className="vertical-timeline-element-title">Research Associate (Health Data & AI Systems)</h3>
             <h4 className="vertical-timeline-element-subtitle">UT Austin, Steve Hicks School of Social Work</h4>
             <p>
-              I support NHIS/NHANES health inequality research by building reproducible SAS workflows, harmonizing multi-year data, and turning complex survey results into findings our team can publish and act on.
+              I build and maintain the survey harmonization and analytics infrastructure behind our NHIS/NHANES health-inequality studies. My work includes multi-year SAS pipelines, PIR standardization, domain-level processing, and QA-verified outputs that feed into manuscripts, SII/RII modeling, and long-term health-trend analysis.
+            </p>
+          </VerticalTimelineElement>
+
+          <VerticalTimelineElement
+            className="vertical-timeline-element--work"
+            date="Aug 2024 - Present"
+            iconStyle={{ background: '#5000ca', color: 'rgb(39, 40, 34)' }}
+            icon={<FontAwesomeIcon icon={faBriefcase} />}
+          >
+            <h3 className="vertical-timeline-element-title">Co-Founder, GenAI Society</h3>
+            <h4 className="vertical-timeline-element-subtitle">UT Austin</h4>
+            <p>
+              Created a cross-school community focused on practical generative AI. I lead technical workshops, develop prompt–engineering curricula, and organize guest sessions on production workflows, ethics, and applied research. The group now collaborates with students across the iSchool, McCombs, Natural Sciences, and Fine Arts on AI tooling, creative projects, and data-centric applications.
             </p>
           </VerticalTimelineElement>
 
@@ -33,10 +46,10 @@ function Timeline() {
             iconStyle={{ background: '#5000ca', color: 'rgb(39, 40, 34)' }}
             icon={<FontAwesomeIcon icon={faBriefcase} />}
           >
-            <h3 className="vertical-timeline-element-title">Data Analyst</h3>
+            <h3 className="vertical-timeline-element-title">Graduate Data Analyst (Quant Methods & Automation)</h3>
             <h4 className="vertical-timeline-element-subtitle">UT Austin</h4>
             <p>
-              Built SPSS cleaning and harmonization workflows with versioned QA logs, cutting reporting time by 40%. Also designed a 12-week online Statistical Methods course that raised A-minus-or-better performance from 40% to 75%.
+              Developed SPSS/Qualtrics cleaning pipelines with versioned QA logs, cutting faculty reporting work by 40%. Redesigned a 12-week online Statistical Methods course, using reproducible examples and structured guidance that raised A- or better outcomes from 40% to 75%. Provided teaching and analytic support across multiple applied stats projects.
             </p>
           </VerticalTimelineElement>
 
@@ -46,10 +59,10 @@ function Timeline() {
             iconStyle={{ background: '#5000ca', color: 'rgb(39, 40, 34)' }}
             icon={<FontAwesomeIcon icon={faBriefcase} />}
           >
-            <h3 className="vertical-timeline-element-title">Marketing Analytics Consultant</h3>
+            <h3 className="vertical-timeline-element-title">Marketing Analytics Consultant (Predictive Modeling)</h3>
             <h4 className="vertical-timeline-element-subtitle">Long Island, NY</h4>
             <p>
-              Wealth clients needed better targeting and revenue forecasting. I built CLV models and RFM segmentation frameworks that raised high-net-worth conversion by 20% and cut $800K in acquisition costs.
+              Led revenue and retention modeling for wealth-management clients. Built CLV prediction pipelines, RFM-based segmentation, and targeting workflows that improved high-net-worth conversion by 20% while reducing acquisition spend by $800K.
             </p>
           </VerticalTimelineElement>
 
@@ -59,23 +72,10 @@ function Timeline() {
             iconStyle={{ background: '#5000ca', color: 'rgb(39, 40, 34)' }}
             icon={<FontAwesomeIcon icon={faBriefcase} />}
           >
-            <h3 className="vertical-timeline-element-title">Program Coordinator</h3>
+            <h3 className="vertical-timeline-element-title">Data Operations Lead</h3>
             <h4 className="vertical-timeline-element-subtitle">Stony Brook University</h4>
             <p>
-            40,000+ contacts lived in a 30-year CRM no one really trusted. I redesigned the database with a 15-dimension tagging system, cleaned up duplicates, lifted survey response from 8% to 50%, and made revenue forecasts reliable.
-            </p>
-          </VerticalTimelineElement>
-
-          <VerticalTimelineElement
-            className="vertical-timeline-element--work"
-            date="Aug 2024"
-            iconStyle={{ background: '#5000ca', color: 'rgb(39, 40, 34)' }}
-            icon={<FontAwesomeIcon icon={faBriefcase} />}
-          >
-            <h3 className="vertical-timeline-element-title">GenAI Society</h3>
-            <h4 className="vertical-timeline-element-subtitle">UT Austin</h4>
-            <p>
-              Co-founded the student group focused on Generative AI tools, workshops, and cross-school collaboration around ethics and practice.
+              Revived a 30-year CRM with 40,000+ outdated records by redesigning the data architecture, implementing a 15-dimension tagging schema, removing legacy duplicates, and restoring analytical reliability. Increased survey response from 8% to 50% and enabled accurate year-over-year forecasting for fundraising and student engagement.
             </p>
           </VerticalTimelineElement>
         </VerticalTimeline>

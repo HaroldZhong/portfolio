@@ -56,6 +56,21 @@ const ProjectDetail: React.FC = () => {
           <p>{project.myRole}</p>
         </section>
 
+        {project.sections?.map((section, idx) => (
+          <section key={idx} className="project-section">
+            <h2>{section.title}</h2>
+            {Array.isArray(section.content) ? (
+              <ul>
+                {section.content.map((item, i) => (
+                  <li key={i}>{item}</li>
+                ))}
+              </ul>
+            ) : (
+              <p>{section.content}</p>
+            )}
+          </section>
+        ))}
+
         <section className="project-section">
           <h2>Technologies & Tools</h2>
           <div className="tech-tags">

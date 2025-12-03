@@ -35,10 +35,17 @@
   text-decoration: none;
   color: inherit;
   display: block;
+  height: 100%;
+  /* Ensure link fills the grid cell */
 }
 
 .project-card-container {
-  height: 500px;
+  height: 100%;
+  /* Ensure container fills the link */
+  min-height: 500px;
+  /* Minimum height for consistency */
+  display: flex;
+  flex-direction: column;
 }
 
 .project-card {
@@ -107,43 +114,51 @@
     font-family: 'Inter', sans-serif;
     font-size: 1.05rem;
     color: #E2E8F0;
-    line-height: 1.7;
-    flex-grow: 1;
+    line-height: 1.6;
     margin-bottom: 20px;
+
+    /* Line clamping to prevent squeezing */
+    display: -webkit-box;
+    -webkit-line-clamp: 4;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .project-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: auto;
+
+    .tag {
+      font-family: 'Inter', sans-serif;
+      background: rgba(50, 50, 60, 0.9);
+      color: #E2E8F0;
+      padding: 6px 14px;
+      border-radius: 12px;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      font-size: 0.85rem;
+      font-weight: 500;
+      transition: all 0.3s ease;
+      white-space: nowrap;
+
+      &:hover {
+        background: rgba(138, 43, 226, 0.3);
+        border-color: rgba(138, 43, 226, 0.5);
+        transform: translateY(-2px);
+      }
+    }
   }
 
   .view-details-hint {
     text-align: center;
     color: rgba(255, 255, 255, 0.5);
     font-size: 0.85rem;
-    margin-top: auto;
+    margin-top: 20px;
+    padding-top: 15px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
     font-style: italic;
-  }
-}
-
-.project-tags {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-  margin-top: auto;
-
-  .tag {
-    font-family: 'Inter', sans-serif;
-    background: rgba(50, 50, 60, 0.9);
-    color: #E2E8F0;
-    padding: 6px 14px;
-    border-radius: 12px;
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    font-size: 0.85rem;
-    font-weight: 500;
-    transition: all 0.3s ease;
-    white-space: nowrap;
-
-    &:hover {
-      background: rgba(138, 43, 226, 0.3);
-      border-color: rgba(138, 43, 226, 0.5);
-      transform: translateY(-2px);
-    }
   }
 }
 

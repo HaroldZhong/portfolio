@@ -34,18 +34,12 @@ function Main() {
               </div>
               <div className="hero-text-wrapper">
                 <h1 className="hero-title">Harold Zhong</h1>
-                <p className="hero-tagline">Social Science & AI for Social Impact</p>
+                <h2 className="hero-job-title">RESEARCH ENGINEER</h2>
+                <p className="hero-tagline">Bridging social science methodologies with production-ready AI systems.</p>
               </div>
             </div>
 
-            {/* Main Description */}
-            <p className="subtitle">Research Associate at UT Austin, building AI tools grounded in health data.</p>
-
-            <p className="tagline">
-              I sit at the intersection of health data, mental health challenges and agentic LLM systems — designing tools that fit messy, real-world workflows.
-            </p>
-
-            {/* Badge Pills - Moved Below Description */}
+            {/* Badge Pills */}
             <div className="badge-pills">
               {badges.map((badge, index) => (
                 <span key={index} className="badge-pill">{badge}</span>
@@ -57,16 +51,6 @@ function Main() {
               <a href="#projects" className="cta-button primary">
                 View My Work <ArrowRight size={20} />
               </a>
-              <div className="resume-buttons">
-                <a href="/portfolio/resume.pdf" target="_blank" rel="noopener noreferrer" className="cta-button secondary">
-                  <FileText size={18} />
-                  Resume
-                </a>
-                <a href="/portfolio/cv.pdf" target="_blank" rel="noopener noreferrer" className="cta-button secondary">
-                  <FileText size={18} />
-                  CV
-                </a>
-              </div>
             </div>
 
             {/* Social Links - Below CTA */}

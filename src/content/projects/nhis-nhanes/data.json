@@ -1,9 +1,9 @@
 {
   "slug": "nhis-nhanes-health-inequality",
   "title": "NHIS/NHANES Health Inequality Analysis",
-  "role": "Data workflow & harmonization lead",
+  "role": "Lead, Data Harmonization & Survey Analytics",
   "summary": "Producing equity metrics and reproducible findings from multi-year national health survey data.",
-  "thumbnail": "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&h=400&fit=crop",
+  "thumbnail": "https://ukhsa.blog.gov.uk/wp-content/uploads/sites/33/2017/07/ineq-cover.png",
   "tags": [
     "SAS",
     "SPSS",
@@ -12,24 +12,50 @@
     "Public Health",
     "Equity Metrics"
   ],
-  "overview": "This project analyzes multi-year data from the National Health Interview Survey (NHIS) and National Health and Nutrition Examination Survey (NHANES) to study health outcome disparities across income levels, race/ethnicity, and other social determinants. The work produces reproducible equity metrics for peer-reviewed research and policy recommendations.",
-  "myRole": "I lead the data workflow and harmonization efforts, building SAS and SPSS pipelines that process complex survey data from multiple years and produce standardized equity metrics. I developed workflows for calculating Slope Index of Inequality (SII), Relative Index of Inequality (RII), and ridit scores. I also manage data quality assurance, handle multi-year data harmonization challenges, and ensure reproducibility of all analyses for manuscript preparation.",
+  "overview": "This project examines long-term trends in health disparities using data from the National Health Interview Survey (NHIS) and National Health and Nutrition Examination Survey (NHANES). By integrating multiple survey cycles spanning more than two decades, the work enables population-level assessments of inequality across income, race/ethnicity, nativity, and other structural determinants of health. The resulting metrics support peer-reviewed manuscripts and inform evidence-based recommendations for public health policy.",
+  "myRole": "I lead the harmonization and analytic workflow for the study, focusing on methodological consistency, cross-period comparability, and accurate handling of complex survey design.",
+  "sections": [
+    {
+      "title": "Data Harmonization & Survey Processing",
+      "content": [
+        "Harmonized 20+ years of NHIS data across major redesigns (1997 and 2019), resolving changes in variable definitions, coding schemes, weights, and design structures.",
+        "Developed standardized PIR categories, domain definitions, and exclusion criteria to ensure comparability across pooled periods.",
+        "Built SAS workflows that integrate multiple years of person-level data using consistent naming conventions and harmonized metadata."
+      ],
+      "type": "list"
+    },
+    {
+      "title": "Equity Measures & Analytic Methods",
+      "content": [
+        "Computed Slope Index of Inequality (SII), Relative Index of Inequality (RII), and ridit-based ranking scores using design-adjusted survey procedures.",
+        "Applied appropriate weighting, stratification, and variance estimation to produce unbiased population-level inequality estimates.",
+        "Conducted diagnostics for monotonicity, sparse categories, and trend stability across periods."
+      ],
+      "type": "list"
+    },
+    {
+      "title": "Quality Assurance & Documentation",
+      "content": [
+        "Established reproducible protocols, including drift checks, cross-tab validation, and missingness assessments.",
+        "Maintained version-controlled outputs, harmonization rulebooks, and workflow documentation to support manuscript preparation and transparent research practices.",
+        "Collaborated with faculty investigators to refine analytic specifications and prepare results for publication."
+      ],
+      "type": "list"
+    }
+  ],
   "technologies": [
-    "SAS",
-    "SPSS",
-    "Complex Survey Design",
-    "Data Harmonization",
-    "SII/RII Calculations",
-    "Ridit Scores",
-    "NHIS/NHANES Datasets",
-    "Statistical Analysis"
+    "SAS (survey procedures, harmonization macros)",
+    "SPSS (descriptive analyses)",
+    "NHIS & NHANES multi-year datasets",
+    "Complex survey methods (weights, design effects, variance estimation)",
+    "Equity measures (SII, RII, ridit scoring)",
+    "Structured QA and documentation workflows"
   ],
   "outcomes": [
-    "Built reproducible SAS workflows that cut analysis time by 40% and improved data quality",
-    "Harmonized 20+ years of NHIS data across multiple survey redesigns",
-    "Produced equity metrics (SII, RII, ridit scores) for multiple manuscripts in preparation",
-    "Established quality assurance protocols that caught and prevented data errors in published analyses",
-    "Created documentation and training materials for team members and collaborators"
+    "Produced harmonized, analysis-ready NHIS datasets spanning more than two decades.",
+    "Generated design-adjusted inequality estimates (SII, RII, ridit scores) for multiple manuscripts in preparation.",
+    "Improved analytic reliability and reproducibility through standardized workflows and QA protocols.",
+    "Enabled cross-period comparisons of health disparities with methodological transparency and consistency."
   ],
   "links": {
     "availableOnRequest": true

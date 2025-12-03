@@ -16,9 +16,9 @@ const HomePage: React.FC = () => {
   return (
     <FadeIn transitionDuration={700}>
       <Main />
-      <Expertise />
-      <Timeline />
       <Project />
+      <Timeline />
+      <Expertise />
       <RecentBlogs />
       <Contact />
     </FadeIn>

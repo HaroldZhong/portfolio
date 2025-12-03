@@ -1,0 +1,62 @@
+{
+    "slug": "intersectionality-health-disparities",
+    "title": "Intersectionality & Health Disparities Analysis",
+    "role": "Co-Lead, Analytic Design & Survey Harmonization",
+    "summary": "Examining how intersecting social positions shape health disparities using pooled NHIS data and the Evans et al. framework.",
+    "thumbnail": "https://images.unsplash.com/photo-1499488256403-b872eddb408c?q=80&w=2664&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    "tags": [
+        "SAS",
+        "NHIS",
+        "Intersectionality",
+        "Health Disparities",
+        "Complex Survey Design",
+        "QA"
+    ],
+    "overview": "This project examines how intersecting social positions—race/ethnicity, sex, nativity, and socioeconomic status—combine to shape disparities in self-rated health. Using pooled, multi-year NHIS data, the study replicates and extends the intersectionality framework introduced by Evans et al. (2018), producing domain-specific health estimates that highlight heterogeneity within and across demographic groups. The goal is to provide a more nuanced understanding of structural health inequities beyond single-variable analyses.",
+    "myRole": "I co-lead the analytic and data engineering workflow, with a focus on methodological fidelity, harmonization across survey periods, and reproducible computation.",
+    "sections": [
+        {
+            "title": "Survey Harmonization & Data Preparation",
+            "content": [
+                "Developed harmonized datasets across multiple NHIS redesigns, resolving inconsistencies in demographic, nativity, and socioeconomic variables.",
+                "Standardized classification rules for race/ethnicity, sex, nativity, education, and poverty ratio to ensure comparable grouping across pooled periods.",
+                "Constructed 8 intersectional domains consistent with Evans et al. and adapted them for newer survey cycles."
+            ],
+            "type": "list"
+        },
+        {
+            "title": "Intersectionality Framework Implementation",
+            "content": [
+                "Replicated the analytic structure from Evans et al. using complex survey weights and design-adjusted variance estimation.",
+                "Implemented domain-level prevalence estimation for self-rated health across multiple pooled periods.",
+                "Developed procedures to evaluate magnitude and direction of disparities across intersectional groups, including domain contrasts and trend stability checks."
+            ],
+            "type": "list"
+        },
+        {
+            "title": "Quality Assurance & Reproducibility",
+            "content": [
+                "Built systematic QA checks: drift detection, missingness profiles, cross-tab validation, denominator consistency, and weight stability across periods.",
+                "Established a version-controlled workflow for all harmonization rules, analytic steps, and output tables.",
+                "Collaborated closely with faculty investigators to align analytic decisions with intersectionality theory and the methodological constraints of complex survey design."
+            ],
+            "type": "list"
+        }
+    ],
+    "technologies": [
+        "SAS (survey procedures, harmonization macros)",
+        "NHIS pooled datasets",
+        "Complex survey methods (stratification, PSUs, variance estimation)",
+        "Intersectionality methods (Evans et al. replication and extension)",
+        "QA and documentation workflows"
+    ],
+    "outcomes": [
+        "Produced analysis-ready, harmonized datasets for multi-period intersectionality studies.",
+        "Replicated core findings from foundational literature and extended analyses to newer NHIS periods.",
+        "Generated domain-level health disparity estimates supporting a manuscript currently in development.",
+        "Improved analytic reliability through standardized QA protocols, reproducible code, and methodological transparency."
+    ],
+    "links": {
+        "availableOnRequest": true
+    }
+}

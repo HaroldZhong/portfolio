@@ -16,6 +16,7 @@ import ListItemButton from '@mui/material/ListItemButton';
 import ListItemText from '@mui/material/ListItemText';
 import MenuIcon from '@mui/icons-material/Menu';
 import Toolbar from '@mui/material/Toolbar';
+import OpenInNewIcon from '@mui/icons-material/OpenInNew';
 
 const drawerWidth = 240;
 
@@ -23,25 +24,28 @@ interface NavItem {
   label: string;
   target: string;
   isRoute: boolean;
+  isExternal?: boolean;
 }
 
 const navItems: NavItem[] = [
-  { label: 'Expertise', target: 'expertise', isRoute: false },
-  { label: 'Experience', target: 'history', isRoute: false },
   { label: 'Projects', target: 'projects', isRoute: false },
+  { label: 'Experience', target: 'history', isRoute: false },
+  { label: 'Expertise', target: 'expertise', isRoute: false },
   { label: 'Blog', target: '/blog', isRoute: true },
+  { label: 'Resume', target: '/portfolio/resume.pdf', isRoute: false, isExternal: true },
+  { label: 'CV', target: '/portfolio/cv.pdf', isRoute: false, isExternal: true },
   { label: 'Contact', target: 'contact', isRoute: false }
 ];
 
 interface NavigationProps {
-    parentToChild: {
-        mode: string;
-    };
-    modeChange: () => void;
+  parentToChild: {
+    mode: string;
+  };
+  modeChange: () => void;
 }
 
-function Navigation({parentToChild, modeChange}: NavigationProps) {
-  const {mode} = parentToChild;
+function Navigation({ parentToChild, modeChange }: NavigationProps) {
+  const { mode } = parentToChild;
   const navigate = useNavigate();
   const location = useLocation();
 
@@ -92,7 +96,9 @@ function Navigation({parentToChild, modeChange}: NavigationProps) {
   }, [location.pathname]);
 
   const handleNavClick = (item: NavItem) => {
-    if (item.isRoute) {
+    if (item.isExternal) {
+      window.open(item.target, '_blank', 'noopener,noreferrer');
+    } else if (item.isRoute) {
       navigate(item.target);
     } else {
       // Navigate home first if on blog page
@@ -123,13 +129,20 @@ function Navigation({parentToChild, modeChange}: NavigationProps) {
 
   const drawer = (
     <Box className="navigation-bar-responsive" onClick={handleDrawerToggle} sx={{ textAlign: 'center' }}>
-      <p className="mobile-menu-top"><ListIcon/>Menu</p>
+      <p className="mobile-menu-top"><ListIcon />Menu</p>
       <Divider />
       <List>
         {navItems.map((item) => (
           <ListItem key={item.label} disablePadding>
-            <ListItemButton sx={{ textAlign: 'center' }} onClick={() => handleNavClick(item)}>
-              <ListItemText primary={item.label} />
+            <ListItemButton sx={{ textAlign: 'center', justifyContent: 'center' }} onClick={() => handleNavClick(item)}>
+              <ListItemText
+                primary={
+                  <span style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '4px' }}>
+                    {item.label}
+                    {item.isExternal && <OpenInNewIcon sx={{ fontSize: 14 }} />}
+                  </span>
+                }
+              />
             </ListItemButton>
           </ListItem>
         ))}
@@ -152,16 +165,17 @@ function Navigation({parentToChild, modeChange}: NavigationProps) {
             <MenuIcon />
           </IconButton>
           {mode === 'dark' ? (
-            <LightModeIcon onClick={() => modeChange()} sx={{ cursor: 'pointer' }}/>
+            <LightModeIcon onClick={() => modeChange()} sx={{ cursor: 'pointer' }} />
           ) : (
-            <DarkModeIcon onClick={() => modeChange()} sx={{ cursor: 'pointer' }}/>
+            <DarkModeIcon onClick={() => modeChange()} sx={{ cursor: 'pointer' }} />
           )}
           <Box sx={{ display: { xs: 'none', sm: 'flex' }, gap: 1 }}>
             {navItems.map((item) => (
-              <Button 
-                key={item.label} 
-                onClick={() => handleNavClick(item)} 
+              <Button
+                key={item.label}
+                onClick={() => handleNavClick(item)}
                 className={`nav-button ${isActive(item) ? 'active' : ''}`}
+                endIcon={item.isExternal ? <OpenInNewIcon sx={{ fontSize: 16 }} /> : undefined}
               >
                 {item.label}
               </Button>
