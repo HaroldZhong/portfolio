@@ -28,7 +28,7 @@
 
 .headshot-wrapper {
     margin-bottom: 25px;
-    
+
     .headshot {
         width: 140px;
         height: 140px;
@@ -37,7 +37,7 @@
         border: 3px solid rgba(255, 255, 255, 0.2);
         box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
         transition: transform 0.3s ease, box-shadow 0.3s ease;
-        
+
         &:hover {
             transform: scale(1.05);
             box-shadow: 0 12px 48px rgba(138, 43, 226, 0.4);
@@ -56,7 +56,7 @@
         line-height: 1.1;
         letter-spacing: -0.02em;
     }
-    
+
     .hero-tagline {
         font-family: 'Inter', sans-serif;
         font-size: 1.5rem;
@@ -73,7 +73,7 @@
     gap: 20px;
     justify-content: center;
     margin-top: 30px;
-    
+
     a {
         color: white;
         transition: all 0.3s ease;
@@ -86,12 +86,12 @@
         align-items: center;
         justify-content: center;
         border: 1px solid rgba(255, 255, 255, 0.15);
-        
+
         svg {
             font-size: 1.4em;
             filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3));
         }
-        
+
         &:hover {
             transform: translateY(-3px);
             background: rgba(138, 43, 226, 0.3);
@@ -144,7 +144,7 @@
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     transition: all 0.3s ease;
     font-family: 'Inter', sans-serif;
-    
+
     &:hover {
         background: rgba(70, 70, 80, 0.85);
         border-color: rgba(138, 43, 226, 0.5);
@@ -157,18 +157,15 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 20px;
+    gap: 16px;
     margin-bottom: 50px;
-
-    @media (min-width: 768px) {
-        flex-direction: row;
-        gap: 25px;
-    }
 }
 
 .resume-buttons {
     display: flex;
-    gap: 15px;
+    gap: 12px;
+    flex-wrap: wrap;
+    justify-content: center;
 }
 
 .cta-button {
@@ -182,7 +179,7 @@
     text-decoration: none;
     transition: all 0.3s ease;
     font-family: 'Inter', sans-serif;
-    
+
     svg {
         transition: transform 0.3s ease;
     }
@@ -200,7 +197,7 @@
             background: rgba(138, 43, 226, 0.2);
             border-color: rgba(138, 43, 226, 0.6);
             box-shadow: 0 8px 24px rgba(138, 43, 226, 0.3);
-            
+
             svg {
                 transform: translateX(4px);
             }
@@ -246,49 +243,49 @@
             padding: 80px 5%;
             min-height: auto;
         }
-        
+
         .hero-header {
             .headshot-wrapper .headshot {
                 width: 120px;
                 height: 120px;
             }
         }
-        
+
         .hero-text-wrapper {
             .hero-title {
                 font-size: 2.8rem;
             }
-            
+
             .hero-tagline {
                 font-size: 1.2rem;
             }
         }
-        
+
         .subtitle {
             font-size: 1.15rem;
         }
-        
+
         .tagline {
             font-size: 1.05rem;
         }
     }
-    
+
     @media (max-width: 567px) {
         .hero-text-wrapper {
             .hero-title {
                 font-size: 2.2rem;
             }
-            
+
             .hero-tagline {
                 font-size: 1.1rem;
             }
         }
-        
+
         .badge-pill {
             font-size: 0.85rem;
             padding: 8px 18px;
         }
-        
+
         .cta-button {
             font-size: 1rem;
             padding: 12px 28px;
@@ -303,11 +300,11 @@
         gap: 30px;
         align-items: center;
         margin-bottom: 35px;
-        
+
         .headshot-wrapper {
             margin-bottom: 0;
         }
-        
+
         .hero-text-wrapper {
             text-align: left;
         }
@@ -319,41 +316,41 @@
     .hero-title {
         color: #1e293b;
     }
-    
+
     .hero-tagline,
     .subtitle,
     .tagline {
         color: #334155;
     }
-    
+
     .badge-pill {
         background: rgba(255, 255, 255, 0.8);
         color: #334155;
         border-color: rgba(0, 0, 0, 0.15);
-        
+
         &:hover {
             background: rgba(124, 58, 237, 0.15);
             border-color: rgba(124, 58, 237, 0.5);
         }
     }
-    
+
     .social_icons a {
         background: rgba(255, 255, 255, 0.8);
         border-color: rgba(0, 0, 0, 0.1);
         color: #1e293b;
-        
+
         &:hover {
             background: rgba(124, 58, 237, 0.15);
             border-color: rgba(124, 58, 237, 0.5);
         }
     }
-    
+
     .cta-button {
         &.primary {
             background: rgba(255, 255, 255, 0.7);
             border-color: rgba(0, 0, 0, 0.15);
             color: #1e293b;
-            
+
             &:hover {
                 background: rgba(124, 58, 237, 0.15);
                 border-color: rgba(124, 58, 237, 0.5);

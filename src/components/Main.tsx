@@ -52,7 +52,6 @@ function Main() {
               ))}
             </div>
 
-            {/* CTA Button - Updated to match theme */}
             {/* CTA Buttons */}
             <div className="cta-container">
               <a href="#projects" className="cta-button primary">
@@ -60,10 +59,12 @@ function Main() {
               </a>
               <div className="resume-buttons">
                 <a href="/portfolio/resume.pdf" target="_blank" rel="noopener noreferrer" className="cta-button secondary">
-                  Resume <FileText size={18} />
+                  <FileText size={18} />
+                  Resume
                 </a>
-                <a href="/portfolio/cv.pdf" target="_blank" rel="noopener noreferrer" className="cta-button outline">
-                  CV <FileText size={18} />
+                <a href="/portfolio/cv.pdf" target="_blank" rel="noopener noreferrer" className="cta-button secondary">
+                  <FileText size={18} />
+                  CV
                 </a>
               </div>
             </div>

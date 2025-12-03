@@ -14,7 +14,7 @@ That is the quiet, frustrating reality of today’s large language models. They 
 
 Google’s new work on [**Nested Learning**](https://research.google/blog/introducing-nested-learning-a-new-ml-paradigm-for-continual-learning/) is, at heart, an attempt to break that spell.
 
-![Nested Learning Concept](/images/blogs/nested-learning-why-google-wants-models-with-real-memory/NestedLearning.png)
+![Nested Learning Concept](/portfolio/images/blogs/nested-learning-why-google-wants-models-with-real-memory/NestedLearning.png)
 
 The central claim of the paper *“Nested Learning: The Illusion of Deep Learning Architectures”* is startlingly direct:
 
@@ -46,7 +46,7 @@ The Google team explicitly draws the analogy to anterograde amnesia. The model c
 
 Nested Learning is an attempt to fix this not with another external notebook, but at the **architectural level**: by giving the model its own internal hierarchy of memories that evolve over time.
 
-![Figure 2](/images/blogs/nested-learning-why-google-wants-models-with-real-memory/Figure%202.png)
+![Figure 2](/portfolio/images/blogs/nested-learning-why-google-wants-models-with-real-memory/Figure 2.png)
 
 
 
@@ -115,7 +115,7 @@ Each level has:
 
 Once you accept that, familiar boxes start to blur. Architecture, optimizer, and “training procedure” all become different strata in one larger memory system.
 
-![Nested Learning Rings](/images/blogs/nested-learning-why-google-wants-models-with-real-memory/nested_learning_rings.png)
+![Nested Learning Rings](/portfolio/images/blogs/nested-learning-why-google-wants-models-with-real-memory/nested_learning_rings.png)
 
 
 
@@ -169,7 +169,7 @@ CMS lets you do something more brain like:
 
 This is where the “city of clocks” metaphor becomes literal. Each block has its own tick rate, its own context flow, and its own role in compressing experience into parameters.
 
-![Figure 5](/images/blogs/nested-learning-why-google-wants-models-with-real-memory/Figure%205.png)
+![Figure 5](/portfolio/images/blogs/nested-learning-why-google-wants-models-with-real-memory/Figure 5.png)
 
 
 
@@ -190,7 +190,7 @@ In experiments, HOPE based architectures:
 * perform better on long context and “needle in a haystack” style tasks  
 * show improved performance on continual learning setups such as class incremental text classification  
 
-![Comparison of performance on language modeling (perplexity; left) and common-sense reasoning (accuracy; right) tasks between different architectures: Hope, Titans, Samba and a baseline Transformer.](/images/blogs/nested-learning-why-google-wants-models-with-real-memory/NestedLearning-Performance.png)
+![Comparison of performance on language modeling (perplexity; left) and common-sense reasoning (accuracy; right) tasks between different architectures: Hope, Titans, Samba and a baseline Transformer.](/portfolio/images/blogs/nested-learning-why-google-wants-models-with-real-memory/NestedLearning-Performance.png)
 
 This is not yet *the* solution to continual learning. But it is a strong proof of concept that architectures with **nested time scales** and **self modifying internal memories** can outperform flat Transformers on exactly the kinds of problems where present day models struggle.
 
