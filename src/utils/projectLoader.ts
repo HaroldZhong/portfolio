@@ -9,6 +9,12 @@ export interface Project {
   myRole: string;
   technologies: string[];
   outcomes: string[];
+  links?: {
+    github?: string;
+    demo?: string;
+    paper?: string;
+    availableOnRequest?: boolean;
+  };
 }
 
 // Import project data

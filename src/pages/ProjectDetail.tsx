@@ -1,6 +1,6 @@
 import React from 'react';
 import { useParams, useNavigate, Navigate } from 'react-router-dom';
-import { ArrowLeft } from 'lucide-react';
+import { ArrowLeft, Github, ExternalLink, FileText, Mail } from 'lucide-react';
 import { getProjectBySlug } from '../utils/projectLoader';
 import '../assets/styles/Project.scss';
 
@@ -23,12 +23,20 @@ const ProjectDetail: React.FC = () => {
     }, 100);
   };
 
+  const handleRequestAccess = () => {
+    const user = 'haocong.zhong.research';
+    const domain = 'gmail.com';
+    const email = `${user}@${domain}`;
+    const subject = encodeURIComponent(`Inquiry about ${project.title} Architecture`);
+    window.location.href = `mailto:${email}?subject=${subject}`;
+  };
+
   return (
     <div className="project-detail-page">
       <button onClick={handleBackClick} className="back-button">
         <ArrowLeft size={20} /> Back to Projects
       </button>
-      
+
       <div className="project-header">
         <div className="project-thumbnail-large">
           <img src={project.thumbnail} alt={project.title} />
@@ -65,10 +73,37 @@ const ProjectDetail: React.FC = () => {
             ))}
           </ul>
         </section>
+
+        {project.links && (
+          <section className="project-section">
+            <h2>Links & Resources</h2>
+            <div className="project-links">
+              {project.links.github && (
+                <a href={project.links.github} target="_blank" rel="noopener noreferrer" className="link-button">
+                  <Github size={18} /> GitHub Repo
+                </a>
+              )}
+              {project.links.demo && (
+                <a href={project.links.demo} target="_blank" rel="noopener noreferrer" className="link-button">
+                  <ExternalLink size={18} /> Live Demo
+                </a>
+              )}
+              {project.links.paper && (
+                <a href={project.links.paper} target="_blank" rel="noopener noreferrer" className="link-button">
+                  <FileText size={18} /> Read Paper
+                </a>
+              )}
+              {project.links.availableOnRequest && (
+                <button onClick={handleRequestAccess} className="link-button request-access">
+                  <Mail size={18} /> Code Available on Request
+                </button>
+              )}
+            </div>
+          </section>
+        )}
       </div>
     </div>
   );
 };
 
 export default ProjectDetail;
-

@@ -1,6 +1,7 @@
 // Import images
 import openaiAnthropicImg from '../images/openai-anthropic.jpg';
 import aiToolsFailedImg from '../images/invisible-tax-ai-tools.jpg';
+import nestedLearningImg from '../images/nested_learning.png';
 
 // Import metadata
 import aiToolsFailedMeta from '../content/blogs/invisible-tax-ai-tools/metadata.json';
@@ -8,6 +9,7 @@ import openaiAnthropicMeta from '../content/blogs/how-700m-people-use-ai/metadat
 import promptEngineeringMeta from '../content/blogs/prompt-engineering-best-practices/metadata.json';
 import aiHealthcareMeta from '../content/blogs/ai-healthcare-ethics/metadata.json';
 import nhisNhanesMeta from '../content/blogs/working-with-nhis-nhanes/metadata.json';
+import nestedLearningMeta from '../content/blogs/nested-learning-why-google-wants-models-with-real-memory/metadata.json';
 
 // Import markdown content  
 import aiToolsFailedContent from '../content/blogs/invisible-tax-ai-tools/content.md?raw';
@@ -15,6 +17,7 @@ import openaiAnthropicContent from '../content/blogs/how-700m-people-use-ai/cont
 import promptEngineeringContent from '../content/blogs/prompt-engineering-best-practices/content.md?raw';
 import aiHealthcareContent from '../content/blogs/ai-healthcare-ethics/content.md?raw';
 import nhisNhanesContent from '../content/blogs/working-with-nhis-nhanes/content.md?raw';
+import nestedLearningContent from '../content/blogs/nested-learning-why-google-wants-models-with-real-memory/content.md?raw';
 
 export interface BlogPost {
   slug: string;
@@ -51,6 +54,11 @@ const blogPosts: BlogPost[] = [
     ...nhisNhanesMeta,
     thumbnail: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&q=80',
     content: nhisNhanesContent
+  },
+  {
+    ...nestedLearningMeta,
+    thumbnail: nestedLearningImg,
+    content: nestedLearningContent
   }
 ];
 
@@ -70,9 +78,9 @@ export const formatDate = (dateString: string): string => {
   // Parse date components to avoid timezone issues
   const [year, month, day] = dateString.split('-').map(Number);
   const date = new Date(year, month - 1, day);
-  return date.toLocaleDateString('en-US', { 
-    year: 'numeric', 
-    month: 'long', 
-    day: 'numeric' 
+  return date.toLocaleDateString('en-US', {
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric'
   });
 };

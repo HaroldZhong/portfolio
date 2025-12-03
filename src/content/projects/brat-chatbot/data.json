@@ -4,16 +4,34 @@
   "role": "Lead, product & technical design",
   "summary": "Parents rehearse tough conversations with a realistic virtual child before trying at home.",
   "thumbnail": "https://images.unsplash.com/photo-1531746790731-6c087fecd65a?w=800&h=400&fit=crop",
-  "tags": ["Multi-agent LLM", "IRB workflows", "Azure/OpenAI", "Whisper ASR", "RAG", "Qualtrics"],
+  "tags": [
+    "Multi-agent LLM",
+    "IRB workflows",
+    "Azure/OpenAI",
+    "Whisper ASR",
+    "RAG",
+    "Qualtrics"
+  ],
   "overview": "BRAT (Boundary, Respect & Affection Training) is a multi-agent LLM system designed to help parents in family therapy rehearse challenging conversations with a realistic virtual 'child' before attempting them at home. Developed as part of an IRB-approved research study, BRAT provides a safe, controlled environment for parents to practice difficult interactions and build confidence in their communication skills.",
   "myRole": "As the technical and product design lead, I architected the multi-agent system, designed the conversation flows, and established the integration with Azure/OpenAI services. I worked closely with clinical researchers to ensure the system met IRB requirements and clinical standards. I also implemented the Whisper ASR integration for voice interaction, designed the RAG system for context-aware responses, and integrated Qualtrics for research data collection and analysis.",
-  "technologies": ["Multi-agent LLM", "Azure/OpenAI", "Whisper ASR", "RAG (Retrieval-Augmented Generation)", "Qualtrics", "IRB compliance workflows", "Python", "API Integration"],
+  "technologies": [
+    "Multi-agent LLM",
+    "Azure/OpenAI",
+    "Whisper ASR",
+    "RAG (Retrieval-Augmented Generation)",
+    "Qualtrics",
+    "IRB compliance workflows",
+    "Python",
+    "API Integration"
+  ],
   "outcomes": [
     "Successfully deployed in IRB-approved research study with active parent participants",
     "Achieved realistic, context-aware dialogue generation that clinicians validated as therapeutically appropriate",
     "Built robust safety constraints and content filtering to ensure research-grade reliability",
     "Integrated voice interaction capabilities for more natural parent-child conversation simulation",
     "Established scalable architecture that can be adapted for other therapeutic contexts"
-  ]
+  ],
+  "links": {
+    "availableOnRequest": true
+  }
 }
-
