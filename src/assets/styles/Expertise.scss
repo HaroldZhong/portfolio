@@ -18,7 +18,7 @@
         filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3));
     }
 }
-  
+
 .skills-container .skills-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -30,11 +30,11 @@
     grid-template-columns: repeat(2, 1fr);
     grid-gap: 40px;
 }
-  
+
 .skills-container .skills-grid .skill {
     align-items: center;
     text-align: left;
-    
+
     h3 {
         font-family: 'Inter', sans-serif;
         font-size: 1.5rem;
@@ -42,7 +42,7 @@
         margin: 20px 0 15px;
         color: #E2E8F0;
     }
-    
+
     p {
         font-family: 'Inter', sans-serif;
         font-size: 1.05rem;
@@ -51,7 +51,7 @@
         margin-bottom: 20px;
     }
 }
-  
+
 .chip {
     font-family: 'Inter', sans-serif !important;
     background-color: rgba(50, 50, 60, 0.85) !important;
@@ -62,20 +62,16 @@
     padding: 6px 14px !important;
     transition: all 0.3s ease !important;
     backdrop-filter: blur(10px) !important;
-  
+
+    cursor: default !important;
+
     span {
         font-family: 'Inter', sans-serif;
         color: #E2E8F0 !important;
     }
-  
+
     svg {
         height: 15px !important;
-    }
-    
-    &:hover {
-        background-color: rgba(138, 43, 226, 0.4) !important;
-        border-color: rgba(138, 43, 226, 0.6) !important;
-        transform: translateY(-2px);
     }
 }
 
@@ -112,17 +108,17 @@
         .skills-container {
             display: block;
             padding: 60px 5%;
-            
+
             h1 {
                 font-size: 2.2rem;
             }
         }
-    
+
         .skills-container .skills-grid,
         .skills-container .skills-grid-four {
             display: initial;
         }
-        
+
         .skills-container .skills-grid .skill {
             padding-bottom: 40px;
         }
@@ -132,7 +128,7 @@
         .skills {
             font-size: 12px;
         }
-        
+
         .chip {
             font-size: 0.75rem !important;
             padding: 5px 12px !important;
@@ -143,38 +139,21 @@
 /* Light Mode Overrides */
 .light-mode {
     .skills-container {
-        h3, p {
+
+        h3,
+        p {
             color: #334155;
         }
-        
+
         svg {
             color: #1e293b;
         }
     }
-    
-    .chip {
-        background-color: rgba(240, 240, 245, 0.9) !important;
-        color: #334155 !important;
-        border-color: rgba(0, 0, 0, 0.15) !important;
-        
-        span {
-            color: #334155 !important;
-        }
-        
-        &:hover {
-            background-color: rgba(124, 58, 237, 0.15) !important;
-            border-color: rgba(124, 58, 237, 0.5) !important;
-        }
-    }
-    
-    .chip-title {
-        color: #1e293b;
-    }
-    
+
     .flex-chips .MuiChip-outlined {
         background-color: rgba(240, 240, 245, 0.9) !important;
         border-color: rgba(0, 0, 0, 0.15) !important;
-        
+
         span {
             color: #334155 !important;
         }
