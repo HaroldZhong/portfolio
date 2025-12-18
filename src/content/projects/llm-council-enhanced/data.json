@@ -1,0 +1,34 @@
+{
+    "slug": "llm-council",
+    "title": "LLM Council",
+    "role": "Lead Developer",
+    "summary": "A multi-agent decision support system featuring advanced RAG and a council of LLMs. Inspired by Andrej Karpathy.",
+    "thumbnail": "/portfolio/images/blogs/llm-council/llm-council-thumbnail.png",
+    "tags": [
+        "Multi-Agent System",
+        "RAG",
+        "FastAPI",
+        "React",
+        "Python"
+    ],
+    "overview": "LLM Council is a sophisticated decision-support system that leverages a council of diverse Large Language Models (LLMs) to provide balanced, multi-perspective answers. Inspired by the work of Andrej Karpathy, this independent project features an advanced Retrieval-Augmented Generation (RAG) system with hybrid retrieval (BM25 + Dense) and query rewriting.\n\nThe system operates in three stages: Collect (gathering independent responses), Rank (peer review among models), and Synthesize (creating a final consensus). It also includes a robust Cost Governance module for session budgeting and real-time tracking.",
+    "myRole": "I architected and developed the entire system, including the FastAPI backend and React frontend. Key contributions include:\n- Designing the 3-Stage Council Process (Collect, Rank, Synthesize).\n- Implementing the Hybrid RAG system using ChromaDB and Reciprocal Rank Fusion.\n- Building the Cost Governance system with session budgets and intelligent routing.\n- Creating a responsive UI with real-time Chain of Thought display.",
+    "technologies": [
+        "FastAPI",
+        "React & Vite",
+        "Tailwind CSS",
+        "ChromaDB",
+        "LangChain",
+        "OpenRouter API",
+        "Docker"
+    ],
+    "outcomes": [
+        "Deployed a fully functional multi-agent system with sub-second retrieval latency.",
+        "Integrated state-of-the-art LLMs (GPT-5.2, Claude Opus 4.5, Gemini 3 Pro) via OpenRouter.",
+        "Achieved significant cost savings via budget-aware routing policies.",
+        "Implemented a transparent 'Tool Steward' system for verifiable external tool usage."
+    ],
+    "links": {
+        "github": "https://github.com/HaroldZhong/llm-council-enhanced"
+    }
+}
