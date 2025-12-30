@@ -33,20 +33,26 @@ a {
 
 a:hover {
   color: #5000ca;
-  transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out;
+  transition: color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out;
 }
 
-p, a, label, button {
+p,
+a,
+label,
+button {
   color: #E2E8F0;
   font-family: "Inter", sans-serif;
 }
 
-h1, h2 {
+h1,
+h2 {
   color: #E2E8F0;
   font-family: 'Playfair Display', serif;
 }
 
-h3, h4, h5 {
+h3,
+h4,
+h5 {
   color: #E2E8F0;
   font-family: "Inter", sans-serif;
 }
@@ -69,12 +75,12 @@ h3, h4, h5 {
   border-radius: 8px !important;
   transition: all 0.3s ease !important;
   font-weight: 500 !important;
-  
+
   &:hover {
     background-color: rgba(255, 255, 255, 0.1) !important;
     color: white !important;
   }
-  
+
   &.active {
     background-color: rgba(138, 43, 226, 0.3) !important;
     color: white !important;
@@ -84,12 +90,12 @@ h3, h4, h5 {
 
 .light-mode .nav-button {
   color: #334155 !important;
-  
+
   &:hover {
     background-color: rgba(124, 58, 237, 0.1) !important;
     color: #1e293b !important;
   }
-  
+
   &.active {
     background-color: rgba(124, 58, 237, 0.2) !important;
     color: #1e293b !important;
@@ -98,7 +104,9 @@ h3, h4, h5 {
 }
 
 .navigation-bar-responsive {
-  span, p {
+
+  span,
+  p {
     color: #0d1116;
     font-family: "Lato", sans-serif;
   }
@@ -138,7 +146,7 @@ h3, h4, h5 {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  
+
   h1 {
     font-family: 'Playfair Display', serif;
     font-size: 3rem;
@@ -156,17 +164,23 @@ h3, h4, h5 {
     background-color: #f1f5f9;
   }
 
-  p, a, label {
+  p,
+  a,
+  label {
     color: #334155;
   }
-  
-  h1, h2, h3, h4, h5 {
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5 {
     color: #1e293b;
   }
 
   a:hover {
     color: #7c3aed;
-    transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out;
+    transition: color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out;
   }
 
   .navigation-bar svg {
@@ -201,4 +215,3 @@ h3, h4, h5 {
     }
   }
 }
-

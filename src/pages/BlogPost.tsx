@@ -1,12 +1,20 @@
 import React from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import ReactMarkdown from 'react-markdown';
+import ReactMarkdown, { Components } from 'react-markdown';
 import remarkGfm from 'remark-gfm';
+import rehypeRaw from 'rehype-raw';
 import { ArrowLeft, Calendar } from 'lucide-react';
 import { getPostBySlug, formatDate } from '../utils/blogLoader';
 import { useEffect } from 'react';
+import PdfViewer from '../components/PdfViewer';
 import '../assets/styles/Blog.scss';
+
+// Custom component to handle pdf-viewer tags
+const PdfViewerWrapper = ({ src, title }: { src?: string; title?: string }) => {
+  if (!src) return null;
+  return <PdfViewer src={src} title={title || ''} />;
+};
 
 const BlogPost: React.FC = () => {
   const { slug } = useParams<{ slug: string }>();
@@ -33,6 +41,14 @@ const BlogPost: React.FC = () => {
     );
   }
 
+  // Custom components for ReactMarkdown
+  const markdownComponents: Partial<Components> & Record<string, React.ComponentType<any>> = {
+    a: ({ node, ...props }: any) => (
+      <a {...props} target="_blank" rel="noopener noreferrer" />
+    ),
+    'pdf-viewer': ({ src, title }: any) => <PdfViewerWrapper src={src} title={title} />
+  };
+
   return (
     <div className="blog-post-page">
       <motion.div
@@ -57,13 +73,10 @@ const BlogPost: React.FC = () => {
         </div>
 
         <div className="post-content">
-          <ReactMarkdown 
+          <ReactMarkdown
             remarkPlugins={[remarkGfm]}
-            components={{
-              a: ({ node, ...props }) => (
-                <a {...props} target="_blank" rel="noopener noreferrer" />
-              )
-            }}
+            rehypePlugins={[rehypeRaw]}
+            components={markdownComponents as Components}
           >
             {post.content}
           </ReactMarkdown>
@@ -74,3 +87,5 @@ const BlogPost: React.FC = () => {
 };
 
 export default BlogPost;
+
+
