@@ -1,5 +1,5 @@
 import React from 'react';
-import { motion } from 'framer-motion';
+import { motion, useReducedMotion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { Calendar } from 'lucide-react';
 import { BlogPost, formatDate } from '../utils/blogLoader';
@@ -11,15 +11,17 @@ interface BlogCardProps {
 }
 
 const BlogCard: React.FC<BlogCardProps> = ({ post, index }) => {
+  const prefersReducedMotion = useReducedMotion();
+
   return (
     <Link to={`/blog/${post.slug}`} className="blog-card-link">
       <motion.div
         className="blog-card-container"
-        initial={{ opacity: 0, y: 30 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.5, delay: index * 0.1 }}
+        initial={prefersReducedMotion ? false : { opacity: 0, y: 30 }}
+        whileInView={prefersReducedMotion ? undefined : { opacity: 1, y: 0 }}
+        transition={prefersReducedMotion ? { duration: 0 } : { duration: 0.5, delay: index * 0.1 }}
         viewport={{ once: true }}
-        whileHover={{ y: -4 }}
+        whileHover={prefersReducedMotion ? undefined : { y: -4 }}
       >
         <div className="blog-card">
           <div className="blog-thumbnail">

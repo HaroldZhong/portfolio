@@ -3,6 +3,45 @@
 @import './assets/styles/Blog.scss';
 @import './assets/styles/BackToTop.scss';
 
+/* ===== Focus Ring System ===== */
+:root {
+  --focus-ring: #8B5CF6;
+  --focus-ring-offset: 2px;
+  --focus-ring-width: 2px;
+}
+
+:focus-visible {
+  outline: var(--focus-ring-width) solid var(--focus-ring);
+  outline-offset: var(--focus-ring-offset);
+}
+
+:focus:not(:focus-visible) {
+  outline: none;
+}
+
+/* MUI component focus overrides */
+.MuiButton-root:focus-visible,
+.MuiIconButton-root:focus-visible,
+.MuiChip-root:focus-visible {
+  outline: var(--focus-ring-width) solid var(--focus-ring) !important;
+  outline-offset: var(--focus-ring-offset);
+}
+
+/* ===== Reduced Motion ===== */
+@media (prefers-reduced-motion: reduce) {
+  html:focus-within {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
 html {
   scroll-behavior: auto;
 }
@@ -158,6 +197,7 @@ h5 {
 }
 
 .light-mode {
+  --focus-ring: #7c3aed;
   background-color: #f1f5f9;
 
   .navigation-bar {

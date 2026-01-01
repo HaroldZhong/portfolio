@@ -116,12 +116,16 @@ function Navigation({ parentToChild, modeChange }: NavigationProps) {
   const scrollToSection = (section: string) => {
     const element = document.getElementById(section);
     if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
+      const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      element.scrollIntoView({ behavior: prefersReducedMotion ? 'auto' : 'smooth' });
     }
   };
 
   const isActive = (item: NavItem): boolean => {
     if (item.isRoute) {
+      if (item.target === '/blog') {
+        return activeSection === '/blog' || activeSection === 'blog';
+      }
       return activeSection === item.target;
     }
     return activeSection === item.target;

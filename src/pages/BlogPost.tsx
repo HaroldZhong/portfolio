@@ -1,6 +1,6 @@
 import React from 'react';
 import { useParams, Link } from 'react-router-dom';
-import { motion } from 'framer-motion';
+import { motion, useReducedMotion } from 'framer-motion';
 import ReactMarkdown, { Components } from 'react-markdown';
 import remarkGfm from 'remark-gfm';
 import rehypeRaw from 'rehype-raw';
@@ -19,6 +19,7 @@ const PdfViewerWrapper = ({ src, title }: { src?: string; title?: string }) => {
 const BlogPost: React.FC = () => {
   const { slug } = useParams<{ slug: string }>();
   const post = slug ? getPostBySlug(slug) : undefined;
+  const prefersReducedMotion = useReducedMotion();
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -28,9 +29,9 @@ const BlogPost: React.FC = () => {
     return (
       <div className="blog-post-page">
         <motion.div
-          initial={{ opacity: 0 }}
+          initial={prefersReducedMotion ? false : { opacity: 0 }}
           animate={{ opacity: 1 }}
-          transition={{ duration: 0.5 }}
+          transition={prefersReducedMotion ? { duration: 0 } : { duration: 0.5 }}
         >
           <h1>Post Not Found</h1>
           <Link to="/blog" className="back-button">
@@ -52,9 +53,9 @@ const BlogPost: React.FC = () => {
   return (
     <div className="blog-post-page">
       <motion.div
-        initial={{ opacity: 0, y: 30 }}
+        initial={prefersReducedMotion ? false : { opacity: 0, y: 30 }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.6 }}
+        transition={prefersReducedMotion ? { duration: 0 } : { duration: 0.6 }}
       >
         <Link to="/blog" className="back-button">
           <ArrowLeft size={18} /> Back to All Articles

@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { ArrowUp } from 'lucide-react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion, AnimatePresence, useReducedMotion } from 'framer-motion';
 import '../assets/styles/BackToTop.scss';
 
 const BackToTop: React.FC = () => {
   const [isVisible, setIsVisible] = useState(false);
+  const prefersReducedMotion = useReducedMotion();
 
   useEffect(() => {
     const toggleVisibility = () => {
@@ -25,7 +26,7 @@ const BackToTop: React.FC = () => {
   const scrollToTop = () => {
     window.scrollTo({
       top: 0,
-      behavior: 'smooth'
+      behavior: prefersReducedMotion ? 'auto' : 'smooth'
     });
   };
 
@@ -33,10 +34,10 @@ const BackToTop: React.FC = () => {
     <AnimatePresence>
       {isVisible && (
         <motion.button
-          initial={{ opacity: 0, scale: 0.8 }}
+          initial={prefersReducedMotion ? false : { opacity: 0, scale: 0.8 }}
           animate={{ opacity: 1, scale: 1 }}
-          exit={{ opacity: 0, scale: 0.8 }}
-          transition={{ duration: 0.2 }}
+          exit={prefersReducedMotion ? { opacity: 0 } : { opacity: 0, scale: 0.8 }}
+          transition={prefersReducedMotion ? { duration: 0 } : { duration: 0.2 }}
           onClick={scrollToTop}
           className="back-to-top-button"
           aria-label="Back to top"

@@ -1,5 +1,5 @@
 import React from 'react';
-import { motion } from 'framer-motion';
+import { motion, useReducedMotion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { ArrowRight } from 'lucide-react';
 import BlogCard from './BlogCard';
@@ -8,13 +8,14 @@ import '../assets/styles/Blog.scss';
 
 const RecentBlogs: React.FC = () => {
   const recentPosts = getRecentPosts(3);
+  const prefersReducedMotion = useReducedMotion();
 
   return (
     <div className="recent-blogs-section" id="blog">
       <motion.div
-        initial={{ opacity: 0, y: 30 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.6 }}
+        initial={prefersReducedMotion ? false : { opacity: 0, y: 30 }}
+        whileInView={prefersReducedMotion ? undefined : { opacity: 1, y: 0 }}
+        transition={prefersReducedMotion ? { duration: 0 } : { duration: 0.6 }}
         viewport={{ once: true }}
       >
         <h2>Recent Articles</h2>

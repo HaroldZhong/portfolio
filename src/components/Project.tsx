@@ -1,19 +1,21 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { motion } from "framer-motion";
+import { motion, useReducedMotion } from "framer-motion";
 import { Project as ProjectType, getAllProjects } from '../utils/projectLoader';
 import '../assets/styles/Project.scss';
 
 const ProjectCard: React.FC<{ project: ProjectType; index: number }> = ({ project, index }) => {
+  const prefersReducedMotion = useReducedMotion();
+
   return (
     <Link to={`/project/${project.slug}`} className="project-card-link">
       <motion.div
         className="project-card-container"
-        initial={{ opacity: 0, y: 50 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.5, delay: index * 0.1 }}
+        initial={prefersReducedMotion ? false : { opacity: 0, y: 50 }}
+        whileInView={prefersReducedMotion ? undefined : { opacity: 1, y: 0 }}
+        transition={prefersReducedMotion ? { duration: 0 } : { duration: 0.5, delay: index * 0.1 }}
         viewport={{ once: true }}
-        whileHover={{ y: -4 }}
+        whileHover={prefersReducedMotion ? undefined : { y: -4 }}
       >
         <div className="project-card">
           <div className="project-thumbnail">

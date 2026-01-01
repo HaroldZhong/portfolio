@@ -16,21 +16,32 @@ function Contact() {
   const [nameError, setNameError] = useState<boolean>(false);
   const [emailError, setEmailError] = useState<boolean>(false);
   const [messageError, setMessageError] = useState<boolean>(false);
-  
+
   const [sending, setSending] = useState<boolean>(false);
   const [success, setSuccess] = useState<boolean>(false);
   const [error, setError] = useState<string>('');
+
+  // Honeypot and timing for spam protection
+  const [honeypot, setHoneypot] = useState<string>('');
+  const [formLoadTime] = useState<number>(Date.now());
 
   const form = useRef<HTMLFormElement>(null);
 
   const sendEmail = (e: React.FormEvent) => {
     e.preventDefault();
 
+    // Bot detection: honeypot filled or form submitted too quickly
+    if (honeypot || Date.now() - formLoadTime < 3000) {
+      // Silently reject - don't alert bots
+      setSuccess(true);
+      return;
+    }
+
     // Validation
     const hasNameError = name === '';
     const hasEmailError = email === '';
     const hasMessageError = message === '';
-    
+
     setNameError(hasNameError);
     setEmailError(hasEmailError);
     setMessageError(hasMessageError);
@@ -82,19 +93,19 @@ function Contact() {
             <br /><br />
             If you're working on something in that space, I'd love to hear about it.
           </p>
-          
+
           {success && (
             <Alert severity="success" sx={{ marginBottom: 3 }}>
               Message sent successfully! I'll get back to you soon.
             </Alert>
           )}
-          
+
           {error && (
             <Alert severity="error" sx={{ marginBottom: 3 }}>
               {error}
             </Alert>
           )}
-          
+
           <Box
             ref={form}
             component="form"
@@ -103,6 +114,16 @@ function Contact() {
             className='contact-form'
             onSubmit={sendEmail}
           >
+            {/* Honeypot field - hidden from humans, bots will fill it */}
+            <TextField
+              value={honeypot}
+              onChange={(e) => setHoneypot(e.target.value)}
+              sx={{ position: 'absolute', left: '-9999px', opacity: 0 }}
+              tabIndex={-1}
+              autoComplete="off"
+              aria-hidden="true"
+              inputProps={{ 'aria-label': 'Do not fill this field' }}
+            />
             <div className='form-flex'>
               <TextField
                 required
@@ -144,9 +165,9 @@ function Contact() {
               error={messageError}
               helperText={messageError ? "Please enter the message" : ""}
             />
-            <Button 
-              variant="contained" 
-              endIcon={<SendIcon />} 
+            <Button
+              variant="contained"
+              endIcon={<SendIcon />}
               type="submit"
               disabled={sending}
             >
