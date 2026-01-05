@@ -93,14 +93,14 @@ const ProjectDetail: React.FC = () => {
           <section className="project-section">
             <h2>Links & Resources</h2>
             <div className="project-links">
-              {project.links.github && (
-                <a href={project.links.github} target="_blank" rel="noopener noreferrer" className="link-button">
-                  <Github size={18} /> GitHub Repo
-                </a>
-              )}
               {project.links.demo && (
                 <a href={project.links.demo} target="_blank" rel="noopener noreferrer" className="link-button">
                   <ExternalLink size={18} /> Live Demo
+                </a>
+              )}
+              {project.links.github && (
+                <a href={project.links.github} target="_blank" rel="noopener noreferrer" className="link-button">
+                  <Github size={18} /> GitHub Repo
                 </a>
               )}
               {project.links.paper && (
