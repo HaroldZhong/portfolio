@@ -95,7 +95,7 @@ const ProjectDetail: React.FC = () => {
             <div className="project-links">
               {project.links.demo && (
                 <a href={project.links.demo} target="_blank" rel="noopener noreferrer" className="link-button">
-                  <ExternalLink size={18} /> Live Demo
+                  <ExternalLink size={18} /> Website
                 </a>
               )}
               {project.links.github && (

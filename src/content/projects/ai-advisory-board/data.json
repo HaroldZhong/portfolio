@@ -1,9 +1,9 @@
 {
-    "slug": "llm-council",
+    "slug": "ai-advisory-board",
     "title": "AI Advisory Board",
     "role": "Lead Developer",
     "summary": "A multi-agent decision support system featuring advanced RAG and a council of LLMs. Inspired by Andrej Karpathy.",
-    "thumbnail": "/portfolio/images/blogs/llm-council/llm-council-thumbnail.png",
+    "thumbnail": "/portfolio/images/blogs/ai-advisory-board/ai-advisory-board-thumbnail.png",
     "tags": [
         "Multi-Agent System",
         "RAG",
@@ -29,7 +29,7 @@
         "Implemented a transparent 'Tool Steward' system for verifiable external tool usage."
     ],
     "links": {
-        "Website": "https://ai-advisory-board.netlify.app/",
+        "demo": "https://ai-advisory-board.netlify.app/",
         "github": "https://github.com/HaroldZhong/ai-advisory-board"
     }
 }
