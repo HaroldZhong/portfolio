@@ -1,0 +1,53 @@
+{
+  "slug": "research-atlas",
+  "title": "Research Atlas",
+  "role": "Founder & Lead Developer",
+  "summary": "A static-first platform of prompts, workflows, and guides that helps researchers run AI-assisted projects with stronger rigor and verification.",
+  "thumbnail": "/portfolio/images/research-atlas-cover.png",
+  "tags": [
+    "Research Methods",
+    "NotebookLM",
+    "Prompt Systems",
+    "Workflow Design",
+    "React",
+    "TypeScript"
+  ],
+  "overview": "Research Atlas is a research-methods platform I built to make AI-assisted academic work more structured and trustworthy. Instead of treating prompting as isolated chat tricks, the product organizes reusable prompts, stage-based workflows, and method guides across the research lifecycle. The goal is simple: help researchers move faster without sacrificing quality, provenance, or interpretability.",
+  "myRole": "I designed and built the project end to end: information architecture, taxonomy, content model, UX, and frontend implementation. I also wrote and curated core methodological content, including reproducible NotebookLM workflows, verification guardrails, and practical prompts for scoping, extraction, synthesis, and review. On the technical side, I implemented static rendering, route-level SEO, and a content-first pipeline so updates can ship quickly without backend complexity.",
+  "sections": [
+    {
+      "title": "What I Built",
+      "content": [
+        "A static-first research platform with dedicated Library, Workflows, and Guides modules.",
+        "A unified taxonomy connecting prompt assets to research stages (design, data QC, analysis, interpretation, writing, and review).",
+        "A NotebookLM workflow framework with reproducibility conventions, quality-control gates, and citation verification steps.",
+        "Guide content that translates abstract AI advice into operational SOP-style procedures for real research teams.",
+        "SEO and discoverability foundations, including canonical routes, pre-rendering, and structured metadata."
+      ]
+    },
+    {
+      "title": "Why It Matters",
+      "content": "Most AI tooling in research focuses on speed but under-specifies reliability. I built Research Atlas to close that gap by pairing practical productivity with explicit verification rules. The result is a resource researchers can use for daily execution, teaching, and lab standardization."
+    }
+  ],
+  "technologies": [
+    "React",
+    "TypeScript",
+    "Vite",
+    "Tailwind CSS",
+    "shadcn/ui",
+    "Route-based SEO",
+    "Static data architecture",
+    "Content taxonomy design"
+  ],
+  "outcomes": [
+    "Published a live methodology platform at researchatlas.info with production-ready prompt and workflow content.",
+    "Established a reusable schema for scaling prompts, workflows, and guides without backend dependencies.",
+    "Built a reproducible NotebookLM protocol used as a reference workflow for source-grounded research tasks.",
+    "Improved methodological clarity by mapping AI usage directly to research stages and quality gates.",
+    "Created a foundation for future expansion into discipline-specific research playbooks and teaching resources."
+  ],
+  "links": {
+    "demo": "https://researchatlas.info"
+  }
+}

@@ -28,8 +28,10 @@ import nhisData from '../content/projects/nhis-nhanes/data.json';
 import intersectionalityData from '../content/projects/intersectionality-health/data.json';
 import clinicalData from '../content/projects/clinical-prompts/data.json';
 import llmCouncilData from '../content/projects/ai-advisory-board/data.json';
+import researchAtlasData from '../content/projects/research-atlas/data.json';
 
 const projects: Project[] = [
+  researchAtlasData as Project,
   llmCouncilData as Project,
   bratData as Project,
   nhisData as Project,

@@ -3,6 +3,7 @@ import openaiAnthropicImg from '../images/openai-anthropic.jpg';
 import aiToolsFailedImg from '../images/invisible-tax-ai-tools.jpg';
 import nestedLearningImg from '../images/nested_learning.png';
 import notebooklmStorytellingImg from '../images/notebooklm-storytelling.png';
+import researchAtlasCoverImg from '../images/research-atlas-cover.png';
 
 // Import metadata
 import aiToolsFailedMeta from '../content/blogs/invisible-tax-ai-tools/metadata.json';
@@ -12,6 +13,7 @@ import aiHealthcareMeta from '../content/blogs/ai-healthcare-ethics/metadata.jso
 import nhisNhanesMeta from '../content/blogs/working-with-nhis-nhanes/metadata.json';
 import nestedLearningMeta from '../content/blogs/nested-learning-why-google-wants-models-with-real-memory/metadata.json';
 import notebooklmStorytellingMeta from '../content/blogs/notebooklm-storytelling-learning/metadata.json';
+import notebooklmWorkflowMeta from '../content/blogs/notebooklm-research-workflow/metadata.json';
 
 // Import markdown content  
 import aiToolsFailedContent from '../content/blogs/invisible-tax-ai-tools/content.md?raw';
@@ -21,6 +23,7 @@ import aiHealthcareContent from '../content/blogs/ai-healthcare-ethics/content.m
 import nhisNhanesContent from '../content/blogs/working-with-nhis-nhanes/content.md?raw';
 import nestedLearningContent from '../content/blogs/nested-learning-why-google-wants-models-with-real-memory/content.md?raw';
 import notebooklmStorytellingContent from '../content/blogs/notebooklm-storytelling-learning/content.md?raw';
+import notebooklmWorkflowContent from '../content/blogs/notebooklm-research-workflow/content.md?raw';
 
 export interface BlogPost {
   slug: string;
@@ -67,6 +70,11 @@ const blogPosts: BlogPost[] = [
     ...notebooklmStorytellingMeta,
     thumbnail: notebooklmStorytellingImg,
     content: notebooklmStorytellingContent
+  },
+  {
+    ...notebooklmWorkflowMeta,
+    thumbnail: researchAtlasCoverImg,
+    content: notebooklmWorkflowContent
   }
 ];
 
