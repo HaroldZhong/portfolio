@@ -2,12 +2,14 @@ import React from 'react';
 import { useParams, useNavigate, Navigate } from 'react-router-dom';
 import { ArrowLeft, Github, ExternalLink, FileText, Mail } from 'lucide-react';
 import { getProjectBySlug } from '../utils/projectLoader';
+import { usePageMeta } from '../hooks/usePageMeta';
 import '../assets/styles/Project.scss';
 
 const ProjectDetail: React.FC = () => {
   const { slug } = useParams<{ slug: string }>();
   const project = getProjectBySlug(slug || '');
   const navigate = useNavigate();
+  usePageMeta(project ? `${project.title} | Harold Zhong` : undefined, project?.summary);
 
   if (!project) {
     return <Navigate to="/" replace />;

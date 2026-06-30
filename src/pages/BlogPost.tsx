@@ -6,6 +6,7 @@ import remarkGfm from 'remark-gfm';
 import rehypeRaw from 'rehype-raw';
 import { ArrowLeft, Calendar } from 'lucide-react';
 import { getPostBySlug, formatDate } from '../utils/blogLoader';
+import { usePageMeta } from '../hooks/usePageMeta';
 import { useEffect } from 'react';
 import PdfViewer from '../components/PdfViewer';
 import '../assets/styles/Blog.scss';
@@ -24,6 +25,8 @@ const BlogPost: React.FC = () => {
   useEffect(() => {
     window.scrollTo(0, 0);
   }, [slug]);
+
+  usePageMeta(post ? `${post.title} | Harold Zhong` : undefined, post?.excerpt);
 
   if (!post) {
     return (
