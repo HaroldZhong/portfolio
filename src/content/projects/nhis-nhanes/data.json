@@ -2,62 +2,37 @@
   "slug": "nhis-nhanes-health-inequality",
   "title": "NHIS Health Inequality Trends",
   "role": "Data Harmonization & Survey Analysis",
-  "summary": "A reproducible SAS pipeline estimating 25-year trends in income-related inequality in self-rated health, using pooled NHIS data from 1997 to 2024.",
+  "summary": "Reproducible SAS pipelines and survey harmonization across pooled NHIS data (1997 to 2024), supporting health-inequality research toward a manuscript in preparation.",
   "thumbnail": "https://ukhsa.blog.gov.uk/wp-content/uploads/sites/33/2017/07/ineq-cover.png",
   "tags": [
     "SAS",
     "Complex Survey Design",
     "Health Inequality",
-    "SII / RII",
-    "Multiple Imputation",
+    "Survey Harmonization",
     "Reproducible Research"
   ],
-  "overview": "This study examines long-term trends in income-related inequality in self-rated health among non-elderly U.S. adults, by gender and race/ethnicity, using the National Health Interview Survey (NHIS). By harmonizing 27 survey waves spanning 1997 to 2024, the work supports population-level inequality estimates that are comparable across major survey redesigns. The results feed a manuscript in preparation (Cubbin & Zhong) on 25-year trends in health inequality.",
-  "myRole": "I build and maintain the harmonization and analytic workflow for the study, focusing on methodological consistency, cross-period comparability, and correct handling of complex survey design. I work in coordination with the faculty investigator on analytic specifications and manuscript preparation.",
+  "overview": "I build and maintain the survey-harmonization and analytics infrastructure behind a long-running health-inequality study using pooled NHIS data. The work focuses on cross-period comparability, reproducibility, and quality assurance, and supports a manuscript in preparation.",
+  "myRole": "I lead the harmonization and analytic workflow, focusing on methodological consistency, cross-period comparability, reproducibility, and quality assurance, in coordination with the faculty investigator.",
   "sections": [
     {
-      "title": "Data Harmonization & Survey Processing",
+      "title": "Data Harmonization & Reproducibility",
       "content": [
-        "Harmonized 27 years of NHIS data (1997 to 2024) across major redesigns (1997 and 2019), resolving changes in variable definitions, coding schemes, weights, and sample design.",
-        "Standardized income-to-poverty ratio (PIR) categories, demographic definitions, and exclusion criteria to keep estimates comparable across pooled periods.",
-        "Documented the 2019 redesign's effects, including increased race/ethnicity missingness and PIR invariance, as explicit analytic decisions."
-      ],
-      "type": "list"
-    },
-    {
-      "title": "Inequality Measures & Analytic Methods",
-      "content": [
-        "Computed the Slope Index of Inequality (SII), Relative Index of Inequality (RII), and ridit-based rankings using design-adjusted survey procedures.",
-        "Applied design-based variance estimation with sampling weights, strata, and PSUs, and combined 10 multiple-imputation implicates under Rubin's rules.",
-        "Produced design-adjusted SII and RII estimates across multiple demographic domains and pooled periods, with trend tests and trend figures."
-      ],
-      "type": "list"
-    },
-    {
-      "title": "Quality Assurance & Reproducibility",
-      "content": [
-        "Established reproducible protocols including drift checks, cross-tab validation, and missingness diagnostics that catch data issues before analysis.",
-        "Maintained version-controlled outputs, a harmonization rulebook, and analytic decision records to support transparent, replicable survey research.",
-        "Collaborated with the faculty investigator to refine analytic specifications and prepare results for publication."
+        "Harmonized more than two decades of NHIS data across major survey redesigns, resolving changes in variable definitions, coding, and design structures for cross-period comparability.",
+        "Built reproducible SAS workflows with consistent naming conventions, version-controlled outputs, and a documented harmonization rulebook.",
+        "Established quality-assurance protocols, including drift checks, cross-tab validation, and missingness diagnostics, that catch data issues before analysis."
       ],
       "type": "list"
     }
   ],
   "technologies": [
-    "SAS (survey procedures, harmonization macros)",
-    "NHIS multi-year datasets (1997 to 2024)",
-    "Complex survey methods (weights, strata, PSUs, variance estimation)",
-    "Multiple imputation (Rubin's rules)",
-    "Inequality measures (SII, RII, ridit scoring)",
-    "Reproducible QA and documentation workflows"
+    "SAS",
+    "Complex survey methods",
+    "Survey harmonization",
+    "Reproducible QA workflows"
   ],
   "outcomes": [
-    "Harmonized 27 NHIS survey waves (1997 to 2024) into an analysis-ready, version-controlled dataset.",
-    "Generated design-adjusted SII, RII, and ridit-based inequality estimates with trend tests across pooled periods.",
-    "Improved analytic reliability and reproducibility through standardized QA protocols and documented analytic decisions.",
-    "Supported a manuscript in preparation on 25-year trends in income-related inequality in self-rated health (Cubbin & Zhong)."
-  ],
-  "links": {
-    "availableOnRequest": true
-  }
+    "Harmonized more than two decades of NHIS data into an analysis-ready, version-controlled resource.",
+    "Built reproducible QA protocols and documentation supporting transparent, replicable research.",
+    "Supports a manuscript in preparation."
+  ]
 }

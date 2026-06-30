@@ -163,7 +163,7 @@ function Navigation({ parentToChild, modeChange }: NavigationProps) {
             aria-label="open drawer"
             edge="start"
             onClick={handleDrawerToggle}
-            sx={{ mr: 2, display: { sm: 'none' } }}
+            sx={{ mr: 2, display: { xs: 'inline-flex', md: 'none' } }}
           >
             <MenuIcon />
           </IconButton>
@@ -172,7 +172,7 @@ function Navigation({ parentToChild, modeChange }: NavigationProps) {
           ) : (
             <DarkModeIcon onClick={() => modeChange()} sx={{ cursor: 'pointer' }} />
           )}
-          <Box sx={{ display: { xs: 'none', sm: 'flex' }, gap: 1 }}>
+          <Box sx={{ display: { xs: 'none', md: 'flex' }, gap: 1 }}>
             {navItems.map((item) => (
               <Button
                 key={item.label}
@@ -195,7 +195,7 @@ function Navigation({ parentToChild, modeChange }: NavigationProps) {
             keepMounted: true,
           }}
           sx={{
-            display: { xs: 'block', sm: 'none' },
+            display: { xs: 'block', md: 'none' },
             '& .MuiDrawer-paper': { boxSizing: 'border-box', width: drawerWidth },
           }}
         >

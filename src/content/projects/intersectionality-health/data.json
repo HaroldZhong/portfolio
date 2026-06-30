@@ -2,61 +2,38 @@
   "slug": "intersectionality-health-disparities",
   "title": "Intersectionality & Health Disparities",
   "role": "Analytic Design & Survey Harmonization",
-  "summary": "An intersectional analysis of weight status using multilevel models on pooled NHIS data, examining how race/ethnicity, gender, income, and education jointly shape disparities.",
+  "summary": "Survey harmonization and reproducible analysis for intersectional health-disparities research on pooled NHIS data, supporting a manuscript under review.",
   "thumbnail": "https://images.unsplash.com/photo-1499488256403-b872eddb408c?q=80&w=2664&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
   "tags": [
     "SAS",
     "NHIS",
     "Intersectionality",
-    "Multilevel Modeling",
     "Health Disparities",
+    "Survey Harmonization",
     "Complex Survey Design"
   ],
-  "overview": "This project examines how intersecting social positions, including race/ethnicity, gender, income, and education, jointly shape disparities in weight status. Using pooled NHIS data from 2022 and 2023, the study fits multilevel models of obesity and BMI across intersectional strata, quantifying heterogeneity in health inequality that single-variable analyses miss. The work is a replication and exploration of multilevel models of weight status (Cubbin & Zhong, under review at Obesity Science & Practice).",
-  "myRole": "I co-led the analytic and data-engineering workflow, with a focus on methodological fidelity, survey harmonization across periods, and reproducible computation, in coordination with the faculty investigator.",
+  "overview": "I co-lead the analytic and data-engineering workflow for an intersectional health-disparities study using pooled NHIS data. The work focuses on survey harmonization, reproducible computation, and quality assurance, and supports a manuscript under review.",
+  "myRole": "I co-lead the analytic and data-engineering workflow, with a focus on methodological fidelity, survey harmonization across periods, and reproducible computation, in coordination with the faculty investigator.",
   "sections": [
     {
-      "title": "Survey Harmonization & Data Preparation",
+      "title": "Survey Harmonization & Reproducibility",
       "content": [
-        "Built harmonized datasets from pooled NHIS 2022 and 2023, resolving inconsistencies in demographic, nativity, and socioeconomic variables.",
-        "Standardized classification rules for race/ethnicity, gender, education, and income-to-poverty ratio to ensure comparable grouping across the pooled period.",
-        "Constructed intersectional strata from the harmonized demographic and socioeconomic variables for multilevel analysis."
-      ],
-      "type": "list"
-    },
-    {
-      "title": "Multilevel Intersectional Modeling",
-      "content": [
-        "Fit multilevel models of weight status (obesity and BMI) across intersectional strata, using complex survey weights and design-adjusted estimation.",
-        "Estimated between-stratum variation to characterize how disparities concentrate across intersecting social positions.",
-        "Produced descriptive tables and publication-ready figures with 95% confidence intervals."
-      ],
-      "type": "list"
-    },
-    {
-      "title": "Quality Assurance & Reproducibility",
-      "content": [
-        "Built systematic QA checks: drift detection, missingness profiles, cross-tab validation, denominator consistency, and weight stability.",
-        "Established a version-controlled workflow for all harmonization rules, analytic steps, and output tables.",
-        "Worked closely with the faculty investigator to align analytic decisions with intersectionality theory and complex survey constraints."
+        "Built harmonized datasets from pooled NHIS data, standardizing demographic and socioeconomic classifications for comparable grouping.",
+        "Established a version-controlled workflow for harmonization rules, analytic steps, and outputs.",
+        "Built systematic QA checks, including drift detection, missingness profiles, cross-tab validation, and denominator consistency."
       ],
       "type": "list"
     }
   ],
   "technologies": [
-    "SAS (survey procedures, harmonization macros)",
-    "NHIS pooled datasets (2022, 2023)",
-    "Complex survey methods (stratification, PSUs, variance estimation)",
-    "Multilevel modeling of intersectional strata",
-    "Reproducible QA and documentation workflows"
+    "SAS",
+    "Complex survey methods",
+    "Survey harmonization",
+    "Reproducible QA workflows"
   ],
   "outcomes": [
-    "Produced analysis-ready, harmonized datasets for multilevel intersectional analysis of weight status.",
-    "Generated multilevel intersectional estimates for obesity and BMI across race/ethnicity, gender, income, and education.",
-    "Supported a manuscript under review at Obesity Science & Practice (Cubbin & Zhong).",
-    "Improved analytic reliability through standardized QA protocols, reproducible code, and methodological transparency."
-  ],
-  "links": {
-    "availableOnRequest": true
-  }
+    "Produced harmonized, analysis-ready datasets for intersectional health-disparities research.",
+    "Improved analytic reliability through standardized QA protocols and reproducible code.",
+    "Supports a manuscript under review."
+  ]
 }

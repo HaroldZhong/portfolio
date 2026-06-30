@@ -54,8 +54,6 @@ function Publications() {
             </li>
           </ul>
         </div>
-
-        <p className="pub-additional">Languages: English, Mandarin Chinese.</p>
       </div>
     </div>
   );

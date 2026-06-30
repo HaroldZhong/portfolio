@@ -2,6 +2,7 @@ import React from 'react';
 import Main from '../components/Main';
 import Expertise from '../components/Expertise';
 import Timeline from '../components/Timeline';
+import Education from '../components/Education';
 import Publications from '../components/Publications';
 import Project from '../components/Project';
 import RecentBlogs from '../components/RecentBlogs';
@@ -19,6 +20,7 @@ const HomePage: React.FC = () => {
       <Main />
       <Project />
       <Timeline />
+      <Education />
       <Publications />
       <Expertise />
       <RecentBlogs />

@@ -12,14 +12,14 @@
     "PostgreSQL",
     "Qualtrics"
   ],
-  "overview": "BRAT (Boundaries, Resilience and Affection Training) is a conversational role-play and coaching platform where parents practice difficult conversations with a simulated child before trying them at home. It operationalizes PMTO (Parent Management Training, Oregon), an evidence-based parent-training model, into LLM-driven role-play with automated, technique-level feedback. BRAT is a production research platform for a UT Austin parenting study, developed with collaborators across partner universities.",
-  "myRole": "As product lead and AI engineer, I translated research requirements into the platform's design and implementation. I built the conversational system, the safety and moderation layer, and the researcher-facing tooling, and I integrated the study-operations workflows that move participants from screening through practice and review.",
+  "overview": "BRAT (Boundaries, Resilience and Affection Training) is a conversational role-play and coaching platform where parents practice difficult conversations with a simulated child before trying them at home. It operationalizes PMTO (Parent Management Training, Oregon), an evidence-based parent-training model, into LLM-driven role-play with technique-level feedback. BRAT is a production research platform for a UT Austin parenting study, developed with collaborators across partner universities.",
+  "myRole": "As product lead and AI engineer, I translated research requirements into the platform's design and implementation. I built the conversational system, the safety and moderation layer, and the researcher-facing tooling, and integrated the study-operations workflows that move participants from screening through practice and review.",
   "sections": [
     {
       "title": "Platform & Conversational System",
       "content": [
         "Built the role-play and coaching platform on Next.js, React, and Node, deployed on Azure App Service with Azure Blob Storage and a PostgreSQL data layer.",
-        "Implemented PMTO-informed conversational fidelity metrics (validation, escalation control, response specificity) across dialogue turns, giving researchers a structured way to assess session quality beyond subjective review.",
+        "Implemented PMTO-informed conversational fidelity metrics across dialogue turns, giving researchers a structured way to assess session quality.",
         "Contributed safety guardrails, input and output moderation rules, and session-review workflows for participant-facing interactions."
       ],
       "type": "list"
@@ -27,8 +27,8 @@
     {
       "title": "Study Operations & Researcher Tooling",
       "content": [
-        "Integrated Qualtrics-based screening, consent, and onboarding into the platform, standardizing participant handoff and reducing manual coordination for the study team.",
-        "Built a researcher dashboard for session retrieval, transcript review, and live participant progress monitoring.",
+        "Integrated Qualtrics-based screening, consent, and onboarding into the platform, standardizing participant handoff.",
+        "Built a researcher dashboard for session retrieval, transcript review, and participant progress monitoring.",
         "Built a quantitative data pipeline enabling clinician and researcher review of multilingual interaction data."
       ],
       "type": "list"
@@ -45,11 +45,10 @@
     "Multi-agent LLM design"
   ],
   "outcomes": [
-    "Ran an initial 15-family pilot in which 86% of surveyed participating families rated the experience positively.",
-    "Preparing the platform to support a planned 100-family multi-site study.",
+    "Deployed a production research platform supporting a UT Austin parenting study.",
     "Implemented PMTO-informed fidelity metrics that let researchers assess session quality at the level of technique.",
     "Standardized participant screening, consent, and onboarding through integrated Qualtrics workflows.",
-    "Built researcher tooling for transcript review and live progress monitoring across multilingual sessions."
+    "Built researcher tooling for transcript review and progress monitoring across multilingual sessions."
   ],
   "links": {
     "demo": "https://bratlab.org"

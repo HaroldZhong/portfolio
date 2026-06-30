@@ -1,0 +1,123 @@
+.education-container {
+    padding: 80px 10%;
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+
+    h1 {
+        font-family: 'Playfair Display', serif;
+        font-size: 3rem;
+        font-weight: 800;
+        margin-bottom: 50px;
+        text-align: center;
+        color: #E2E8F0;
+    }
+
+    .edu-list {
+        display: flex;
+        flex-direction: column;
+        gap: 28px;
+    }
+
+    .edu-item {
+        padding-left: 18px;
+        border-left: 2px solid rgba(124, 58, 237, 0.5);
+
+        .edu-head {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+
+        h3 {
+            font-family: 'Inter', sans-serif;
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: #FFFFFF;
+            margin: 0;
+        }
+
+        .edu-date {
+            font-family: 'Inter', sans-serif;
+            color: #94A3B8;
+            font-size: 0.9rem;
+            white-space: nowrap;
+        }
+
+        h4 {
+            font-family: 'Inter', sans-serif;
+            font-size: 1.02rem;
+            font-weight: 600;
+            color: #A78BFA;
+            margin: 4px 0 10px;
+        }
+
+        p {
+            font-family: 'Inter', sans-serif;
+            font-size: 1.02rem;
+            line-height: 1.7;
+            color: #E2E8F0;
+            margin: 0;
+        }
+    }
+
+    .edu-languages {
+        font-family: 'Inter', sans-serif;
+        font-size: 0.98rem;
+        color: #CBD5E1;
+        margin-top: 32px;
+
+        strong {
+            color: #E2E8F0;
+        }
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .education-container {
+        padding: 60px 5%;
+
+        h1 {
+            font-size: 2.2rem;
+        }
+    }
+}
+
+/* Light Mode Overrides */
+.light-mode {
+    .education-container {
+        h1 {
+            color: #1e293b;
+        }
+
+        .edu-item {
+            border-left-color: rgba(124, 58, 237, 0.4);
+
+            h3 {
+                color: #0f172a;
+            }
+
+            .edu-date {
+                color: #64748b;
+            }
+
+            h4 {
+                color: #6d28d9;
+            }
+
+            p {
+                color: #334155;
+            }
+        }
+
+        .edu-languages {
+            color: #475569;
+
+            strong {
+                color: #1e293b;
+            }
+        }
+    }
+}

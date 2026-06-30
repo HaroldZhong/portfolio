@@ -1,7 +1,7 @@
 import React from "react";
 import '@fortawesome/free-regular-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faBriefcase, faGraduationCap } from '@fortawesome/free-solid-svg-icons';
+import { faBriefcase } from '@fortawesome/free-solid-svg-icons';
 import { VerticalTimeline, VerticalTimelineElement } from 'react-vertical-timeline-component';
 import 'react-vertical-timeline-component/style.min.css';
 import '../assets/styles/Timeline.scss'
@@ -10,7 +10,7 @@ function Timeline() {
   return (
     <div id="history">
       <div className="items-container">
-        <h1>Experience & Education</h1>
+        <h1>Research & Professional Experience</h1>
         <VerticalTimeline>
           <VerticalTimelineElement
             className="vertical-timeline-element--work"
@@ -23,7 +23,7 @@ function Timeline() {
             <h3 className="vertical-timeline-element-title">Social Science Research Associate IV</h3>
             <h4 className="vertical-timeline-element-subtitle">Steve Hicks School of Social Work, UT Austin</h4>
             <p>
-              I build and maintain the survey-harmonization and analytics infrastructure behind our NHIS health-inequality studies. This includes reproducible SAS pipelines across 27 NHIS waves (1997 to 2024), SII/RII and ridit-based inequality metrics, propensity-score and stratified causal analyses, and QA protocols (cross-tab verification, drift checks, missingness diagnostics) that produce reviewable, manuscript-ready outputs.
+              I build and maintain the survey-harmonization and analytics infrastructure behind our NHIS health-inequality studies. This includes reproducible SAS pipelines across 27 NHIS waves (1997 to 2024), causal-inference and survey analyses, and QA protocols (cross-tab verification, drift checks, missingness diagnostics) that produce reviewable, manuscript-ready outputs.
             </p>
           </VerticalTimelineElement>
 
@@ -76,32 +76,6 @@ function Timeline() {
             <h4 className="vertical-timeline-element-subtitle">School of Professional Development, Stony Brook University</h4>
             <p>
               Led a SQL and CRM migration that deduplicated 12,000+ records and implemented a 15-dimension customer taxonomy for downstream reporting. Redesigned outreach segmentation analytics for continuing-education programs, raising survey response rates from 8% to 48% over successive campaigns.
-            </p>
-          </VerticalTimelineElement>
-
-          <VerticalTimelineElement
-            className="vertical-timeline-element--education"
-            date="May 2025"
-            iconStyle={{ background: '#7c3aed', color: '#fff' }}
-            icon={<FontAwesomeIcon icon={faGraduationCap} />}
-          >
-            <h3 className="vertical-timeline-element-title">M.S., Information Studies</h3>
-            <h4 className="vertical-timeline-element-subtitle">University of Texas at Austin</h4>
-            <p>
-              Focus on Artificial Intelligence and Data Science. Coursework included Machine Learning, Explainable AI, AI in Health, Responsible Data Management, Data Wrangling, and Prompt Engineering.
-            </p>
-          </VerticalTimelineElement>
-
-          <VerticalTimelineElement
-            className="vertical-timeline-element--education"
-            date="May 2023"
-            iconStyle={{ background: '#7c3aed', color: '#fff' }}
-            icon={<FontAwesomeIcon icon={faGraduationCap} />}
-          >
-            <h3 className="vertical-timeline-element-title">B.S., Business Management; B.A., Psychology</h3>
-            <h4 className="vertical-timeline-element-subtitle">Stony Brook University</h4>
-            <p>
-              Honors: Academic Excellence Award, College of Business Leadership Award, Business Honors Program, and Dean's List.
             </p>
           </VerticalTimelineElement>
         </VerticalTimeline>
