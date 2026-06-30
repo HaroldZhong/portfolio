@@ -2,22 +2,22 @@ import React from "react";
 import GitHubIcon from '@mui/icons-material/GitHub';
 import LinkedInIcon from '@mui/icons-material/LinkedIn';
 import EmailIcon from '@mui/icons-material/Email';
-import { ArrowRight, FileText } from 'lucide-react';
+import { ArrowRight } from 'lucide-react';
 import AuroraBackground from './AuroraBackground';
 import profileImage from '../images/profile-headshot.jpg';
 import '../assets/styles/Main.scss';
 
 function Main() {
   const badges = [
-    "AI Research & Agents",
-    "Product & Workflow Design",
-    "Health Data & Inequality"
+    "Health Inequality Research",
+    "Survey Methods & Causal Inference",
+    "Applied AI Systems"
   ];
 
   // Obfuscated email
   const getEmail = () => {
-    const user = 'haocong.zhong.research';
-    const domain = 'gmail.com';
+    const user = 'harold.zhong';
+    const domain = 'utexas.edu';
     return `${user}@${domain}`;
   };
 
@@ -34,8 +34,8 @@ function Main() {
               </div>
               <div className="hero-text-wrapper">
                 <h1 className="hero-title">Harold Zhong</h1>
-                <h2 className="hero-job-title">RESEARCH ENGINEER</h2>
-                <p className="hero-tagline">Bridging social science methodologies with production-ready AI systems.</p>
+                <h2 className="hero-job-title">SOCIAL SCIENCE RESEARCH ASSOCIATE, UT AUSTIN</h2>
+                <p className="hero-tagline">Bridging rigorous social science research and applied AI systems.</p>
               </div>
             </div>
 
@@ -55,7 +55,7 @@ function Main() {
 
             {/* Social Links - Below CTA */}
             <div className="social_icons">
-              <a href="https://github.com/haroldzhong" target="_blank" rel="noreferrer" aria-label="GitHub">
+              <a href="https://github.com/HaroldZhong" target="_blank" rel="noreferrer" aria-label="GitHub">
                 <GitHubIcon />
               </a>
               <a href="https://linkedin.com/in/haocong-zhong" target="_blank" rel="noreferrer" aria-label="LinkedIn">

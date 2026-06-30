@@ -1,38 +1,45 @@
 {
   "slug": "clinical-prompt-systems",
-  "title": "Clinical Prompt Systems",
-  "role": "Prompt engineer & system designer",
-  "summary": "Turning expert psychiatric workflows into structured prompts with safety rules for AI systems.",
+  "title": "VedAI Clinical Psychiatry AI Assistant",
+  "role": "AI Researcher (prior work, 2024 to 2025)",
+  "summary": "Designed reusable LLM instruction and context templates for psychiatric workflows, with a multi-agent human-in-the-loop review layer for sensitive clinical outputs.",
   "thumbnail": "https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=800&h=400&fit=crop",
   "tags": [
-    "Prompt Engineering",
+    "LLM Systems",
+    "Prompt & Context Design",
     "Clinical AI",
-    "HIPAA-aligned",
-    "System Design",
-    "JSON",
-    "Safety Constraints"
+    "Multi-agent Review",
+    "Human-in-the-loop"
   ],
-  "overview": "This project translates expert psychiatric and care-planning workflows into structured, reliable prompts for AI systems used in clinical settings. The work involves converting implicit clinical knowledge into explicit prompt templates with standardized variable libraries, safety constraints, and formatting rules that ensure consistent, appropriate outputs for downstream healthcare applications.",
-  "myRole": "As prompt engineer and system designer, I work directly with clinical experts to understand their workflows and decision-making processes. I design prompt templates with standardized variable libraries, establish safety and formatting rules, and create JSON-based structures for easy integration with existing clinical systems. I also develop validation processes to ensure prompts produce clinically appropriate outputs while maintaining HIPAA compliance and patient safety standards.",
+  "overview": "VedAI was a private clinical-AI platform where I worked on structuring expert psychiatric workflows into reliable LLM instruction and context systems. The work focused on turning implicit clinical reasoning into reusable, well-documented templates and on building review paths that keep a human in the loop for sensitive outputs. This is prior work (late 2024 to mid 2025); details are shared at a high level under confidentiality.",
+  "myRole": "As an AI researcher on the project, I designed reusable instruction and context templates, a multi-agent review workflow with risk triage and escalation logic, and evaluation and documentation standards that aligned clinical and engineering review. I coordinated with clinicians and engineers on workflow refinement and UI/UX.",
+  "sections": [
+    {
+      "title": "What I Worked On",
+      "content": [
+        "Designed reusable LLM instruction and context templates covering 80+ psychiatric workflow scenarios, supporting more consistent outputs across complex cases.",
+        "Designed a multi-agent review workflow with risk triage and escalation logic to support human-in-the-loop review of sensitive clinical AI outputs.",
+        "Developed model evaluation and documentation standards for workflow refinement, output review, and review milestones.",
+        "Coordinated clinicians and engineers on workflow refinement, documentation, and UI/UX improvements."
+      ],
+      "type": "list"
+    },
+    {
+      "title": "Scope & Limitations",
+      "content": "This was a contributor role on a private platform, and the work is not publicly shareable. The summary above describes my contributions at a high level rather than reproducing any proprietary content."
+    }
+  ],
   "technologies": [
-    "Prompt Engineering",
-    "Clinical AI",
-    "HIPAA Compliance",
-    "JSON Schema Design",
-    "Safety Constraints",
-    "Template Systems",
-    "LLM Integration",
-    "Clinical Workflow Analysis"
+    "LLM context design",
+    "Structured prompt evaluation",
+    "Multi-agent workflow design",
+    "Risk triage and escalation logic",
+    "Markdown and JSON structuring"
   ],
   "outcomes": [
-    "Created standardized prompt library used across multiple psychiatric care applications",
-    "Established safety constraints that prevent inappropriate clinical recommendations",
-    "Designed variable library system that enables non-technical clinicians to customize prompts safely",
-    "Built validation framework that ensures HIPAA compliance and clinical appropriateness",
-    "Reduced prompt engineering time by 60% through reusable template system",
-    "Documented best practices that inform organization-wide AI integration standards"
-  ],
-  "links": {
-    "availableOnRequest": true
-  }
+    "Built reusable instruction and context templates across 80+ psychiatric workflow scenarios.",
+    "Standardized workflows across 12 psychiatric case categories, cutting new-scenario configuration time from 4 weeks to 2.",
+    "Established a multi-agent, human-in-the-loop review path with risk triage for sensitive outputs.",
+    "Created model evaluation and documentation standards that aligned clinical and engineering review."
+  ]
 }

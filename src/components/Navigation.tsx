@@ -32,8 +32,6 @@ const navItems: NavItem[] = [
   { label: 'Experience', target: 'history', isRoute: false },
   { label: 'Expertise', target: 'expertise', isRoute: false },
   { label: 'Blog', target: '/blog', isRoute: true },
-  { label: 'Resume', target: '/portfolio/resume.pdf', isRoute: false, isExternal: true },
-  { label: 'CV', target: '/portfolio/cv.pdf', isRoute: false, isExternal: true },
   { label: 'Contact', target: 'contact', isRoute: false }
 ];
 

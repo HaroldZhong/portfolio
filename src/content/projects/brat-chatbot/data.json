@@ -1,37 +1,57 @@
 {
   "slug": "brat-family-therapy-chatbot",
-  "title": "BRAT – Family Therapy Chatbot",
-  "role": "Lead, product & technical design",
-  "summary": "Parents rehearse tough conversations with a realistic virtual child before trying at home.",
+  "title": "BRAT Research Platform",
+  "role": "Product Lead & AI Engineer",
+  "summary": "A conversational role-play and coaching platform that lets parents rehearse difficult conversations with a simulated child, built for a UT Austin parenting research study.",
   "thumbnail": "https://images.unsplash.com/photo-1531746790731-6c087fecd65a?w=800&h=400&fit=crop",
   "tags": [
+    "Conversational AI",
+    "PMTO-informed",
     "Multi-agent LLM",
-    "IRB workflows",
-    "Azure/OpenAI",
-    "Whisper ASR",
-    "RAG",
+    "Azure",
+    "PostgreSQL",
     "Qualtrics"
   ],
-  "overview": "BRAT (Boundary, Respect & Affection Training) is a multi-agent LLM system designed to help parents in family therapy rehearse challenging conversations with a realistic virtual 'child' before attempting them at home. Developed as part of an IRB-approved research study, BRAT provides a safe, controlled environment for parents to practice difficult interactions and build confidence in their communication skills.",
-  "myRole": "As the technical and product design lead, I architected the multi-agent system, designed the conversation flows, and established the integration with Azure/OpenAI services. I worked closely with clinical researchers to ensure the system met IRB requirements and clinical standards. I also implemented the Whisper ASR integration for voice interaction, designed the RAG system for context-aware responses, and integrated Qualtrics for research data collection and analysis.",
+  "overview": "BRAT (Boundaries, Resilience and Affection Training) is a conversational role-play and coaching platform where parents practice difficult conversations with a simulated child before trying them at home. It operationalizes PMTO (Parent Management Training, Oregon), an evidence-based parent-training model, into LLM-driven role-play with automated, technique-level feedback. BRAT is a production research platform for a UT Austin parenting study, developed with collaborators across partner universities.",
+  "myRole": "As product lead and AI engineer, I translated research requirements into the platform's design and implementation. I built the conversational system, the safety and moderation layer, and the researcher-facing tooling, and I integrated the study-operations workflows that move participants from screening through practice and review.",
+  "sections": [
+    {
+      "title": "Platform & Conversational System",
+      "content": [
+        "Built the role-play and coaching platform on Next.js, React, and Node, deployed on Azure App Service with Azure Blob Storage and a PostgreSQL data layer.",
+        "Implemented PMTO-informed conversational fidelity metrics (validation, escalation control, response specificity) across dialogue turns, giving researchers a structured way to assess session quality beyond subjective review.",
+        "Contributed safety guardrails, input and output moderation rules, and session-review workflows for participant-facing interactions."
+      ],
+      "type": "list"
+    },
+    {
+      "title": "Study Operations & Researcher Tooling",
+      "content": [
+        "Integrated Qualtrics-based screening, consent, and onboarding into the platform, standardizing participant handoff and reducing manual coordination for the study team.",
+        "Built a researcher dashboard for session retrieval, transcript review, and live participant progress monitoring.",
+        "Built a quantitative data pipeline enabling clinician and researcher review of multilingual interaction data."
+      ],
+      "type": "list"
+    }
+  ],
   "technologies": [
-    "Multi-agent LLM",
-    "Azure/OpenAI",
-    "Whisper ASR",
-    "RAG (Retrieval-Augmented Generation)",
+    "Next.js",
+    "React",
+    "Node.js",
+    "Azure App Service",
+    "Azure Blob Storage",
+    "PostgreSQL",
     "Qualtrics",
-    "IRB compliance workflows",
-    "Python",
-    "API Integration"
+    "Multi-agent LLM design"
   ],
   "outcomes": [
-    "Successfully deployed in IRB-approved research study with active parent participants",
-    "Achieved realistic, context-aware dialogue generation that clinicians validated as therapeutically appropriate",
-    "Built robust safety constraints and content filtering to ensure research-grade reliability",
-    "Integrated voice interaction capabilities for more natural parent-child conversation simulation",
-    "Established scalable architecture that can be adapted for other therapeutic contexts"
+    "Ran an initial 15-family pilot in which 86% of surveyed participating families rated the experience positively.",
+    "Preparing the platform to support a planned 100-family multi-site study.",
+    "Implemented PMTO-informed fidelity metrics that let researchers assess session quality at the level of technique.",
+    "Standardized participant screening, consent, and onboarding through integrated Qualtrics workflows.",
+    "Built researcher tooling for transcript review and live progress monitoring across multilingual sessions."
   ],
   "links": {
-    "availableOnRequest": true
+    "demo": "https://bratlab.org"
   }
 }

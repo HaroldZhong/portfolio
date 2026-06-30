@@ -31,11 +31,11 @@ import llmCouncilData from '../content/projects/ai-advisory-board/data.json';
 import researchAtlasData from '../content/projects/research-atlas/data.json';
 
 const projects: Project[] = [
-  researchAtlasData as Project,
-  llmCouncilData as Project,
-  bratData as Project,
   nhisData as Project,
   intersectionalityData as Project,
+  bratData as Project,
+  researchAtlasData as Project,
+  llmCouncilData as Project,
   clinicalData as Project
 ];
 

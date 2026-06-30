@@ -24,8 +24,8 @@ const ProjectDetail: React.FC = () => {
   };
 
   const handleRequestAccess = () => {
-    const user = 'haocong.zhong.research';
-    const domain = 'gmail.com';
+    const user = 'harold.zhong';
+    const domain = 'utexas.edu';
     const email = `${user}@${domain}`;
     const subject = encodeURIComponent(`Inquiry about ${project.title} Architecture`);
     window.location.href = `mailto:${email}?subject=${subject}`;

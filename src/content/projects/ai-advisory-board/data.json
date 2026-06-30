@@ -1,35 +1,50 @@
 {
     "slug": "ai-advisory-board",
     "title": "AI Advisory Board",
-    "role": "Lead Developer",
-    "summary": "A multi-agent decision support system featuring advanced RAG and a council of LLMs. Inspired by Andrej Karpathy.",
+    "role": "Creator & Lead Developer",
+    "summary": "A desktop multi-LLM council that drafts, anonymously peer-ranks, and synthesizes answers from many models, with persistent memory and per-session cost governance. An extension of Andrej Karpathy's llm-council.",
     "thumbnail": "/portfolio/images/blogs/ai-advisory-board/ai-advisory-board-thumbnail.png",
     "tags": [
-        "Multi-Agent System",
-        "RAG",
+        "Multi-agent LLM",
+        "Desktop App",
+        "PageIndex RAG",
+        "OpenRouter",
+        "Python",
+        "FastAPI"
+    ],
+    "overview": "AI Advisory Board is a native desktop application that runs a 'council' of large language models to produce balanced, multi-perspective answers. Building on Andrej Karpathy's llm-council, it adds persistent memory, retrieval grounding, and cost governance. The system works in three stages: models independently draft responses, anonymously peer-rank each other to reduce bias, and synthesize a final answer with a confidence signal. It is local and private by default.",
+    "myRole": "I architected and built the system end to end: the FastAPI backend, the React frontend, and the desktop packaging. Key work includes the three-stage council protocol, a PageIndex-based retrieval and memory layer, and a per-session cost-governance system that keeps spend predictable.",
+    "sections": [
+        {
+            "title": "What I Built",
+            "content": [
+                "A three-stage council protocol: independent drafting, anonymous peer ranking to reduce bias, and chairman synthesis with a confidence signal.",
+                "A context-engineering layer using PageIndex-based RAG with persistent cross-session memory, query rewriting, and coreference resolution.",
+                "A per-session cost-governance system with runtime model selection that degrades retrieval context as spend rises and blocks new turns at the budget ceiling.",
+                "A native Windows desktop build (PyWebView wrapper) that runs a local server, keeping data on-device by default."
+            ]
+        },
+        {
+            "title": "Why It Matters",
+            "content": "Single-model answers hide disagreement and uncertainty. Anonymous cross-model ranking surfaces where models agree and where they do not, and a synthesized answer with a confidence signal is more trustworthy than any one model's output. Running locally with per-session budgets keeps the system private and cost-predictable."
+        }
+    ],
+    "technologies": [
+        "Python",
         "FastAPI",
         "React",
-        "Python"
-    ],
-    "overview": "AI Advisory Board is a sophisticated decision-support system that leverages a council of diverse Large Language Models (LLMs) to provide balanced, multi-perspective answers. Inspired by the work of Andrej Karpathy, this independent project features an advanced Retrieval-Augmented Generation (RAG) system with hybrid retrieval (BM25 + Dense) and query rewriting.\n\nThe system operates in three stages: Collect (gathering independent responses), Rank (peer review among models), and Synthesize (creating a final consensus). It also includes a robust Cost Governance module for session budgeting and real-time tracking.",
-    "myRole": "I architected and developed the entire system, including the FastAPI backend and React frontend. Key contributions include:\n- Designing the 3-Stage Council Process (Collect, Rank, Synthesize).\n- Implementing the Hybrid RAG system using ChromaDB and Reciprocal Rank Fusion.\n- Building the Cost Governance system with session budgets and intelligent routing.\n- Creating a responsive UI with real-time Chain of Thought display.",
-    "technologies": [
-        "FastAPI",
-        "React & Vite",
-        "Tailwind CSS",
-        "ChromaDB",
-        "LangChain",
-        "OpenRouter API",
-        "Docker"
+        "Vite",
+        "PageIndex RAG",
+        "OpenRouter",
+        "PyWebView"
     ],
     "outcomes": [
-        "Deployed a fully functional multi-agent system with sub-second retrieval latency.",
-        "Integrated state-of-the-art LLMs (GPT-5.2, Claude Opus 4.5, Gemini 3 Pro) via OpenRouter.",
-        "Achieved significant cost savings via budget-aware routing policies.",
-        "Implemented a transparent 'Tool Steward' system for verifiable external tool usage."
+        "Shipped a packaged native Windows desktop application built on a three-stage council protocol.",
+        "Routed a configurable registry of 40+ models through OpenRouter with runtime model selection.",
+        "Added persistent cross-session memory and retrieval grounding via a PageIndex RAG engine.",
+        "Implemented per-session cost governance that degrades retrieval context as spend rises and blocks turns at the budget ceiling."
     ],
     "links": {
-        "demo": "https://ai-advisory-board.netlify.app/",
         "github": "https://github.com/HaroldZhong/ai-advisory-board"
     }
 }
