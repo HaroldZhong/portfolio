@@ -34,13 +34,16 @@ function App() {
     <BrowserRouter basename="/portfolio">
       <ScrollToTop />
       <div className={`main-container ${mode === 'dark' ? 'dark-mode' : 'light-mode'}`}>
+        <a href="#main-content" className="skip-link">Skip to main content</a>
         <Navigation parentToChild={{mode}} modeChange={handleModeChange}/>
-        <Routes>
-          <Route path="/" element={<HomePage />} />
-          <Route path="/blog" element={<BlogList />} />
-          <Route path="/blog/:slug" element={<BlogPost />} />
-          <Route path="/project/:slug" element={<ProjectDetail />} />
-        </Routes>
+        <main id="main-content" tabIndex={-1}>
+          <Routes>
+            <Route path="/" element={<HomePage />} />
+            <Route path="/blog" element={<BlogList />} />
+            <Route path="/blog/:slug" element={<BlogPost />} />
+            <Route path="/project/:slug" element={<ProjectDetail />} />
+          </Routes>
+        </main>
         <Footer />
         <BackToTop />
       </div>

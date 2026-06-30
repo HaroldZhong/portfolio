@@ -30,7 +30,7 @@ function Main() {
             {/* Headshot and Name */}
             <div className="hero-header">
               <div className="headshot-wrapper">
-                <img src={profileImage} alt="Harold Zhong" className="headshot" />
+                <img src={profileImage} alt="Headshot of Harold Zhong" className="headshot" />
               </div>
               <div className="hero-text-wrapper">
                 <h1 className="hero-title">Harold Zhong</h1>

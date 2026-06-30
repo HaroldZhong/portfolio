@@ -167,11 +167,13 @@ function Navigation({ parentToChild, modeChange }: NavigationProps) {
           >
             <MenuIcon />
           </IconButton>
-          {mode === 'dark' ? (
-            <LightModeIcon onClick={() => modeChange()} sx={{ cursor: 'pointer' }} />
-          ) : (
-            <DarkModeIcon onClick={() => modeChange()} sx={{ cursor: 'pointer' }} />
-          )}
+          <IconButton
+            color="inherit"
+            onClick={() => modeChange()}
+            aria-label={mode === 'dark' ? 'Switch to light mode' : 'Switch to dark mode'}
+          >
+            {mode === 'dark' ? <LightModeIcon /> : <DarkModeIcon />}
+          </IconButton>
           <Box sx={{ display: { xs: 'none', md: 'flex' }, gap: 1 }}>
             {navItems.map((item) => (
               <Button

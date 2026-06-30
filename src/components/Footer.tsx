@@ -7,8 +7,8 @@ function Footer() {
   return (
     <footer>
       <div>
-        <a href="https://github.com/HaroldZhong" target="_blank" rel="noreferrer"><GitHubIcon /></a>
-        <a href="https://linkedin.com/in/haocong-zhong" target="_blank" rel="noreferrer"><LinkedInIcon /></a>
+        <a href="https://github.com/HaroldZhong" target="_blank" rel="noreferrer" aria-label="GitHub"><GitHubIcon /></a>
+        <a href="https://linkedin.com/in/haocong-zhong" target="_blank" rel="noreferrer" aria-label="LinkedIn"><LinkedInIcon /></a>
       </div>
       <p>Designed & built by Harold with 💜</p>
     </footer>

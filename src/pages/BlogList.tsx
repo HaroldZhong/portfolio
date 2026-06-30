@@ -3,11 +3,14 @@ import { motion, useReducedMotion } from 'framer-motion';
 import { useEffect } from 'react';
 import BlogCard from '../components/BlogCard';
 import { getAllPosts } from '../utils/blogLoader';
+import { usePageMeta } from '../hooks/usePageMeta';
 import '../assets/styles/Blog.scss';
 
 const BlogList: React.FC = () => {
   const allPosts = getAllPosts();
   const prefersReducedMotion = useReducedMotion();
+
+  usePageMeta('Articles | Harold Zhong', 'Essays and notes on research methods, applied AI, and health data by Harold Zhong.');
 
   useEffect(() => {
     window.scrollTo(0, 0);
