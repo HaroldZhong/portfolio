@@ -30,8 +30,6 @@ function Education() {
             </p>
           </div>
         </div>
-
-        <p className="edu-languages"><strong>Languages:</strong> English, Mandarin Chinese.</p>
       </div>
     </div>
   );

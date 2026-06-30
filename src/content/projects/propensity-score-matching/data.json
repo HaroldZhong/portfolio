@@ -28,12 +28,12 @@
     "SAS",
     "Causal inference",
     "Propensity-score methods",
-    "Covariate-balance diagnostics",
+    "Documented analytic checks",
     "Restricted-data secure computing"
   ],
   "outcomes": [
     "Built a reproducible, well-documented analytic pipeline within a secure restricted-data environment.",
-    "Includes covariate-balance diagnostics across strata.",
+    "Includes documented analytic quality checks.",
     "Packaged methods toward a manuscript in preparation."
   ]
 }

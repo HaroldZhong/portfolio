@@ -62,17 +62,6 @@
             margin: 0;
         }
     }
-
-    .edu-languages {
-        font-family: 'Inter', sans-serif;
-        font-size: 0.98rem;
-        color: #CBD5E1;
-        margin-top: 32px;
-
-        strong {
-            color: #E2E8F0;
-        }
-    }
 }
 
 @media screen and (max-width: 768px) {
@@ -109,14 +98,6 @@
 
             p {
                 color: #334155;
-            }
-        }
-
-        .edu-languages {
-            color: #475569;
-
-            strong {
-                color: #1e293b;
             }
         }
     }

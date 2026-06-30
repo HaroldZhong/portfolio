@@ -29,7 +29,7 @@ interface NavItem {
 
 const navItems: NavItem[] = [
   { label: 'Projects', target: 'projects', isRoute: false },
-  { label: 'Experience', target: 'history', isRoute: false },
+  { label: 'Background', target: 'history', isRoute: false },
   { label: 'Publications', target: 'publications', isRoute: false },
   { label: 'Expertise', target: 'expertise', isRoute: false },
   { label: 'Blog', target: '/blog', isRoute: true },
