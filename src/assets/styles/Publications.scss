@@ -1,0 +1,114 @@
+.publications-container {
+    padding: 80px 10%;
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+
+    h1 {
+        font-family: 'Playfair Display', serif;
+        font-size: 3rem;
+        font-weight: 800;
+        margin-bottom: 50px;
+        text-align: center;
+        color: #E2E8F0;
+    }
+
+    .pub-group {
+        margin-bottom: 36px;
+
+        h3 {
+            font-family: 'Inter', sans-serif;
+            font-size: 1rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+            color: #A78BFA;
+            margin-bottom: 16px;
+        }
+
+        ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        li {
+            font-family: 'Inter', sans-serif;
+            font-size: 1.02rem;
+            line-height: 1.7;
+            color: #E2E8F0;
+            padding-left: 18px;
+            border-left: 2px solid rgba(124, 58, 237, 0.5);
+            margin-bottom: 18px;
+
+            strong {
+                color: #FFFFFF;
+                font-weight: 700;
+            }
+
+            em {
+                color: #CBD5E1;
+                font-style: italic;
+            }
+
+            .pub-status {
+                display: inline-block;
+                margin-left: 6px;
+                color: #94A3B8;
+                font-size: 0.85rem;
+                font-style: italic;
+            }
+        }
+    }
+
+    .pub-additional {
+        font-family: 'Inter', sans-serif;
+        color: #94A3B8;
+        font-size: 0.95rem;
+        margin-top: 10px;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .publications-container {
+        padding: 60px 5%;
+
+        h1 {
+            font-size: 2.2rem;
+        }
+    }
+}
+
+/* Light Mode Overrides */
+.light-mode {
+    .publications-container {
+        h1 {
+            color: #1e293b;
+        }
+
+        .pub-group h3 {
+            color: #6d28d9;
+        }
+
+        .pub-group li {
+            color: #334155;
+            border-left-color: rgba(124, 58, 237, 0.4);
+
+            strong {
+                color: #0f172a;
+            }
+
+            em {
+                color: #475569;
+            }
+
+            .pub-status {
+                color: #64748b;
+            }
+        }
+
+        .pub-additional {
+            color: #64748b;
+        }
+    }
+}

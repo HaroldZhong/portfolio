@@ -30,6 +30,7 @@ interface NavItem {
 const navItems: NavItem[] = [
   { label: 'Projects', target: 'projects', isRoute: false },
   { label: 'Experience', target: 'history', isRoute: false },
+  { label: 'Publications', target: 'publications', isRoute: false },
   { label: 'Expertise', target: 'expertise', isRoute: false },
   { label: 'Blog', target: '/blog', isRoute: true },
   { label: 'Contact', target: 'contact', isRoute: false }
@@ -65,7 +66,7 @@ function Navigation({ parentToChild, modeChange }: NavigationProps) {
 
       // Scroll spy - detect active section
       if (location.pathname === '/') {
-        const sections = ['expertise', 'history', 'projects', 'blog', 'contact'];
+        const sections = ['expertise', 'history', 'projects', 'publications', 'blog', 'contact'];
         const scrollPosition = window.scrollY + 200; // Offset for navbar
 
         for (const sectionId of sections) {

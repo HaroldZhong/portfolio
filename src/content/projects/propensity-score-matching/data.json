@@ -1,0 +1,49 @@
+{
+  "slug": "propensity-score-matching",
+  "title": "Propensity-Score Matching",
+  "role": "Causal Inference & Survey Analysis",
+  "summary": "A race-specific propensity-score analysis estimating associations between neighborhood poverty and birth outcomes in restricted-access vital-statistics data, with documented assumptions and sensitivity checks.",
+  "thumbnail": "/portfolio/images/PSM-thumbnail.png",
+  "tags": [
+    "Causal Inference",
+    "Propensity Score Matching",
+    "SAS",
+    "Survey Methods",
+    "Restricted Data"
+  ],
+  "overview": "This project estimates how neighborhood (census-tract) poverty relates to adverse birth outcomes, using a propensity-score design fit separately within each race and ethnicity group. It is a mentored analysis on restricted-access vital-statistics data, run in a secure computing environment, and is being packaged for a manuscript in preparation.",
+  "myRole": "I designed and implemented the analytic workflow end to end: race-specific propensity-score models, matching and balance diagnostics, outcome models, and sensitivity analyses, with documented assumptions and reproducible code.",
+  "sections": [
+    {
+      "title": "Design & Methods",
+      "content": [
+        "Estimated race-specific propensity-score models with stratum-varying covariates, so matching reflects the covariate structure within each group.",
+        "Used matching as the primary approach, with overlap weighting and inverse-probability weighting as comparators, and assessed covariate balance in every stratum.",
+        "Fit outcome models with generalized estimating equations and empirical (sandwich) variance, reporting a complete-case primary analysis alongside a sensitivity analysis."
+      ],
+      "type": "list"
+    },
+    {
+      "title": "Rigor & Reproducibility",
+      "content": [
+        "Worked within the constraints of a secure, restricted-data environment, with a disk-frugal pipeline and per-output persistence.",
+        "Documented assumptions, exclusions, and analytic decisions to support transparent, reviewable results.",
+        "Coordinated with a faculty mentor toward a manuscript in preparation."
+      ],
+      "type": "list"
+    }
+  ],
+  "technologies": [
+    "SAS",
+    "Propensity-score matching",
+    "Overlap weighting and IPTW",
+    "Generalized estimating equations (sandwich variance)",
+    "Balance diagnostics",
+    "Restricted-data secure computing"
+  ],
+  "outcomes": [
+    "Built a reproducible race-stratified propensity-score pipeline that achieves adequate covariate balance across strata.",
+    "Produced a complete-case primary analysis with a sensitivity analysis and documented assumptions.",
+    "Packaged methods and results toward a manuscript in preparation."
+  ]
+}
