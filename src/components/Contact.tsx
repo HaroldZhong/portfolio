@@ -87,7 +87,7 @@ function Contact() {
     <div id="contact">
       <div className="items-container">
         <div className="contact_wrapper">
-          <h1>Contact Me</h1>
+          <h2>Contact Me</h2>
           <p className="contact-intro">
             I'm always happy to talk about AI in health, research workflows, or weird data problems.
             <br /><br />

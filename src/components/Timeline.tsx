@@ -10,7 +10,7 @@ function Timeline() {
   return (
     <div id="history">
       <div className="items-container">
-        <h1>Research & Professional Experience</h1>
+        <h2>Research & Professional Experience</h2>
         <VerticalTimeline>
           <VerticalTimelineElement
             className="vertical-timeline-element--work"

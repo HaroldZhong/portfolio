@@ -19,7 +19,7 @@ const ProjectCard: React.FC<{ project: ProjectType; index: number }> = ({ projec
       >
         <div className="project-card">
           <div className="project-thumbnail">
-            <img src={project.thumbnail} alt={project.title} />
+            <img src={project.thumbnail} alt="" />
           </div>
           <div className="project-card-content">
             <h3>{project.title}</h3>
@@ -49,7 +49,7 @@ function Project() {
         transition={{ duration: 0.6 }}
         viewport={{ once: true }}
       >
-        <h1>Projects & Collaborations</h1>
+        <h2>Projects & Collaborations</h2>
         <p className="projects-intro">
           Work bridging data, AI, and real-world impact across healthcare, social work, and product development.
         </p>

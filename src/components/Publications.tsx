@@ -5,7 +5,7 @@ function Publications() {
   return (
     <div className="container" id="publications">
       <div className="publications-container">
-        <h1>Publications & Scholarly Work</h1>
+        <h2>Publications & Scholarly Work</h2>
 
         <div className="pub-group">
           <h3>Manuscripts Under Review</h3>

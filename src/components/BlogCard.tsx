@@ -25,7 +25,7 @@ const BlogCard: React.FC<BlogCardProps> = ({ post, index }) => {
       >
         <div className="blog-card">
           <div className="blog-thumbnail">
-            <img src={post.thumbnail} alt={post.title} />
+            <img src={post.thumbnail} alt="" />
             <div className="blog-category-badge">{post.category}</div>
           </div>
           <div className="blog-card-content">

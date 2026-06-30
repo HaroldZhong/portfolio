@@ -5,7 +5,7 @@ function Education() {
   return (
     <div className="container" id="education">
       <div className="education-container">
-        <h1>Education</h1>
+        <h2>Education</h2>
 
         <div className="edu-list">
           <div className="edu-item">

@@ -66,7 +66,7 @@ const BlogPost: React.FC = () => {
 
         <div className="post-header">
           <div className="post-thumbnail-large">
-            <img src={post.thumbnail} alt={post.title} />
+            <img src={post.thumbnail} alt="" />
           </div>
           <div className="post-category">{post.category}</div>
           <h1>{post.title}</h1>

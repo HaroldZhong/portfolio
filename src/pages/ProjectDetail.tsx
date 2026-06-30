@@ -41,7 +41,7 @@ const ProjectDetail: React.FC = () => {
 
       <div className="project-header">
         <div className="project-thumbnail-large">
-          <img src={project.thumbnail} alt={project.title} />
+          <img src={project.thumbnail} alt="" />
         </div>
         <h1>{project.title}</h1>
         <p className="project-role">{project.role}</p>

@@ -27,7 +27,7 @@ function Expertise() {
     return (
     <div className="container" id="expertise">
         <div className="skills-container">
-            <h1>Expertise</h1>
+            <h2>Expertise</h2>
             <div className="skills-grid-four">
                 <div className="skill">
                     <FontAwesomeIcon icon={faChartLine} size="3x"/>
