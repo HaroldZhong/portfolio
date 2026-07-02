@@ -4,6 +4,15 @@ import aiToolsFailedImg from '../images/invisible-tax-ai-tools.jpg';
 import nestedLearningImg from '../images/nested_learning.png';
 import notebooklmStorytellingImg from '../images/notebooklm-storytelling.png';
 import researchAtlasCoverImg from '../images/research-atlas-cover.png';
+import skillsProtocolsImg from '../images/skills-as-research-protocols.jpg';
+import aiEvalsImg from '../images/ai-evals-are-measurement.jpg';
+import ralphLoopImg from '../images/ralph-loop-honest-look.jpg';
+import harnessImg from '../images/building-research-agents-harness-over-model.jpg';
+import stormImg from '../images/storm-multi-perspective-research-questions.jpg';
+import obsidianVaultImg from '../images/obsidian-ai-research-vault.jpg';
+import siliconSamplingImg from '../images/silicon-sampling-promise-and-peril.jpg';
+import governanceGapImg from '../images/ai-research-governance-transparency-gap.jpg';
+import deepResearchImg from '../images/deep-research-agents-lit-review.jpg';
 
 // Import metadata
 import aiToolsFailedMeta from '../content/blogs/invisible-tax-ai-tools/metadata.json';
@@ -14,6 +23,15 @@ import nhisNhanesMeta from '../content/blogs/working-with-nhis-nhanes/metadata.j
 import nestedLearningMeta from '../content/blogs/nested-learning-why-google-wants-models-with-real-memory/metadata.json';
 import notebooklmStorytellingMeta from '../content/blogs/notebooklm-storytelling-learning/metadata.json';
 import notebooklmWorkflowMeta from '../content/blogs/notebooklm-research-workflow/metadata.json';
+import skillsProtocolsMeta from '../content/blogs/skills-as-research-protocols/metadata.json';
+import aiEvalsMeta from '../content/blogs/ai-evals-are-measurement/metadata.json';
+import ralphLoopMeta from '../content/blogs/ralph-loop-honest-look/metadata.json';
+import harnessMeta from '../content/blogs/building-research-agents-harness-over-model/metadata.json';
+import stormMeta from '../content/blogs/storm-multi-perspective-research-questions/metadata.json';
+import obsidianVaultMeta from '../content/blogs/obsidian-ai-research-vault/metadata.json';
+import siliconSamplingMeta from '../content/blogs/silicon-sampling-promise-and-peril/metadata.json';
+import governanceGapMeta from '../content/blogs/ai-research-governance-transparency-gap/metadata.json';
+import deepResearchMeta from '../content/blogs/deep-research-agents-lit-review/metadata.json';
 
 // Import markdown content  
 import aiToolsFailedContent from '../content/blogs/invisible-tax-ai-tools/content.md?raw';
@@ -24,6 +42,15 @@ import nhisNhanesContent from '../content/blogs/working-with-nhis-nhanes/content
 import nestedLearningContent from '../content/blogs/nested-learning-why-google-wants-models-with-real-memory/content.md?raw';
 import notebooklmStorytellingContent from '../content/blogs/notebooklm-storytelling-learning/content.md?raw';
 import notebooklmWorkflowContent from '../content/blogs/notebooklm-research-workflow/content.md?raw';
+import skillsProtocolsContent from '../content/blogs/skills-as-research-protocols/content.md?raw';
+import aiEvalsContent from '../content/blogs/ai-evals-are-measurement/content.md?raw';
+import ralphLoopContent from '../content/blogs/ralph-loop-honest-look/content.md?raw';
+import harnessContent from '../content/blogs/building-research-agents-harness-over-model/content.md?raw';
+import stormContent from '../content/blogs/storm-multi-perspective-research-questions/content.md?raw';
+import obsidianVaultContent from '../content/blogs/obsidian-ai-research-vault/content.md?raw';
+import siliconSamplingContent from '../content/blogs/silicon-sampling-promise-and-peril/content.md?raw';
+import governanceGapContent from '../content/blogs/ai-research-governance-transparency-gap/content.md?raw';
+import deepResearchContent from '../content/blogs/deep-research-agents-lit-review/content.md?raw';
 
 export interface BlogPost {
   slug: string;
@@ -75,6 +102,51 @@ const blogPosts: BlogPost[] = [
     ...notebooklmWorkflowMeta,
     thumbnail: researchAtlasCoverImg,
     content: notebooklmWorkflowContent
+  },
+  {
+    ...skillsProtocolsMeta,
+    thumbnail: skillsProtocolsImg,
+    content: skillsProtocolsContent
+  },
+  {
+    ...aiEvalsMeta,
+    thumbnail: aiEvalsImg,
+    content: aiEvalsContent
+  },
+  {
+    ...ralphLoopMeta,
+    thumbnail: ralphLoopImg,
+    content: ralphLoopContent
+  },
+  {
+    ...harnessMeta,
+    thumbnail: harnessImg,
+    content: harnessContent
+  },
+  {
+    ...stormMeta,
+    thumbnail: stormImg,
+    content: stormContent
+  },
+  {
+    ...obsidianVaultMeta,
+    thumbnail: obsidianVaultImg,
+    content: obsidianVaultContent
+  },
+  {
+    ...siliconSamplingMeta,
+    thumbnail: siliconSamplingImg,
+    content: siliconSamplingContent
+  },
+  {
+    ...governanceGapMeta,
+    thumbnail: governanceGapImg,
+    content: governanceGapContent
+  },
+  {
+    ...deepResearchMeta,
+    thumbnail: deepResearchImg,
+    content: deepResearchContent
   }
 ];
 
