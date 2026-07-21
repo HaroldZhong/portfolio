@@ -13,6 +13,7 @@ import obsidianVaultImg from '../images/obsidian-ai-research-vault.jpg';
 import siliconSamplingImg from '../images/silicon-sampling-promise-and-peril.jpg';
 import governanceGapImg from '../images/ai-research-governance-transparency-gap.jpg';
 import deepResearchImg from '../images/deep-research-agents-lit-review.jpg';
+import designingYourLifeImg from '../images/designing-your-life-gpt.jpg';
 
 // Import metadata
 import aiToolsFailedMeta from '../content/blogs/invisible-tax-ai-tools/metadata.json';
@@ -32,8 +33,9 @@ import obsidianVaultMeta from '../content/blogs/obsidian-ai-research-vault/metad
 import siliconSamplingMeta from '../content/blogs/silicon-sampling-promise-and-peril/metadata.json';
 import governanceGapMeta from '../content/blogs/ai-research-governance-transparency-gap/metadata.json';
 import deepResearchMeta from '../content/blogs/deep-research-agents-lit-review/metadata.json';
+import designingYourLifeMeta from '../content/blogs/designing-your-life-gpt/metadata.json';
 
-// Import markdown content  
+// Import markdown content
 import aiToolsFailedContent from '../content/blogs/invisible-tax-ai-tools/content.md?raw';
 import openaiAnthropicContent from '../content/blogs/how-700m-people-use-ai/content.md?raw';
 import promptEngineeringContent from '../content/blogs/prompt-engineering-best-practices/content.md?raw';
@@ -51,6 +53,7 @@ import obsidianVaultContent from '../content/blogs/obsidian-ai-research-vault/co
 import siliconSamplingContent from '../content/blogs/silicon-sampling-promise-and-peril/content.md?raw';
 import governanceGapContent from '../content/blogs/ai-research-governance-transparency-gap/content.md?raw';
 import deepResearchContent from '../content/blogs/deep-research-agents-lit-review/content.md?raw';
+import designingYourLifeContent from '../content/blogs/designing-your-life-gpt/content.md?raw';
 
 export interface BlogPost {
   slug: string;
@@ -147,6 +150,11 @@ const blogPosts: BlogPost[] = [
     ...deepResearchMeta,
     thumbnail: deepResearchImg,
     content: deepResearchContent
+  },
+  {
+    ...designingYourLifeMeta,
+    thumbnail: designingYourLifeImg,
+    content: designingYourLifeContent
   }
 ];
 
