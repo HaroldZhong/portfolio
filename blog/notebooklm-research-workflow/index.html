@@ -1,0 +1,301 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/portfolio/favicon.svg?v=20260630" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>My NotebookLM Research Workflow: Source-Grounded, Verifiable, Reproducible | Harold Zhong</title>
+    <meta name="description" content="The exact NotebookLM workflow I use to scope questions, build evidence corpora, synthesize findings, and verify claims before anything goes into a memo or manuscript." />
+    <meta property="og:title" content="My NotebookLM Research Workflow: Source-Grounded, Verifiable, Reproducible | Harold Zhong" />
+    <meta property="og:description" content="The exact NotebookLM workflow I use to scope questions, build evidence corpora, synthesize findings, and verify claims before anything goes into a memo or manuscript." />
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://haroldzhong.github.io/portfolio/blog/notebooklm-research-workflow/" />
+    <meta property="og:image" content="https://haroldzhong.github.io/portfolio/assets/research-atlas-cover-CVSwfkUX.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="My NotebookLM Research Workflow: Source-Grounded, Verifiable, Reproducible | Harold Zhong" />
+    <meta name="twitter:description" content="The exact NotebookLM workflow I use to scope questions, build evidence corpora, synthesize findings, and verify claims before anything goes into a memo or manuscript." />
+    <meta name="twitter:image" content="https://haroldzhong.github.io/portfolio/assets/research-atlas-cover-CVSwfkUX.png" />
+    <link rel="canonical" href="https://haroldzhong.github.io/portfolio/blog/notebooklm-research-workflow/" />
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "Harold Zhong",
+        "url": "https://haroldzhong.github.io/portfolio/",
+        "jobTitle": "Applied AI Engineer & Researcher",
+        "alumniOf": {
+          "@type": "CollegeOrUniversity",
+          "name": "The University of Texas at Austin"
+        },
+        "knowsAbout": [
+          "Health inequality",
+          "Survey methods",
+          "Causal inference",
+          "Applied AI",
+          "Reproducible research"
+        ],
+        "sameAs": [
+          "https://github.com/HaroldZhong",
+          "https://linkedin.com/in/haocong-zhong"
+        ]
+      }
+    </script>
+    
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-JTYMBZ8XV3"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-JTYMBZ8XV3');
+    </script>
+    
+    <style>
+      /* Prevent scroll restoration flash */
+      html {
+        scroll-behavior: auto !important;
+      }
+    </style>
+    <script type="module" crossorigin src="/portfolio/assets/index-CMK0EGAU.js"></script>
+    <link rel="stylesheet" crossorigin href="/portfolio/assets/index-CvUb64Uj.css">
+  </head>
+  <body>
+    <div id="root"><div class="main-container dark-mode"><a href="#main-content" class="skip-link">Skip to main content</a><style data-emotion="css k008qs">.css-k008qs{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;}</style><div class="MuiBox-root css-k008qs"><style data-emotion="css-global o6gwfi">html{-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;box-sizing:border-box;-webkit-text-size-adjust:100%;}*,*::before,*::after{box-sizing:inherit;}strong,b{font-weight:700;}body{margin:0;color:rgba(0, 0, 0, 0.87);font-family:"Roboto","Helvetica","Arial",sans-serif;font-weight:400;font-size:1rem;line-height:1.5;letter-spacing:0.00938em;background-color:#fff;}@media print{body{background-color:#fff;}}body::backdrop{background-color:#fff;}</style><style data-emotion="css 13x2oq7">.css-13x2oq7{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-flex-direction:column;-ms-flex-direction:column;flex-direction:column;width:100%;box-sizing:border-box;-webkit-flex-shrink:0;-ms-flex-negative:0;flex-shrink:0;position:fixed;z-index:1100;top:0;left:auto;right:0;background-color:#1976d2;color:#fff;}@media print{.css-13x2oq7{position:absolute;}}</style><style data-emotion="css 5poeop">.css-5poeop{background-color:#fff;color:rgba(0, 0, 0, 0.87);-webkit-transition:box-shadow 300ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;transition:box-shadow 300ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;box-shadow:0px 2px 4px -1px rgba(0,0,0,0.2),0px 4px 5px 0px rgba(0,0,0,0.14),0px 1px 10px 0px rgba(0,0,0,0.12);display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-flex-direction:column;-ms-flex-direction:column;flex-direction:column;width:100%;box-sizing:border-box;-webkit-flex-shrink:0;-ms-flex-negative:0;flex-shrink:0;position:fixed;z-index:1100;top:0;left:auto;right:0;background-color:#1976d2;color:#fff;}@media print{.css-5poeop{position:absolute;}}</style><nav class="MuiPaper-root MuiPaper-elevation MuiPaper-elevation4 MuiAppBar-root MuiAppBar-colorPrimary MuiAppBar-positionFixed navbar-fixed-top mui-fixed css-5poeop" id="navigation"><style data-emotion="css i6s8oy">.css-i6s8oy{position:relative;display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-align-items:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;padding-left:16px;padding-right:16px;min-height:56px;}@media (min-width:600px){.css-i6s8oy{padding-left:24px;padding-right:24px;}}@media (min-width:0px){@media (orientation: landscape){.css-i6s8oy{min-height:48px;}}}@media (min-width:600px){.css-i6s8oy{min-height:64px;}}</style><div class="MuiToolbar-root MuiToolbar-gutters MuiToolbar-regular navigation-bar css-i6s8oy"><style data-emotion="css hbbbqy">.css-hbbbqy{text-align:center;-webkit-flex:0 0 auto;-ms-flex:0 0 auto;flex:0 0 auto;font-size:1.5rem;padding:8px;border-radius:50%;overflow:visible;color:rgba(0, 0, 0, 0.54);-webkit-transition:background-color 150ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;transition:background-color 150ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;margin-left:-12px;color:inherit;margin-right:16px;}.css-hbbbqy:hover{background-color:rgba(0, 0, 0, 0.04);}@media (hover: none){.css-hbbbqy:hover{background-color:transparent;}}.css-hbbbqy.Mui-disabled{background-color:transparent;color:rgba(0, 0, 0, 0.26);}@media (min-width:0px){.css-hbbbqy{display:-webkit-inline-box;display:-webkit-inline-flex;display:-ms-inline-flexbox;display:inline-flex;}}@media (min-width:1200px){.css-hbbbqy{display:none;}}</style><style data-emotion="css 1m98egf">.css-1m98egf{display:-webkit-inline-box;display:-webkit-inline-flex;display:-ms-inline-flexbox;display:inline-flex;-webkit-align-items:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;-webkit-box-pack:center;-ms-flex-pack:center;-webkit-justify-content:center;justify-content:center;position:relative;box-sizing:border-box;-webkit-tap-highlight-color:transparent;background-color:transparent;outline:0;border:0;margin:0;border-radius:0;padding:0;cursor:pointer;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none;vertical-align:middle;-moz-appearance:none;-webkit-appearance:none;-webkit-text-decoration:none;text-decoration:none;color:inherit;text-align:center;-webkit-flex:0 0 auto;-ms-flex:0 0 auto;flex:0 0 auto;font-size:1.5rem;padding:8px;border-radius:50%;overflow:visible;color:rgba(0, 0, 0, 0.54);-webkit-transition:background-color 150ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;transition:background-color 150ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;margin-left:-12px;color:inherit;margin-right:16px;}.css-1m98egf::-moz-focus-inner{border-style:none;}.css-1m98egf.Mui-disabled{pointer-events:none;cursor:default;}@media print{.css-1m98egf{-webkit-print-color-adjust:exact;color-adjust:exact;}}.css-1m98egf:hover{background-color:rgba(0, 0, 0, 0.04);}@media (hover: none){.css-1m98egf:hover{background-color:transparent;}}.css-1m98egf.Mui-disabled{background-color:transparent;color:rgba(0, 0, 0, 0.26);}@media (min-width:0px){.css-1m98egf{display:-webkit-inline-box;display:-webkit-inline-flex;display:-ms-inline-flexbox;display:inline-flex;}}@media (min-width:1200px){.css-1m98egf{display:none;}}</style><button class="MuiButtonBase-root MuiIconButton-root MuiIconButton-colorInherit MuiIconButton-edgeStart MuiIconButton-sizeMedium css-1m98egf" tabindex="0" type="button" aria-label="Open navigation" aria-expanded="false" aria-controls="mobile-navigation"><style data-emotion="css vubbuv">.css-vubbuv{-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none;width:1em;height:1em;display:inline-block;fill:currentColor;-webkit-flex-shrink:0;-ms-flex-negative:0;flex-shrink:0;-webkit-transition:fill 200ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;transition:fill 200ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;font-size:1.5rem;}</style><svg class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-vubbuv" focusable="false" aria-hidden="true" viewBox="0 0 24 24" data-testid="MenuIcon"><path d="M3 18h18v-2H3zm0-5h18v-2H3zm0-7v2h18V6z"></path></svg></button><a class="nav-brand" href="/portfolio">Harold Zhong</a><style data-emotion="css 1iin7lz">.css-1iin7lz{gap:8px;}@media (min-width:0px){.css-1iin7lz{display:none;}}@media (min-width:1200px){.css-1iin7lz{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;}}</style><div class="MuiBox-root css-1iin7lz"><style data-emotion="css 11qrfta">.css-11qrfta{font-family:"Roboto","Helvetica","Arial",sans-serif;font-weight:500;font-size:0.875rem;line-height:1.75;letter-spacing:0.02857em;text-transform:uppercase;min-width:64px;padding:6px 8px;border-radius:4px;-webkit-transition:background-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,border-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;transition:background-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,border-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;color:#1976d2;}.css-11qrfta:hover{-webkit-text-decoration:none;text-decoration:none;background-color:rgba(25, 118, 210, 0.04);}@media (hover: none){.css-11qrfta:hover{background-color:transparent;}}.css-11qrfta.Mui-disabled{color:rgba(0, 0, 0, 0.26);}</style><style data-emotion="css 1ujsas3">.css-1ujsas3{display:-webkit-inline-box;display:-webkit-inline-flex;display:-ms-inline-flexbox;display:inline-flex;-webkit-align-items:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;-webkit-box-pack:center;-ms-flex-pack:center;-webkit-justify-content:center;justify-content:center;position:relative;box-sizing:border-box;-webkit-tap-highlight-color:transparent;background-color:transparent;outline:0;border:0;margin:0;border-radius:0;padding:0;cursor:pointer;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none;vertical-align:middle;-moz-appearance:none;-webkit-appearance:none;-webkit-text-decoration:none;text-decoration:none;color:inherit;font-family:"Roboto","Helvetica","Arial",sans-serif;font-weight:500;font-size:0.875rem;line-height:1.75;letter-spacing:0.02857em;text-transform:uppercase;min-width:64px;padding:6px 8px;border-radius:4px;-webkit-transition:background-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,border-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;transition:background-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,border-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;color:#1976d2;}.css-1ujsas3::-moz-focus-inner{border-style:none;}.css-1ujsas3.Mui-disabled{pointer-events:none;cursor:default;}@media print{.css-1ujsas3{-webkit-print-color-adjust:exact;color-adjust:exact;}}.css-1ujsas3:hover{-webkit-text-decoration:none;text-decoration:none;background-color:rgba(25, 118, 210, 0.04);}@media (hover: none){.css-1ujsas3:hover{background-color:transparent;}}.css-1ujsas3.Mui-disabled{color:rgba(0, 0, 0, 0.26);}</style><a class="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-colorPrimary MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-colorPrimary nav-button css-1ujsas3" tabindex="0" href="/portfolio">Home</a><a class="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-colorPrimary MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-colorPrimary nav-button css-1ujsas3" tabindex="0" href="/portfolio/projects">Projects</a><a class="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-colorPrimary MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-colorPrimary nav-button css-1ujsas3" tabindex="0" href="/portfolio#history">Experience</a><a class="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-colorPrimary MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-colorPrimary nav-button css-1ujsas3" tabindex="0" href="/portfolio#expertise">Expertise</a><a class="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-colorPrimary MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-colorPrimary nav-button css-1ujsas3" tabindex="0" href="/portfolio#education">Education</a><a class="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-colorPrimary MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-colorPrimary nav-button css-1ujsas3" tabindex="0" href="/portfolio#publications">Publications</a><a class="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-colorPrimary MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-colorPrimary nav-button active css-1ujsas3" tabindex="0" aria-current="page" href="/portfolio/blog">Articles</a><a class="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-colorPrimary MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-colorPrimary nav-button css-1ujsas3" tabindex="0" href="/portfolio#contact">Contact</a></div><style data-emotion="css 1k24sg9">.css-1k24sg9{text-align:center;-webkit-flex:0 0 auto;-ms-flex:0 0 auto;flex:0 0 auto;font-size:1.5rem;padding:8px;border-radius:50%;overflow:visible;color:rgba(0, 0, 0, 0.54);-webkit-transition:background-color 150ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;transition:background-color 150ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;color:inherit;}.css-1k24sg9:hover{background-color:rgba(0, 0, 0, 0.04);}@media (hover: none){.css-1k24sg9:hover{background-color:transparent;}}.css-1k24sg9.Mui-disabled{background-color:transparent;color:rgba(0, 0, 0, 0.26);}@media (min-width:1200px){.css-1k24sg9{margin-left:8px;}}</style><style data-emotion="css 1ebv77i">.css-1ebv77i{display:-webkit-inline-box;display:-webkit-inline-flex;display:-ms-inline-flexbox;display:inline-flex;-webkit-align-items:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;-webkit-box-pack:center;-ms-flex-pack:center;-webkit-justify-content:center;justify-content:center;position:relative;box-sizing:border-box;-webkit-tap-highlight-color:transparent;background-color:transparent;outline:0;border:0;margin:0;border-radius:0;padding:0;cursor:pointer;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none;vertical-align:middle;-moz-appearance:none;-webkit-appearance:none;-webkit-text-decoration:none;text-decoration:none;color:inherit;text-align:center;-webkit-flex:0 0 auto;-ms-flex:0 0 auto;flex:0 0 auto;font-size:1.5rem;padding:8px;border-radius:50%;overflow:visible;color:rgba(0, 0, 0, 0.54);-webkit-transition:background-color 150ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;transition:background-color 150ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;color:inherit;}.css-1ebv77i::-moz-focus-inner{border-style:none;}.css-1ebv77i.Mui-disabled{pointer-events:none;cursor:default;}@media print{.css-1ebv77i{-webkit-print-color-adjust:exact;color-adjust:exact;}}.css-1ebv77i:hover{background-color:rgba(0, 0, 0, 0.04);}@media (hover: none){.css-1ebv77i:hover{background-color:transparent;}}.css-1ebv77i.Mui-disabled{background-color:transparent;color:rgba(0, 0, 0, 0.26);}@media (min-width:1200px){.css-1ebv77i{margin-left:8px;}}</style><button class="MuiButtonBase-root MuiIconButton-root MuiIconButton-colorInherit MuiIconButton-sizeMedium css-1ebv77i" tabindex="0" type="button" aria-label="Switch to light mode"><svg class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-vubbuv" focusable="false" aria-hidden="true" viewBox="0 0 24 24" data-testid="LightModeIcon"><path d="M12 7c-2.76 0-5 2.24-5 5s2.24 5 5 5 5-2.24 5-5-2.24-5-5-5M2 13h2c.55 0 1-.45 1-1s-.45-1-1-1H2c-.55 0-1 .45-1 1s.45 1 1 1m18 0h2c.55 0 1-.45 1-1s-.45-1-1-1h-2c-.55 0-1 .45-1 1s.45 1 1 1M11 2v2c0 .55.45 1 1 1s1-.45 1-1V2c0-.55-.45-1-1-1s-1 .45-1 1m0 18v2c0 .55.45 1 1 1s1-.45 1-1v-2c0-.55-.45-1-1-1s-1 .45-1 1M5.99 4.58c-.39-.39-1.03-.39-1.41 0-.39.39-.39 1.03 0 1.41l1.06 1.06c.39.39 1.03.39 1.41 0s.39-1.03 0-1.41zm12.37 12.37c-.39-.39-1.03-.39-1.41 0-.39.39-.39 1.03 0 1.41l1.06 1.06c.39.39 1.03.39 1.41 0 .39-.39.39-1.03 0-1.41zm1.06-10.96c.39-.39.39-1.03 0-1.41-.39-.39-1.03-.39-1.41 0l-1.06 1.06c-.39.39-.39 1.03 0 1.41s1.03.39 1.41 0zM7.05 18.36c.39-.39.39-1.03 0-1.41-.39-.39-1.03-.39-1.41 0l-1.06 1.06c-.39.39-.39 1.03 0 1.41s1.03.39 1.41 0z"></path></svg></button></div></nav><nav><style data-emotion="css 1wlgban">.css-1wlgban{z-index:1200;}@media (min-width:0px){.css-1wlgban{display:block;}}@media (min-width:1200px){.css-1wlgban{display:none;}}.css-1wlgban .MuiDrawer-paper{box-sizing:border-box;width:240px;}</style></nav></div><main id="main-content" tabindex="-1"><div class="blog-post-page"><a class="back-button" href="/portfolio/blog"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-left"><path d="m12 19-7-7 7-7"></path><path d="M19 12H5"></path></svg> Back to All Articles</a><header class="post-header"><div class="post-category">Research Methods</div><h1>My NotebookLM Research Workflow: Source-Grounded, Verifiable, Reproducible</h1><div class="post-meta"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-calendar"><rect width="18" height="18" x="3" y="4" rx="2" ry="2"></rect><line x1="16" x2="16" y1="2" y2="6"></line><line x1="8" x2="8" y1="2" y2="6"></line><line x1="3" x2="21" y1="10" y2="10"></line></svg><time dateTime="2026-02-11">February 11, 2026</time><span>· <!-- -->7<!-- --> min read</span></div></header><details class="post-toc"><summary>In this article</summary><nav aria-label="Article contents"><ol><li><a href="#section-1">Why I Needed a Workflow</a></li><li><a href="#section-2">What NotebookLM Is Great At (and Where It Can Still Fail)</a></li><li><a href="#section-3">Phase 0: Reproducibility Setup Before the First Upload</a></li><li><a href="#section-4">My Core Principle: Information Collision</a></li><li><a href="#section-5">The 5-Phase Workflow I Actually Run</a></li><li><a href="#section-6">Quality-Control Gates I Enforce</a></li><li><a href="#section-7">My Non-Negotiable Verification Rules</a></li><li><a href="#section-8">The Ouroboros Loop: Distill and Reuse Without Losing Provenance</a></li><li><a href="#section-9">My Artifact Pack for Every Serious NotebookLM Project</a></li><li><a href="#section-10">Where This Workflow Is Strong, and Where I Would Not Use It</a></li><li><a href="#section-11">My Quick-Start Checklist</a></li></ol></nav></details><div class="post-content"><h1>My NotebookLM Research Workflow: Source-Grounded, Verifiable, Reproducible</h1>
+<p>I use NotebookLM a lot, but not as a magic summarizer.</p>
+<p>I use it as a structured research workspace where every useful claim should still point back to real source text. Over time, I realized that the tool only becomes reliable when I run it with a clear protocol. Without that protocol, it is easy to generate polished output that sounds right but is hard to defend.</p>
+<p>This post is the exact workflow I use now for literature reviews, policy scans, technical briefs, and early-stage research scoping. It is long on purpose. I want this to be practical enough that you can run it in your own project immediately.</p>
+<h2 id="section-1" tabindex="-1">Why I Needed a Workflow</h2>
+<p>My old pattern was familiar: upload papers, ask broad questions, copy the cleanest summary, then move on too quickly. It felt productive, but I would later hit the same failures:</p>
+<ul>
+<li>claims that were technically attributed but over-interpreted</li>
+<li>missing counterarguments because I uploaded only one source type</li>
+<li>weak reproducibility because file naming and note structure were inconsistent</li>
+<li>no clean audit trail when I needed to defend how I reached a conclusion</li>
+</ul>
+<p>Once I started treating NotebookLM sessions like mini research protocols instead of chat sessions, quality improved a lot.</p>
+<h2 id="section-2" tabindex="-1">What NotebookLM Is Great At (and Where It Can Still Fail)</h2>
+<p>What works well for me:</p>
+<ul>
+<li>source-grounded Q and A with clickable citations</li>
+<li>rapid cross-document comparison</li>
+<li>fast draft artifacts (reports, mind maps, audio overviews)</li>
+<li>explain-and-teach workflows when I use Learning Guide mode</li>
+</ul>
+<p>Where I stay cautious:</p>
+<ul>
+<li>it can still overstate certainty</li>
+<li>it can compress nuance in conflicting findings</li>
+<li>it can convert context-specific claims into broad statements</li>
+<li>it can create &quot;clean&quot; synthesis language that hides unresolved disagreement</li>
+</ul>
+<p>So I treat every generated output as a draft that needs verification, not as final evidence.</p>
+<h2 id="section-3" tabindex="-1">Phase 0: Reproducibility Setup Before the First Upload</h2>
+<p>Before I upload anything, I create a pinned note called <code>README - Notebook Protocol</code>.</p>
+<p>Inside it, I define:</p>
+<ul>
+<li>research question and scope boundary</li>
+<li>time window</li>
+<li>inclusion and exclusion rules</li>
+<li>evidence grading rules (high / medium / low confidence)</li>
+<li>team roles if I am collaborating</li>
+</ul>
+<p>I also standardize naming so my notebook stays searchable and auditable.</p>
+<pre><code class="language-text">Notebook name:
+{project} | {topic} | v{major.minor} | {YYYY-MM-DD}
+
+Source naming:
+A01_authority_title_year.pdf
+E01_empirical_title_year.pdf
+R01_review_title_year.pdf
+C01_critique_title_year.pdf
+
+Saved Notes naming:
+N01_source_inventory
+N02_key_definitions
+N03_conflicts_C1_to_Cn
+N04_gap_audit
+N05_synthesis_outline
+</code></pre>
+<p>This takes a few minutes up front and saves hours later.</p>
+<h2 id="section-4" tabindex="-1">My Core Principle: Information Collision</h2>
+<p>If all sources agree because they come from the same ecosystem, I do not trust the synthesis yet.</p>
+<p>For every major claim area, I force source diversity:</p>
+<ul>
+<li>at least one authority source (guideline, standard, or official report)</li>
+<li>empirical papers</li>
+<li>industry or practitioner synthesis</li>
+<li>one critique or opposing viewpoint</li>
+</ul>
+<p>I call this information collision. It forces the model to compare evidence instead of paraphrasing one narrative in different words.</p>
+<p>When NotebookLM source caps become a bottleneck, I merge short documents into a larger PDF and keep an external page index. That lets me preserve retrieval coverage while still recovering source-level traceability.</p>
+<h2 id="section-5" tabindex="-1">The 5-Phase Workflow I Actually Run</h2>
+<h3>1) Setup and Scoping</h3>
+<p>What I do:</p>
+<ul>
+<li>generate candidate research questions</li>
+<li>choose one with explicit acceptance criteria</li>
+<li>map essential subquestions that must be answered before synthesis</li>
+</ul>
+<p>What I need before moving forward:</p>
+<ul>
+<li>one scoped, testable question</li>
+<li>subquestion map</li>
+<li>rubric for judging answer quality</li>
+</ul>
+<h3>2) Corpus Building and Comprehension</h3>
+<p>What I do:</p>
+<ul>
+<li>build a source inventory table with type tags and intended use</li>
+<li>check merged-PDF indexes if I used &quot;mega PDFs&quot;</li>
+<li>run teach-back prompts (Feynman style) to stress my own understanding</li>
+<li>run a comprehension quiz grounded only in uploaded material</li>
+</ul>
+<p>What I watch for:</p>
+<ul>
+<li>terms I thought I understood but cannot explain clearly</li>
+<li>source clusters where evidence is thin</li>
+<li>overloaded sections where everything cites one dominant source</li>
+</ul>
+<p>Output from this phase:</p>
+<ul>
+<li><code>01_source_inventory.csv</code></li>
+<li><code>N02_key_definitions</code></li>
+<li>correction notes for misunderstanding or ambiguity</li>
+</ul>
+<h3>3) Extraction and Critical Analysis</h3>
+<p>What I do:</p>
+<ul>
+<li>run methods-first extraction prompts (claims, design, limitations, boundary conditions)</li>
+<li>run decision-memo extraction for my concrete objective</li>
+<li>map conflict clusters: Claim A vs Claim B, supporting evidence, reason for disagreement</li>
+<li>run gap audit for missing perspectives or assumptions</li>
+</ul>
+<p>What I require in each extraction note:</p>
+<ul>
+<li>claim text</li>
+<li>direct supporting evidence</li>
+<li>citation anchor</li>
+<li>uncertainty flag</li>
+<li>limitation note</li>
+</ul>
+<p>Output from this phase:</p>
+<ul>
+<li><code>02_conflict_matrix.md</code></li>
+<li><code>03_gap_audit.md</code></li>
+<li>evidence notes that are concise but citation-heavy</li>
+</ul>
+<h3>4) Synthesis and Iterative Depth</h3>
+<p>What I do:</p>
+<ul>
+<li>draft a citation-anchored outline first, not a polished narrative</li>
+<li>ask for hidden cross-source connections</li>
+<li>generate a mind map seed to test structure</li>
+<li>distill one technical brief that can be reused as a second-generation source</li>
+</ul>
+<p>Important rule:</p>
+<p>I do not flatten disagreement too early. If two evidence streams conflict, the conflict stays visible in the outline until I can justify a resolution.</p>
+<p>Output from this phase:</p>
+<ul>
+<li><code>04_synthesis_outline.md</code></li>
+<li>structured argument map</li>
+<li>draft brief with explicit uncertainty labeling</li>
+</ul>
+<h3>5) Verification and Communication</h3>
+<p>What I do:</p>
+<ul>
+<li>run an attribution stress test on key claims</li>
+<li>build a claim-to-citation ledger with confidence ratings</li>
+<li>draft communication outputs (memo/report/audio script) from verified claims only</li>
+</ul>
+<p>Verification threshold before sharing:</p>
+<ul>
+<li>key claims have direct citation checks</li>
+<li>interpretive claims are explicitly labeled as interpretation</li>
+<li>unresolved uncertainty is listed, not hidden</li>
+</ul>
+<p>Output from this phase:</p>
+<ul>
+<li><code>verification_log.md</code></li>
+<li>claim ledger table</li>
+<li>external-facing draft with a &quot;what to verify&quot; section</li>
+</ul>
+<h2 id="section-6" tabindex="-1">Quality-Control Gates I Enforce</h2>
+<p>I use explicit gates so I do not move to the next phase just because the text looks good.</p>
+<ol>
+<li>Framing gate: question is specific and rubric is defined.</li>
+<li>Inventory gate: every source has type tags and subquestion mapping.</li>
+<li>Comprehension gate: definitions are source-grounded and misunderstandings are corrected.</li>
+<li>Extraction gate: every bullet in extraction notes has a citation.</li>
+<li>Conflict gate: disagreements are documented with competing evidence.</li>
+<li>Gap gate: blind spots are identified with a concrete next-source plan.</li>
+<li>Synthesis gate: every major outline point has citation anchors.</li>
+<li>Verification gate: key claims are citation-checked and uncertainty is explicit.</li>
+<li>Export gate: final deliverable includes version, verification notes, and follow-up checks.</li>
+</ol>
+<p>These gates keep me honest when timelines are tight.</p>
+<h2 id="section-7" tabindex="-1">My Non-Negotiable Verification Rules</h2>
+<ul>
+<li>I click citations for every key claim.</li>
+<li>If I cannot locate a cited passage quickly, I mark the claim unverified or remove it.</li>
+<li>I never present interpretive language as established fact.</li>
+<li>I keep a running &quot;known uncertainties&quot; list in every deliverable.</li>
+<li>I do one last attribution stress pass before anything external goes out.</li>
+</ul>
+<p>This sounds strict, but it is much faster than repairing trust after an avoidable error.</p>
+<h2 id="section-8" tabindex="-1">The Ouroboros Loop: Distill and Reuse Without Losing Provenance</h2>
+<p>One of my favorite moves is to convert high-value notes into second-generation sources so I can keep slot usage efficient. I call this the Ouroboros loop: notes become sources, then sources generate better notes.</p>
+<p>But I only do this with guardrails:</p>
+<ul>
+<li>each distilled note must keep traceable citations back to original sources</li>
+<li>derived notes are marked as derived, never treated as primary evidence</li>
+<li>if a distilled note becomes too abstract, I keep both versions and preserve the detailed one</li>
+</ul>
+<p>This lets me build depth over time without restarting from zero every session.</p>
+<h2 id="section-9" tabindex="-1">My Artifact Pack for Every Serious NotebookLM Project</h2>
+<p>I try to end every notebook with a reusable package:</p>
+<ul>
+<li><code>00_readme_protocol.md</code></li>
+<li><code>01_source_inventory.csv</code></li>
+<li><code>02_conflict_matrix.md</code></li>
+<li><code>03_gap_audit.md</code></li>
+<li><code>04_synthesis_outline.md</code></li>
+<li><code>05_final_deliverable.md</code> or <code>.docx</code></li>
+<li><code>verification_log.md</code></li>
+</ul>
+<p>When I keep this structure consistent, future me (or a teammate) can pick up the project quickly and understand exactly how conclusions were produced.</p>
+<h2 id="section-10" tabindex="-1">Where This Workflow Is Strong, and Where I Would Not Use It</h2>
+<p>Strong fit:</p>
+<ul>
+<li>literature reviews</li>
+<li>policy interpretation</li>
+<li>technical briefing</li>
+<li>stakeholder memo development</li>
+<li>early-stage landscape mapping</li>
+</ul>
+<p>I would not use this workflow as-is when:</p>
+<ul>
+<li>primary evidence is not document-based</li>
+<li>real-time or high-frequency data is required</li>
+<li>citation verification cannot be performed</li>
+<li>teams want instant output without verification capacity</li>
+</ul>
+<p>In those cases, I still borrow pieces of this protocol, but I do not pretend NotebookLM alone is enough.</p>
+<h2 id="section-11" tabindex="-1">My Quick-Start Checklist</h2>
+<p>If you want to test this workflow this week:</p>
+<ol>
+<li>Pick one narrow research question.</li>
+<li>Create the README protocol note first.</li>
+<li>Upload a deliberately mixed source set.</li>
+<li>Run extraction and conflict mapping before writing synthesis.</li>
+<li>Verify key claims with citation clicks before sharing anything.</li>
+</ol>
+<p>That is enough to feel the difference between &quot;fast summary&quot; and &quot;defensible research draft.&quot;</p>
+<p>If you want the structured version of this workflow and related prompt packs, I published them in Research Atlas:</p>
+<ul>
+<li>Workflow: <a href="https://researchatlas.info/workflows/nlm-research-workflow">NotebookLM Source-Grounded Research Workflow</a></li>
+<li>Guide: <a href="https://researchatlas.info/guides/nlm-research-workflow">NotebookLM Research Workflow Guide</a></li>
+<li>Prompt library query: <a href="https://researchatlas.info/library?q=NotebookLM">NotebookLM prompts</a></li>
+</ul>
+<p>The short version of this whole post: NotebookLM becomes much more useful when I stop asking &quot;What can this tool generate?&quot; and start asking &quot;What process makes these outputs trustworthy?&quot;</p></div></div></main><footer><div><a href="https://github.com/HaroldZhong" target="_blank" rel="noreferrer" aria-label="GitHub"><style data-emotion="css vubbuv">.css-vubbuv{-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none;width:1em;height:1em;display:inline-block;fill:currentColor;-webkit-flex-shrink:0;-ms-flex-negative:0;flex-shrink:0;-webkit-transition:fill 200ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;transition:fill 200ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;font-size:1.5rem;}</style><svg class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-vubbuv" focusable="false" aria-hidden="true" viewBox="0 0 24 24" data-testid="GitHubIcon"><path d="M12 1.27a11 11 0 00-3.48 21.46c.55.09.73-.28.73-.55v-1.84c-3.03.64-3.67-1.46-3.67-1.46-.55-1.29-1.28-1.65-1.28-1.65-.92-.65.1-.65.1-.65 1.1 0 1.73 1.1 1.73 1.1.92 1.65 2.57 1.2 3.21.92a2 2 0 01.64-1.47c-2.47-.27-5.04-1.19-5.04-5.5 0-1.1.46-2.1 1.2-2.84a3.76 3.76 0 010-2.93s.91-.28 3.11 1.1c1.8-.49 3.7-.49 5.5 0 2.1-1.38 3.02-1.1 3.02-1.1a3.76 3.76 0 010 2.93c.83.74 1.2 1.74 1.2 2.94 0 4.21-2.57 5.13-5.04 5.4.45.37.82.92.82 2.02v3.03c0 .27.1.64.73.55A11 11 0 0012 1.27"></path></svg></a><a href="https://linkedin.com/in/haocong-zhong" target="_blank" rel="noreferrer" aria-label="LinkedIn"><style data-emotion="css vubbuv">.css-vubbuv{-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none;width:1em;height:1em;display:inline-block;fill:currentColor;-webkit-flex-shrink:0;-ms-flex-negative:0;flex-shrink:0;-webkit-transition:fill 200ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;transition:fill 200ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;font-size:1.5rem;}</style><svg class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-vubbuv" focusable="false" aria-hidden="true" viewBox="0 0 24 24" data-testid="LinkedInIcon"><path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.32 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.79M6.88 8.56a1.68 1.68 0 0 0 1.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 0 0-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.5v8.37h2.77z"></path></svg></a></div><p>Designed &amp; built by Harold with 💜</p></footer></div></div>
+  <script id="article-content" type="application/json">{"slug":"notebooklm-research-workflow","content":"# My NotebookLM Research Workflow: Source-Grounded, Verifiable, Reproducible\n\nI use NotebookLM a lot, but not as a magic summarizer.\n\nI use it as a structured research workspace where every useful claim should still point back to real source text. Over time, I realized that the tool only becomes reliable when I run it with a clear protocol. Without that protocol, it is easy to generate polished output that sounds right but is hard to defend.\n\nThis post is the exact workflow I use now for literature reviews, policy scans, technical briefs, and early-stage research scoping. It is long on purpose. I want this to be practical enough that you can run it in your own project immediately.\n\n## Why I Needed a Workflow\n\nMy old pattern was familiar: upload papers, ask broad questions, copy the cleanest summary, then move on too quickly. It felt productive, but I would later hit the same failures:\n\n- claims that were technically attributed but over-interpreted\n- missing counterarguments because I uploaded only one source type\n- weak reproducibility because file naming and note structure were inconsistent\n- no clean audit trail when I needed to defend how I reached a conclusion\n\nOnce I started treating NotebookLM sessions like mini research protocols instead of chat sessions, quality improved a lot.\n\n## What NotebookLM Is Great At (and Where It Can Still Fail)\n\nWhat works well for me:\n\n- source-grounded Q and A with clickable citations\n- rapid cross-document comparison\n- fast draft artifacts (reports, mind maps, audio overviews)\n- explain-and-teach workflows when I use Learning Guide mode\n\nWhere I stay cautious:\n\n- it can still overstate certainty\n- it can compress nuance in conflicting findings\n- it can convert context-specific claims into broad statements\n- it can create \"clean\" synthesis language that hides unresolved disagreement\n\nSo I treat every generated output as a draft that needs verification, not as final evidence.\n\n## Phase 0: Reproducibility Setup Before the First Upload\n\nBefore I upload anything, I create a pinned note called `README - Notebook Protocol`.\n\nInside it, I define:\n\n- research question and scope boundary\n- time window\n- inclusion and exclusion rules\n- evidence grading rules (high / medium / low confidence)\n- team roles if I am collaborating\n\nI also standardize naming so my notebook stays searchable and auditable.\n\n```text\nNotebook name:\n{project} | {topic} | v{major.minor} | {YYYY-MM-DD}\n\nSource naming:\nA01_authority_title_year.pdf\nE01_empirical_title_year.pdf\nR01_review_title_year.pdf\nC01_critique_title_year.pdf\n\nSaved Notes naming:\nN01_source_inventory\nN02_key_definitions\nN03_conflicts_C1_to_Cn\nN04_gap_audit\nN05_synthesis_outline\n```\n\nThis takes a few minutes up front and saves hours later.\n\n## My Core Principle: Information Collision\n\nIf all sources agree because they come from the same ecosystem, I do not trust the synthesis yet.\n\nFor every major claim area, I force source diversity:\n\n- at least one authority source (guideline, standard, or official report)\n- empirical papers\n- industry or practitioner synthesis\n- one critique or opposing viewpoint\n\nI call this information collision. It forces the model to compare evidence instead of paraphrasing one narrative in different words.\n\nWhen NotebookLM source caps become a bottleneck, I merge short documents into a larger PDF and keep an external page index. That lets me preserve retrieval coverage while still recovering source-level traceability.\n\n## The 5-Phase Workflow I Actually Run\n\n### 1) Setup and Scoping\n\nWhat I do:\n\n- generate candidate research questions\n- choose one with explicit acceptance criteria\n- map essential subquestions that must be answered before synthesis\n\nWhat I need before moving forward:\n\n- one scoped, testable question\n- subquestion map\n- rubric for judging answer quality\n\n### 2) Corpus Building and Comprehension\n\nWhat I do:\n\n- build a source inventory table with type tags and intended use\n- check merged-PDF indexes if I used \"mega PDFs\"\n- run teach-back prompts (Feynman style) to stress my own understanding\n- run a comprehension quiz grounded only in uploaded material\n\nWhat I watch for:\n\n- terms I thought I understood but cannot explain clearly\n- source clusters where evidence is thin\n- overloaded sections where everything cites one dominant source\n\nOutput from this phase:\n\n- `01_source_inventory.csv`\n- `N02_key_definitions`\n- correction notes for misunderstanding or ambiguity\n\n### 3) Extraction and Critical Analysis\n\nWhat I do:\n\n- run methods-first extraction prompts (claims, design, limitations, boundary conditions)\n- run decision-memo extraction for my concrete objective\n- map conflict clusters: Claim A vs Claim B, supporting evidence, reason for disagreement\n- run gap audit for missing perspectives or assumptions\n\nWhat I require in each extraction note:\n\n- claim text\n- direct supporting evidence\n- citation anchor\n- uncertainty flag\n- limitation note\n\nOutput from this phase:\n\n- `02_conflict_matrix.md`\n- `03_gap_audit.md`\n- evidence notes that are concise but citation-heavy\n\n### 4) Synthesis and Iterative Depth\n\nWhat I do:\n\n- draft a citation-anchored outline first, not a polished narrative\n- ask for hidden cross-source connections\n- generate a mind map seed to test structure\n- distill one technical brief that can be reused as a second-generation source\n\nImportant rule:\n\nI do not flatten disagreement too early. If two evidence streams conflict, the conflict stays visible in the outline until I can justify a resolution.\n\nOutput from this phase:\n\n- `04_synthesis_outline.md`\n- structured argument map\n- draft brief with explicit uncertainty labeling\n\n### 5) Verification and Communication\n\nWhat I do:\n\n- run an attribution stress test on key claims\n- build a claim-to-citation ledger with confidence ratings\n- draft communication outputs (memo/report/audio script) from verified claims only\n\nVerification threshold before sharing:\n\n- key claims have direct citation checks\n- interpretive claims are explicitly labeled as interpretation\n- unresolved uncertainty is listed, not hidden\n\nOutput from this phase:\n\n- `verification_log.md`\n- claim ledger table\n- external-facing draft with a \"what to verify\" section\n\n## Quality-Control Gates I Enforce\n\nI use explicit gates so I do not move to the next phase just because the text looks good.\n\n1. Framing gate: question is specific and rubric is defined.\n2. Inventory gate: every source has type tags and subquestion mapping.\n3. Comprehension gate: definitions are source-grounded and misunderstandings are corrected.\n4. Extraction gate: every bullet in extraction notes has a citation.\n5. Conflict gate: disagreements are documented with competing evidence.\n6. Gap gate: blind spots are identified with a concrete next-source plan.\n7. Synthesis gate: every major outline point has citation anchors.\n8. Verification gate: key claims are citation-checked and uncertainty is explicit.\n9. Export gate: final deliverable includes version, verification notes, and follow-up checks.\n\nThese gates keep me honest when timelines are tight.\n\n## My Non-Negotiable Verification Rules\n\n- I click citations for every key claim.\n- If I cannot locate a cited passage quickly, I mark the claim unverified or remove it.\n- I never present interpretive language as established fact.\n- I keep a running \"known uncertainties\" list in every deliverable.\n- I do one last attribution stress pass before anything external goes out.\n\nThis sounds strict, but it is much faster than repairing trust after an avoidable error.\n\n## The Ouroboros Loop: Distill and Reuse Without Losing Provenance\n\nOne of my favorite moves is to convert high-value notes into second-generation sources so I can keep slot usage efficient. I call this the Ouroboros loop: notes become sources, then sources generate better notes.\n\nBut I only do this with guardrails:\n\n- each distilled note must keep traceable citations back to original sources\n- derived notes are marked as derived, never treated as primary evidence\n- if a distilled note becomes too abstract, I keep both versions and preserve the detailed one\n\nThis lets me build depth over time without restarting from zero every session.\n\n## My Artifact Pack for Every Serious NotebookLM Project\n\nI try to end every notebook with a reusable package:\n\n- `00_readme_protocol.md`\n- `01_source_inventory.csv`\n- `02_conflict_matrix.md`\n- `03_gap_audit.md`\n- `04_synthesis_outline.md`\n- `05_final_deliverable.md` or `.docx`\n- `verification_log.md`\n\nWhen I keep this structure consistent, future me (or a teammate) can pick up the project quickly and understand exactly how conclusions were produced.\n\n## Where This Workflow Is Strong, and Where I Would Not Use It\n\nStrong fit:\n\n- literature reviews\n- policy interpretation\n- technical briefing\n- stakeholder memo development\n- early-stage landscape mapping\n\nI would not use this workflow as-is when:\n\n- primary evidence is not document-based\n- real-time or high-frequency data is required\n- citation verification cannot be performed\n- teams want instant output without verification capacity\n\nIn those cases, I still borrow pieces of this protocol, but I do not pretend NotebookLM alone is enough.\n\n## My Quick-Start Checklist\n\nIf you want to test this workflow this week:\n\n1. Pick one narrow research question.\n2. Create the README protocol note first.\n3. Upload a deliberately mixed source set.\n4. Run extraction and conflict mapping before writing synthesis.\n5. Verify key claims with citation clicks before sharing anything.\n\nThat is enough to feel the difference between \"fast summary\" and \"defensible research draft.\"\n\nIf you want the structured version of this workflow and related prompt packs, I published them in Research Atlas:\n\n- Workflow: [NotebookLM Source-Grounded Research Workflow](https://researchatlas.info/workflows/nlm-research-workflow)\n- Guide: [NotebookLM Research Workflow Guide](https://researchatlas.info/guides/nlm-research-workflow)\n- Prompt library query: [NotebookLM prompts](https://researchatlas.info/library?q=NotebookLM)\n\nThe short version of this whole post: NotebookLM becomes much more useful when I stop asking \"What can this tool generate?\" and start asking \"What process makes these outputs trustworthy?\"\n"}</script></body>
+</html>
