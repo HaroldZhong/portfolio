@@ -125,15 +125,6 @@
   aspect-ratio: 3 / 4;
   border-radius: inherit;
   object-fit: cover;
-  filter: grayscale(0.15) contrast(1.02);
-  transition: transform var(--dur-3) var(--ease-out), filter var(--dur-3) ease;
-
-  @media (hover: hover) {
-    .hero-title:hover & {
-      transform: rotate(-3deg) scale(1.03);
-      filter: none;
-    }
-  }
 }
 
 @keyframes portrait-in {
