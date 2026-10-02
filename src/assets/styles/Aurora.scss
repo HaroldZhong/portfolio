@@ -133,7 +133,7 @@
   height: 9px;
   border-inline: 2.5px solid currentColor;
 
-  .aurora-container[data-paused='true'] & {
+  .motion-control[data-user-paused='true'] & {
     border: 0;
     background: currentColor;
     clip-path: polygon(0 0, 100% 50%, 0 100%);

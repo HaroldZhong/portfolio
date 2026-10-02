@@ -25,7 +25,7 @@ function Main() {
           <p className="eyebrow hero-eyebrow"><span className="signal" aria-hidden="true" />Applied AI Engineer &amp; Researcher</p>
 
           <h1 className="hero-title" id="hero-title">
-            <span className="line"><span>Harold<img src={profileImage} alt="" className="hero-portrait" width={660} height={660} {...{ fetchpriority: "high" }} /></span></span>
+            <span className="line"><span>Harold<img src={profileImage} alt="" className="hero-portrait" width={640} height={512} {...{ fetchpriority: "high" }} /></span></span>
             {' '}
             <span className="line line-2"><span><em>Zhong</em></span></span>
           </h1>

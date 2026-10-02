@@ -97,20 +97,21 @@
 /* The portrait sits inside the name like a typographic ornament. */
 .hero-portrait {
   display: inline-block;
-  width: 1.18em;
-  height: 0.72em;
+  /* The box matches the 5:4 head-and-shoulders crop, so cover never trims the face. */
+  height: 0.8em;
+  width: auto;
+  aspect-ratio: 5 / 4;
   margin-left: 0.14em;
   border-radius: 999px;
   object-fit: cover;
-  object-position: 50% 32%;
-  filter: grayscale(0.25) contrast(1.02);
-  transition: width var(--dur-3) var(--ease-out), filter var(--dur-3) ease;
+  filter: grayscale(0.2) contrast(1.02);
+  transition: transform var(--dur-3) var(--ease-out), filter var(--dur-3) ease;
   align-self: center;
   translate: 0 0.04em;
 
   @media (hover: hover) {
     .hero-title:hover & {
-      width: 1.5em;
+      transform: rotate(-4deg) scale(1.04);
       filter: none;
     }
   }
@@ -266,10 +267,6 @@
 @media (max-width: 520px) {
   .hero-title .line-2 {
     padding-left: 0.5em;
-  }
-
-  .hero-portrait {
-    width: 1.05em;
   }
 
   .cta-container .btn {

@@ -38,7 +38,7 @@ const AuroraBackground: React.FC<{ children: React.ReactNode }> = ({ children })
       <div className="aurora-content">
         {children}
       </div>
-      <button type="button" className="motion-control" onClick={toggleMotion}>
+      <button type="button" className="motion-control" data-user-paused={paused} onClick={toggleMotion}>
         <span className="motion-icon" aria-hidden="true" />
         {paused ? 'Resume background animation' : 'Pause background animation'}
       </button>
