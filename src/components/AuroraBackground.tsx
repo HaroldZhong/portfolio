@@ -40,7 +40,7 @@ const AuroraBackground: React.FC<{ children: React.ReactNode }> = ({ children })
       </div>
       <button type="button" className="motion-control" data-user-paused={paused} onClick={toggleMotion}>
         <span className="motion-icon" aria-hidden="true" />
-        {paused ? 'Resume background animation' : 'Pause background animation'}
+        {paused ? 'Resume animation' : 'Pause animation'}
       </button>
     </div>
   );

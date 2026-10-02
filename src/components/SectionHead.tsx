@@ -1,8 +1,7 @@
 import React from 'react';
 
 interface SectionHeadProps {
-  index: string;
-  label: string;
+  index?: string;
   title: React.ReactNode;
   intro?: React.ReactNode;
   aside?: React.ReactNode;
@@ -10,11 +9,11 @@ interface SectionHeadProps {
   titleId?: string;
 }
 
-// Shared section opening: numbered index label, display title, optional intro and aside.
-export default function SectionHead({ index, label, title, intro, aside, level = 'h2', titleId }: SectionHeadProps) {
+// Shared section opening: optional section number, display title, optional intro and aside.
+export default function SectionHead({ index, title, intro, aside, level = 'h2', titleId }: SectionHeadProps) {
   const Heading = level;
-  return <header className="section-head">
-    <p className="section-index"><span className="num">{index}</span>{label}</p>
+  return <header className={index ? 'section-head' : 'section-head section-head-flush'}>
+    {index && <p className="section-index"><span className="num">{index}</span></p>}
     <Heading id={titleId}>{title}</Heading>
     {intro && <p className="section-intro">{intro}</p>}
     {aside && <div className="section-aside">{aside}</div>}

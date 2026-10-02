@@ -55,7 +55,6 @@ function Main() {
             </div>
           </div>
 
-          <p className="scroll-cue mono" aria-hidden="true"><span />Scroll</p>
         </div>
       </section>
     </AuroraBackground>

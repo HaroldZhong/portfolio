@@ -13,7 +13,7 @@ const roles = [
 
 export default function Timeline() {
   return <section id="history" className="section shell" aria-labelledby="history-title">
-    <SectionHead index="02" label="Experience" titleId="history-title" title="Research & Professional Experience" />
+    <SectionHead index="02" titleId="history-title" title="Research & Professional Experience" />
     <ol className="record-list">
       {roles.map(role => (
         <li key={role.title} className="experience-row record reveal">

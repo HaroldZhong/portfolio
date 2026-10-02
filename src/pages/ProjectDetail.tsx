@@ -42,9 +42,9 @@ const ProjectDetail: React.FC = () => {
         <nav className="project-breadcrumbs mono" aria-label="Project navigation">
           <Link to="/projects" className="back-button"><ArrowLeft size={16} /> All projects</Link>
           <span aria-hidden="true">/</span>
-          <Link to="/#projects">Home: selected work</Link>
+          <Link to="/#projects">Selected work</Link>
         </nav>
-        <p className="eyebrow"><span className="num">Case study</span>{project.status}</p>
+        <p className="eyebrow"><span className="num">Case study</span></p>
         <h1>{project.title}</h1>
         <p className="case-summary">{project.summary}</p>
         <dl className="case-meta">

@@ -27,14 +27,13 @@ const groups = [
 function Expertise() {
   return (
     <section className="section shell" id="expertise" aria-labelledby="expertise-title">
-      <SectionHead index="03" label="Expertise" titleId="expertise-title" title="Expertise" />
+      <SectionHead index="03" titleId="expertise-title" title="Expertise" />
       <div className="skills-grid">
         {groups.map((group, index) => (
           <article key={group.title} className="skill reveal">
             <p className="skill-num mono">{String(index + 1).padStart(2, '0')}</p>
             <h3>{group.title}</h3>
             <p className="skill-text">{group.text}</p>
-            <p className="eyebrow chip-title">Methods &amp; tools</p>
             <ul className="tag-list">
               {group.labels.map(label => <li key={label} className="skill-label">{label}</li>)}
             </ul>

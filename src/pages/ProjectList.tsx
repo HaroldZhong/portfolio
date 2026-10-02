@@ -9,7 +9,7 @@ export default function ProjectList() {
   const projects = getAllProjects();
 
   return <div className="page-head shell">
-    <SectionHead level="h1" index={String(projects.length).padStart(2, '0')} label="Projects" title="All Projects"
+    <SectionHead level="h1" title="All Projects"
       intro="AI systems, research methods, and the workflows that connect them." />
     <div className="projects-grid">
       {projects.map((project, index) => <ProjectCard key={project.slug} project={project} index={index} />)}

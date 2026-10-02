@@ -5,8 +5,8 @@ import SectionHead from "./SectionHead";
 function Publications() {
   return (
     <section className="section shell" id="publications" aria-labelledby="publications-title">
-      <SectionHead index="05" label="Scholarship" titleId="publications-title" title="Publications & Scholarly Work"
-        intro="Research contributions span study platforms, survey harmonization, and reproducible analysis. Acceptance and review status are shown for each contribution." />
+      <SectionHead index="05" titleId="publications-title" title="Publications & Scholarly Work"
+        intro="Research contributions span study platforms, survey harmonization, and reproducible analysis." />
 
       <p className="scholarly-links mono">
         <span>Related case studies</span>

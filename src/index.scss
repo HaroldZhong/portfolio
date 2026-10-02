@@ -291,6 +291,15 @@ main {
     max-width: 46ch;
   }
 
+  /* Un-numbered heads (collection pages) start at the left edge. */
+  &.section-head-flush {
+    h1,
+    h2,
+    .section-intro {
+      grid-column: 1 / span 9;
+    }
+  }
+
   .section-aside {
     grid-column: 10 / -1;
     align-self: end;

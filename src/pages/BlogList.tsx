@@ -17,7 +17,7 @@ const BlogList: React.FC = () => {
 
   return (
     <div className="page-head shell blog-list-page">
-      <SectionHead level="h1" index={String(posts.length).padStart(2, '0')} label="Articles" title="All Articles"
+      <SectionHead level="h1" title="All Articles"
         intro="Essays and notes on research methods, applied AI, and health data." />
 
       <nav className="topic-links" aria-label="Article topics">

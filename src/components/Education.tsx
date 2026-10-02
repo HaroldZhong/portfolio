@@ -4,7 +4,7 @@ import SectionHead from "./SectionHead";
 function Education() {
   return (
     <section className="section shell" id="education" aria-labelledby="education-title">
-      <SectionHead index="04" label="Education" titleId="education-title" title="Education" />
+      <SectionHead index="04" titleId="education-title" title="Education" />
       <ol className="record-list">
         <li className="record reveal">
           <p className="record-date mono">May 2025</p>

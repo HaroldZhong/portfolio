@@ -215,51 +215,10 @@
   }
 }
 
-.scroll-cue {
-  position: absolute;
-  left: 0;
-  bottom: clamp(1.25rem, 3vw, 2rem);
-  display: flex;
-  align-items: center;
-  gap: 0.75rem;
-  color: var(--text-2);
-  text-transform: uppercase;
-
-  span {
-    position: relative;
-    width: 44px;
-    height: 1px;
-    background: var(--line-strong);
-    overflow: hidden;
-
-    &::after {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: var(--text);
-      transform: translateX(-100%);
-    }
-  }
-
-  @media (prefers-reduced-motion: no-preference) {
-    span::after {
-      animation: scan 2.6s var(--ease-in-out) infinite;
-    }
-  }
-}
-
 /* The on-page pause control stops every looping flourish in the opening. */
 .aurora-container[data-paused='true'] {
-  .signal::after,
-  .scroll-cue span::after {
+  .signal::after {
     animation-play-state: paused;
-  }
-}
-
-@keyframes scan {
-  60%,
-  100% {
-    transform: translateX(100%);
   }
 }
 
@@ -288,10 +247,6 @@
 @media (max-width: 640px) {
   .hero-title {
     font-size: 21vw;
-  }
-
-  .scroll-cue {
-    display: none;
   }
 }
 
@@ -455,10 +410,9 @@
     margin-bottom: 1.75rem;
   }
 
-  .chip-title {
+  /* Capsules sit on a shared baseline across the panels. */
+  .tag-list {
     margin-top: auto;
-    margin-bottom: 0.75rem;
-    color: var(--text-3);
   }
 }
 

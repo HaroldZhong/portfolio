@@ -62,7 +62,6 @@ export function SiteShell({ children }: { children: React.ReactNode }) {
 const notFound = <section className="status-page shell">
   <p className="eyebrow"><span className="num">404</span> Not found</p>
   <h1>This page has moved or never existed.</h1>
-  <p>Try the homepage, the project collection, or the article archive.</p>
   <Link to="/" className="btn btn-primary">Return home</Link>
 </section>;
 

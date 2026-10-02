@@ -31,7 +31,6 @@ function Footer() {
         <p className="footer-wordmark" aria-hidden="true">Harold <em>Zhong</em></p>
         <div className="footer-base mono">
           <p>Designed &amp; built by Harold</p>
-          <p>Set in Instrument Serif, Geist &amp; Geist Mono</p>
         </div>
       </div>
     </footer>
