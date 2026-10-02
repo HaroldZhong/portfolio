@@ -76,8 +76,9 @@ function DotField({ active }: { active: boolean }) {
     const draw = () => {
       const t = clock.current;
       bounds = el.getBoundingClientRect();
-      pointer.x = client.x - bounds.left;
-      pointer.y = client.y - bounds.top;
+      // Still frames (paused, reduced motion) never show a pointer highlight.
+      pointer.x = frame ? client.x - bounds.left : -1e4;
+      pointer.y = frame ? client.y - bounds.top : -1e4;
       const gap = width < 640 ? 22 : 26;
       ctx.clearRect(0, 0, width, height);
       let fill = '';
@@ -103,7 +104,7 @@ function DotField({ active }: { active: boolean }) {
       el.width = Math.round(width * ratio);
       el.height = Math.round(height * ratio);
       ctx.setTransform(ratio, 0, 0, ratio, 0, 0);
-      if (!frame) draw();
+      draw(); // Setting the canvas size clears it.
     };
     const loop = (ms: number) => {
       if (previous) clock.current += Math.min(ms - previous, 64) / 1000;
