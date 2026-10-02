@@ -287,6 +287,7 @@
     color: var(--text-2);
     font-size: 0.875rem;
     line-height: 1.4;
+    outline-offset: -2px;
     transition: color var(--dur-1) ease, border-color var(--dur-1) ease;
 
     &:hover {

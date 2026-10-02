@@ -43,10 +43,6 @@ export function SiteShell({ children }: { children: React.ReactNode }) {
   const { pathname } = useLocation();
   const firstPath = useRef(pathname);
   useEffect(() => { setMode(document.documentElement.dataset.theme === 'light' ? 'light' : 'dark'); }, []);
-  useEffect(() => {
-    // Animate route changes, but not the first paint of a prerendered page.
-    if (pathname !== firstPath.current) document.documentElement.dataset.navigated = '';
-  }, [pathname]);
   const toggleTheme = () => setMode(current => {
     const next = current === 'dark' ? 'light' : 'dark';
     document.documentElement.dataset.theme = next;
@@ -56,7 +52,8 @@ export function SiteShell({ children }: { children: React.ReactNode }) {
   return <div className="main-container">
     <a href="#main-content" className="skip-link">Skip to main content</a>
     <Navigation parentToChild={{ mode }} modeChange={toggleTheme} />
-    <main id="main-content" tabIndex={-1}><div className="page-frame" key={pathname}>{children}</div></main>
+    <main id="main-content" tabIndex={-1}>{/* Animate route changes, but not the first paint of a prerendered page. */}
+      <div className={pathname === firstPath.current ? 'page-frame' : 'page-frame page-enter'} key={pathname}>{children}</div></main>
     <Footer />
     <BackToTop />
   </div>;

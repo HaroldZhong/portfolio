@@ -62,6 +62,9 @@ function DotField({ active }: { active: boolean }) {
     let height = 0;
     let frame = 0;
     let previous = 0;
+    let lastDraw = 0;
+    let bounds = el.getBoundingClientRect();
+    const client = { x: -1e4, y: -1e4 };
     let base = '#fff';
     let accent = '#fff';
 
@@ -72,6 +75,9 @@ function DotField({ active }: { active: boolean }) {
     };
     const draw = () => {
       const t = clock.current;
+      bounds = el.getBoundingClientRect();
+      pointer.x = client.x - bounds.left;
+      pointer.y = client.y - bounds.top;
       const gap = width < 640 ? 22 : 26;
       ctx.clearRect(0, 0, width, height);
       let fill = '';
@@ -102,14 +108,19 @@ function DotField({ active }: { active: boolean }) {
     const loop = (ms: number) => {
       if (previous) clock.current += Math.min(ms - previous, 64) / 1000;
       previous = ms;
-      draw();
+      // ponytail: ~30fps is plenty for a slow field; halves the paint cost.
+      if (ms - lastDraw > 30) { draw(); lastDraw = ms; }
       frame = requestAnimationFrame(loop);
     };
-    const onPointer = (event: PointerEvent) => {
-      const bounds = el.getBoundingClientRect();
-      pointer.x = event.clientX - bounds.left;
-      pointer.y = event.clientY - bounds.top;
+    const onPointer = (event: PointerEvent) => { client.x = event.clientX; client.y = event.clientY; };
+    const onLeave = (event: PointerEvent) => { if (!event.relatedTarget) client.x = client.y = -1e4; };
+    const start = () => {
+      if (frame || !active || reduced.matches) return;
+      previous = 0;
+      frame = requestAnimationFrame(loop);
     };
+    const stop = () => { cancelAnimationFrame(frame); frame = 0; draw(); };
+    const onReducedChange = () => { if (reduced.matches) stop(); else start(); };
 
     readColors();
     resize();
@@ -117,17 +128,20 @@ function DotField({ active }: { active: boolean }) {
     sizeObserver.observe(el);
     const themeObserver = new MutationObserver(() => { readColors(); if (!frame) draw(); });
     themeObserver.observe(document.documentElement, { attributes: true, attributeFilter: ['data-theme'] });
-    const animate = active && !reduced.matches;
-    if (animate) {
-      if (window.matchMedia('(pointer: fine)').matches) window.addEventListener('pointermove', onPointer, { passive: true });
-      frame = requestAnimationFrame(loop);
+    if (window.matchMedia('(pointer: fine)').matches) {
+      window.addEventListener('pointermove', onPointer, { passive: true });
+      document.addEventListener('pointerout', onLeave);
     }
+    reduced.addEventListener('change', onReducedChange);
+    start();
     return () => {
       cancelAnimationFrame(frame);
       frame = 0;
       sizeObserver.disconnect();
       themeObserver.disconnect();
+      reduced.removeEventListener('change', onReducedChange);
       window.removeEventListener('pointermove', onPointer);
+      document.removeEventListener('pointerout', onLeave);
     };
   }, [active]);
   return <canvas ref={canvas} className="dot-field" />;

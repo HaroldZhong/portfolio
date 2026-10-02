@@ -62,6 +62,13 @@ function Navigation({ parentToChild, modeChange }: NavigationProps) {
 
   // Close the menu on navigation, including Back/Forward.
   useEffect(() => { menu.current?.close(); }, [location]);
+  // Close it when the window grows past the menu breakpoint (rotation, split view).
+  useEffect(() => {
+    const wide = window.matchMedia('(min-width: 1101px)');
+    const close = () => { if (wide.matches) menu.current?.close(); };
+    wide.addEventListener('change', close);
+    return () => wide.removeEventListener('change', close);
+  }, []);
 
   const isActive = (item: NavItem): boolean => {
     if (pathname === '/') return activeSection === item.section;
@@ -82,7 +89,7 @@ function Navigation({ parentToChild, modeChange }: NavigationProps) {
             <span className="brand-mark" aria-hidden="true">H</span>
             <span>Harold Zhong</span>
           </Link>
-          <nav aria-label="Primary">
+          <nav className="primary-nav" aria-label="Primary">
             <ul className="nav-links">
               {navItems.map((item) => (
                 <li key={item.label}>

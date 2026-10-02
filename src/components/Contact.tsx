@@ -105,7 +105,7 @@ function Contact() {
           onSubmit={sendEmail}
         >
           {success && (
-            <p className="form-alert success" role="status"><CheckCircle2 size={18} aria-hidden="true" />Message sent successfully! I'll get back to you soon.</p>
+            <p className="form-alert success" role="alert"><CheckCircle2 size={18} aria-hidden="true" />Message sent successfully! I'll get back to you soon.</p>
           )}
           {error && (
             <p className="form-alert error" role="alert"><AlertCircle size={18} aria-hidden="true" />{error}</p>

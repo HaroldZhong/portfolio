@@ -44,7 +44,7 @@
   --line-strong: rgba(237, 234, 227, 0.24);
   --text: #edeae3;
   --text-2: #a8a49b;
-  --text-3: #858179;
+  --text-3: #8e8a82;
   --accent: #b3a6ff;
   --accent-ink: #120f24;
   --accent-soft: rgba(179, 166, 255, 0.13);
@@ -73,7 +73,7 @@
   --line-strong: rgba(21, 20, 15, 0.26);
   --text: #15140f;
   --text-2: #57534b;
-  --text-3: #6d6961;
+  --text-3: #65615a;
   --accent: #4e36c9;
   --accent-ink: #ffffff;
   --accent-soft: rgba(78, 54, 201, 0.08);
@@ -381,16 +381,18 @@ main {
     transition: transform var(--dur-2) var(--ease-out);
   }
 
-  &:hover {
-    color: var(--btn-fill-fg);
-    border-color: var(--btn-fill);
+  @media (hover: hover) {
+    &:hover {
+      color: var(--btn-fill-fg);
+      border-color: var(--btn-fill);
 
-    &::before {
-      transform: none;
-    }
+      &::before {
+        transform: none;
+      }
 
-    svg {
-      transform: translateX(3px);
+      svg {
+        transform: translateX(3px);
+      }
     }
   }
 
@@ -607,13 +609,17 @@ main {
 }
 
 @media (max-width: 1100px) {
-  .site-header .nav-links {
+  .primary-nav {
     display: none;
   }
 
   .menu-button {
     display: inline-grid !important;
   }
+}
+
+html:has(.mobile-menu[open]) {
+  overflow: hidden;
 }
 
 /* Mobile menu: native <dialog> provides focus containment, Escape and inert page. */
@@ -954,7 +960,7 @@ main {
 
 @media (prefers-reduced-motion: no-preference) {
   /* Route content eases in on client navigation (not on the first prerendered paint). */
-  [data-navigated] .page-frame {
+  .page-enter {
     animation: fade var(--dur-2) ease both;
   }
 
