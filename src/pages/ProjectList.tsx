@@ -1,16 +1,18 @@
 import React from 'react';
 import { ProjectCard } from '../components/Project';
+import SectionHead from '../components/SectionHead';
 import { getAllProjects } from '../utils/projectLoader';
 import { usePageMeta } from '../hooks/usePageMeta';
 
 export default function ProjectList() {
   usePageMeta('Projects | Harold Zhong', 'AI systems, research methods, and data workflows by Harold Zhong. Explore all projects and case studies.');
+  const projects = getAllProjects();
 
-  return <div className="projects-page">
-    <h1>All Projects</h1>
-    <p className="projects-intro">AI systems, research methods, and the workflows that connect them.</p>
+  return <div className="page-head shell">
+    <SectionHead level="h1" index={String(projects.length).padStart(2, '0')} label="Projects" title="All Projects"
+      intro="AI systems, research methods, and the workflows that connect them." />
     <div className="projects-grid">
-      {getAllProjects().map((project, index) => <ProjectCard key={project.slug} project={project} index={index} />)}
+      {projects.map((project, index) => <ProjectCard key={project.slug} project={project} index={index} />)}
     </div>
   </div>;
 }

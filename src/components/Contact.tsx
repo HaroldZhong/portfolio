@@ -1,11 +1,6 @@
 import React, { useRef, useState } from 'react';
 import emailjs from '@emailjs/browser';
-import '../assets/styles/Contact.scss';
-import Box from '@mui/material/Box';
-import Button from '@mui/material/Button';
-import SendIcon from '@mui/icons-material/Send';
-import TextField from '@mui/material/TextField';
-import Alert from '@mui/material/Alert';
+import { ArrowRight, CheckCircle2, AlertCircle } from 'lucide-react';
 
 function Contact() {
 
@@ -90,102 +85,63 @@ function Contact() {
   };
 
   return (
-    <div id="contact">
-      <div className="items-container">
-        <div className="contact_wrapper">
-          <h2>Contact Me</h2>
+    <section id="contact" className="section shell" aria-labelledby="contact-title">
+      <div className="contact-grid">
+        <div className="contact-lead">
+          <p className="section-index"><span className="num">07</span>Contact</p>
+          <h2 id="contact-title">Let’s <em>talk.</em></h2>
           <p className="contact-intro">
             I'm always happy to talk about AI in health, research workflows, or weird data problems.
-            <br />
             If you're working on something in that space, I'd love to hear about it.
           </p>
-
-          {success && (
-            <Alert severity="success" sx={{ marginBottom: 3 }}>
-              Message sent successfully! I'll get back to you soon.
-            </Alert>
-          )}
-
-          {error && (
-            <Alert severity="error" sx={{ marginBottom: 3 }}>
-              {error}
-            </Alert>
-          )}
-
-          <Box
-            ref={form}
-            component="form"
-            noValidate
-            autoComplete="on"
-            aria-busy={sending}
-            className='contact-form'
-            onSubmit={sendEmail}
-          >
-            {/* Honeypot field - hidden from humans, bots will fill it */}
-            <TextField
-              value={honeypot}
-              onChange={(e) => setHoneypot(e.target.value)}
-              sx={{ position: 'absolute', left: '-9999px', opacity: 0 }}
-              tabIndex={-1}
-              autoComplete="off"
-              aria-hidden="true"
-              inputProps={{ tabIndex: -1, 'aria-label': 'Do not fill this field' }}
-            />
-            <div className='form-flex'>
-              <TextField
-                required
-                id="contact-name"
-                label="Your Name"
-                autoComplete="name"
-                placeholder="What's your name?"
-                value={name}
-                onChange={(e) => {
-                  setName(e.target.value);
-                }}
-                error={nameError}
-                helperText={nameError ? "Please enter your name" : ""}
-              />
-              <TextField
-                required
-                id="contact-email"
-                label="Email or phone"
-                autoComplete="email"
-                placeholder="Email address or phone number"
-                value={email}
-                onChange={(e) => {
-                  setEmail(e.target.value);
-                }}
-                error={emailError}
-                helperText={emailError ? "Please enter your email or phone number" : ""}
-              />
-            </div>
-            <TextField
-              required
-              id="contact-message"
-              label="Message"
-              placeholder="Send me any inquiries or questions"
-              multiline
-              rows={5}
-              className="body-form"
-              value={message}
-              onChange={(e) => {
-                setMessage(e.target.value);
-              }}
-              error={messageError}
-              helperText={messageError ? "Please enter the message" : ""}
-            />
-            <Button
-              variant="contained"
-              endIcon={<SendIcon />}
-              type="submit"
-              disabled={sending}
-            >
-              {sending ? 'Sending...' : 'Send'}
-            </Button>
-          </Box>
         </div>
+
+        <form
+          ref={form}
+          noValidate
+          autoComplete="on"
+          aria-busy={sending}
+          className="contact-form"
+          onSubmit={sendEmail}
+        >
+          {success && (
+            <p className="form-alert success" role="status"><CheckCircle2 size={18} aria-hidden="true" />Message sent successfully! I'll get back to you soon.</p>
+          )}
+          {error && (
+            <p className="form-alert error" role="alert"><AlertCircle size={18} aria-hidden="true" />{error}</p>
+          )}
+
+          {/* Honeypot field - hidden from humans, bots will fill it */}
+          <div className="hp-field" aria-hidden="true">
+            <input value={honeypot} onChange={(e) => setHoneypot(e.target.value)} tabIndex={-1} autoComplete="off" aria-label="Do not fill this field" />
+          </div>
+
+          <div className="form-row">
+            <div className={`field${nameError ? ' invalid' : ''}`}>
+              <label htmlFor="contact-name">Your name</label>
+              <input id="contact-name" required autoComplete="name" placeholder="What's your name?" value={name}
+                onChange={(e) => setName(e.target.value)} aria-invalid={nameError} aria-describedby={nameError ? 'contact-name-error' : undefined} />
+              {nameError && <p className="field-error" id="contact-name-error">Please enter your name</p>}
+            </div>
+            <div className={`field${emailError ? ' invalid' : ''}`}>
+              <label htmlFor="contact-email">Email or phone</label>
+              <input id="contact-email" required autoComplete="email" placeholder="Email address or phone number" value={email}
+                onChange={(e) => setEmail(e.target.value)} aria-invalid={emailError} aria-describedby={emailError ? 'contact-email-error' : undefined} />
+              {emailError && <p className="field-error" id="contact-email-error">Please enter your email or phone number</p>}
+            </div>
+          </div>
+          <div className={`field${messageError ? ' invalid' : ''}`}>
+            <label htmlFor="contact-message">Message</label>
+            <textarea id="contact-message" required rows={5} placeholder="Send me any inquiries or questions" value={message}
+              onChange={(e) => setMessage(e.target.value)} aria-invalid={messageError} aria-describedby={messageError ? 'contact-message-error' : undefined} />
+            {messageError && <p className="field-error" id="contact-message-error">Please enter the message</p>}
+          </div>
+          <button type="submit" className="btn btn-primary" disabled={sending}>
+            {sending ? 'Sending...' : 'Send message'} <ArrowRight size={18} />
+          </button>
+        </form>
       </div>
-    </div>
+    </section>
   );
 }
 

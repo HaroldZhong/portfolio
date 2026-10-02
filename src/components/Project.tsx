@@ -1,71 +1,52 @@
 import React from "react";
-import ProjectImage from "./ProjectImage";
 import { Link } from "react-router-dom";
-import { motion, useReducedMotion } from "framer-motion";
+import { ArrowUpRight } from "lucide-react";
+import ProjectImage from "./ProjectImage";
+import SectionHead from "./SectionHead";
 import { Project as ProjectType, getAllProjects } from '../utils/projectLoader';
 import '../assets/styles/Project.scss';
 
-export const ProjectCard: React.FC<{ project: ProjectType; index: number }> = ({ project, index }) => {
-  const prefersReducedMotion = useReducedMotion();
+export const ProjectCard: React.FC<{ project: ProjectType; index: number; variant?: 'feature' | 'grid' }> = ({ project, index, variant = 'grid' }) => (
+  <Link to={`/project/${project.slug}`} className="project-card-link" data-variant={variant}>
+    <article className="project-card">
+      <div className="project-thumbnail">
+        <ProjectImage src={project.thumbnail} title={project.title} />
+        <span className="project-cue" aria-hidden="true"><ArrowUpRight size={22} strokeWidth={1.5} /></span>
+      </div>
+      <div className="project-card-content">
+        <p className="project-index mono">{String(index + 1).padStart(2, '0')}</p>
+        <h3>{project.title}</h3>
+        <dl className="project-meta">
+          <div><dt>Role</dt><dd className="project-role">{project.role}</dd></div>
+          <div><dt>Status</dt><dd className="project-status">{project.status}</dd></div>
+        </dl>
+        <p className="project-summary">{project.summary}</p>
+        <ul className="tag-list">
+          {project.tags.map(tag => <li key={tag} className="tag">{tag}</li>)}
+        </ul>
+        <span className="view-details-hint">Read case study <ArrowUpRight size={16} /></span>
+      </div>
+    </article>
+  </Link>
+);
 
-  return (
-    <Link to={`/project/${project.slug}`} className="project-card-link">
-      <motion.div
-        className="project-card-container"
-        initial={false}
-        whileInView={prefersReducedMotion ? undefined : { opacity: 1, y: 0 }}
-        transition={prefersReducedMotion ? { duration: 0 } : { duration: 0.5, delay: index * 0.1 }}
-        viewport={{ once: true }}
-        whileHover={prefersReducedMotion ? undefined : { y: -4 }}
-      >
-        <div className="project-card">
-          <div className="project-thumbnail">
-            <ProjectImage src={project.thumbnail} title={project.title} />
-          </div>
-          <div className="project-card-content">
-            <h3>{project.title}</h3>
-            <p className="project-role">{project.role}</p>
-            <p className="project-status">{project.status}</p>
-            <p className="project-summary">{project.summary}</p>
-            <div className="project-tags">
-              {project.tags.map(tag => (
-                <span key={tag} className="tag">{tag}</span>
-              ))}
-            </div>
-            <div className="view-details-hint">Read case study →</div>
-          </div>
-        </div>
-      </motion.div>
-    </Link>
-  );
-};
+const featuredSlugs = ['brat-family-therapy-chatbot', 'nhis-nhanes-health-inequality', 'research-atlas'];
 
 function Project() {
   const projects = getAllProjects();
-  const featuredSlugs = ['brat-family-therapy-chatbot', 'nhis-nhanes-health-inequality', 'research-atlas'];
   const featured = featuredSlugs.map(slug => projects.find(project => project.slug === slug)!);
 
   return (
-    <div className="projects-container" id="projects">
-      <motion.div
-        initial={false}
-        whileInView={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.6 }}
-        viewport={{ once: true }}
-      >
-        <h2>Selected Work</h2>
-        <p className="projects-intro">
-          AI systems, research methods, and the workflows that connect them.
-        </p>
-      </motion.div>
-
-      <div className="projects-grid">
+    <section className="section shell" id="projects" aria-labelledby="projects-title">
+      <SectionHead index="01" label="Selected work" titleId="projects-title" title="Selected Work"
+        intro="AI systems, research methods, and the workflows that connect them."
+        aside={<Link to="/projects" className="text-link view-all-btn">View all {projects.length} projects <ArrowUpRight size={16} /></Link>} />
+      <div className="projects-feature">
         {featured.map((project, index) => (
-          <ProjectCard key={project.slug} project={project} index={index} />
+          <ProjectCard key={project.slug} project={project} index={index} variant="feature" />
         ))}
       </div>
-      <Link to="/projects" className="view-all-btn">View all projects →</Link>
-    </div>
+    </section>
   );
 }
 

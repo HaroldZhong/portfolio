@@ -1,4 +1,4 @@
-import React, { lazy, Suspense, useEffect, useState } from 'react';
+import React, { lazy, Suspense, useEffect, useRef, useState } from 'react';
 import { BrowserRouter, Link, Routes, Route, useLocation } from 'react-router-dom';
 import Navigation from './components/Navigation';
 import Footer from './components/Footer';
@@ -38,39 +38,51 @@ function RouteFocus() {
 }
 
 export function SiteShell({ children }: { children: React.ReactNode }) {
+  // The inline script in index.html applies the theme before paint; React mirrors it after hydration.
   const [mode, setMode] = useState('dark');
+  const { pathname } = useLocation();
+  const firstPath = useRef(pathname);
+  useEffect(() => { setMode(document.documentElement.dataset.theme === 'light' ? 'light' : 'dark'); }, []);
   useEffect(() => {
-    let saved: string | null = null;
-    try { saved = localStorage.getItem('portfolio-theme'); } catch { /* Storage may be disabled. */ }
-    setMode(saved === 'light' || saved === 'dark' ? saved : window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark');
-  }, []);
+    // Animate route changes, but not the first paint of a prerendered page.
+    if (pathname !== firstPath.current) document.documentElement.dataset.navigated = '';
+  }, [pathname]);
   const toggleTheme = () => setMode(current => {
     const next = current === 'dark' ? 'light' : 'dark';
+    document.documentElement.dataset.theme = next;
     try { localStorage.setItem('portfolio-theme', next); } catch { /* Selection still works for this visit. */ }
     return next;
   });
-  return <div className={`main-container ${mode}-mode`}>
+  return <div className="main-container">
     <a href="#main-content" className="skip-link">Skip to main content</a>
     <Navigation parentToChild={{ mode }} modeChange={toggleTheme} />
-    <main id="main-content" tabIndex={-1}>{children}</main>
+    <main id="main-content" tabIndex={-1}><div className="page-frame" key={pathname}>{children}</div></main>
     <Footer />
     <BackToTop />
   </div>;
 }
+
+const notFound = <section className="status-page shell">
+  <p className="eyebrow"><span className="num">404</span> Not found</p>
+  <h1>This page has moved or never existed.</h1>
+  <p>Try the homepage, the project collection, or the article archive.</p>
+  <Link to="/" className="btn btn-primary">Return home</Link>
+</section>;
+
 
 export default function App() {
   const initialPost = JSON.parse(document.getElementById('article-content')?.textContent || 'null');
   return <BrowserRouter basename="/portfolio">
     <RouteFocus />
     <SiteShell>
-      <Suspense fallback={<p className="items-container" role="status">Loading page…</p>}>
+      <Suspense fallback={<p className="status-page shell" role="status">Loading page…</p>}>
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/blog" element={<BlogList />} />
           <Route path="/projects" element={<ProjectList />} />
           <Route path="/blog/:slug" element={<BlogPost initialPost={initialPost || undefined} />} />
           <Route path="/project/:slug" element={<ProjectDetail />} />
-          <Route path="*" element={<div className="items-container"><h1>Page not found</h1><Link to="/">Return home</Link></div>} />
+          <Route path="*" element={notFound} />
         </Routes>
       </Suspense>
     </SiteShell>

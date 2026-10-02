@@ -1,8 +1,8 @@
 // Import images
 import openaiAnthropicImg from '../images/openai-anthropic.jpg';
 import aiToolsFailedImg from '../images/invisible-tax-ai-tools.jpg';
-import nestedLearningImg from '../images/nested_learning.png';
-import notebooklmStorytellingImg from '../images/notebooklm-storytelling.png';
+import nestedLearningImg from '../images/nested_learning.jpg';
+import notebooklmStorytellingImg from '../images/notebooklm-storytelling.jpg';
 import researchAtlasCoverImg from '../images/research-atlas-cover.png';
 import skillsProtocolsImg from '../images/skills-as-research-protocols.jpg';
 import aiEvalsImg from '../images/ai-evals-are-measurement.jpg';

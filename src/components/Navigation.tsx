@@ -1,23 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 import { Link, useLocation } from 'react-router-dom';
-import AppBar from '@mui/material/AppBar';
-import Box from '@mui/material/Box';
-import Button from '@mui/material/Button';
-import CssBaseline from '@mui/material/CssBaseline';
-import DarkModeIcon from '@mui/icons-material/DarkMode';
-import Divider from '@mui/material/Divider';
-import Drawer from '@mui/material/Drawer';
-import IconButton from '@mui/material/IconButton';
-import LightModeIcon from '@mui/icons-material/LightMode';
-import List from '@mui/material/List';
-import ListIcon from '@mui/icons-material/List';
-import ListItem from '@mui/material/ListItem';
-import ListItemButton from '@mui/material/ListItemButton';
-import ListItemText from '@mui/material/ListItemText';
-import MenuIcon from '@mui/icons-material/Menu';
-import Toolbar from '@mui/material/Toolbar';
-
-const drawerWidth = 240;
+import { Github, Linkedin, Menu, Moon, Sun, X } from 'lucide-react';
 
 interface NavItem {
   label: string;
@@ -48,15 +31,9 @@ function Navigation({ parentToChild, modeChange }: NavigationProps) {
   const location = useLocation();
   const pathname = location.pathname.replace(/\/+$/, '') || '/';
 
-  const [mobileOpen, setMobileOpen] = useState<boolean>(false);
   const [scrolled, setScrolled] = useState<boolean>(false);
   const [activeSection, setActiveSection] = useState<string>('');
-  const restoreMenuFocus = useRef(false);
-  const menuButton = useRef<HTMLButtonElement>(null);
-
-  const handleDrawerToggle = () => {
-    setMobileOpen((prevState) => !prevState);
-  };
+  const menu = useRef<HTMLDialogElement>(null);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -83,91 +60,74 @@ function Navigation({ parentToChild, modeChange }: NavigationProps) {
     };
   }, [pathname]);
 
+  // Close the menu on navigation, including Back/Forward.
+  useEffect(() => { menu.current?.close(); }, [location]);
+
   const isActive = (item: NavItem): boolean => {
     if (pathname === '/') return activeSection === item.section;
     if (pathname === '/projects' || pathname.startsWith('/project/')) return item.section === 'projects';
     return (pathname === '/blog' || pathname.startsWith('/blog/')) && item.section === 'blog';
   };
   const currentLocation = (item: NavItem) => isActive(item) ? pathname === '/' ? 'location' as const : 'page' as const : undefined;
-
-  const drawer = (
-    <Box className="navigation-bar-responsive" id="mobile-navigation" sx={{ textAlign: 'center' }}>
-      <p className="mobile-menu-top"><ListIcon />Menu</p>
-      <Divider />
-      <List>
-        {navItems.map((item) => (
-          <ListItem key={item.label} disablePadding>
-            <ListItemButton sx={{ textAlign: 'center', justifyContent: 'center' }} component={Link} to={item.to} onClick={() => setMobileOpen(false)} selected={isActive(item)} aria-current={currentLocation(item)}>
-              <ListItemText primary={item.label} />
-            </ListItemButton>
-          </ListItem>
-        ))}
-      </List>
-    </Box>
-  );
+  const closeMenu = () => menu.current?.close();
+  const themeButton = <button type="button" className="icon-button theme-toggle" onClick={() => modeChange()} aria-label={mode === 'dark' ? 'Switch to light mode' : 'Switch to dark mode'}>
+    {mode === 'dark' ? <Sun size={18} strokeWidth={1.75} /> : <Moon size={18} strokeWidth={1.75} />}
+  </button>;
 
   return (
-    <Box sx={{ display: 'flex' }}>
-      <CssBaseline />
-      <AppBar component="nav" id="navigation" className={`navbar-fixed-top${scrolled ? ' scrolled' : ''}`}>
-        <Toolbar className='navigation-bar'>
-          <IconButton
-            ref={menuButton}
-            color="inherit"
-            aria-label="Open navigation"
-            aria-expanded={mobileOpen}
-            aria-controls="mobile-navigation"
-            edge="start"
-            onClick={handleDrawerToggle}
-            sx={{ mr: 2, display: { xs: 'inline-flex', lg: 'none' } }}
-          >
-            <MenuIcon />
-          </IconButton>
-          <Link to="/" className="nav-brand">Harold Zhong</Link>
-          <Box sx={{ display: { xs: 'none', lg: 'flex' }, gap: 1 }}>
+    <>
+      <header id="navigation" className={`site-header${scrolled ? ' scrolled' : ''}`}>
+        <div className="header-inner shell">
+          <Link to="/" className="nav-brand" aria-label="Harold Zhong, home">
+            <span className="brand-mark" aria-hidden="true">H</span>
+            <span>Harold Zhong</span>
+          </Link>
+          <nav aria-label="Primary">
+            <ul className="nav-links">
+              {navItems.map((item) => (
+                <li key={item.label}>
+                  <Link to={item.to} className={`nav-button${isActive(item) ? ' active' : ''}`} aria-current={currentLocation(item)}>{item.label}</Link>
+                </li>
+              ))}
+            </ul>
+          </nav>
+          <div className="header-actions">
+            {themeButton}
+            <button type="button" className="icon-button menu-button" aria-label="Open navigation" aria-haspopup="dialog" aria-controls="mobile-navigation" onClick={() => menu.current?.showModal()}>
+              <Menu size={20} strokeWidth={1.75} />
+            </button>
+          </div>
+        </div>
+      </header>
+
+      <dialog ref={menu} id="mobile-navigation" className="mobile-menu" aria-label="Site navigation">
+        <div className="shell mobile-menu-top">
+          <Link to="/" className="nav-brand" onClick={closeMenu}>
+            <span className="brand-mark" aria-hidden="true">H</span>
+            <span>Harold Zhong</span>
+          </Link>
+          <div className="header-actions">
+            {themeButton}
+            <button type="button" className="icon-button" aria-label="Close navigation" onClick={closeMenu}>
+              <X size={20} strokeWidth={1.75} />
+            </button>
+          </div>
+        </div>
+        <nav className="shell" aria-label="Mobile">
+          <ol>
             {navItems.map((item) => (
-              <Button
-                key={item.label}
-                component={Link} to={item.to} onClick={() => setMobileOpen(false)}
-                className={`nav-button ${isActive(item) ? 'active' : ''}`}
-                aria-current={currentLocation(item)}
-              >
-                {item.label}
-              </Button>
+              <li key={item.label}>
+                <Link to={item.to} className="menu-link" onClick={closeMenu} aria-current={currentLocation(item)}>{item.label}</Link>
+              </li>
             ))}
-          </Box>
-          <IconButton
-            color="inherit"
-            onClick={() => modeChange()}
-            aria-label={mode === 'dark' ? 'Switch to light mode' : 'Switch to dark mode'}
-            sx={{ ml: { lg: 1 } }}
-          >
-            {mode === 'dark' ? <LightModeIcon /> : <DarkModeIcon />}
-          </IconButton>
-        </Toolbar>
-      </AppBar>
-      <nav>
-        <Drawer
-          variant="temporary"
-          open={mobileOpen}
-          onClose={() => { restoreMenuFocus.current = true; setMobileOpen(false); }}
-          ModalProps={{
-            keepMounted: true,
-            disableRestoreFocus: true,
-            onTransitionExited: () => {
-              if (restoreMenuFocus.current) menuButton.current?.focus();
-              restoreMenuFocus.current = false;
-            },
-          }}
-          sx={{
-            display: { xs: 'block', lg: 'none' },
-            '& .MuiDrawer-paper': { boxSizing: 'border-box', width: drawerWidth },
-          }}
-        >
-          {drawer}
-        </Drawer>
-      </nav>
-    </Box>
+          </ol>
+        </nav>
+        <div className="shell mobile-menu-foot">
+          <a className="icon-button" href="https://github.com/HaroldZhong" target="_blank" rel="noreferrer" aria-label="GitHub"><Github size={20} strokeWidth={1.75} /></a>
+          <a className="icon-button" href="https://linkedin.com/in/haocong-zhong" target="_blank" rel="noreferrer" aria-label="LinkedIn"><Linkedin size={20} strokeWidth={1.75} /></a>
+        </div>
+      </dialog>
+    </>
   );
 }
 

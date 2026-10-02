@@ -50,11 +50,20 @@
       gtag('config', 'G-JTYMBZ8XV3');
     </script>
     
+    <meta name="theme-color" content="#0b0b0c" media="(prefers-color-scheme: dark)" />
+    <meta name="theme-color" content="#f3f0e8" media="(prefers-color-scheme: light)" />
+    <script>
+      // Apply the saved or system theme before first paint.
+      (function () {
+        var theme;
+        try { theme = localStorage.getItem('portfolio-theme'); } catch (e) {}
+        if (theme !== 'light' && theme !== 'dark') theme = window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
+        document.documentElement.dataset.theme = theme;
+      })();
+    </script>
     <style>
-      /* Prevent scroll restoration flash */
-      html {
-        scroll-behavior: auto !important;
-      }
+      html { scroll-behavior: auto !important; background: #0b0b0c; }
+      html[data-theme='light'] { background: #f3f0e8; }
     </style>
   </head>
   <body>

@@ -7,14 +7,14 @@ import Publications from '../components/Publications';
 import Project from '../components/Project';
 import RecentBlogs from '../components/RecentBlogs';
 import Contact from '../components/Contact';
-import FadeIn from '../components/FadeIn';
 import { usePageMeta } from '../hooks/usePageMeta';
+import '../assets/styles/Home.scss';
 
 const HomePage: React.FC = () => {
   usePageMeta();
 
   return (
-    <FadeIn transitionDuration={700}>
+    <>
       <Main />
       <Project />
       <Timeline />
@@ -23,7 +23,7 @@ const HomePage: React.FC = () => {
       <Publications />
       <RecentBlogs />
       <Contact />
-    </FadeIn>
+    </>
   );
 };
 

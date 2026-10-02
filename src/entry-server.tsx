@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Suspense } from 'react';
 import { renderToString } from 'react-dom/server';
 import { StaticRouter } from 'react-router-dom/server';
 import { Routes, Route } from 'react-router-dom';
@@ -23,13 +23,13 @@ export async function renderPages() {
   return Promise.all(routes.map(async route => {
     const slug = route.path.startsWith('/blog/') ? route.path.split('/').pop()! : '';
     const initialPost = slug ? { slug, content: await loadPostContent(slug) } : undefined;
-    const html = renderToString(<StaticRouter basename="/portfolio" location={`/portfolio${route.path}`}><SiteShell><Routes>
+    const html = renderToString(<StaticRouter basename="/portfolio" location={`/portfolio${route.path}`}><SiteShell><Suspense fallback={null}><Routes>
       <Route path="/" element={<HomePage />} />
       <Route path="/blog" element={<BlogList />} />
       <Route path="/projects" element={<ProjectList />} />
       <Route path="/project/:slug" element={<ProjectDetail />} />
       <Route path="/blog/:slug" element={<BlogPost initialPost={initialPost} />} />
-    </Routes></SiteShell></StaticRouter>);
+    </Routes></Suspense></SiteShell></StaticRouter>);
     return { ...route, html, initialPost };
   }));
 }

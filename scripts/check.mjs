@@ -40,7 +40,7 @@ assert.equal(phone.success, true, 'Contact still accepts a phone number');
 assert.equal(phone.params.email, '', 'A phone number must not be used in Reply-To');
 assert.equal(phone.params.message, 'Contact: +1 512 555 0100\n\nTest message');
 assert.equal((await probe({ email: 'visitor@example.com\r\nBcc: other@example.com' })).params.email, '', 'Reply-To must never contain header lines');
-assert.match(contactSource, /inputProps=\{\{ tabIndex: -1/);
+assert.match(contactSource, /tabIndex=\{-1\}[^>]*aria-label="Do not fill this field"/);
 
 // Run the actual route focus effect with a malformed fragment and a normal destination.
 const appSource = await readFile('src/App.tsx', 'utf8');
@@ -171,7 +171,7 @@ assert.match(home, /Explore my work/);
 assert.match(home, /<title>Harold Zhong \| Applied AI Engineer &amp; Researcher<\/title>/);
 const person = JSON.parse(home.match(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/)[1]);
 assert.equal(person.jobTitle, 'Applied AI Engineer & Researcher'); assert.equal(person.worksFor, undefined);
-assert.equal((home.match(/class="experience-row"/g) || []).length, 5);
+assert.equal((home.match(/class="experience-row[" ]/g) || []).length, 5);
 assert(!home.includes('earlier-experience') && !home.includes('more-work') && !home.includes('See project evidence'));
 assert.equal((home.match(/class="skill-label"/g) || []).length, 35);
 assert.equal((home.match(/class="pub-status">Accepted/g) || []).length, 2);

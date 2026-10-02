@@ -1,194 +1,154 @@
-@keyframes aurora-flow-1 {
-  0%, 100% {
-    transform: translate(0%, 0%) rotate(0deg) scale(1);
-    opacity: 0.7;
-  }
-  33% {
-    transform: translate(30%, -15%) rotate(120deg) scale(1.1);
-    opacity: 0.9;
-  }
-  66% {
-    transform: translate(-20%, 10%) rotate(240deg) scale(0.95);
-    opacity: 0.8;
-  }
-}
-
-@keyframes aurora-flow-2 {
-  0%, 100% {
-    transform: translate(0%, 0%) rotate(0deg) scale(1);
-    opacity: 0.6;
-  }
-  33% {
-    transform: translate(-25%, 20%) rotate(-120deg) scale(1.15);
-    opacity: 0.8;
-  }
-  66% {
-    transform: translate(15%, -10%) rotate(-240deg) scale(0.9);
-    opacity: 0.7;
-  }
-}
-
-@keyframes aurora-flow-3 {
-  0%, 100% {
-    transform: translate(0%, 0%) rotate(0deg) scale(1);
-    opacity: 0.5;
-  }
-  33% {
-    transform: translate(10%, -20%) rotate(90deg) scale(1.05);
-    opacity: 0.7;
-  }
-  66% {
-    transform: translate(-15%, 15%) rotate(180deg) scale(1.1);
-    opacity: 0.6;
-  }
-}
-
+/* Opening background: slow aurora light with a dot field on top. */
 .aurora-container {
   position: relative;
-  width: 100%;
+  isolation: isolate;
   overflow: hidden;
 }
 
 .aurora-background {
   position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  z-index: 0;
-  overflow: hidden;
+  inset: 0;
+  z-index: -1;
   pointer-events: none;
-  mask-image: linear-gradient(to bottom, #000 calc(100% - 128px), transparent);
+  /* Fade into the page so the opening resolves into the reading surface. */
+  mask-image: linear-gradient(to bottom, #000 55%, transparent 100%);
+  -webkit-mask-image: linear-gradient(to bottom, #000 55%, transparent 100%);
 }
 
 .aurora-layer {
   position: absolute;
-  width: 150%;
-  height: 150%;
-  top: -25%;
-  left: -25%;
-  border-radius: 40% 60% 70% 30%;
-  // The radial gradients already fade softly; a full-surface blur stalls large displays.
-  will-change: transform, opacity;
+  border-radius: 50%;
+  opacity: 0.55;
+  will-change: transform;
 }
 
 .aurora-layer-1 {
-  background: radial-gradient(
-    ellipse at center,
-    rgba(138, 43, 226, 0.5) 0%,
-    rgba(75, 0, 130, 0.3) 35%,
-    transparent 70%
-  );
-  animation: aurora-flow-1 20s ease-in-out infinite;
+  width: 62vmax;
+  height: 42vmax;
+  top: -18vmax;
+  right: -12vmax;
+  background: radial-gradient(closest-side, #6e56cf, transparent);
+  animation: aurora-a 26s var(--ease-in-out) infinite alternate;
 }
 
 .aurora-layer-2 {
-  background: radial-gradient(
-    ellipse at center,
-    rgba(72, 61, 139, 0.4) 0%,
-    rgba(0, 191, 255, 0.3) 35%,
-    transparent 70%
-  );
-  animation: aurora-flow-2 25s ease-in-out infinite;
-  animation-delay: -5s;
+  width: 48vmax;
+  height: 36vmax;
+  top: 8vmax;
+  left: -16vmax;
+  background: radial-gradient(closest-side, #1b8f86, transparent);
+  opacity: 0.38;
+  animation: aurora-b 32s var(--ease-in-out) infinite alternate;
 }
 
 .aurora-layer-3 {
-  background: radial-gradient(
-    ellipse at center,
-    rgba(32, 178, 170, 0.35) 0%,
-    rgba(64, 224, 208, 0.25) 35%,
-    transparent 70%
-  );
-  animation: aurora-flow-3 30s ease-in-out infinite;
-  animation-delay: -10s;
+  width: 38vmax;
+  height: 26vmax;
+  top: 24vmax;
+  right: 12vmax;
+  background: radial-gradient(closest-side, #c07a3a, transparent);
+  opacity: 0.22;
+  animation: aurora-c 38s var(--ease-in-out) infinite alternate;
+}
+
+:root[data-theme='light'] {
+  .aurora-layer {
+    opacity: 0.32;
+  }
+
+  .aurora-layer-2 {
+    opacity: 0.22;
+  }
+
+  .aurora-layer-3 {
+    opacity: 0.2;
+  }
+}
+
+.dot-field {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  color: var(--text);
+}
+
+.aurora-container[data-paused='true'] .aurora-layer {
+  animation-play-state: paused;
+}
+
+@keyframes aurora-a {
+  to {
+    transform: translate3d(-14vmax, 8vmax, 0) rotate(18deg) scale(1.1);
+  }
+}
+
+@keyframes aurora-b {
+  to {
+    transform: translate3d(12vmax, -6vmax, 0) rotate(-14deg) scale(1.15);
+  }
+}
+
+@keyframes aurora-c {
+  to {
+    transform: translate3d(-10vmax, -10vmax, 0) scale(0.9);
+  }
 }
 
 .aurora-content {
   position: relative;
-  z-index: 1;
-}
-
-.aurora-container[data-paused="true"] .aurora-layer {
-  animation-play-state: paused;
-  will-change: auto;
 }
 
 .motion-control {
   position: absolute;
-  bottom: 20px;
-  right: max(20px, calc((100% - 1104px) / 2));
+  right: var(--gutter);
+  bottom: clamp(1.25rem, 3vw, 2rem);
   z-index: 2;
-  min-height: 44px;
-  padding: 10px 14px;
-  border: 1px solid #64748b;
-  border-radius: 24px;
-  background: #0d1116;
-  color: #cbd5e1;
-  font-size: .8rem;
-  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  min-height: 36px;
+  padding: 0 0.85rem;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--bg) 55%, transparent);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  color: var(--text-2);
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  transition: color var(--dur-1) ease, border-color var(--dur-1) ease;
+
+  &:hover {
+    color: var(--text);
+    border-color: var(--line-strong);
+  }
 }
 
-.light-mode .motion-control {
-  background: #f1f5f9;
-  color: #334155;
+/* Pause bars, or a play triangle once the user has paused motion. */
+.motion-icon {
+  width: 8px;
+  height: 9px;
+  border-inline: 2.5px solid currentColor;
+
+  .aurora-container[data-paused='true'] & {
+    border: 0;
+    background: currentColor;
+    clip-path: polygon(0 0, 100% 50%, 0 100%);
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .aurora-layer { animation: none; will-change: auto; }
-  .motion-control { display: none; }
+  .aurora-layer {
+    animation: none;
+  }
 }
 
-.dark-mode .aurora-layer-1 {
-  background: radial-gradient(
-    ellipse at center,
-    rgba(138, 43, 226, 0.6) 0%,
-    rgba(75, 0, 130, 0.4) 35%,
-    transparent 70%
-  );
-}
-
-.dark-mode .aurora-layer-2 {
-  background: radial-gradient(
-    ellipse at center,
-    rgba(72, 61, 139, 0.5) 0%,
-    rgba(0, 191, 255, 0.35) 35%,
-    transparent 70%
-  );
-}
-
-.dark-mode .aurora-layer-3 {
-  background: radial-gradient(
-    ellipse at center,
-    rgba(32, 178, 170, 0.45) 0%,
-    rgba(64, 224, 208, 0.3) 35%,
-    transparent 70%
-  );
-}
-
-.light-mode .aurora-layer-1 {
-  background: radial-gradient(
-    ellipse at center,
-    rgba(230, 190, 255, 0.25) 0%,
-    rgba(200, 160, 255, 0.15) 35%,
-    transparent 70%
-  );
-}
-
-.light-mode .aurora-layer-2 {
-  background: radial-gradient(
-    ellipse at center,
-    rgba(190, 220, 255, 0.2) 0%,
-    rgba(150, 200, 255, 0.12) 35%,
-    transparent 70%
-  );
-}
-
-.light-mode .aurora-layer-3 {
-  background: radial-gradient(
-    ellipse at center,
-    rgba(190, 240, 235, 0.18) 0%,
-    rgba(150, 220, 215, 0.1) 35%,
-    transparent 70%
-  );
+/* The control has nothing to pause when motion is reduced. */
+@media (prefers-reduced-motion: reduce) {
+  .motion-control {
+    display: none;
+  }
 }

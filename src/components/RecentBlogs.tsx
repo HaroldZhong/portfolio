@@ -1,40 +1,20 @@
 import React from 'react';
-import { motion, useReducedMotion } from 'framer-motion';
 import { Link } from 'react-router-dom';
-import { ArrowRight } from 'lucide-react';
+import { ArrowUpRight } from 'lucide-react';
 import BlogCard from './BlogCard';
-import { getRecentPosts } from '../utils/blogLoader';
+import SectionHead from './SectionHead';
+import { getAllPosts, getRecentPosts } from '../utils/blogLoader';
 import '../assets/styles/Blog.scss';
 
-const RecentBlogs: React.FC = () => {
-  const recentPosts = getRecentPosts(3);
-  const prefersReducedMotion = useReducedMotion();
-
-  return (
-    <div className="recent-blogs-section" id="blog">
-      <motion.div
-        initial={false}
-        whileInView={prefersReducedMotion ? undefined : { opacity: 1, y: 0 }}
-        transition={prefersReducedMotion ? { duration: 0 } : { duration: 0.6 }}
-        viewport={{ once: true }}
-      >
-        <h2>Recent Articles</h2>
-        <p className="section-subtitle">
-          These are the kinds of questions I keep coming back to in my work.
-        </p>
-      </motion.div>
-
-      <div className="blog-grid">
-        {recentPosts.map((post, index) => (
-          <BlogCard key={post.slug} post={post} index={index} />
-        ))}
-      </div>
-
-      <Link to="/blog" className="view-all-btn">
-        View All Articles <ArrowRight size={20} />
-      </Link>
+const RecentBlogs: React.FC = () => (
+  <section className="section shell" id="blog" aria-labelledby="blog-title">
+    <SectionHead index="06" label="Writing" titleId="blog-title" title="Recent Articles"
+      intro="These are the kinds of questions I keep coming back to in my work."
+      aside={<Link to="/blog" className="text-link view-all-btn">All {getAllPosts().length} articles <ArrowUpRight size={16} /></Link>} />
+    <div className="blog-grid">
+      {getRecentPosts(3).map(post => <BlogCard key={post.slug} post={post} />)}
     </div>
-  );
-};
+  </section>
+);
 
 export default RecentBlogs;

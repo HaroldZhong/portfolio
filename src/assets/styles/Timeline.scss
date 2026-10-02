@@ -1,4 +1,0 @@
-.experience-list { width: 100%; }
-.experience-row { display: grid; grid-template-columns: 190px minmax(0, 1fr); gap: 28px; padding: 24px 0; border-top: 1px solid #64748b; h3 { margin: 0 0 8px; } h4 { margin: 0; font-weight: 500; } p { line-height: 1.7; } a { text-decoration: underline; } }
-.experience-date { font-size: .9rem; color: #cbd5e1; margin-top: 0; }
-@media (max-width: 600px) { .experience-row { grid-template-columns: 1fr; gap: 0; } }
