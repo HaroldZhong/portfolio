@@ -1,95 +1,64 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { useParams, Link } from 'react-router-dom';
-import { motion, useReducedMotion } from 'framer-motion';
 import ReactMarkdown, { Components } from 'react-markdown';
 import remarkGfm from 'remark-gfm';
 import rehypeRaw from 'rehype-raw';
 import { ArrowLeft, Calendar } from 'lucide-react';
-import { getPostBySlug, formatDate } from '../utils/blogLoader';
+import { getPostBySlug, formatDate, loadPostContent } from '../utils/blogLoader';
 import { usePageMeta } from '../hooks/usePageMeta';
-import { useEffect } from 'react';
 import PdfViewer from '../components/PdfViewer';
 import '../assets/styles/Blog.scss';
 
-// Custom component to handle pdf-viewer tags
-const PdfViewerWrapper = ({ src, title }: { src?: string; title?: string }) => {
-  if (!src) return null;
-  return <PdfViewer src={src} title={title || ''} />;
-};
+export interface ArticleContent { slug: string; content: string }
 
-const BlogPost: React.FC = () => {
-  const { slug } = useParams<{ slug: string }>();
-  const post = slug ? getPostBySlug(slug) : undefined;
-  const prefersReducedMotion = useReducedMotion();
-
+export default function BlogPost({ initialPost }: { initialPost?: ArticleContent }) {
+  const { slug = '' } = useParams();
+  const post = getPostBySlug(slug);
+  const [loaded, setLoaded] = useState(initialPost);
+  const [failed, setFailed] = useState(false);
+  const [retry, setRetry] = useState(0);
+  const content = loaded?.slug === slug ? loaded.content : '';
+  usePageMeta(post ? `${post.title} | Harold Zhong` : 'Article not found | Harold Zhong', post?.excerpt, post?.thumbnail);
   useEffect(() => {
-    window.scrollTo(0, 0);
-  }, [slug]);
+    let active = true;
+    setFailed(false);
+    if (post && loaded?.slug !== slug) {
+      loadPostContent(slug).then(text => { if (active) setLoaded({ slug, content: text }); }).catch(() => { if (active) setFailed(true); });
+    }
+    return () => { active = false; };
+  }, [slug, post, loaded?.slug, retry]);
 
-  usePageMeta(post ? `${post.title} | Harold Zhong` : undefined, post?.excerpt);
+  if (!post) return <div className="blog-post-page"><h1>Article not found</h1><Link to="/blog">Back to all articles</Link></div>;
 
-  if (!post) {
-    return (
-      <div className="blog-post-page">
-        <motion.div
-          initial={prefersReducedMotion ? false : { opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={prefersReducedMotion ? { duration: 0 } : { duration: 0.5 }}
-        >
-          <h1>Post Not Found</h1>
-          <Link to="/blog" className="back-button">
-            <ArrowLeft size={18} /> Back to Blog
-          </Link>
-        </motion.div>
+  // Ordinal IDs also work for repeated headings, punctuation, and non-Latin text.
+  const headings = Array.from(content.matchAll(/^## (.+)$/gm)).map((match, index) => ({ title: match[1], id: `section-${index + 1}` }));
+  let headingIndex = 0;
+  const components = {
+    a: ({ node: _node, href = '', ...props }) => {
+      if (href.startsWith('/portfolio/')) return <Link to={href.slice('/portfolio'.length)} {...props} />;
+      if (href.startsWith('https://haroldzhong.github.io/portfolio/')) return <Link to={href.slice('https://haroldzhong.github.io/portfolio'.length)} {...props} />;
+      return <a href={href} {...props} />;
+    },
+    h2: ({ node: _node, ...props }) => <h2 id={`section-${++headingIndex}`} tabIndex={-1} {...props} />,
+    img: ({ node: _node, ...props }) => <img {...props} loading="lazy" decoding="async" />,
+    'pdf-viewer': ({ src, title }: { src?: string; title?: string }) => src ? <PdfViewer src={src} title={title} /> : null,
+  } as Components;
+
+  return <div className="blog-post-page">
+    <Link to="/blog" className="back-button"><ArrowLeft size={18} /> Back to All Articles</Link>
+    <header className="post-header">
+      <div className="post-category">{post.category}</div>
+      <h1>{post.title}</h1>
+      <div className="post-meta"><Calendar size={18} /><time dateTime={post.date}>{formatDate(post.date)}</time>
+        {post.updated && <span>Updated <time dateTime={post.updated}>{formatDate(post.updated)}</time></span>}
+        {content && <span>· {Math.max(1, Math.ceil(content.split(/\s+/).length / 220))} min read</span>}
       </div>
-    );
-  }
-
-  // Custom components for ReactMarkdown
-  const markdownComponents: Partial<Components> & Record<string, React.ComponentType<any>> = {
-    a: ({ node, ...props }: any) => (
-      <a {...props} target="_blank" rel="noopener noreferrer" />
-    ),
-    'pdf-viewer': ({ src, title }: any) => <PdfViewerWrapper src={src} title={title} />
-  };
-
-  return (
-    <div className="blog-post-page">
-      <motion.div
-        initial={prefersReducedMotion ? false : { opacity: 0, y: 30 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={prefersReducedMotion ? { duration: 0 } : { duration: 0.6 }}
-      >
-        <Link to="/blog" className="back-button">
-          <ArrowLeft size={18} /> Back to All Articles
-        </Link>
-
-        <div className="post-header">
-          <div className="post-thumbnail-large">
-            <img src={post.thumbnail} alt="" />
-          </div>
-          <div className="post-category">{post.category}</div>
-          <h1>{post.title}</h1>
-          <div className="post-meta">
-            <Calendar size={18} />
-            <span>{formatDate(post.date)}</span>
-          </div>
-        </div>
-
-        <div className="post-content">
-          <ReactMarkdown
-            remarkPlugins={[remarkGfm]}
-            rehypePlugins={[rehypeRaw]}
-            components={markdownComponents as Components}
-          >
-            {post.content}
-          </ReactMarkdown>
-        </div>
-      </motion.div>
+    </header>
+    {headings.length >= 5 && <details className="post-toc"><summary>In this article</summary><nav aria-label="Article contents"><ol>{headings.map(heading => <li key={heading.id}><a href={`#${heading.id}`}>{heading.title}</a></li>)}</ol></nav></details>}
+    <div className="post-content">
+      {content ? <ReactMarkdown remarkPlugins={[remarkGfm]} rehypePlugins={[rehypeRaw]} components={components}>{content}</ReactMarkdown>
+        : failed ? <div role="alert"><p>The article could not load.</p><button onClick={() => setRetry(value => value + 1)}>Try again</button></div>
+        : <p role="status">Loading article…</p>}
     </div>
-  );
-};
-
-export default BlogPost;
-
-
+  </div>;
+}

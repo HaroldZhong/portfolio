@@ -3,7 +3,7 @@
   "title": "Propensity-Score Matching",
   "role": "Causal Inference & Survey Analysis",
   "summary": "A mentored causal-inference analysis on restricted-access vital-statistics data, run in a secure computing environment, supporting a manuscript in preparation.",
-  "thumbnail": "/portfolio/images/PSM-thumbnail.png",
+  "thumbnail": "/portfolio/images/PSM-thumbnail-800.jpg",
   "tags": [
     "Causal Inference",
     "Propensity Score Matching",
@@ -35,5 +35,6 @@
     "Built a reproducible, well-documented analytic pipeline within a secure restricted-data environment.",
     "Includes documented analytic quality checks.",
     "Packaged methods toward a manuscript in preparation."
-  ]
+  ],
+  "status": "Restricted-data research"
 }

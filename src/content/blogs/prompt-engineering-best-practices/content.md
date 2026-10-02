@@ -1,12 +1,12 @@
 # Prompt Engineering Best Practices for Research
 
-If you're doing research in 2025, you now have a strange new collaborator: an AI that can skim hundreds of abstracts, rewrite dense paragraphs, and even help you think through methods and analysis plans.
+If you're doing research, you now have a strange new collaborator: an AI that can skim hundreds of abstracts, rewrite dense paragraphs, and even help you think through methods and analysis plans.
 
 But here's the catch:
 
 > The difference between "wow, this saved me two days" and "wow, this confidently made stuff up" is usually not the model – it's the **prompt**.
 
-Recent work on large language models in scientific workflows has shown that prompt design can substantially change output quality, especially for reasoning-heavy tasks and literature synthesis. At the same time, we know these models hallucinate, oversimplify findings, and can misrepresent key details if we don't explicitly constrain them.
+Prompt design can change output quality, but its effect needs to be checked on the task and model you actually use. At the same time, we know these models hallucinate, oversimplify findings, and can misrepresent key details if we don't explicitly constrain them.
 
 So for researchers, "prompt engineering" isn't a party trick. It's starting to look a lot like **methodology**.
 
@@ -14,7 +14,7 @@ So for researchers, "prompt engineering" isn't a party trick. It's starting to l
 
 Large language models are now being used to summarize papers, generate hypotheses, critique study designs, and assist with coding and data analysis. Studies have found that:
 
-* Certain prompt patterns (like step-by-step reasoning, asking for uncertainty, or explicitly prioritizing accuracy) significantly improve performance.
+* Prompting choices can improve performance on specific tasks. For example, [Wei et al. (2022)](https://arxiv.org/abs/2201.11903) found gains from chain-of-thought exemplars on reasoning benchmarks. This is not a guarantee for every model or for research synthesis.
 * Poorly specified prompts increase hallucinations and misinterpretations, especially in technical domains like medicine and law.
 
 Industry guides echo this: OpenAI, Anthropic, and others all emphasize **clear task definitions, explicit constraints, and structured outputs** as core prompt engineering habits.

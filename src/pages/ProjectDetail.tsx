@@ -1,29 +1,19 @@
 import React from 'react';
-import { useParams, useNavigate, Navigate } from 'react-router-dom';
+import { useParams, Link } from 'react-router-dom';
 import { ArrowLeft, Github, ExternalLink, FileText, Mail } from 'lucide-react';
 import { getProjectBySlug } from '../utils/projectLoader';
 import { usePageMeta } from '../hooks/usePageMeta';
 import '../assets/styles/Project.scss';
+import ProjectImage from '../components/ProjectImage';
 
 const ProjectDetail: React.FC = () => {
   const { slug } = useParams<{ slug: string }>();
   const project = getProjectBySlug(slug || '');
-  const navigate = useNavigate();
-  usePageMeta(project ? `${project.title} | Harold Zhong` : undefined, project?.summary);
+  usePageMeta(project ? `${project.title} | Harold Zhong` : undefined, project?.summary, project?.thumbnail);
 
   if (!project) {
-    return <Navigate to="/" replace />;
+    return <div className="project-detail-page"><h1>Project not found</h1><Link to="/projects">Back to all projects</Link></div>;
   }
-
-  const handleBackClick = () => {
-    navigate('/');
-    setTimeout(() => {
-      const projectsSection = document.getElementById('projects');
-      if (projectsSection) {
-        projectsSection.scrollIntoView({ behavior: 'smooth' });
-      }
-    }, 100);
-  };
 
   const handleRequestAccess = () => {
     const user = 'harold.zhong';
@@ -35,18 +25,27 @@ const ProjectDetail: React.FC = () => {
 
   return (
     <div className="project-detail-page">
-      <button onClick={handleBackClick} className="back-button">
-        <ArrowLeft size={20} /> Back to Projects
-      </button>
+      <nav className="project-breadcrumbs" aria-label="Project navigation">
+        <Link to="/projects" className="back-button"><ArrowLeft size={20} /> All projects</Link>
+        <Link to="/#projects">Home: selected work</Link>
+      </nav>
 
       <div className="project-header">
-        <div className="project-thumbnail-large">
-          <img src={project.thumbnail} alt="" />
-        </div>
         <h1>{project.title}</h1>
         <p className="project-role">{project.role}</p>
+        <p className="project-status">{project.status}</p>
+        <p className="project-summary">{project.summary}</p>
+        <div className="project-evidence">
+          {project.links?.demo && <a href={project.links.demo}>Visit project website →</a>}
+          {project.links?.github && <a href={project.links.github}>Explore source code →</a>}
+          {project.links?.paper && <a href={project.links.paper}>Read paper →</a>}
+          {!project.links?.demo && !project.links?.github && !project.links?.paper && <a href="#project-contribution">Read my contribution ↓</a>}
+        </div>
       </div>
 
+      {project.thumbnail && <div className="project-header"><div className="project-thumbnail-large">
+        <ProjectImage src={project.thumbnail} title={project.title} />
+      </div></div>}
       <div className="project-content">
         <section className="project-section">
           <h2>Overview</h2>
@@ -54,7 +53,7 @@ const ProjectDetail: React.FC = () => {
         </section>
 
         <section className="project-section">
-          <h2>My Role</h2>
+          <h2 id="project-contribution" tabIndex={-1}>My contribution</h2>
           <p>{project.myRole}</p>
         </section>
 
@@ -83,7 +82,7 @@ const ProjectDetail: React.FC = () => {
         </section>
 
         <section className="project-section">
-          <h2>Key Outcomes</h2>
+          <h2>Deliverables & outcomes</h2>
           <ul>
             {project.outcomes.map((outcome, idx) => (
               <li key={idx}>{outcome}</li>

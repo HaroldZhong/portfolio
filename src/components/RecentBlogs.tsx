@@ -13,7 +13,7 @@ const RecentBlogs: React.FC = () => {
   return (
     <div className="recent-blogs-section" id="blog">
       <motion.div
-        initial={prefersReducedMotion ? false : { opacity: 0, y: 30 }}
+        initial={false}
         whileInView={prefersReducedMotion ? undefined : { opacity: 1, y: 0 }}
         transition={prefersReducedMotion ? { duration: 0 } : { duration: 0.6 }}
         viewport={{ once: true }}

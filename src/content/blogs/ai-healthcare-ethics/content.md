@@ -19,7 +19,7 @@ When you're building AI for clinical settings, **privacy is not a feature, it's 
 
 ### Start with: "What counts as PHI here?"
 
-HIPAA defines *protected health information (PHI)* as individually identifiable health information held or transmitted by a covered entity or its business associates. That includes obvious fields like name and medical record number, but also combinations of dates, locations, and other identifiers that could reasonably link data back to a person.
+The [HHS Privacy Rule summary](https://www.hhs.gov/hipaa/for-professionals/privacy/laws-regulations/index.html) defines *protected health information (PHI)* as individually identifiable health information held or transmitted by a covered entity or its business associates. That includes obvious fields like name and medical record number, but also combinations of dates, locations, and other identifiers that could reasonably link data back to a person.
 
 For AI systems, that means:
 
@@ -29,7 +29,7 @@ For AI systems, that means:
 
 ### Design with data minimization and purpose limitation
 
-The HIPAA Privacy Rule effectively creates a federal floor for how PHI can be used and disclosed; it expects that entities only use what's necessary to accomplish a legitimate purpose.
+The HIPAA Privacy Rule generally requires covered entities to limit PHI to the minimum necessary for a permitted purpose. There are exceptions, including disclosures to or requests by healthcare providers for treatment. [HHS explains the standard and its exceptions](https://www.hhs.gov/hipaa/for-professionals/privacy/guidance/minimum-necessary-requirement/index.html).
 
 When I'm working on an AI workflow, I've found these questions helpful:
 

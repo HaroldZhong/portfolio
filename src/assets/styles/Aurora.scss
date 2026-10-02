@@ -58,6 +58,7 @@
   z-index: 0;
   overflow: hidden;
   pointer-events: none;
+  mask-image: linear-gradient(to bottom, #000 calc(100% - 128px), transparent);
 }
 
 .aurora-layer {
@@ -67,7 +68,7 @@
   top: -25%;
   left: -25%;
   border-radius: 40% 60% 70% 30%;
-  filter: blur(80px);
+  // The radial gradients already fade softly; a full-surface blur stalls large displays.
   will-change: transform, opacity;
 }
 
@@ -108,6 +109,36 @@
   z-index: 1;
 }
 
+.aurora-container[data-paused="true"] .aurora-layer {
+  animation-play-state: paused;
+  will-change: auto;
+}
+
+.motion-control {
+  position: absolute;
+  bottom: 20px;
+  right: max(20px, calc((100% - 1104px) / 2));
+  z-index: 2;
+  min-height: 44px;
+  padding: 10px 14px;
+  border: 1px solid #64748b;
+  border-radius: 24px;
+  background: #0d1116;
+  color: #cbd5e1;
+  font-size: .8rem;
+  cursor: pointer;
+}
+
+.light-mode .motion-control {
+  background: #f1f5f9;
+  color: #334155;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .aurora-layer { animation: none; will-change: auto; }
+  .motion-control { display: none; }
+}
+
 .dark-mode .aurora-layer-1 {
   background: radial-gradient(
     ellipse at center,
@@ -142,7 +173,6 @@
     rgba(200, 160, 255, 0.15) 35%,
     transparent 70%
   );
-  filter: blur(80px);
 }
 
 .light-mode .aurora-layer-2 {
@@ -152,7 +182,6 @@
     rgba(150, 200, 255, 0.12) 35%,
     transparent 70%
   );
-  filter: blur(80px);
 }
 
 .light-mode .aurora-layer-3 {
@@ -162,6 +191,4 @@
     rgba(150, 220, 215, 0.1) 35%,
     transparent 70%
   );
-  filter: blur(80px);
 }
-

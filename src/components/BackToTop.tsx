@@ -9,7 +9,8 @@ const BackToTop: React.FC = () => {
 
   useEffect(() => {
     const toggleVisibility = () => {
-      if (window.pageYOffset > 400) {
+      const contact = document.getElementById('contact');
+      if (window.pageYOffset > 400 && (!contact || contact.getBoundingClientRect().top > window.innerHeight)) {
         setIsVisible(true);
       } else {
         setIsVisible(false);
@@ -24,6 +25,7 @@ const BackToTop: React.FC = () => {
   }, []);
 
   const scrollToTop = () => {
+    document.querySelector<HTMLAnchorElement>('.nav-brand')?.focus({ preventScroll: true });
     window.scrollTo({
       top: 0,
       behavior: prefersReducedMotion ? 'auto' : 'smooth'

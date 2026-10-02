@@ -1,14 +1,14 @@
 # How 700M+ People Are Really Using AI: OpenAI vs Anthropic
 
-Recently, both OpenAI and Anthropic released major research on how people actually use AI in the real world.
+In September 2025, OpenAI and Anthropic released major research on how people actually use AI in the real world.
 
-- OpenAI's study was published as an NBER working paper, using usage data from more than **700 million weekly ChatGPT users** (around 1 in 10 people globally). It's one of the first large-scale looks at what people actually do with a general-purpose chatbot.  
+- OpenAI's study was published as an NBER working paper analyzing a representative sample of ChatGPT conversations. ChatGPT had more than **700 million weekly users** at the time; that platform-wide population is not the study's sample size. It's one of the first large-scale looks at what people actually do with a general-purpose chatbot.
 
-  - Paper: ["The Global Diffusion of Generative AI"](https://www.nber.org/system/files/working_papers/w34255/w34255.pdf)
+  - Paper: [How People Use ChatGPT](https://www.nber.org/papers/w34255), with an [OpenAI research summary](https://openai.com/index/how-people-are-using-chatgpt/)
 
-- Anthropic's latest **AI Economic Index** (third update) analyzes millions of Claude conversations, links them to the O*NET task database, and adds new views on country/region differences and enterprise API use.  
+- Anthropic's September 2025 **AI Economic Index** (third update) analyzes millions of Claude conversations, links them to the O*NET task database, and adds new views on country/region differences and enterprise API use.
 
-  - Index: [Anthropic AI Economic Index](https://www.anthropic.com/economic-index#global-usage)
+  - Index: [Anthropic AI Economic Index](https://www.anthropic.com/research/anthropic-economic-index-september-2025-report)
 
 Together, they offer a rich snapshot of how AI is landing in both **everyday life** and **workflows**.
 
@@ -30,7 +30,7 @@ OpenAI's data shows a clear shift over time:
 
 - Early users were much more likely to use ChatGPT for work.
 
-- Today, a large majority of consumer usage is **non-work** (roughly 70–73% of messages), with only about 27–30% clearly work-related.
+- In the study period, a large majority of consumer usage is **non-work** (roughly 70–73% of messages), with only about 27–30% clearly work-related.
 
 This suggests that AI is evolving from a **professional tool** into an **everyday assistant** used for:
 
@@ -50,7 +50,7 @@ Anthropic highlights two core modes of AI use:
 
 - **Automation** – AI independently completes tasks with limited human oversight.
 
-Their latest findings suggest that automation-heavy use cases are **growing**, enabled by improvements in model reasoning and accuracy. At the same time, augmentation remains critical for complex, collaborative, and high-stakes tasks.
+The September 2025 findings suggest that automation-heavy use cases are **growing**, enabled by improvements in model reasoning and accuracy. At the same time, augmentation remains critical for complex, collaborative, and high-stakes tasks.
 
 Industry patterns:
 

@@ -1,17 +1,18 @@
 import React from "react";
+import ProjectImage from "./ProjectImage";
 import { Link } from "react-router-dom";
 import { motion, useReducedMotion } from "framer-motion";
 import { Project as ProjectType, getAllProjects } from '../utils/projectLoader';
 import '../assets/styles/Project.scss';
 
-const ProjectCard: React.FC<{ project: ProjectType; index: number }> = ({ project, index }) => {
+export const ProjectCard: React.FC<{ project: ProjectType; index: number }> = ({ project, index }) => {
   const prefersReducedMotion = useReducedMotion();
 
   return (
     <Link to={`/project/${project.slug}`} className="project-card-link">
       <motion.div
         className="project-card-container"
-        initial={prefersReducedMotion ? false : { opacity: 0, y: 50 }}
+        initial={false}
         whileInView={prefersReducedMotion ? undefined : { opacity: 1, y: 0 }}
         transition={prefersReducedMotion ? { duration: 0 } : { duration: 0.5, delay: index * 0.1 }}
         viewport={{ once: true }}
@@ -19,18 +20,19 @@ const ProjectCard: React.FC<{ project: ProjectType; index: number }> = ({ projec
       >
         <div className="project-card">
           <div className="project-thumbnail">
-            <img src={project.thumbnail} alt="" />
+            <ProjectImage src={project.thumbnail} title={project.title} />
           </div>
           <div className="project-card-content">
             <h3>{project.title}</h3>
             <p className="project-role">{project.role}</p>
+            <p className="project-status">{project.status}</p>
             <p className="project-summary">{project.summary}</p>
             <div className="project-tags">
-              {project.tags.slice(0, 3).map((tag, idx) => (
-                <span key={idx} className="tag">{tag}</span>
+              {project.tags.map(tag => (
+                <span key={tag} className="tag">{tag}</span>
               ))}
             </div>
-            <div className="view-details-hint">Click to view details →</div>
+            <div className="view-details-hint">Read case study →</div>
           </div>
         </div>
       </motion.div>
@@ -40,26 +42,29 @@ const ProjectCard: React.FC<{ project: ProjectType; index: number }> = ({ projec
 
 function Project() {
   const projects = getAllProjects();
+  const featuredSlugs = ['brat-family-therapy-chatbot', 'nhis-nhanes-health-inequality', 'research-atlas'];
+  const featured = featuredSlugs.map(slug => projects.find(project => project.slug === slug)!);
 
   return (
     <div className="projects-container" id="projects">
       <motion.div
-        initial={{ opacity: 0, y: 30 }}
+        initial={false}
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6 }}
         viewport={{ once: true }}
       >
-        <h2>Projects & Collaborations</h2>
+        <h2>Selected Work</h2>
         <p className="projects-intro">
-          Work bridging data, AI, and real-world impact across healthcare, social work, and product development.
+          AI systems, research methods, and the workflows that connect them.
         </p>
       </motion.div>
 
       <div className="projects-grid">
-        {projects.map((project, index) => (
-          <ProjectCard key={index} project={project} index={index} />
+        {featured.map((project, index) => (
+          <ProjectCard key={project.slug} project={project} index={index} />
         ))}
       </div>
+      <Link to="/projects" className="view-all-btn">View all projects →</Link>
     </div>
   );
 }

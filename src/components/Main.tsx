@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import GitHubIcon from '@mui/icons-material/GitHub';
 import LinkedInIcon from '@mui/icons-material/LinkedIn';
 import EmailIcon from '@mui/icons-material/Email';
@@ -24,18 +25,18 @@ function Main() {
   return (
     <AuroraBackground>
       <div className="container">
-        <div className="about-section">
+        <div className="about-section" id="home">
           <div className="hero-content">
 
             {/* Headshot and Name */}
             <div className="hero-header">
               <div className="headshot-wrapper">
-                <img src={profileImage} alt="Headshot of Harold Zhong" className="headshot" />
+                <img src={profileImage} alt="Headshot of Harold Zhong" className="headshot" width={210} height={210} loading="eager" />
               </div>
               <div className="hero-text-wrapper">
                 <h1 className="hero-title">Harold Zhong</h1>
-                <h2 className="hero-job-title">SOCIAL SCIENCE RESEARCH ASSOCIATE, UT AUSTIN</h2>
-                <p className="hero-tagline">Bridging rigorous social science research and applied AI systems.</p>
+                <h2 className="hero-job-title">Applied AI Engineer &amp; Researcher</h2>
+                <p className="hero-tagline">I build AI systems and data workflows for reliable applications and rigorous research.</p>
               </div>
             </div>
 
@@ -48,9 +49,10 @@ function Main() {
 
             {/* CTA Buttons */}
             <div className="cta-container">
-              <a href="#projects" className="cta-button primary">
-                View My Work <ArrowRight size={20} />
-              </a>
+              <Link to="/#projects" className="cta-button primary">
+                Explore my work <ArrowRight size={20} />
+              </Link>
+              <Link to="/#contact" className="cta-button">Get in touch</Link>
             </div>
 
             {/* Social Links - Below CTA */}

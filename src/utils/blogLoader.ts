@@ -35,26 +35,6 @@ import governanceGapMeta from '../content/blogs/ai-research-governance-transpare
 import deepResearchMeta from '../content/blogs/deep-research-agents-lit-review/metadata.json';
 import designingYourLifeMeta from '../content/blogs/designing-your-life-gpt/metadata.json';
 
-// Import markdown content
-import aiToolsFailedContent from '../content/blogs/invisible-tax-ai-tools/content.md?raw';
-import openaiAnthropicContent from '../content/blogs/how-700m-people-use-ai/content.md?raw';
-import promptEngineeringContent from '../content/blogs/prompt-engineering-best-practices/content.md?raw';
-import aiHealthcareContent from '../content/blogs/ai-healthcare-ethics/content.md?raw';
-import nhisNhanesContent from '../content/blogs/working-with-nhis-nhanes/content.md?raw';
-import nestedLearningContent from '../content/blogs/nested-learning-why-google-wants-models-with-real-memory/content.md?raw';
-import notebooklmStorytellingContent from '../content/blogs/notebooklm-storytelling-learning/content.md?raw';
-import notebooklmWorkflowContent from '../content/blogs/notebooklm-research-workflow/content.md?raw';
-import skillsProtocolsContent from '../content/blogs/skills-as-research-protocols/content.md?raw';
-import aiEvalsContent from '../content/blogs/ai-evals-are-measurement/content.md?raw';
-import ralphLoopContent from '../content/blogs/ralph-loop-honest-look/content.md?raw';
-import harnessContent from '../content/blogs/building-research-agents-harness-over-model/content.md?raw';
-import stormContent from '../content/blogs/storm-multi-perspective-research-questions/content.md?raw';
-import obsidianVaultContent from '../content/blogs/obsidian-ai-research-vault/content.md?raw';
-import siliconSamplingContent from '../content/blogs/silicon-sampling-promise-and-peril/content.md?raw';
-import governanceGapContent from '../content/blogs/ai-research-governance-transparency-gap/content.md?raw';
-import deepResearchContent from '../content/blogs/deep-research-agents-lit-review/content.md?raw';
-import designingYourLifeContent from '../content/blogs/designing-your-life-gpt/content.md?raw';
-
 export interface BlogPost {
   slug: string;
   title: string;
@@ -62,104 +42,86 @@ export interface BlogPost {
   category: string;
   excerpt: string;
   thumbnail: string;
-  content: string;
+  updated?: string;
 }
 
 const blogPosts: BlogPost[] = [
   {
     ...aiToolsFailedMeta,
-    thumbnail: aiToolsFailedImg,
-    content: aiToolsFailedContent
+    thumbnail: aiToolsFailedImg
   },
   {
     ...openaiAnthropicMeta,
-    thumbnail: openaiAnthropicImg,
-    content: openaiAnthropicContent
+    thumbnail: openaiAnthropicImg
   },
   {
     ...promptEngineeringMeta,
-    thumbnail: 'https://images.unsplash.com/photo-1677442136019-21780ecad995?w=800&q=80',
-    content: promptEngineeringContent
+    thumbnail: 'https://images.unsplash.com/photo-1677442136019-21780ecad995?w=800&q=80'
   },
   {
     ...aiHealthcareMeta,
-    thumbnail: 'https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=800&q=80',
-    content: aiHealthcareContent
+    thumbnail: 'https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=800&q=80'
   },
   {
     ...nhisNhanesMeta,
-    thumbnail: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&q=80',
-    content: nhisNhanesContent
+    thumbnail: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&q=80'
   },
   {
     ...nestedLearningMeta,
-    thumbnail: nestedLearningImg,
-    content: nestedLearningContent
+    thumbnail: nestedLearningImg
   },
   {
     ...notebooklmStorytellingMeta,
-    thumbnail: notebooklmStorytellingImg,
-    content: notebooklmStorytellingContent
+    thumbnail: notebooklmStorytellingImg
   },
   {
     ...notebooklmWorkflowMeta,
-    thumbnail: researchAtlasCoverImg,
-    content: notebooklmWorkflowContent
+    thumbnail: researchAtlasCoverImg
   },
   {
     ...skillsProtocolsMeta,
-    thumbnail: skillsProtocolsImg,
-    content: skillsProtocolsContent
+    thumbnail: skillsProtocolsImg
   },
   {
     ...aiEvalsMeta,
-    thumbnail: aiEvalsImg,
-    content: aiEvalsContent
+    thumbnail: aiEvalsImg
   },
   {
     ...ralphLoopMeta,
-    thumbnail: ralphLoopImg,
-    content: ralphLoopContent
+    thumbnail: ralphLoopImg
   },
   {
     ...harnessMeta,
-    thumbnail: harnessImg,
-    content: harnessContent
+    thumbnail: harnessImg
   },
   {
     ...stormMeta,
-    thumbnail: stormImg,
-    content: stormContent
+    thumbnail: stormImg
   },
   {
     ...obsidianVaultMeta,
-    thumbnail: obsidianVaultImg,
-    content: obsidianVaultContent
+    thumbnail: obsidianVaultImg
   },
   {
     ...siliconSamplingMeta,
-    thumbnail: siliconSamplingImg,
-    content: siliconSamplingContent
+    thumbnail: siliconSamplingImg
   },
   {
     ...governanceGapMeta,
-    thumbnail: governanceGapImg,
-    content: governanceGapContent
+    thumbnail: governanceGapImg
   },
   {
     ...deepResearchMeta,
-    thumbnail: deepResearchImg,
-    content: deepResearchContent
+    thumbnail: deepResearchImg
   },
   {
     ...designingYourLifeMeta,
-    thumbnail: designingYourLifeImg,
-    content: designingYourLifeContent
+    thumbnail: designingYourLifeImg
   }
 ];
 
 export const getAllPosts = (): BlogPost[] => {
-  return blogPosts.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
+  return [...blogPosts].sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
 };
 
 export const getRecentPosts = (count: number = 3): BlogPost[] => {
@@ -180,3 +142,10 @@ export const formatDate = (dateString: string): string => {
     day: 'numeric'
   });
 };
+
+const contentFiles = import.meta.glob<string>('../content/blogs/*/content.md', { query: '?raw', import: 'default' });
+export async function loadPostContent(slug: string): Promise<string> {
+  const load = contentFiles[`../content/blogs/${slug}/content.md`];
+  if (!load) throw new Error('Article content not found');
+  return load();
+}

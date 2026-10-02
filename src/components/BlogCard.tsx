@@ -17,7 +17,7 @@ const BlogCard: React.FC<BlogCardProps> = ({ post, index }) => {
     <Link to={`/blog/${post.slug}`} className="blog-card-link">
       <motion.div
         className="blog-card-container"
-        initial={prefersReducedMotion ? false : { opacity: 0, y: 30 }}
+        initial={false}
         whileInView={prefersReducedMotion ? undefined : { opacity: 1, y: 0 }}
         transition={prefersReducedMotion ? { duration: 0 } : { duration: 0.5, delay: index * 0.1 }}
         viewport={{ once: true }}
@@ -25,17 +25,17 @@ const BlogCard: React.FC<BlogCardProps> = ({ post, index }) => {
       >
         <div className="blog-card">
           <div className="blog-thumbnail">
-            <img src={post.thumbnail} alt="" />
+            <img src={post.thumbnail} alt="" loading="lazy" decoding="async" />
             <div className="blog-category-badge">{post.category}</div>
           </div>
           <div className="blog-card-content">
             <h3>{post.title}</h3>
             <div className="blog-meta">
               <Calendar size={16} />
-              <span>{formatDate(post.date)}</span>
+              <time dateTime={post.date}>{formatDate(post.date)}</time>
             </div>
             <p className="blog-excerpt">{post.excerpt}</p>
-            <div className="hover-hint">Click to read more →</div>
+            <div className="hover-hint">Read article →</div>
           </div>
         </div>
       </motion.div>

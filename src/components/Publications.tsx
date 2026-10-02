@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import '../assets/styles/Publications.scss';
 
 function Publications() {
@@ -7,12 +8,20 @@ function Publications() {
       <div className="publications-container">
         <h2>Publications & Scholarly Work</h2>
 
+        <p>Research contributions span study platforms, survey harmonization, and reproducible analysis. Acceptance and review status are shown for each contribution.</p>
+        <p className="scholarly-links"><Link to="/project/brat-family-therapy-chatbot">BRAT platform contribution</Link> · <Link to="/project/intersectionality-health-disparities">Intersectionality analysis</Link> · <Link to="/project/nhis-nhanes-health-inequality">NHIS methods</Link></p>
+        <div className="pub-group">
+          <h3>Accepted Journal Article</h3>
+          <ul>
+            <li>
+              Fuentes-Balderrama, J., <strong>Zhong, H.</strong>, Cardenas, M. E., Ayala, S., &amp; Velasco, S. I. AI-Caramba: The experience of mothers in Central Texas with BRAT, a parenting AI-chatbot. <em>Child &amp; Family Social Work</em>. <span className="pub-status">Accepted</span>
+            </li>
+          </ul>
+        </div>
+
         <div className="pub-group">
           <h3>Manuscripts Under Review</h3>
           <ul>
-            <li>
-              Fuentes-Balderrama, J., <strong>Zhong, H.</strong>, Cardenas, M. E., Ayala, S., &amp; Velasco, S. I. AI-Caramba: The experience of mothers in Central Texas with BRAT, a parenting AI-chatbot. <em>Child &amp; Family Social Work</em>. <span className="pub-status">Under review</span>
-            </li>
             <li>
               Cubbin, C., &amp; <strong>Zhong, H.</strong> Replication and exploration of multilevel models of weight status to examine intersectionality. <em>Obesity Science &amp; Practice</em>. <span className="pub-status">Under review</span>
             </li>
@@ -23,10 +32,10 @@ function Publications() {
         </div>
 
         <div className="pub-group">
-          <h3>Conference Submission Under Review</h3>
+          <h3>Accepted Conference Contribution</h3>
           <ul>
             <li>
-              Fuentes-Balderrama, J., <strong>Zhong, H.</strong>, Cardenas, M. E., Ayala, S., &amp; Velasco, S. I. AI Caramba: The experience of Hispanic mothers with BRAT, a parenting intervention-enhancing AI-chatbot. Society for Social Work Research (SSWR) 31st Annual Conference, San Francisco, CA. <span className="pub-status">Under review</span>
+              Fuentes-Balderrama, J., <strong>Zhong, H.</strong>, Cardenas, M. E., Ayala, S., &amp; Velasco, S. I. AI Caramba: The experience of Hispanic mothers with BRAT, a parenting intervention-enhancing AI-chatbot. Society for Social Work Research (SSWR) 31st Annual Conference, San Francisco, CA. <span className="pub-status">Accepted</span>
             </li>
           </ul>
         </div>

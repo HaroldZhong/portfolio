@@ -8,21 +8,19 @@ import Project from '../components/Project';
 import RecentBlogs from '../components/RecentBlogs';
 import Contact from '../components/Contact';
 import FadeIn from '../components/FadeIn';
-import { useEffect } from 'react';
+import { usePageMeta } from '../hooks/usePageMeta';
 
 const HomePage: React.FC = () => {
-  useEffect(() => {
-    window.scrollTo(0, 0);
-  }, []);
+  usePageMeta();
 
   return (
     <FadeIn transitionDuration={700}>
       <Main />
       <Project />
       <Timeline />
+      <Expertise />
       <Education />
       <Publications />
-      <Expertise />
       <RecentBlogs />
       <Contact />
     </FadeIn>

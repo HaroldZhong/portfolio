@@ -1,23 +1,24 @@
 import { useEffect } from 'react';
+import { useLocation } from 'react-router-dom';
 
-/**
- * Sets document.title and the meta description for a route, restoring the
- * previous values on unmount. Gives this client-rendered SPA per-page
- * metadata for search engines and the browser tab without adding a
- * head-manager dependency.
- */
-export function usePageMeta(title?: string, description?: string): void {
+export const siteUrl = 'https://haroldzhong.github.io';
+export const homeTitle = 'Harold Zhong | Applied AI Engineer & Researcher';
+export const homeDescription = 'AI systems and data workflows for reliable applications and rigorous research. Explore Harold Zhong’s projects, experience, and scholarly work.';
+export const defaultImage = '/portfolio/images/social-card.jpg';
+
+export function pageMetadata(pathname: string, title = homeTitle, description = homeDescription, image = defaultImage) {
+  const path = pathname === '/' ? '/portfolio/' : `/portfolio${pathname.replace(/\/$/, '')}/`;
+  return { title, description, canonical: siteUrl + path, image: new URL(image || defaultImage, siteUrl).href, type: pathname.startsWith('/blog/') ? 'article' : 'website' };
+}
+
+export function usePageMeta(title?: string, description?: string, image?: string): void {
+  const { pathname } = useLocation();
   useEffect(() => {
-    const prevTitle = document.title;
-    const descEl = document.querySelector('meta[name="description"]');
-    const prevDesc = descEl?.getAttribute('content') ?? '';
-
-    if (title) document.title = title;
-    if (description && descEl) descEl.setAttribute('content', description);
-
-    return () => {
-      document.title = prevTitle;
-      if (descEl) descEl.setAttribute('content', prevDesc);
-    };
-  }, [title, description]);
+    const meta = pageMetadata(pathname, title, description, image);
+    document.title = meta.title;
+    document.querySelector('link[rel="canonical"]')?.setAttribute('href', meta.canonical);
+    for (const [key, value] of Object.entries({ description: meta.description, 'og:title': meta.title, 'og:description': meta.description, 'og:url': meta.canonical, 'og:image': meta.image, 'og:type': meta.type, 'twitter:title': meta.title, 'twitter:description': meta.description, 'twitter:image': meta.image })) {
+      document.querySelector(`meta[name="${key}"], meta[property="${key}"]`)?.setAttribute('content', value);
+    }
+  }, [pathname, title, description, image]);
 }

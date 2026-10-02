@@ -2,7 +2,7 @@
   "slug": "brat-family-therapy-chatbot",
   "title": "BRAT Research Platform",
   "role": "Product Lead & AI Engineer",
-  "summary": "A conversational role-play and coaching platform that lets parents rehearse difficult conversations with a simulated child, built for a UT Austin parenting research study.",
+  "summary": "Built conversational practice, study onboarding, and researcher review tools for a UT Austin parenting study.",
   "thumbnail": "https://images.unsplash.com/photo-1531746790731-6c087fecd65a?w=800&h=400&fit=crop",
   "tags": [
     "Conversational AI",
@@ -52,5 +52,6 @@
   ],
   "links": {
     "demo": "https://bratlab.org"
-  }
+  },
+  "status": "Research platform"
 }

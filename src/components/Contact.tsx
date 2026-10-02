@@ -30,23 +30,28 @@ function Contact() {
   const sendEmail = (e: React.FormEvent) => {
     e.preventDefault();
 
-    // Bot detection: honeypot filled or form submitted too quickly
-    if (honeypot || Date.now() - formLoadTime < 3000) {
-      // Silently reject - don't alert bots
-      setSuccess(true);
+    if (sending) return;
+    setSuccess(false);
+    setError('');
+
+    // Keep spam protection, but never claim delivery for a rejected inquiry.
+    if (honeypot.trim() || Date.now() - formLoadTime < 3000) {
+      setError('Message not sent. Please wait a few seconds and try again, or email me directly.');
       return;
     }
 
     // Validation
-    const hasNameError = name === '';
-    const hasEmailError = email === '';
-    const hasMessageError = message === '';
+    const hasNameError = name.trim() === '';
+    const hasEmailError = email.trim() === '';
+    const hasMessageError = message.trim() === '';
 
     setNameError(hasNameError);
     setEmailError(hasEmailError);
     setMessageError(hasMessageError);
 
     if (hasNameError || hasEmailError || hasMessageError) {
+      const field = hasNameError ? 'contact-name' : hasEmailError ? 'contact-email' : 'contact-message';
+      document.getElementById(field)?.focus();
       return;
     }
 
@@ -55,10 +60,13 @@ function Contact() {
     setError('');
     setSuccess(false);
 
+    const contact = email.trim();
+    const replyEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(contact) ? contact : '';
     const templateParams = {
-      name: name,
-      email: email,
-      message: message
+      name: name.trim(),
+      // EmailJS uses this field in Reply-To, which cannot contain a phone number.
+      email: replyEmail,
+      message: replyEmail ? message.trim() : `Contact: ${contact}\n\n${message.trim()}`
     };
 
     // EmailJS credentials
@@ -67,8 +75,7 @@ function Contact() {
     const PUBLIC_KEY = '-XJrKh5vjUmCWPZQ5';
 
     emailjs.send(SERVICE_ID, TEMPLATE_ID, templateParams, PUBLIC_KEY)
-      .then((response) => {
-        console.log('SUCCESS!', response.status, response.text);
+      .then(() => {
         setSuccess(true);
         setSending(false);
         // Clear form
@@ -76,8 +83,7 @@ function Contact() {
         setEmail('');
         setMessage('');
       })
-      .catch((err) => {
-        console.error('FAILED...', err);
+      .catch(() => {
         setError('Failed to send message. Please try again or email me directly.');
         setSending(false);
       });
@@ -90,7 +96,7 @@ function Contact() {
           <h2>Contact Me</h2>
           <p className="contact-intro">
             I'm always happy to talk about AI in health, research workflows, or weird data problems.
-            <br /><br />
+            <br />
             If you're working on something in that space, I'd love to hear about it.
           </p>
 
@@ -110,7 +116,8 @@ function Contact() {
             ref={form}
             component="form"
             noValidate
-            autoComplete="off"
+            autoComplete="on"
+            aria-busy={sending}
             className='contact-form'
             onSubmit={sendEmail}
           >
@@ -122,13 +129,14 @@ function Contact() {
               tabIndex={-1}
               autoComplete="off"
               aria-hidden="true"
-              inputProps={{ 'aria-label': 'Do not fill this field' }}
+              inputProps={{ tabIndex: -1, 'aria-label': 'Do not fill this field' }}
             />
             <div className='form-flex'>
               <TextField
                 required
                 id="contact-name"
                 label="Your Name"
+                autoComplete="name"
                 placeholder="What's your name?"
                 value={name}
                 onChange={(e) => {
@@ -140,8 +148,9 @@ function Contact() {
               <TextField
                 required
                 id="contact-email"
-                label="Email / Phone"
-                placeholder="How can I reach you?"
+                label="Email or phone"
+                autoComplete="email"
+                placeholder="Email address or phone number"
                 value={email}
                 onChange={(e) => {
                   setEmail(e.target.value);
@@ -152,11 +161,11 @@ function Contact() {
             </div>
             <TextField
               required
-              id="outlined-multiline-static"
+              id="contact-message"
               label="Message"
               placeholder="Send me any inquiries or questions"
               multiline
-              rows={10}
+              rows={5}
               className="body-form"
               value={message}
               onChange={(e) => {

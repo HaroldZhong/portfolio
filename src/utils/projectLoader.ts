@@ -2,6 +2,7 @@ export interface Project {
   slug: string;
   title: string;
   role: string;
+  status: string;
   summary: string;
   thumbnail: string;
   tags: string[];

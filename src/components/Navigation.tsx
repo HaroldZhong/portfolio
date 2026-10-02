@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from "react";
-import { useNavigate, useLocation } from 'react-router-dom';
+import React, { useEffect, useRef, useState } from "react";
+import { Link, useLocation } from 'react-router-dom';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
@@ -16,24 +16,24 @@ import ListItemButton from '@mui/material/ListItemButton';
 import ListItemText from '@mui/material/ListItemText';
 import MenuIcon from '@mui/icons-material/Menu';
 import Toolbar from '@mui/material/Toolbar';
-import OpenInNewIcon from '@mui/icons-material/OpenInNew';
 
 const drawerWidth = 240;
 
 interface NavItem {
   label: string;
-  target: string;
-  isRoute: boolean;
-  isExternal?: boolean;
+  to: string;
+  section: string;
 }
 
 const navItems: NavItem[] = [
-  { label: 'Projects', target: 'projects', isRoute: false },
-  { label: 'Background', target: 'history', isRoute: false },
-  { label: 'Publications', target: 'publications', isRoute: false },
-  { label: 'Expertise', target: 'expertise', isRoute: false },
-  { label: 'Blog', target: '/blog', isRoute: true },
-  { label: 'Contact', target: 'contact', isRoute: false }
+  { label: 'Home', to: '/', section: 'home' },
+  { label: 'Projects', to: '/projects', section: 'projects' },
+  { label: 'Experience', to: '/#history', section: 'history' },
+  { label: 'Expertise', to: '/#expertise', section: 'expertise' },
+  { label: 'Education', to: '/#education', section: 'education' },
+  { label: 'Publications', to: '/#publications', section: 'publications' },
+  { label: 'Articles', to: '/blog', section: 'blog' },
+  { label: 'Contact', to: '/#contact', section: 'contact' }
 ];
 
 interface NavigationProps {
@@ -45,12 +45,14 @@ interface NavigationProps {
 
 function Navigation({ parentToChild, modeChange }: NavigationProps) {
   const { mode } = parentToChild;
-  const navigate = useNavigate();
   const location = useLocation();
+  const pathname = location.pathname.replace(/\/+$/, '') || '/';
 
   const [mobileOpen, setMobileOpen] = useState<boolean>(false);
   const [scrolled, setScrolled] = useState<boolean>(false);
   const [activeSection, setActiveSection] = useState<string>('');
+  const restoreMenuFocus = useRef(false);
+  const menuButton = useRef<HTMLButtonElement>(null);
 
   const handleDrawerToggle = () => {
     setMobileOpen((prevState) => !prevState);
@@ -59,93 +61,44 @@ function Navigation({ parentToChild, modeChange }: NavigationProps) {
   useEffect(() => {
     const handleScroll = () => {
       const navbar = document.getElementById("navigation");
-      if (navbar) {
-        const scrolled = window.scrollY > navbar.clientHeight;
-        setScrolled(scrolled);
-      }
+      const offset = (navbar?.clientHeight || 64) + 32;
+      setScrolled(window.scrollY > offset);
 
-      // Scroll spy - detect active section
-      if (location.pathname === '/') {
-        const sections = ['expertise', 'history', 'projects', 'publications', 'blog', 'contact'];
-        const scrollPosition = window.scrollY + 200; // Offset for navbar
-
-        for (const sectionId of sections) {
-          const element = document.getElementById(sectionId);
-          if (element) {
-            const offsetTop = element.offsetTop;
-            const offsetBottom = offsetTop + element.offsetHeight;
-
-            if (scrollPosition >= offsetTop && scrollPosition < offsetBottom) {
-              setActiveSection(sectionId);
-              break;
-            }
-          }
-        }
-      } else if (location.pathname.startsWith('/blog')) {
-        setActiveSection('/blog');
+      if (pathname === '/') {
+        const current = navItems.find(item => {
+          const bounds = document.getElementById(item.section)?.getBoundingClientRect();
+          return bounds && bounds.top <= offset && bounds.bottom > offset;
+        });
+        setActiveSection(current?.section || '');
       }
     };
 
-    window.addEventListener('scroll', handleScroll);
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    window.addEventListener('resize', handleScroll);
     handleScroll(); // Initial check
 
     return () => {
       window.removeEventListener('scroll', handleScroll);
+      window.removeEventListener('resize', handleScroll);
     };
-  }, [location.pathname]);
-
-  const handleNavClick = (item: NavItem) => {
-    if (item.isExternal) {
-      window.open(item.target, '_blank', 'noopener,noreferrer');
-    } else if (item.isRoute) {
-      navigate(item.target);
-    } else {
-      // Navigate home first if on blog page
-      if (location.pathname !== '/') {
-        navigate('/');
-        setTimeout(() => {
-          scrollToSection(item.target);
-        }, 100);
-      } else {
-        scrollToSection(item.target);
-      }
-    }
-  };
-
-  const scrollToSection = (section: string) => {
-    const element = document.getElementById(section);
-    if (element) {
-      const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-      element.scrollIntoView({ behavior: prefersReducedMotion ? 'auto' : 'smooth' });
-    }
-  };
+  }, [pathname]);
 
   const isActive = (item: NavItem): boolean => {
-    if (item.isRoute) {
-      if (item.target === '/blog') {
-        return activeSection === '/blog' || activeSection === 'blog';
-      }
-      return activeSection === item.target;
-    }
-    return activeSection === item.target;
+    if (pathname === '/') return activeSection === item.section;
+    if (pathname === '/projects' || pathname.startsWith('/project/')) return item.section === 'projects';
+    return (pathname === '/blog' || pathname.startsWith('/blog/')) && item.section === 'blog';
   };
+  const currentLocation = (item: NavItem) => isActive(item) ? pathname === '/' ? 'location' as const : 'page' as const : undefined;
 
   const drawer = (
-    <Box className="navigation-bar-responsive" onClick={handleDrawerToggle} sx={{ textAlign: 'center' }}>
+    <Box className="navigation-bar-responsive" id="mobile-navigation" sx={{ textAlign: 'center' }}>
       <p className="mobile-menu-top"><ListIcon />Menu</p>
       <Divider />
       <List>
         {navItems.map((item) => (
           <ListItem key={item.label} disablePadding>
-            <ListItemButton sx={{ textAlign: 'center', justifyContent: 'center' }} onClick={() => handleNavClick(item)}>
-              <ListItemText
-                primary={
-                  <span style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '4px' }}>
-                    {item.label}
-                    {item.isExternal && <OpenInNewIcon sx={{ fontSize: 14 }} />}
-                  </span>
-                }
-              />
+            <ListItemButton sx={{ textAlign: 'center', justifyContent: 'center' }} component={Link} to={item.to} onClick={() => setMobileOpen(false)} selected={isActive(item)} aria-current={currentLocation(item)}>
+              <ListItemText primary={item.label} />
             </ListItemButton>
           </ListItem>
         ))}
@@ -159,45 +112,55 @@ function Navigation({ parentToChild, modeChange }: NavigationProps) {
       <AppBar component="nav" id="navigation" className={`navbar-fixed-top${scrolled ? ' scrolled' : ''}`}>
         <Toolbar className='navigation-bar'>
           <IconButton
+            ref={menuButton}
             color="inherit"
-            aria-label="open drawer"
+            aria-label="Open navigation"
+            aria-expanded={mobileOpen}
+            aria-controls="mobile-navigation"
             edge="start"
             onClick={handleDrawerToggle}
-            sx={{ mr: 2, display: { xs: 'inline-flex', md: 'none' } }}
+            sx={{ mr: 2, display: { xs: 'inline-flex', lg: 'none' } }}
           >
             <MenuIcon />
           </IconButton>
-          <IconButton
-            color="inherit"
-            onClick={() => modeChange()}
-            aria-label={mode === 'dark' ? 'Switch to light mode' : 'Switch to dark mode'}
-          >
-            {mode === 'dark' ? <LightModeIcon /> : <DarkModeIcon />}
-          </IconButton>
-          <Box sx={{ display: { xs: 'none', md: 'flex' }, gap: 1 }}>
+          <Link to="/" className="nav-brand">Harold Zhong</Link>
+          <Box sx={{ display: { xs: 'none', lg: 'flex' }, gap: 1 }}>
             {navItems.map((item) => (
               <Button
                 key={item.label}
-                onClick={() => handleNavClick(item)}
+                component={Link} to={item.to} onClick={() => setMobileOpen(false)}
                 className={`nav-button ${isActive(item) ? 'active' : ''}`}
-                endIcon={item.isExternal ? <OpenInNewIcon sx={{ fontSize: 16 }} /> : undefined}
+                aria-current={currentLocation(item)}
               >
                 {item.label}
               </Button>
             ))}
           </Box>
+          <IconButton
+            color="inherit"
+            onClick={() => modeChange()}
+            aria-label={mode === 'dark' ? 'Switch to light mode' : 'Switch to dark mode'}
+            sx={{ ml: { lg: 1 } }}
+          >
+            {mode === 'dark' ? <LightModeIcon /> : <DarkModeIcon />}
+          </IconButton>
         </Toolbar>
       </AppBar>
       <nav>
         <Drawer
           variant="temporary"
           open={mobileOpen}
-          onClose={handleDrawerToggle}
+          onClose={() => { restoreMenuFocus.current = true; setMobileOpen(false); }}
           ModalProps={{
             keepMounted: true,
+            disableRestoreFocus: true,
+            onTransitionExited: () => {
+              if (restoreMenuFocus.current) menuButton.current?.focus();
+              restoreMenuFocus.current = false;
+            },
           }}
           sx={{
-            display: { xs: 'block', md: 'none' },
+            display: { xs: 'block', lg: 'none' },
             '& .MuiDrawer-paper': { boxSizing: 'border-box', width: drawerWidth },
           }}
         >

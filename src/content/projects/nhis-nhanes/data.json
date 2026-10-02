@@ -2,8 +2,8 @@
   "slug": "nhis-nhanes-health-inequality",
   "title": "NHIS Health Inequality Trends",
   "role": "Data Harmonization & Survey Analysis",
-  "summary": "Reproducible SAS pipelines and survey harmonization across pooled NHIS data (1997 to 2024), supporting health-inequality research toward a manuscript in preparation.",
-  "thumbnail": "https://ukhsa.blog.gov.uk/wp-content/uploads/sites/33/2017/07/ineq-cover.png",
+  "summary": "Harmonized NHIS survey data across more than two decades, with reproducible SAS pipelines and documented quality checks.",
+  "thumbnail": "",
   "tags": [
     "SAS",
     "Complex Survey Design",
@@ -34,5 +34,6 @@
     "Harmonized more than two decades of NHIS data into an analysis-ready, version-controlled resource.",
     "Built reproducible QA protocols and documentation supporting transparent, replicable research.",
     "Supports a manuscript in preparation."
-  ]
+  ],
+  "status": "Manuscript in preparation"
 }

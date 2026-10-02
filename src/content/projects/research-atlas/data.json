@@ -2,7 +2,7 @@
   "slug": "research-atlas",
   "title": "Research Atlas",
   "role": "Creator & Lead Developer",
-  "summary": "An open methods platform and a cross-agent skill that make AI-assisted research more verifiable, starting with automated checking of citations against live scholarly databases.",
+  "summary": "Built a research-methods site and citation-verification skill that cross-checks references against scholarly databases.",
   "thumbnail": "/portfolio/images/research-atlas-cover.png",
   "tags": [
     "Research Methods",
@@ -50,5 +50,6 @@
   ],
   "links": {
     "demo": "https://researchatlas.info"
-  }
+  },
+  "status": "Public methods platform"
 }

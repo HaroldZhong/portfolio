@@ -46,7 +46,7 @@ The Google team explicitly draws the analogy to anterograde amnesia. The model c
 
 Nested Learning is an attempt to fix this not with another external notebook, but at the **architectural level**: by giving the model its own internal hierarchy of memories that evolve over time.
 
-![Figure 2](/portfolio/images/blogs/nested-learning-why-google-wants-models-with-real-memory/Figure 2.png)
+![Figure 2](/portfolio/images/blogs/nested-learning-why-google-wants-models-with-real-memory/Figure%202.png)
 
 
 
@@ -169,7 +169,7 @@ CMS lets you do something more brain like:
 
 This is where the “city of clocks” metaphor becomes literal. Each block has its own tick rate, its own context flow, and its own role in compressing experience into parameters.
 
-![Figure 5](/portfolio/images/blogs/nested-learning-why-google-wants-models-with-real-memory/Figure 5.png)
+![Figure 5](/portfolio/images/blogs/nested-learning-why-google-wants-models-with-real-memory/Figure%205.png)
 
 
 

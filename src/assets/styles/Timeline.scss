@@ -1,39 +1,4 @@
-.vertical-timeline span {
-    color: white;
-    font-family: 'Courier Prime', monospace;
-}
-
-.vertical-timeline p {
-    color: rgb(39, 40, 34);
-}
-
-.vertical-timeline-element p {
-    color: rgb(39, 40, 34);
-}
-
-.vertical-timeline-element h3 {
-    color: rgb(39, 40, 34);
-}
-
-.vertical-timeline-element h4 {
-    color: rgb(39, 40, 34);
-}
-
-.vertical-timeline-element span {
-    color: rgb(39, 40, 34);
-}
-
-.vertical-timeline-element .vertical-timeline-element-date {
-    color: white;
-}
-
-.svg-inline--fa {
-    color: white;
-}
-
-@media screen and (max-width: 1170px) {
-    .vertical-timeline-element .vertical-timeline-element-date {
-        color: rgb(39, 40, 34);
-    }
-}
-
+.experience-list { width: 100%; }
+.experience-row { display: grid; grid-template-columns: 190px minmax(0, 1fr); gap: 28px; padding: 24px 0; border-top: 1px solid #64748b; h3 { margin: 0 0 8px; } h4 { margin: 0; font-weight: 500; } p { line-height: 1.7; } a { text-decoration: underline; } }
+.experience-date { font-size: .9rem; color: #cbd5e1; margin-top: 0; }
+@media (max-width: 600px) { .experience-row { grid-template-columns: 1fr; gap: 0; } }

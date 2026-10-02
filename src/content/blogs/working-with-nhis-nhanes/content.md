@@ -28,12 +28,12 @@ You don't have the option to "ignore the weights and just run a regression" with
 * **Design:** Multistage area probability sample, redesigned about every 10 years; a new design in 2016 and a major questionnaire redesign in 2019.
 * **Structure (1997–2018):** Household → Family → Person → Sample Adult / Sample Child.
 
-The **2019 redesign** changed content, structure, and some sample design aspects. Analysts must treat pre-2019 and post-2019 data as different eras and be cautious about long trends that cross this boundary.
+The [**2019 redesign**](https://www.cdc.gov/nchs/nhis/documentation/2019-nhis.html) changed content, structure, and some sample design aspects. Analysts must treat pre-2019 and post-2019 data as different eras and be cautious about long trends that cross this boundary.
 
 ### NHANES in a nutshell
 
 * **What it is:** A continuous health survey with both interviews *and* physical examinations and lab data.
-* **Design:** Complex, multistage probability sample, fielded in **2-year cycles** (e.g., 1999–2000, 2001–2002).
+* **Design:** Complex, multistage probability sample, historically released in **2-year cycles** (e.g., 1999–2000, 2001–2002). Some releases cover different periods, including the [2017–March 2020 prepandemic file](https://wwwn.cdc.gov/nchs/nhanes/ContinuousNhanes/overviewbrief.aspx?cycle=2017-2020).
 * **Oversampling:** Key groups (e.g., older adults, certain racial/ethnic groups) are oversampled to improve precision.
 
 ## Variable harmonization strategies (where most of the pain lives)
@@ -87,7 +87,7 @@ Always record: minimum age, whether it's person-level, sample-adult–only, or s
 General pattern:
 
 * **NHIS**: Use person/sampling weights appropriate to your file and outcome. When pooling multiple years within a design period: **divide the annual weight by the number of years pooled**.
-* **NHANES**: Use outcome-appropriate weights: interview weights vs. MEC exam weights vs. subsample weights.
+* **NHANES**: Use outcome-appropriate weights: interview weights vs. MEC exam weights vs. subsample weights. Follow the [NCHS weighting guidance](https://wwwn.cdc.gov/nchs/nhanes/tutorials/Weighting.aspx) for the exact cycles; special releases do not all use the same pooling formula.
 
 ### Domain analysis, not dropping cases
 

@@ -1,6 +1,6 @@
 .contact_wrapper {
-  max-width: 1200px;
-  margin: 0 auto;
+  max-width: 760px;
+  margin: 0;
   width: 100%;
   
   .contact-intro {
@@ -9,7 +9,7 @@
     color: #E2E8F0;
     line-height: 1.7;
     margin-bottom: 30px;
-    text-align: center;
+    text-align: left;
   }
   
   svg {
@@ -84,7 +84,7 @@
 
 label {
   font-size: 1.2rem;
-  font-family: 'DomaineDispNar-Medium', sans-serif;
+  font-family: 'Inter', sans-serif;
 }
 
 .form-flex {
@@ -113,3 +113,8 @@ form {
   }
 }
 
+
+.contact-form { display: flow-root; }
+@media (max-width: 600px) { .form-flex { flex-direction: column; gap: 20px; } }
+
+.dark-mode .contact-form .MuiFormHelperText-root.Mui-error { color: #fca5a5; }
