@@ -59,6 +59,11 @@
   font-size: var(--step-hero);
   line-height: 0.86;
   letter-spacing: -0.045em;
+  /* Staircase: first name top-left, surname bottom-right, portrait centered across both lines. */
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) auto;
+  align-items: center;
+  column-gap: 0.1em;
 
   .line {
     display: block;
@@ -68,14 +73,16 @@
     margin-bottom: -0.1em;
 
     > span {
-      display: inline-flex;
-      align-items: center;
+      display: inline-block;
     }
   }
 
+  .line-1 {
+    grid-area: 1 / 1;
+  }
+
   .line-2 {
-    text-align: right;
-    padding-right: 0.02em;
+    grid-area: 2 / 3;
   }
 
   em {
@@ -94,26 +101,49 @@
   }
 }
 
-/* The portrait sits inside the name like a typographic ornament. */
-.hero-portrait {
-  display: inline-block;
-  /* The box matches the 5:4 head-and-shoulders crop, so cover never trims the face. */
-  height: 0.8em;
-  width: auto;
-  aspect-ratio: 5 / 4;
-  margin-left: 0.14em;
+/* Portrait capsule: fills the space the staircase leaves, capped relative to the type. */
+.hero-portrait-frame {
+  grid-area: 1 / 2 / 3 / 3;
+  justify-self: center;
+  display: block;
+  width: 100%;
+  max-width: 1.3em;
   border-radius: 999px;
+  outline: 1px solid var(--line-strong);
+  outline-offset: 0.05em;
+
+  @media (prefers-reduced-motion: no-preference) {
+    animation: portrait-in 1.2s var(--ease-out) 0.12s both;
+  }
+}
+
+.hero-portrait {
+  display: block;
+  width: 100%;
+  height: auto;
+  /* Same 3:4 ratio as the image file, so cover never trims the face. */
+  aspect-ratio: 3 / 4;
+  border-radius: inherit;
   object-fit: cover;
-  filter: grayscale(0.2) contrast(1.02);
+  filter: grayscale(0.15) contrast(1.02);
   transition: transform var(--dur-3) var(--ease-out), filter var(--dur-3) ease;
-  align-self: center;
-  translate: 0 0.04em;
 
   @media (hover: hover) {
     .hero-title:hover & {
-      transform: rotate(-4deg) scale(1.04);
+      transform: rotate(-3deg) scale(1.03);
       filter: none;
     }
+  }
+}
+
+@keyframes portrait-in {
+  from {
+    clip-path: inset(100% 0 0 0 round 999px);
+    transform: translateY(6%);
+  }
+
+  to {
+    clip-path: inset(0 round 999px);
   }
 }
 
@@ -248,9 +278,19 @@
     grid-column: 1 / -1;
   }
 
-  .hero-title .line-2 {
-    text-align: left;
-    padding-left: 0.9em;
+  /* Name stacked left, portrait beside it. */
+  .hero-title {
+    grid-template-columns: auto minmax(0, 1fr);
+    column-gap: 0.14em;
+
+    .line-2 {
+      grid-area: 2 / 1;
+    }
+  }
+
+  .hero-portrait-frame {
+    grid-area: 1 / 2 / 3 / 3;
+    max-width: 1.6em;
   }
 }
 
@@ -265,10 +305,6 @@
 }
 
 @media (max-width: 520px) {
-  .hero-title .line-2 {
-    padding-left: 0.5em;
-  }
-
   .cta-container .btn {
     flex: 1 1 auto;
   }
