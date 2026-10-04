@@ -68,9 +68,10 @@
   .line {
     display: block;
     overflow: hidden;
-    /* Room for descenders and italic overhang inside the reveal mask. */
-    padding: 0 0.08em 0.1em 0;
-    margin-bottom: -0.1em;
+    /* Room for descenders and italic overhang inside the reveal mask; the
+       negative margins cancel it, so the layout does not move. */
+    padding: 0.06em 0.12em 0.24em 0.12em;
+    margin: -0.06em -0.12em -0.24em -0.12em;
 
     > span {
       display: inline-block;

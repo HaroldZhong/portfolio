@@ -969,7 +969,8 @@ html:has(.mobile-menu[open]) {
 
 @keyframes line-up {
   from {
-    transform: translateY(108%);
+    /* Starts below the mask's bottom padding, so no glyph shows before the reveal. */
+    transform: translateY(140%);
   }
 }
 
