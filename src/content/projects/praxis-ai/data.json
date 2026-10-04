@@ -3,7 +3,7 @@
   "title": "Content-Safety System · Praxis AI",
   "role": "LLM Application Engineer",
   "status": "Current role · Apr 2026 – Present",
-  "summary": "A content-moderation system that pairs a fine-tuned classifier with a versioned policy graph, so decisions are measured and have a traceable policy basis.",
+  "summary": "A content-moderation system built on a fine-tuned classifier and a separately versioned policy graph, so decisions are measured and have a traceable policy basis.",
   "thumbnail": "",
   "tags": [
     "LLM Evaluation",
@@ -33,7 +33,7 @@
         "detail": "The fine-tuned classifier is released as versioned artifacts, with integrity checks that block unverified models."
       }
     ],
-    "evidenceNote": "Results are measured on an internal benchmark, with a holdout drawn from it. The figures are internal and are not published here.",
+    "evidenceNote": "Results are measured on an internal benchmark, with a holdout drawn from it. The figures are not published here.",
     "evidence": [],
     "tradeoffs": [
       "Thresholds trade missed violations against false positives. Tracking both alongside accuracy keeps that choice visible instead of hiding it in one number.",

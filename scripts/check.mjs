@@ -115,17 +115,13 @@ for (const [top, section, expected] of [[90, 'education', 'education'], [300, 'e
   assert.equal(active, expected);
 }
 
+const praxisPlatform = /Gemma|Vertex|A100|Neo4j|SHA-256|PEFT|LoRA/;
 // A subset of the owner's wording rules for public claims (written for resumes, applied to the site).
 function claimGuards(html, where) {
   // Owner decision (5 Oct 2026): Praxis stays general, and unpublished research shows no figures until published.
-  assert(!/49\.6%|80\.8%|0\.865|647K|599,924/.test(html), where + ': unpublished or internal figures must not appear');
-  if (where.includes('praxis')) assert(!/Gemma|Vertex|A100|Neo4j|SHA-256|PEFT|LoRA/.test(html), where + ': Praxis stays general (no model or platform names)');
+  assert(!/49\.6%|80\.8%|0\.865|73%|96\.9%|10,000-case|4,000-case|10 domains|14 scoring|647K|599,924|16 NHIS|27 NHIS|1997–2024|14 days|3 documented/.test(html), where + ': unpublished or internal figures must not appear');
+  if (where.includes('praxis')) assert(!praxisPlatform.test(html), where + ': Praxis stays general (no model or platform names)');
   for (const banned of [/separate holdout/i, /held-out cases/i, /PageIndex reasoning-based/, /\bIRB\b/, /\bpilot\b/i, /production deployment/i, /\bB\.A\./, /dual degree/i, /bilingual/i]) assert(!banned.test(html), where + ': banned claim ' + banned);
-  const text = html.replace(/<script[\s\S]*?<\/script>/g, ' ').replace(/<[^>]+>/g, ' ').replace(/&amp;/g, '&').replace(/\s+/g, ' ');
-  for (const sentence of text.split(/(?<=[.!?])\s+/)) {
-    if (sentence.includes('49.6%')) assert(sentence.includes('10,000-case'), where + ': 49.6% must share a sentence with the 10,000-case benchmark');
-    if (sentence.includes('0.865')) assert(sentence.includes('holdout'), where + ': 0.865 must share a sentence with the holdout');
-  }
 }
 const routes = ['/'];
 const projectRecords = [];
@@ -189,6 +185,10 @@ assert.deepEqual(listed.sort(), routes.map(route => 'https://haroldzhong.github.
 const home = await readFile(join(out, 'index.html'), 'utf8');
 assert(!home.includes('mailto:'), 'Email contact goes through the form only');
 claimGuards(home, 'home');
+// The homepage Praxis entry stays general too (Expertise may still list these as general skills).
+assert(!praxisPlatform.test(home.slice(home.indexOf('id="history"'), home.indexOf('id="expertise"'))), 'Experience: Praxis stays general');
+const praxis = await readFile(join(out, 'project/praxis-ai-content-safety/index.html'), 'utf8');
+assert(praxis.includes('class="evidence-note"') && !praxis.includes('class="evidence-list"'), 'Praxis evidence shows the note only');
 const featured = Array.from(home.matchAll(/class="project-card-link"[^>]*href="\/portfolio\/project\/([^"]+)"|href="\/portfolio\/project\/([^"]+)"[^>]*class="project-card-link"/g), match => match[1] || match[2]);
 assert.deepEqual(featured, ['praxis-ai-content-safety', 'scholia', 'brat-family-therapy-chatbot']);
 assert.match(home, /Explore my work/);
