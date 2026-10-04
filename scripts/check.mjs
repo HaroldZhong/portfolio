@@ -115,12 +115,13 @@ for (const [top, section, expected] of [[90, 'education', 'education'], [300, 'e
   assert.equal(active, expected);
 }
 
-const praxisPlatform = /Gemma|Vertex|A100|Neo4j|SHA-256|PEFT|LoRA/;
+// Owner decision (5 Oct): Vertex AI, PEFT/LoRA and Neo4j may appear; the model, hardware and checksum stay out.
+const praxisPlatform = /Gemma|A100|SHA-256/;
 // A subset of the owner's wording rules for public claims (written for resumes, applied to the site).
 function claimGuards(html, where) {
   // Owner decision (5 Oct 2026): Praxis stays general, and unpublished research shows no figures until published.
   assert(!/49\.6%|80\.8%|0\.865|73%|96\.9%|10,000-case|4,000-case|10 domains|14 scoring|647K|599,924|16 NHIS|27 NHIS|1997–2024|14 days|3 documented/.test(html), where + ': unpublished or internal figures must not appear');
-  if (where.includes('praxis')) assert(!praxisPlatform.test(html), where + ': Praxis stays general (no model or platform names)');
+  if (where.includes('praxis')) assert(!praxisPlatform.test(html), where + ': Praxis stays general (no model, hardware or checksum names)');
   for (const banned of [/separate holdout/i, /held-out cases/i, /PageIndex reasoning-based/, /\bIRB\b/, /\bpilot\b/i, /production deployment/i, /\bB\.A\./, /dual degree/i, /bilingual/i]) assert(!banned.test(html), where + ': banned claim ' + banned);
 }
 const routes = ['/'];

@@ -9,8 +9,8 @@
     "LLM Evaluation",
     "Content Moderation",
     "Policy Traceability",
-    "Fine-tuning",
-    "Knowledge Graphs"
+    "PEFT / LoRA",
+    "Neo4j"
   ],
   "myRole": "I own the content-safety system from requirements to launch. That covers the data and evaluation framework, the model context, fine-tuning and deployment of the classifier, decision thresholds, and the policy graph that gives decisions a traceable policy basis.",
   "caseStudy": {
@@ -22,7 +22,7 @@
       },
       {
         "title": "Keep policy separate from model scores",
-        "detail": "A policy graph links clauses, risk categories, scope and allow/review/block rules. It is kept separate from model scores and versioned by effective date, so decisions have a traceable policy basis."
+        "detail": "A Neo4j policy graph links clauses, risk categories, scope and allow/review/block rules. It is kept separate from model scores and versioned by effective date, so decisions have a traceable policy basis."
       },
       {
         "title": "Evaluate reproducibly, with a holdout",
@@ -30,7 +30,7 @@
       },
       {
         "title": "Ship only verified models",
-        "detail": "The fine-tuned classifier is released as versioned artifacts, with integrity checks that block unverified models."
+        "detail": "The classifier is fine-tuned with PEFT/LoRA on GCP Vertex AI and released as versioned artifacts, with integrity checks that block unverified models."
       }
     ],
     "evidenceNote": "Results are measured on an internal benchmark, with a holdout drawn from it. The figures are not published here.",
@@ -43,8 +43,9 @@
   },
   "technologies": [
     "Python",
-    "LLM fine-tuning",
-    "Policy graph",
+    "PEFT / LoRA",
+    "GCP Vertex AI",
+    "Neo4j / Cypher",
     "Evaluation pipeline",
     "Versioned model artifacts"
   ],
