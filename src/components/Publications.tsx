@@ -6,7 +6,7 @@ function Publications() {
   return (
     <section className="section shell" id="publications" aria-labelledby="publications-title">
       <SectionHead index="06" titleId="publications-title" title="Publications & Scholarly Work"
-        intro="Research contributions span study platforms, survey harmonization, and reproducible analysis." />
+        intro="Research contributions span AI applications, survey harmonization, and reproducible analysis." />
 
       <p className="scholarly-links mono">
         <span>Related case studies</span>

@@ -10,7 +10,7 @@ const groups = [
   {
     title: 'Data Quality & Governance',
     text: 'I make data trustworthy before it is used: codebooks and data standards, automated validation and drift checks, and governance controls that keep LLM use auditable and decisions traceable.',
-    labels: ["Data Dictionaries & Codebooks", "Data Standards", "Data-quality Validation", "Drift & Missing-data Checks", "Customer Data Management (CRM)", "Data-security Controls for LLMs", "Audit Trails", "Decision Traceability", "Reproducible Pipelines", "Consent Workflows"],
+    labels: ["Data Dictionaries & Codebooks", "Data Standards", "Data-quality Validation", "Drift & Missing-data Checks", "Customer Data Management (CRM)", "Data-security Controls for LLMs", "Audit Trails", "Decision Traceability", "Reproducible Pipelines"],
   },
   {
     title: 'Research Methods & Statistics',

@@ -197,7 +197,8 @@ const person = JSON.parse(home.match(/<script type="application\/ld\+json">([\s\
 assert.equal(person.jobTitle, 'Applied AI Engineer & Researcher'); assert.equal(person.worksFor, undefined);
 assert.equal((home.match(/class="experience-row[" ]/g) || []).length, 6);
 assert(!home.includes('earlier-experience') && !home.includes('more-work') && !home.includes('See project evidence'));
-assert.equal((home.match(/class="skill-label"/g) || []).length, 56);
+assert.equal((home.match(/class="skill-label"/g) || []).length, 55);
+assert(!home.includes('Consent Workflows') && !home.includes('study platforms'), 'Study-context wording removed (owner decision, 5 Oct 2026)');
 assert.equal((home.match(/class="pub-status">Published/g) || []).length, 1);
 assert.match(home, /href="https:\/\/doi.org\/10.1111\/cfs.70266"/);
 assert.match(home, /Velasco, S\. I\., &amp; Cui, J\./);
