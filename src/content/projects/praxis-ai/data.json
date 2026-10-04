@@ -3,68 +3,54 @@
   "title": "Content-Safety System · Praxis AI",
   "role": "LLM Application Engineer",
   "status": "Current role · Apr 2026 – Present",
-  "summary": "Raised content-moderation accuracy from 49.6% to 80.8% on a 10,000-case internal benchmark, with a policy graph that gives decisions a traceable policy basis.",
+  "summary": "A content-moderation system that pairs a fine-tuned classifier with a versioned policy graph, so decisions are measured and have a traceable policy basis.",
   "thumbnail": "",
   "tags": [
     "LLM Evaluation",
     "Content Moderation",
-    "Knowledge Graphs",
-    "PEFT / LoRA",
-    "GCP Vertex AI"
+    "Policy Traceability",
+    "Fine-tuning",
+    "Knowledge Graphs"
   ],
   "myRole": "I own the content-safety system from requirements to launch. That covers the data and evaluation framework, the model context, fine-tuning and deployment of the classifier, decision thresholds, and the policy graph that gives decisions a traceable policy basis.",
   "caseStudy": {
-    "problem": "A moderation model has to catch violations without flooding reviewers with false alarms, and allow, review and block decisions need a traceable policy basis. The starting point was 49.6% accuracy on the 10,000-case internal benchmark.",
+    "problem": "A moderation model has to catch violations without flooding reviewers with false alarms, and allow, review and block decisions need a traceable policy basis.",
     "decisions": [
       {
         "title": "Improve accuracy on four fronts at once",
-        "detail": "Accuracy rose through four coordinated changes: fine-tuning on human-verified golden data, a redesigned model context, a rebuilt data and evaluation framework, and tuned decision thresholds. The result reflects all four together, so none of them is credited on its own."
+        "detail": "Accuracy improved through four coordinated changes: fine-tuning on human-verified golden data, a redesigned model context, a rebuilt data and evaluation framework, and tuned decision thresholds. The improvement reflects all four together, so none of them is credited on its own."
       },
       {
         "title": "Keep policy separate from model scores",
-        "detail": "A Neo4j policy graph links clauses, risk categories, scope and allow/review/block rules. It is kept separate from model scores and versioned by effective date, so decisions have a traceable policy basis."
+        "detail": "A policy graph links clauses, risk categories, scope and allow/review/block rules. It is kept separate from model scores and versioned by effective date, so decisions have a traceable policy basis."
       },
       {
         "title": "Evaluate reproducibly, with a holdout",
-        "detail": "A reproducible evaluation pipeline covers 10 domains and 14 scoring categories, with development/holdout separation, error analysis and safety checks."
+        "detail": "A reproducible evaluation pipeline spans multiple domains and scoring categories, with development/holdout separation, error analysis and safety checks."
       },
       {
         "title": "Ship only verified models",
-        "detail": "I fine-tuned Gemma 12B with PEFT/LoRA on GCP Vertex AI A100s and released it as versioned artifacts, with SHA-256 checks that block unverified models."
+        "detail": "The fine-tuned classifier is released as versioned artifacts, with integrity checks that block unverified models."
       }
     ],
-    "evidence": [
-      {
-        "basis": "Internal benchmark",
-        "claim": "Content-moderation accuracy rose from 49.6% to 80.8% on the 10,000-case internal benchmark."
-      },
-      {
-        "basis": "Internal benchmark",
-        "claim": "On the same benchmark, missed violations fell by 73% and false positives by 96.9%."
-      },
-      {
-        "basis": "Internal benchmark",
-        "claim": "Violation-detection F1 reached 0.865 on a 4,000-case holdout drawn from the benchmark."
-      }
-    ],
+    "evidenceNote": "Results are measured on an internal benchmark, with a holdout drawn from it. The figures are internal and are not published here.",
+    "evidence": [],
     "tradeoffs": [
-      "Thresholds trade missed violations against false positives. Reporting both rates alongside accuracy keeps that choice visible instead of hiding it in one number.",
+      "Thresholds trade missed violations against false positives. Tracking both alongside accuracy keeps that choice visible instead of hiding it in one number.",
       "Keeping the policy graph separate from model scores means maintaining two versioned artifacts instead of one, in exchange for decisions whose policy basis is explicit and dated.",
-      "The holdout is drawn from the same benchmark, so it measures generalization within that benchmark's domains and categories. New policy domains need their own evaluation."
+      "A holdout drawn from the same benchmark measures generalization within that benchmark's domains and categories. New policy domains need their own evaluation."
     ]
   },
   "technologies": [
     "Python",
-    "Gemma 12B",
-    "PEFT / LoRA",
-    "GCP Vertex AI (A100)",
-    "Neo4j / Cypher",
+    "LLM fine-tuning",
+    "Policy graph",
     "Evaluation pipeline",
-    "SHA-256 artifact checks"
+    "Versioned model artifacts"
   ],
   "outcomes": [
+    "Improved content-moderation accuracy on the internal benchmark while reducing both missed violations and false positives.",
     "Decisions have a traceable policy basis, kept separate from model scores and versioned by effective date.",
-    "SHA-256 checks on versioned model artifacts block unverified models.",
-    "A reproducible evaluation pipeline covers 10 domains and 14 scoring categories."
+    "Integrity checks on versioned model artifacts block unverified models."
   ]
 }

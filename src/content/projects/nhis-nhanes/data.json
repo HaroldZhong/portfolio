@@ -2,7 +2,7 @@
   "slug": "nhis-nhanes-health-inequality",
   "title": "NHIS Health Inequality Trends",
   "role": "Data Harmonization & Survey Analysis",
-  "summary": "Harmonized 16 NHIS survey years (647K+ records) for a health-inequality trends study, with reproducible pipelines and automated checks that caught failures before analysis.",
+  "summary": "Harmonized decades of NHIS survey data for a health-inequality trends study, with reproducible pipelines and automated checks that catch data failures before analysis.",
   "thumbnail": "",
   "tags": [
     "SAS",
@@ -18,9 +18,9 @@
     {
       "title": "Data Harmonization & Reproducibility",
       "content": [
-        "Harmonized variables across 16 NHIS survey years (647K+ records), documenting every cross-year mapping in a codebook.",
-        "Built reproducible SAS, R and SQL pipelines across 27 NHIS and NHANES survey waves (1997–2024), cutting the manual analysis cycle from 14 days to 2.",
-        "Built automated drift, cross-tabulation and missing-data checks into the pipeline, which caught 3 documented failures, including cross-version inconsistencies and drift from the NHIS survey redesign, before analysis."
+        "Harmonized variables across decades of NHIS survey data, documenting every cross-year mapping in a codebook.",
+        "Built reproducible SAS, R and SQL pipelines across NHIS and NHANES survey waves, shortening the manual analysis cycle.",
+        "Built automated drift, cross-tabulation and missing-data checks into the pipeline, which caught documented failures, including cross-version inconsistencies and drift from the NHIS survey redesign, before analysis."
       ],
       "type": "list"
     }
@@ -34,9 +34,9 @@
     "Automated data-quality checks"
   ],
   "outcomes": [
-    "Harmonized 16 NHIS survey years into an analysis-ready, documented resource.",
-    "Cut the manual analysis cycle from 14 days to 2 with reproducible pipelines.",
-    "Caught 3 documented data failures before they reached analysis.",
+    "Harmonized decades of NHIS survey data into an analysis-ready, documented resource.",
+    "Shortened the manual analysis cycle with reproducible pipelines.",
+    "Caught documented data failures before they reached analysis.",
     "Supports a manuscript in preparation."
   ],
   "status": "Manuscript in preparation"

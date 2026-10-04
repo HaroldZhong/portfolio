@@ -50,7 +50,7 @@ function SectionBody({ block }: { block: Block }) {
     case 'decisions': return <ol className="decision-list">{block.content.map(item => <li key={item.title}><h3>{item.title}</h3><p>{item.detail}</p></li>)}</ol>;
     case 'evidence': return <>
       {block.note && <p className="evidence-note">{block.note}</p>}
-      <ul className="evidence-list">{block.content.map(item => <li key={item.claim} data-basis={item.basis === 'Planned evaluation' ? 'planned' : 'measured'}><span className="evidence-basis">{item.basis}</span><p>{item.claim}</p></li>)}</ul>
+      {block.content.length > 0 && <ul className="evidence-list">{block.content.map(item => <li key={item.claim} data-basis={item.basis === 'Planned evaluation' ? 'planned' : 'measured'}><span className="evidence-basis">{item.basis}</span><p>{item.claim}</p></li>)}</ul>}
     </>;
     case 'publication': return <p className="case-publication"><em>{block.content.title}</em>. {block.content.venue}, {block.content.year}. <a className="text-link" href={`https://doi.org/${block.content.doi}`} target="_blank" rel="noopener noreferrer">doi.org/{block.content.doi} <ArrowUpRight size={15} /></a></p>;
   }

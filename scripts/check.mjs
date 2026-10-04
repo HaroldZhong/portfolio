@@ -117,6 +117,9 @@ for (const [top, section, expected] of [[90, 'education', 'education'], [300, 'e
 
 // A subset of the owner's wording rules for public claims (written for resumes, applied to the site).
 function claimGuards(html, where) {
+  // Owner decision (5 Oct 2026): Praxis stays general, and unpublished research shows no figures until published.
+  assert(!/49\.6%|80\.8%|0\.865|647K|599,924/.test(html), where + ': unpublished or internal figures must not appear');
+  if (where.includes('praxis')) assert(!/Gemma|Vertex|A100|Neo4j|SHA-256|PEFT|LoRA/.test(html), where + ': Praxis stays general (no model or platform names)');
   for (const banned of [/separate holdout/i, /held-out cases/i, /PageIndex reasoning-based/, /\bIRB\b/, /\bpilot\b/i, /production deployment/i, /\bB\.A\./, /dual degree/i, /bilingual/i]) assert(!banned.test(html), where + ': banned claim ' + banned);
   const text = html.replace(/<script[\s\S]*?<\/script>/g, ' ').replace(/<[^>]+>/g, ' ').replace(/&amp;/g, '&').replace(/\s+/g, ' ');
   for (const sentence of text.split(/(?<=[.!?])\s+/)) {
