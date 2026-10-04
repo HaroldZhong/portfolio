@@ -14,7 +14,7 @@
   ],
   "myRole": "I founded Scholia and lead its product and architecture: the council workflow, the governance layer that controls where project data may go, the retrieval and citation layer, and the agent runtime that plans and runs research tasks.",
   "caseStudy": {
-    "problem": "A researcher reading an unfamiliar paper or learning a new concept usually gets one model's framing, delivered with the same confidence whether other models would see it differently or not. Scholia lets researchers understand papers and concepts through multiple model perspectives, see where those perspectives agree, and trace each claim to a source they can check, without sending private research material anywhere it is not allowed to go.",
+    "problem": "A single model gives one framing of a paper or concept, whether or not other models would see it differently. Scholia lets researchers understand papers and concepts through multiple model perspectives, see where those perspectives agree, and trace each claim to a source they can check, without sending private research material anywhere it is not allowed to go.",
     "decisions": [
       {
         "title": "A council instead of a single answer",
@@ -29,7 +29,7 @@
         "detail": "Query rewriting resolves follow-up questions before retrieval. Citations are pinned to versioned source snapshots, so a citation whose source has changed or been deleted since it was read is rejected instead of silently pointing at different text."
       },
       {
-        "title": "Retrieval rebuilt as the use changed",
+        "title": "Retrieval rebuilt twice",
         "detail": "The first retrieval layer combined BM25 and dense search with reciprocal rank fusion. It was later replaced with PageIndex-style reasoning-based retrieval, which uses model reasoning over a document's structure instead of vector similarity. For the research library, retrieval returns to hybrid search with reranking, which has to beat keyword-only search before it is relied on."
       },
       {
@@ -37,7 +37,7 @@
         "detail": "A ReAct-style runtime checks every tool call against deny, ask and allow rules, in that order. Search runs plan-and-execute over a plan the researcher can edit. A broad search can split into up to three sub-questions, each run by a parallel subagent with a fresh context, limited tools and a 30-call cap, and each subagent returns a summary that cites only passages it actually read."
       }
     ],
-    "evidenceNote": "No evaluation results are reported yet. Each planned evaluation below decides whether a design becomes the default.",
+    "evidenceNote": "No evaluation results are reported yet. Council testing with researchers gathered feedback rather than measured outcomes, and each planned evaluation below decides whether a design becomes the default.",
     "evidence": [
       {
         "basis": "Planned evaluation",
@@ -57,7 +57,7 @@
       }
     ],
     "tradeoffs": [
-      "A council question costs thirteen model calls (six answers, six rankings and one synthesis) instead of one, and rank agreement is not a probability that the answer is correct. That is why the council has to earn its place against single-model critique.",
+      "A council question costs roughly thirteen model calls (six answers, six rankings and one synthesis) instead of one, and rank agreement is not a probability that the answer is correct. That is why the council has to earn its place against single-model critique.",
       "Pinning citations to snapshots means a changed source has to be read again before it can be cited. The friction is deliberate: a citation should never point to text the model did not see.",
       "A strict outbound gate can refuse a model that a private project would otherwise use. Policy makes that call in one place, and every decision is recorded.",
       "Parallel subagents widen a search but make cost and evidence harder to reconcile, so they are capped at three, run one level deep, and become the default only on evidence."
@@ -75,7 +75,6 @@
   ],
   "outcomes": [
     "Tested Council mode with about 30 researchers in clinical psychology, psychiatry, social science and social work.",
-    "Governance controls apply at every outbound network call, with an append-only audit log of allowed and refused requests.",
-    "Every capability that adds cost or complexity has a defined evaluation that decides whether it becomes the default."
+    "Governance controls apply at every outbound network call, with an append-only audit log of allowed and refused requests."
   ]
 }

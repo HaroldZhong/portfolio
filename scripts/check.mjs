@@ -115,6 +115,15 @@ for (const [top, section, expected] of [[90, 'education', 'education'], [300, 'e
   assert.equal(active, expected);
 }
 
+// A subset of the owner's wording rules for public claims (written for resumes, applied to the site).
+function claimGuards(html, where) {
+  for (const banned of [/separate holdout/i, /held-out cases/i, /PageIndex reasoning-based/, /\bIRB\b/, /\bpilot\b/i, /production deployment/i, /\bB\.A\./, /dual degree/i, /bilingual/i]) assert(!banned.test(html), where + ': banned claim ' + banned);
+  const text = html.replace(/<script[\s\S]*?<\/script>/g, ' ').replace(/<[^>]+>/g, ' ').replace(/&amp;/g, '&').replace(/\s+/g, ' ');
+  for (const sentence of text.split(/(?<=[.!?])\s+/)) {
+    if (sentence.includes('49.6%')) assert(sentence.includes('10,000-case'), where + ': 49.6% must share a sentence with the 10,000-case benchmark');
+    if (sentence.includes('0.865')) assert(sentence.includes('holdout'), where + ': 0.865 must share a sentence with the holdout');
+  }
+}
 const routes = ['/'];
 const projectRecords = [];
 const sitemap = await readFile(join(out, 'sitemap.xml'), 'utf8');
@@ -135,8 +144,9 @@ for (const [kind, filename] of [['blogs', 'metadata.json'], ['projects', 'data.j
     assert(!/href="\/(?!portfolio(?:[/#?"]))/.test(html), route + ': internal links must retain the GitHub Pages base path');
     assert(!html.includes('utexas.edu'), route + ': the school email address must not appear; contact goes through the form');
     if (kind === 'projects') {
-      // Owner wording rules for public claims (resume rules, applied to the site).
-      for (const banned of [/separate holdout/i, /held-out cases/i, /PageIndex reasoning-based/, /\bIRB\b/, /\bpilot\b/i, /production deployment/i, /\bB\.A\./, /dual degree/i, /bilingual/i]) assert(!banned.test(html), route + ': banned claim ' + banned);
+      claimGuards(html, route);
+      for (const item of data.caseStudy?.evidence || []) assert(['Internal benchmark', 'Human-verified golden set', 'Planned evaluation'].includes(item.basis), route + ': unknown evidence basis ' + item.basis);
+      assert(!JSON.stringify(data).includes('\u2014'), route + ': no em dashes in project records');
     }
     if (kind === 'blogs') {
       for (const date of [data.date, data.updated].filter(Boolean)) {
@@ -175,6 +185,7 @@ const listed = Array.from(sitemap.matchAll(/<loc>(.*?)<\/loc>/g), match => match
 assert.deepEqual(listed.sort(), routes.map(route => 'https://haroldzhong.github.io/portfolio' + route).sort());
 const home = await readFile(join(out, 'index.html'), 'utf8');
 assert(!home.includes('mailto:'), 'Email contact goes through the form only');
+claimGuards(home, 'home');
 const featured = Array.from(home.matchAll(/class="project-card-link"[^>]*href="\/portfolio\/project\/([^"]+)"|href="\/portfolio\/project\/([^"]+)"[^>]*class="project-card-link"/g), match => match[1] || match[2]);
 assert.deepEqual(featured, ['praxis-ai-content-safety', 'scholia', 'brat-family-therapy-chatbot']);
 assert.match(home, /Explore my work/);

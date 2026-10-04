@@ -12,7 +12,7 @@
     "Survey Harmonization",
     "Data Quality"
   ],
-  "overview": "A long-running study of income inequality in self-rated health needs data that means the same thing across decades of survey redesigns. I built the harmonization and analysis infrastructure for it: cross-year variable mappings, reproducible pipelines and automated quality checks. The work supports a manuscript in preparation.",
+  "overview": "A long-running health-inequality trends study needs data that means the same thing across decades of survey redesigns. I built the harmonization and analysis infrastructure for it: cross-year variable mappings, reproducible pipelines and automated quality checks. The work supports a manuscript in preparation.",
   "myRole": "I led the harmonization and analytic workflow in coordination with the faculty investigator, from codebook design to pipeline automation and quality assurance.",
   "sections": [
     {

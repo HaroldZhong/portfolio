@@ -3,7 +3,7 @@
   "title": "Content-Safety System · Praxis AI",
   "role": "LLM Application Engineer",
   "status": "Current role · Apr 2026 – Present",
-  "summary": "Raised content-moderation accuracy from 49.6% to 80.8% on a 10,000-case internal benchmark, with a policy graph that gives every decision a traceable policy basis.",
+  "summary": "Raised content-moderation accuracy from 49.6% to 80.8% on a 10,000-case internal benchmark, with a policy graph that gives decisions a traceable policy basis.",
   "thumbnail": "",
   "tags": [
     "LLM Evaluation",
@@ -14,7 +14,7 @@
   ],
   "myRole": "I own the content-safety system from requirements to launch. That covers the data and evaluation framework, the model context, fine-tuning and deployment of the classifier, decision thresholds, and the policy graph that connects each decision to the rule behind it.",
   "caseStudy": {
-    "problem": "A moderation model has to catch violations without flooding reviewers with false alarms, and every allow, review or block decision has to point to the policy that justifies it. The starting point was 49.6% accuracy on the 10,000-case internal benchmark, which left both too many missed violations and too many false positives.",
+    "problem": "A moderation model has to catch violations without flooding reviewers with false alarms, and every allow, review or block decision has to point to the policy that justifies it. The starting point was 49.6% accuracy on the 10,000-case internal benchmark.",
     "decisions": [
       {
         "title": "Improve accuracy on four fronts at once",
@@ -22,15 +22,15 @@
       },
       {
         "title": "Keep policy separate from model scores",
-        "detail": "A Neo4j policy graph links clauses, risk categories, scope and allow/review/block rules. It is kept separate from model scores and versioned by effective date, so a decision can be traced to the policy in force when it was made, and policy can change without retraining the model."
+        "detail": "A Neo4j policy graph links clauses, risk categories, scope and allow/review/block rules. It is kept separate from model scores and versioned by effective date, so decisions have a traceable policy basis."
       },
       {
         "title": "Evaluate reproducibly, with a holdout",
-        "detail": "A reproducible evaluation pipeline covers 10 domains and 14 scoring categories, with development/holdout separation, error analysis and safety checks. Every change is scored against the same fixed data."
+        "detail": "A reproducible evaluation pipeline covers 10 domains and 14 scoring categories, with development/holdout separation, error analysis and safety checks."
       },
       {
         "title": "Ship only verified models",
-        "detail": "I fine-tuned Gemma 12B with PEFT/LoRA on GCP Vertex AI A100s and released it as versioned artifacts. SHA-256 checks block any model file that does not match its recorded version from being served."
+        "detail": "I fine-tuned Gemma 12B with PEFT/LoRA on GCP Vertex AI A100s and released it as versioned artifacts, with SHA-256 checks that block unverified models."
       }
     ],
     "evidence": [
@@ -49,7 +49,7 @@
     ],
     "tradeoffs": [
       "Thresholds trade missed violations against false positives. Reporting both rates alongside accuracy keeps that choice visible instead of hiding it in one number.",
-      "Separating the policy graph from model scores adds versioning work, but it lets reviewers change a rule, or check which rule applied on a given date, without touching the model.",
+      "Keeping the policy graph separate from model scores means maintaining two versioned artifacts instead of one, in exchange for decisions whose policy basis is explicit and dated.",
       "The holdout is drawn from the same benchmark, so it measures generalization within that benchmark's domains and categories. New policy domains need their own evaluation."
     ]
   },
@@ -63,8 +63,8 @@
     "SHA-256 artifact checks"
   ],
   "outcomes": [
-    "Content-moderation decisions now rest on a measured classifier and an explicit, versioned policy basis.",
-    "Model releases cannot be served unless their artifacts pass integrity checks.",
-    "Evaluation runs reproducibly across 10 domains and 14 scoring categories, so later changes can be compared with this baseline."
+    "Decisions have a traceable policy basis, kept separate from model scores and versioned by effective date.",
+    "SHA-256 checks on versioned model artifacts block unverified models.",
+    "A reproducible evaluation pipeline covers 10 domains and 14 scoring categories."
   ]
 }

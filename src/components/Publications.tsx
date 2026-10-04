@@ -40,7 +40,7 @@ function Publications() {
         <h3>Accepted Conference Contribution</h3>
         <ul>
           <li>
-            Fuentes-Balderrama, J., <strong>Zhong, H.</strong>, Cardenas, M. E., Ayala, S., &amp; Velasco, S. I. AI Caramba: The experience of Hispanic mothers with BRAT, a parenting intervention-enhancing AI-chatbot. Society for Social Work Research (SSWR) 31st Annual Conference, San Francisco, CA. <span className="pub-status">Accepted</span>
+            Fuentes-Balderrama, J., <strong>Zhong, H.</strong>, Cárdenas, M. E., Ayala, S., &amp; Velasco, S. I. AI Caramba: The experience of Hispanic mothers with BRAT, a parenting intervention-enhancing AI-chatbot. Society for Social Work Research (SSWR) 31st Annual Conference, San Francisco, CA. <span className="pub-status">Accepted</span>
           </li>
         </ul>
       </div>

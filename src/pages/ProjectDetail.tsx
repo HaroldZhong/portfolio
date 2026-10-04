@@ -25,7 +25,7 @@ function buildSections(project?: Project): { id: string; title: string; block: B
     contribution,
     { id: 'decisions', title: 'Technical & design decisions', block: { kind: 'decisions', content: study.decisions } },
     { id: 'evidence', title: 'Evidence', block: { kind: 'evidence', note: study.evidenceNote, content: study.evidence } },
-    { id: 'outcomes', title: 'Outcomes', block: { kind: 'list', content: project.outcomes } },
+    { id: 'outcomes', title: 'Deliverables & outcomes', block: { kind: 'list', content: project.outcomes } },
     { id: 'tradeoffs', title: 'Tradeoffs', block: { kind: 'list', content: study.tradeoffs } },
     ...(study.publication ? [{ id: 'publication', title: 'Related publication', block: { kind: 'publication', content: study.publication } as Block }] : []),
     technologies,

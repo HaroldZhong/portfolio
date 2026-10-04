@@ -18,7 +18,7 @@ export default function Timeline() {
     <ol className="record-list">
       {roles.map(role => (
         <li key={role.title} className="experience-row record reveal">
-          <p className="record-date mono">{role.dates}<span className="record-tag">{role.sector}</span></p>
+          <p className="record-date mono">{role.dates}{' '}<span className="record-tag">{role.sector}</span></p>
           <div className="record-title">
             <h3>{role.title}</h3>
             <p>{role.org}</p>
