@@ -18,7 +18,7 @@
     "decisions": [
       {
         "title": "Separate role-play from evaluation",
-        "detail": "The simulated teen and the evaluator are separate model roles. The evaluator assesses parenting technique in real time while the role-play continues, so each can be tuned and tested on its own."
+        "detail": "The simulated teen and the evaluator are separate model roles. The evaluator assesses parenting technique in real time while the role-play continues."
       },
       {
         "title": "Plan for model failures",
@@ -30,7 +30,7 @@
       },
       {
         "title": "Layer the guardrails",
-        "detail": "Keyword rules and an LLM classifier work together to detect sensitive conversation content, with trigger responses under 200 ms. A suite of 95 regression cases covers those paths."
+        "detail": "Keyword and LLM-classification guardrails detect sensitive conversation content, with trigger responses under 200 ms. A suite of 95 regression cases covers those paths."
       }
     ],
     "evidence": [
@@ -40,13 +40,13 @@
       },
       {
         "basis": "Human-verified golden set",
-        "claim": "Sensitive-content detection reached 95% accuracy on a human-verified golden set, and trigger responses stay under 200 ms."
+        "claim": "Sensitive-content detection reached 95% accuracy on a human-verified golden set, with trigger responses under 200 ms."
       }
     ],
     "tradeoffs": [
       "Realism pulls against instructional consistency: a believable teen can drift away from the scenario's learning goal. Measuring dialogue consistency on fixed scenarios keeps that drift visible.",
-      "More sensitive guardrails catch more risk but interrupt more legitimate practice. Keyword rules give fast, predictable triggers, and the classifier covers what keywords miss.",
-      "Fallback models keep sessions running but can behave differently, so regression cases cover the safety paths.",
+      "More sensitive guardrails catch more risk but interrupt more legitimate practice; the golden set shows where that balance lands.",
+      "Fallback models keep sessions running but can behave differently from the primary model.",
       "The golden sets cover defined scenarios and difficulty levels, not every conversation a parent might bring."
     ],
     "publication": {

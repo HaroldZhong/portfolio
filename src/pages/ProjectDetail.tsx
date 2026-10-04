@@ -90,7 +90,9 @@ const ProjectDetail: React.FC = () => {
               {project.links?.demo && <a href={project.links.demo} className="text-link">Visit project website <ArrowUpRight size={15} /></a>}
               {project.links?.github && <a href={project.links.github} className="text-link">Explore source code <ArrowUpRight size={15} /></a>}
               {project.links?.paper && <a href={project.links.paper} className="text-link">Read paper <ArrowUpRight size={15} /></a>}
-              {!project.links?.demo && !project.links?.github && !project.links?.paper && <a href="#project-contribution" className="text-link">Read my contribution <ArrowDown size={15} /></a>}
+              {!project.links?.demo && !project.links?.github && !project.links?.paper && (project.caseStudy
+                ? <a href="#evidence" className="text-link">See the evidence <ArrowDown size={15} /></a>
+                : <a href="#project-contribution" className="text-link">Read my contribution <ArrowDown size={15} /></a>)}
             </dd>
           </div>
         </dl>

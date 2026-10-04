@@ -11,8 +11,8 @@
     "Workflow Standardization",
     "Human-in-the-loop"
   ],
-  "overview": "VedAI was a private platform for AI-assisted clinical psychiatry assessment and case review. My work focused on structured, reusable context for the model and on standardizing how new case workflows were set up. Details are shared at a high level under confidentiality.",
-  "myRole": "As an AI researcher, I designed the structured context templates and worked with clinical experts and engineers to standardize case workflows and the documentation that supported them.",
+  "overview": "VedAI was a private platform for AI-assisted clinical psychiatry assessment and case review. My work focused on structured context templates for the model and on standardizing how new case workflows were set up. Details are shared at a high level under confidentiality.",
+  "myRole": "As an AI researcher, I designed the structured context templates and worked with clinical experts and engineers to standardize case workflows.",
   "sections": [
     {
       "title": "What I Worked On",

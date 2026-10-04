@@ -12,9 +12,9 @@
     "PEFT / LoRA",
     "GCP Vertex AI"
   ],
-  "myRole": "I own the content-safety system from requirements to launch. That covers the data and evaluation framework, the model context, fine-tuning and deployment of the classifier, decision thresholds, and the policy graph that connects each decision to the rule behind it.",
+  "myRole": "I own the content-safety system from requirements to launch. That covers the data and evaluation framework, the model context, fine-tuning and deployment of the classifier, decision thresholds, and the policy graph that gives decisions a traceable policy basis.",
   "caseStudy": {
-    "problem": "A moderation model has to catch violations without flooding reviewers with false alarms, and every allow, review or block decision has to point to the policy that justifies it. The starting point was 49.6% accuracy on the 10,000-case internal benchmark.",
+    "problem": "A moderation model has to catch violations without flooding reviewers with false alarms, and allow, review and block decisions need a traceable policy basis. The starting point was 49.6% accuracy on the 10,000-case internal benchmark.",
     "decisions": [
       {
         "title": "Improve accuracy on four fronts at once",
