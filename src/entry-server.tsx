@@ -9,8 +9,11 @@ import BlogPost from './pages/BlogPost';
 import ProjectDetail from './pages/ProjectDetail';
 import ProjectList from './pages/ProjectList';
 import { getAllPosts, loadPostContent } from './utils/blogLoader';
-import { getAllProjects } from './utils/projectLoader';
+import { getAllProjects, projectRedirects } from './utils/projectLoader';
 import { pageMetadata } from './hooks/usePageMeta';
+
+// Retired URLs get a static redirect page so old links keep working on GitHub Pages.
+export const redirects = Object.entries(projectRedirects).map(([from, to]) => ({ path: `/project/${from}`, to: `/portfolio/project/${to}/` }));
 
 export async function renderPages() {
   const routes = [

@@ -13,7 +13,7 @@ await build({
   ssr: { noExternal: true },
   build: { ssr: 'src/entry-server.tsx', outDir: serverDir, emptyOutDir: false, copyPublicDir: false, minify: false },
 });
-const { renderPages } = await import(pathToFileURL(join(serverDir, 'entry-server.js')).href);
+const { renderPages, redirects } = await import(pathToFileURL(join(serverDir, 'entry-server.js')).href);
 const pages = await renderPages();
 const template = await readFile(join(outDir, 'index.html'), 'utf8');
 const escape = value => value.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
@@ -29,6 +29,12 @@ for (const page of pages) {
   await mkdir(folder, { recursive: true });
   await writeFile(join(folder, 'index.html'), html);
 }
+for (const redirect of redirects) {
+  const folder = join(outDir, redirect.path);
+  await mkdir(folder, { recursive: true });
+  const url = escape(redirect.to);
+  await writeFile(join(folder, 'index.html'), `<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="robots" content="noindex"><link rel="canonical" href="https://haroldzhong.github.io${url}"><meta http-equiv="refresh" content="0; url=${url}"><title>Moved | Harold Zhong</title></head><body><p>This page has moved to <a href="${url}">${url}</a>.</p></body></html>\n`);
+}
 await writeFile(join(outDir, 'sitemap.xml'), `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">${pages.map(page => `<url><loc>${escape(page.meta.canonical)}</loc></url>`).join('')}</urlset>\n`);
-await assertStaticRoutes(outDir, pages.map(page => page.path));
+await assertStaticRoutes(outDir, [...pages.map(page => page.path), ...redirects.map(redirect => redirect.path)]);
 console.log(`Rendered ${pages.length} static pages in ${outDir}`);

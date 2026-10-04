@@ -1,5 +1,6 @@
 import React from 'react';
 import Main from '../components/Main';
+import About from '../components/About';
 import Expertise from '../components/Expertise';
 import Timeline from '../components/Timeline';
 import Education from '../components/Education';
@@ -16,6 +17,7 @@ const HomePage: React.FC = () => {
   return (
     <>
       <Main />
+      <About />
       <Project />
       <Timeline />
       <Expertise />

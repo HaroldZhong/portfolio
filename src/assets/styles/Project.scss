@@ -522,3 +522,100 @@
   flex-wrap: wrap;
   gap: 0.75rem;
 }
+
+/* Structured case studies */
+.decision-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 1.75rem;
+  max-width: var(--measure);
+  counter-reset: decision;
+
+  li {
+    position: relative;
+    padding-left: 2.5rem;
+    counter-increment: decision;
+
+    &::before {
+      content: counter(decision, decimal-leading-zero);
+      position: absolute;
+      left: 0;
+      top: 0.3em;
+      font-family: var(--font-mono);
+      font-size: var(--step--1);
+      color: var(--accent);
+    }
+  }
+
+  h3 {
+    font-size: var(--step-1);
+    margin-bottom: 0.4rem;
+  }
+
+  p {
+    color: var(--text-2);
+  }
+}
+
+.evidence-note {
+  color: var(--text-2);
+  max-width: var(--measure);
+  margin-bottom: 1.25rem !important;
+}
+
+.evidence-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  max-width: var(--measure);
+  border-top: 1px solid var(--line);
+
+  li {
+    display: grid;
+    gap: 0.5rem;
+    padding: 1rem 0;
+    border-bottom: 1px solid var(--line);
+  }
+
+  p {
+    color: var(--text);
+  }
+}
+
+.evidence-basis {
+  display: inline-flex;
+  width: fit-content;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.15rem 0.65rem;
+  border-radius: 999px;
+  background: var(--accent-soft);
+  color: var(--accent);
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+
+  /* Planned evaluations read as criteria, not results. */
+  [data-basis='planned'] & {
+    background: transparent;
+    border: 1px dashed var(--line-strong);
+    color: var(--text-2);
+  }
+}
+
+.case-publication {
+  color: var(--text-2);
+  max-width: var(--measure);
+
+  em {
+    color: var(--text);
+  }
+
+  .text-link {
+    display: inline-flex;
+    margin-top: 0.5rem;
+  }
+}

@@ -133,6 +133,11 @@ for (const [kind, filename] of [['blogs', 'metadata.json'], ['projects', 'data.j
     const description = html.match(/<meta name="description" content="([^"]+)"/)[1];
     assert(description.length > 30);
     assert(!/href="\/(?!portfolio(?:[/#?"]))/.test(html), route + ': internal links must retain the GitHub Pages base path');
+    assert(!html.includes('utexas.edu'), route + ': the school email address must not appear; contact goes through the form');
+    if (kind === 'projects') {
+      // Owner wording rules for public claims (resume rules, applied to the site).
+      for (const banned of [/separate holdout/i, /held-out cases/i, /PageIndex reasoning-based/, /\bIRB\b/, /\bpilot\b/i, /production deployment/i, /\bB\.A\./, /dual degree/i, /bilingual/i]) assert(!banned.test(html), route + ': banned claim ' + banned);
+    }
     if (kind === 'blogs') {
       for (const date of [data.date, data.updated].filter(Boolean)) {
         assert.match(date, /^\d{4}-\d{2}-\d{2}$/); assert.equal(new Date(date).toISOString().slice(0, 10), date); assert(date <= new Date().toISOString().slice(0, 10));
@@ -152,8 +157,12 @@ for (const [kind, filename] of [['blogs', 'metadata.json'], ['projects', 'data.j
   }
 }
 routes.push('/blog/', '/projects/');
-assert.equal(routes.length, 28);
-await assertStaticRoutes(out, routes);
+assert.equal(routes.length, 29);
+// The retired AI Advisory Board case study redirects to Scholia and stays out of the sitemap.
+const retired = await readFile(join(out, 'project/ai-advisory-board/index.html'), 'utf8');
+assert.match(retired, /http-equiv="refresh" content="0; url=\/portfolio\/project\/scholia\/"/);
+assert.match(retired, /name="robots" content="noindex"/);
+await assertStaticRoutes(out, [...routes, '/project/ai-advisory-board/']);
 const routeProbe = await mkdtemp(join(tmpdir(), 'portfolio-route-check-'));
 await assert.rejects(assertStaticRoutes(routeProbe, ['/']), /route HTML/);
 await writeFile(join(routeProbe, 'index.html'), 'Current route');
@@ -165,20 +174,27 @@ assert.equal(await readFile(join(routeProbe, 'retired/index.html'), 'utf8'), 'Pr
 const listed = Array.from(sitemap.matchAll(/<loc>(.*?)<\/loc>/g), match => match[1]);
 assert.deepEqual(listed.sort(), routes.map(route => 'https://haroldzhong.github.io/portfolio' + route).sort());
 const home = await readFile(join(out, 'index.html'), 'utf8');
-assert.match(home, /<a[^>]+href="mailto:harold.zhong@utexas.edu"/);
-assert.equal((home.match(/class="project-card-link"/g) || []).length, 3);
+assert(!home.includes('mailto:'), 'Email contact goes through the form only');
+const featured = Array.from(home.matchAll(/class="project-card-link"[^>]*href="\/portfolio\/project\/([^"]+)"|href="\/portfolio\/project\/([^"]+)"[^>]*class="project-card-link"/g), match => match[1] || match[2]);
+assert.deepEqual(featured, ['praxis-ai-content-safety', 'scholia', 'brat-family-therapy-chatbot']);
 assert.match(home, /Explore my work/);
 assert.match(home, /<title>Harold Zhong \| Applied AI Engineer &amp; Researcher<\/title>/);
 const person = JSON.parse(home.match(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/)[1]);
 assert.equal(person.jobTitle, 'Applied AI Engineer & Researcher'); assert.equal(person.worksFor, undefined);
-assert.equal((home.match(/class="experience-row[" ]/g) || []).length, 5);
+assert.equal((home.match(/class="experience-row[" ]/g) || []).length, 6);
 assert(!home.includes('earlier-experience') && !home.includes('more-work') && !home.includes('See project evidence'));
-assert.equal((home.match(/class="skill-label"/g) || []).length, 35);
-assert.equal((home.match(/class="pub-status">Accepted/g) || []).length, 2);
+assert.equal((home.match(/class="skill-label"/g) || []).length, 56);
+assert.equal((home.match(/class="pub-status">Published/g) || []).length, 1);
+assert.match(home, /href="https:\/\/doi.org\/10.1111\/cfs.70266"/);
+assert.match(home, /Velasco, S\. I\., &amp; Cui, J\./);
+assert.equal((home.match(/class="pub-status">Accepted/g) || []).length, 1);
 assert.equal((home.match(/class="pub-status">Under review/g) || []).length, 2);
-assert.match(home, /Jun 2025 – Jul 2026/); assert.match(home, /Aug 2024 – May 2026/);
-assert.match(home, /Jun 2024 – May 2025/);
-assert(!home.includes('Aug 2024 – May 2025'));
+assert.match(home, /Apr 2026 – Present/); assert.match(home, /Jun 2025 – Jul 2026/); assert.match(home, /Aug 2024 – May 2026/);
+assert.match(home, /Aug 2024 – May 2025/);
+assert(!home.includes('Jun 2024 – May 2025'), 'GA/TA start corrected to Aug 2024 on 4 Oct 2026');
+// Planned Scholia evaluations are criteria, never results.
+const scholia = await readFile(join(out, 'project/scholia/index.html'), 'utf8');
+assert(scholia.includes('Planned evaluation') && !scholia.includes('Internal benchmark') && !scholia.includes('Human-verified golden set'));
 const contactHtml = home.slice(home.indexOf('id="contact"'), home.indexOf('</main>'));
 assert(!contactHtml.includes('harold.zhong@utexas.edu'), 'Contact section must use the form instead of displaying the school address');
 assert(contactHtml.includes('id="contact-email"') && contactHtml.includes('<form'), 'The EmailJS contact form must remain available');
@@ -190,7 +206,7 @@ assert.match(home, /class="about-section" id="home"/);
 const collection = await readFile(join(out, 'projects/index.html'), 'utf8');
 assert.match(collection, /rel="canonical" href="https:\/\/haroldzhong.github.io\/portfolio\/projects\/"/);
 const cards = Array.from(collection.matchAll(/<a[^>]+class="project-card-link"[^>]*>[\s\S]*?<\/a>/g), match => match[0]);
-assert.equal(cards.length, 7);
+assert.equal(cards.length, 8);
 const escapedText = text => renderToStaticMarkup(React.createElement('span', null, text)).slice(6, -7);
 for (const project of projectRecords) {
   const card = cards.find(html => html.includes(`/project/${project.slug}"`));
@@ -205,4 +221,4 @@ const bundle = await readFile(join(out, mainJs), 'utf8');
 const article = await readFile('src/content/blogs/designing-your-life-gpt/content.md', 'utf8');
 assert(!bundle.includes(article.slice(0, 150)), 'Article Markdown must stay outside the home bundle');
 assert(!bundle.includes('react-markdown'), 'Markdown renderer should be on the article route');
-console.log('PASS: contact normal/empty/whitespace/spam/timing/phone/in-flight/failure paths; motion persistence/storage failure; nested-section navigation; 28 static routes and base paths; complete project cards, expertise, experience and accepted publications; dates, metadata, assets, figures, sitemap and article splitting.');
+console.log('PASS: contact normal/empty/whitespace/spam/timing/phone/in-flight/failure paths; motion persistence/storage failure; nested-section navigation; 29 static routes, the retired-route redirect and base paths; complete project cards, expertise, experience and accepted publications; dates, metadata, assets, figures, sitemap and article splitting.');

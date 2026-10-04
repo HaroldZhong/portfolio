@@ -5,7 +5,7 @@ import SectionHead from "./SectionHead";
 function Publications() {
   return (
     <section className="section shell" id="publications" aria-labelledby="publications-title">
-      <SectionHead index="05" titleId="publications-title" title="Publications & Scholarly Work"
+      <SectionHead index="06" titleId="publications-title" title="Publications & Scholarly Work"
         intro="Research contributions span study platforms, survey harmonization, and reproducible analysis." />
 
       <p className="scholarly-links mono">
@@ -16,10 +16,10 @@ function Publications() {
       </p>
 
       <div className="pub-group reveal">
-        <h3>Accepted Journal Article</h3>
+        <h3>Published Journal Article</h3>
         <ul>
           <li>
-            Fuentes-Balderrama, J., <strong>Zhong, H.</strong>, Cardenas, M. E., Ayala, S., &amp; Velasco, S. I. AI-Caramba: The experience of mothers in Central Texas with BRAT, a parenting AI-chatbot. <em>Child &amp; Family Social Work</em>. <span className="pub-status">Accepted</span>
+            Fuentes-Balderrama, J., <strong>Zhong, H.</strong>, Cárdenas, M. E., Ayala, S., Velasco, S. I., &amp; Cui, J. (2026). AI-Caramba: The experience of mothers in Central Texas with BRAT, a parenting AI chatbot. <em>Child &amp; Family Social Work</em>. <a className="pub-doi" href="https://doi.org/10.1111/cfs.70266" target="_blank" rel="noopener noreferrer">doi.org/10.1111/cfs.70266</a> <span className="pub-status">Published</span>
           </li>
         </ul>
       </div>

@@ -2,37 +2,41 @@
   "slug": "nhis-nhanes-health-inequality",
   "title": "NHIS Health Inequality Trends",
   "role": "Data Harmonization & Survey Analysis",
-  "summary": "Harmonized NHIS survey data across more than two decades, with reproducible SAS pipelines and documented quality checks.",
+  "summary": "Harmonized 16 NHIS survey years (647K+ records) for a health-inequality trends study, with reproducible pipelines and automated checks that caught failures before analysis.",
   "thumbnail": "",
   "tags": [
     "SAS",
+    "R",
+    "SQL",
     "Complex Survey Design",
-    "Health Inequality",
     "Survey Harmonization",
-    "Reproducible Research"
+    "Data Quality"
   ],
-  "overview": "I build and maintain the survey-harmonization and analytics infrastructure behind a long-running health-inequality study using pooled NHIS data. The work focuses on cross-period comparability, reproducibility, and quality assurance, and supports a manuscript in preparation.",
-  "myRole": "I lead the harmonization and analytic workflow, focusing on methodological consistency, cross-period comparability, reproducibility, and quality assurance, in coordination with the faculty investigator.",
+  "overview": "A long-running study of income inequality in self-rated health needs data that means the same thing across decades of survey redesigns. I built the harmonization and analysis infrastructure for it: cross-year variable mappings, reproducible pipelines and automated quality checks. The work supports a manuscript in preparation.",
+  "myRole": "I led the harmonization and analytic workflow in coordination with the faculty investigator, from codebook design to pipeline automation and quality assurance.",
   "sections": [
     {
       "title": "Data Harmonization & Reproducibility",
       "content": [
-        "Harmonized more than two decades of NHIS data across major survey redesigns, resolving changes in variable definitions, coding, and design structures for cross-period comparability.",
-        "Built reproducible SAS workflows with consistent naming conventions, version-controlled outputs, and a documented harmonization rulebook.",
-        "Established quality-assurance protocols, including drift checks, cross-tab validation, and missingness diagnostics, that catch data issues before analysis."
+        "Harmonized variables across 16 NHIS survey years (647K+ records), documenting every cross-year mapping in a codebook.",
+        "Built reproducible SAS, R and SQL pipelines across 27 NHIS and NHANES survey waves (1997–2024), cutting the manual analysis cycle from 14 days to 2.",
+        "Built automated drift, cross-tabulation and missing-data checks into the pipeline, which caught 3 documented failures, including cross-version inconsistencies and drift from the NHIS survey redesign, before analysis."
       ],
       "type": "list"
     }
   ],
   "technologies": [
     "SAS",
+    "R",
+    "SQL",
     "Complex survey methods",
     "Survey harmonization",
-    "Reproducible QA workflows"
+    "Automated data-quality checks"
   ],
   "outcomes": [
-    "Harmonized more than two decades of NHIS data into an analysis-ready, version-controlled resource.",
-    "Built reproducible QA protocols and documentation supporting transparent, replicable research.",
+    "Harmonized 16 NHIS survey years into an analysis-ready, documented resource.",
+    "Cut the manual analysis cycle from 14 days to 2 with reproducible pipelines.",
+    "Caught 3 documented data failures before they reached analysis.",
     "Supports a manuscript in preparation."
   ],
   "status": "Manuscript in preparation"

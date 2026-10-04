@@ -1,23 +1,16 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { ArrowDownRight, Github, Linkedin, Mail } from 'lucide-react';
+import { ArrowDownRight, Github, Linkedin } from 'lucide-react';
 import AuroraBackground from './AuroraBackground';
 import profileImage from '../images/profile-headshot.jpg';
 
 const focusAreas = [
-  "Health Inequality Research",
-  "Survey Methods & Causal Inference",
-  "Applied AI Systems"
+  "LLM Evaluation & Safety",
+  "Data Quality & Governance",
+  "Survey & Health-Inequality Research"
 ];
 
 function Main() {
-  // Obfuscated email
-  const getEmail = () => {
-    const user = 'harold.zhong';
-    const domain = 'utexas.edu';
-    return `${user}@${domain}`;
-  };
-
   return (
     <AuroraBackground>
       <section className="about-section" id="home" aria-labelledby="hero-title">
@@ -50,7 +43,6 @@ function Main() {
               <div className="social_icons">
                 <a className="icon-button" href="https://github.com/HaroldZhong" target="_blank" rel="noreferrer" aria-label="GitHub"><Github size={19} strokeWidth={1.75} /></a>
                 <a className="icon-button" href="https://linkedin.com/in/haocong-zhong" target="_blank" rel="noreferrer" aria-label="LinkedIn"><Linkedin size={19} strokeWidth={1.75} /></a>
-                <a className="icon-button" href={`mailto:${getEmail()}`} target="_blank" rel="noreferrer" aria-label="Email"><Mail size={19} strokeWidth={1.75} /></a>
               </div>
             </div>
           </div>

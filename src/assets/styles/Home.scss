@@ -307,6 +307,19 @@
   }
 }
 
+.record-tag {
+  display: block;
+  width: fit-content;
+  margin-top: 0.6rem;
+  padding: 0.1rem 0.55rem;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  font-size: 0.7rem;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  color: var(--text-3);
+}
+
 .record-date {
   grid-column: 1 / span 3;
   color: var(--text-2);
@@ -515,6 +528,18 @@
   }
 }
 
+.pub-doi {
+  color: var(--text);
+  text-decoration: underline;
+  text-decoration-color: var(--accent);
+  text-underline-offset: 3px;
+  overflow-wrap: anywhere;
+
+  &:hover {
+    color: var(--accent);
+  }
+}
+
 .pub-status {
   display: flex;
   width: fit-content;
@@ -699,5 +724,96 @@
 
   .contact-form {
     padding-top: 0;
+  }
+}
+
+/* ===== About ===== */
+.about-grid {
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  column-gap: var(--col-gap);
+  row-gap: 3rem;
+}
+
+.about-copy {
+  grid-column: 4 / span 6;
+  display: grid;
+  gap: 1.1rem;
+
+  p {
+    font-size: var(--step-1);
+    line-height: 1.6;
+    color: var(--text-2);
+    max-width: 60ch;
+  }
+
+  p:first-child {
+    color: var(--text);
+  }
+}
+
+.about-languages {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem 1rem;
+  margin-top: 0.75rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--line);
+  font-size: var(--step--1) !important;
+  line-height: 1.5 !important;
+
+  span {
+    color: var(--text-3);
+    text-transform: uppercase;
+  }
+}
+
+.about-figures {
+  grid-column: 10 / -1;
+  margin: 0;
+  display: grid;
+  align-content: start;
+  border-top: 1px solid var(--line);
+
+  div {
+    padding: 1.25rem 0;
+    border-bottom: 1px solid var(--line);
+  }
+
+  dt {
+    font-family: var(--font-display);
+    font-size: var(--step-3);
+    line-height: 1;
+    letter-spacing: -0.02em;
+    margin-bottom: 0.5rem;
+  }
+
+  dd {
+    margin: 0;
+    color: var(--text-2);
+    font-size: 0.92rem;
+    line-height: 1.45;
+  }
+}
+
+@media (max-width: 960px) {
+  .about-copy {
+    grid-column: 1 / span 8;
+  }
+
+  .about-figures {
+    grid-column: 9 / -1;
+  }
+}
+
+@media (max-width: 760px) {
+  .about-copy,
+  .about-figures {
+    grid-column: 1 / -1;
+  }
+
+  .about-figures {
+    grid-template-columns: repeat(auto-fit, minmax(10rem, 1fr));
+    column-gap: var(--col-gap);
   }
 }

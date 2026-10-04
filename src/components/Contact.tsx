@@ -88,7 +88,7 @@ function Contact() {
     <section id="contact" className="section shell" aria-labelledby="contact-title">
       <div className="contact-grid">
         <div className="contact-lead">
-          <p className="section-index"><span className="num">07</span></p>
+          <p className="section-index"><span className="num">08</span></p>
           <h2 id="contact-title">Let’s <em>talk.</em></h2>
           <p className="contact-intro">
             I'm always happy to talk about AI in health, research workflows, or weird data problems.

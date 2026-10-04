@@ -1,57 +1,78 @@
 {
   "slug": "brat-family-therapy-chatbot",
-  "title": "BRAT Research Platform",
-  "role": "Product Lead & AI Engineer",
-  "summary": "Built conversational practice, study onboarding, and researcher review tools for a UT Austin parenting study.",
+  "title": "BRAT AI",
+  "role": "Product and AI Engineering Lead",
+  "status": "Jan 2025 – Present · Deployed on Azure",
+  "summary": "Conversational family therapy training and assessment application. Parents rehearse difficult conversations with a simulated teen in English or Spanish while a separate real-time evaluator assesses their technique.",
   "thumbnail": "https://images.unsplash.com/photo-1531746790731-6c087fecd65a?w=800&h=400&fit=crop",
   "tags": [
     "Conversational AI",
-    "PMTO-informed",
-    "Multi-agent LLM",
-    "Azure",
-    "PostgreSQL",
-    "Qualtrics"
+    "LLM Evaluation",
+    "Safety Guardrails",
+    "Next.js / Node.js",
+    "Azure"
   ],
-  "overview": "BRAT (Boundaries, Resilience and Affection Training) is a conversational role-play and coaching platform where parents practice difficult conversations with a simulated child before trying them at home. It operationalizes PMTO (Parent Management Training, Oregon), an evidence-based parent-training model, into LLM-driven role-play with technique-level feedback. BRAT is a production research platform for a UT Austin parenting study, developed with collaborators across partner universities.",
-  "myRole": "As product lead and AI engineer, I translated research requirements into the platform's design and implementation. I built the conversational system, the safety and moderation layer, and the researcher-facing tooling, and integrated the study-operations workflows that move participants from screening through practice and review.",
-  "sections": [
-    {
-      "title": "Platform & Conversational System",
-      "content": [
-        "Built the role-play and coaching platform on Next.js, React, and Node, deployed on Azure App Service with Azure Blob Storage and a PostgreSQL data layer.",
-        "Implemented PMTO-informed conversational fidelity metrics across dialogue turns, giving researchers a structured way to assess session quality.",
-        "Contributed safety guardrails, input and output moderation rules, and session-review workflows for participant-facing interactions."
-      ],
-      "type": "list"
-    },
-    {
-      "title": "Study Operations & Researcher Tooling",
-      "content": [
-        "Integrated Qualtrics-based screening, consent, and onboarding into the platform, standardizing participant handoff.",
-        "Built a researcher dashboard for session retrieval, transcript review, and participant progress monitoring.",
-        "Built a quantitative data pipeline enabling clinician and researcher review of multilingual interaction data."
-      ],
-      "type": "list"
+  "myRole": "As Product and AI Engineering Lead, I lead Next.js/Node.js development and Azure deployment, and I translate parent-training requirements into the role-play, evaluation, safety and versioning design.",
+  "caseStudy": {
+    "problem": "Rehearsing a hard conversation only helps if the simulated teen stays believable, the feedback addresses the right techniques, and sensitive moments are handled safely, in English or Spanish. Asking one model call to role-play and grade at the same time makes both jobs harder to control and to test, and model updates can quietly change how a scenario behaves.",
+    "decisions": [
+      {
+        "title": "Separate role-play from evaluation",
+        "detail": "The simulated teen and the evaluator are separate model roles. The evaluator assesses parenting technique in real time while the role-play continues, so each can be tuned and tested on its own."
+      },
+      {
+        "title": "Plan for model failures",
+        "detail": "Role-play runs on a primary model with fallbacks for errors and context overflow, and speech-to-text falls back through an ordered list of transcription models, so one failed call does not end a practice session."
+      },
+      {
+        "title": "Pin prompts to each session",
+        "detail": "Prompt packs are versioned, and each session keeps the version it started with. An update reaches new sessions without changing one already in progress, which keeps evaluation results comparable across releases."
+      },
+      {
+        "title": "Layer the guardrails",
+        "detail": "Keyword rules and an LLM classifier work together to detect sensitive conversation content and trigger a safety response in under 200 ms. A suite of 95 regression cases covers those paths."
+      }
+    ],
+    "evidence": [
+      {
+        "basis": "Human-verified golden set",
+        "claim": "Dialogue consistency reached 92% on a human-verified golden set covering 5 scenarios at 3 difficulty levels."
+      },
+      {
+        "basis": "Human-verified golden set",
+        "claim": "Sensitive-content detection reached 95% accuracy on a human-verified golden set, with trigger responses under 200 ms."
+      }
+    ],
+    "tradeoffs": [
+      "Realism pulls against instructional consistency: a believable teen can drift away from the scenario's learning goal. Measuring dialogue consistency on fixed scenarios keeps that drift visible.",
+      "More sensitive guardrails catch more risk but interrupt more legitimate practice. Keyword rules give fast, predictable triggers, and the classifier covers what keywords miss.",
+      "Fallback models keep sessions running but can behave differently, which is why prompt versions are pinned and regression cases cover the safety paths.",
+      "The golden sets cover defined scenarios and difficulty levels, not every conversation a parent might bring."
+    ],
+    "publication": {
+      "title": "AI-Caramba: The Experience of Mothers in Central Texas With BRAT, a Parenting AI Chatbot",
+      "venue": "Child & Family Social Work",
+      "year": "2026",
+      "doi": "10.1111/cfs.70266"
     }
-  ],
+  },
   "technologies": [
     "Next.js",
     "React",
     "Node.js",
     "Azure App Service",
-    "Azure Blob Storage",
-    "PostgreSQL",
-    "Qualtrics",
-    "Multi-agent LLM design"
+    "SQLite",
+    "Versioned prompt packs",
+    "LLM classification",
+    "Speech-to-text fallbacks"
   ],
   "outcomes": [
-    "Deployed a production research platform supporting a UT Austin parenting study.",
-    "Implemented PMTO-informed fidelity metrics that let researchers assess session quality at the level of technique.",
-    "Standardized participant screening, consent, and onboarding through integrated Qualtrics workflows.",
-    "Built researcher tooling for transcript review and progress monitoring across multilingual sessions."
+    "Delivered an English–Spanish role-play and assessment application deployed on Azure.",
+    "Paired conversational practice with a separate real-time evaluator and golden-set checks for dialogue consistency and sensitive-content detection.",
+    "Maintained 95 regression cases across the safety paths."
   ],
   "links": {
-    "demo": "https://bratlab.org"
-  },
-  "status": "Research platform"
+    "demo": "https://bratlab.org",
+    "paper": "https://doi.org/10.1111/cfs.70266"
+  }
 }

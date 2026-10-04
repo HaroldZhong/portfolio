@@ -30,7 +30,7 @@ export const ProjectCard: React.FC<{ project: ProjectType; index: number; varian
   </Link>
 );
 
-const featuredSlugs = ['brat-family-therapy-chatbot', 'nhis-nhanes-health-inequality', 'research-atlas'];
+const featuredSlugs = ['praxis-ai-content-safety', 'scholia', 'brat-family-therapy-chatbot'];
 
 function Project() {
   const projects = getAllProjects();
@@ -38,7 +38,7 @@ function Project() {
 
   return (
     <section className="section shell" id="projects" aria-labelledby="projects-title">
-      <SectionHead index="01" titleId="projects-title" title="Selected Work"
+      <SectionHead index="02" titleId="projects-title" title="Selected Work"
         intro="AI systems, research methods, and the workflows that connect them."
         aside={<Link to="/projects" className="text-link view-all-btn">View all {projects.length} projects <ArrowUpRight size={16} /></Link>} />
       <div className="projects-feature">

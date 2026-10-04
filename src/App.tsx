@@ -1,5 +1,6 @@
 import React, { lazy, Suspense, useEffect, useRef, useState } from 'react';
-import { BrowserRouter, Link, Routes, Route, useLocation } from 'react-router-dom';
+import { BrowserRouter, Link, Navigate, Routes, Route, useLocation } from 'react-router-dom';
+import { projectRedirects } from './utils/projectLoader';
 import Navigation from './components/Navigation';
 import Footer from './components/Footer';
 import BackToTop from './components/BackToTop';
@@ -78,6 +79,7 @@ export default function App() {
           <Route path="/projects" element={<ProjectList />} />
           <Route path="/blog/:slug" element={<BlogPost initialPost={initialPost || undefined} />} />
           <Route path="/project/:slug" element={<ProjectDetail />} />
+          {Object.entries(projectRedirects).map(([from, to]) => <Route key={from} path={`/project/${from}`} element={<Navigate to={`/project/${to}`} replace />} />)}
           <Route path="*" element={notFound} />
         </Routes>
       </Suspense>

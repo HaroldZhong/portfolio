@@ -6,7 +6,9 @@ The portfolio presents Harold Zhong's applied AI work and research to industry a
 
 **Selected work**: The three featured projects on the homepage. It is a curated introduction to the complete project collection.
 
-**Projects**: The complete collection of seven current project records, including the three featured on the homepage.
+**Projects**: The complete collection of eight project records, including Praxis AI, Scholia and BRAT, featured on the homepage. AI Advisory Board is part of Scholia's history and is not a separate record.
+
+**Evidence label**: How a figure in a case study was measured: Internal benchmark, Human-verified golden set, or Planned evaluation. A planned evaluation is a criterion for adopting a design, never a result.
 
 **Project card**: A project's visual introduction, containing its image or cover, title, role, status, short description, and tags.
 

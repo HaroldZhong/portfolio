@@ -1,46 +1,43 @@
 {
   "slug": "clinical-prompt-systems",
   "title": "VedAI Clinical Psychiatry AI Assistant",
-  "role": "AI Researcher (prior work, 2024 to 2025)",
-  "summary": "Designed reusable LLM instruction and context templates for psychiatric workflows, with a multi-agent human-in-the-loop review layer for sensitive clinical outputs.",
+  "role": "AI Researcher",
+  "summary": "AI-assisted workflows for clinical psychiatry assessment and case review: structured context templates for 80+ clinical scenarios and 12 standardized case workflows.",
   "thumbnail": "https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=800&h=400&fit=crop",
   "tags": [
     "LLM Systems",
     "Prompt & Context Design",
     "Clinical AI",
-    "Multi-agent Review",
+    "Workflow Standardization",
     "Human-in-the-loop"
   ],
-  "overview": "VedAI was a private clinical-AI platform where I worked on structuring expert psychiatric workflows into reliable LLM instruction and context systems. The work focused on turning implicit clinical reasoning into reusable, well-documented templates and on building review paths that keep a human in the loop for sensitive outputs. This is prior work (late 2024 to mid 2025); details are shared at a high level under confidentiality.",
-  "myRole": "As an AI researcher on the project, I designed reusable instruction and context templates, a multi-agent review workflow with risk triage and escalation logic, and evaluation and documentation standards that aligned clinical and engineering review. I coordinated with clinicians and engineers on workflow refinement and UI/UX.",
+  "overview": "VedAI was a private platform for AI-assisted clinical psychiatry assessment and case review. My work turned expert clinical reasoning into structured, reusable context for the model, and standardized how new case workflows were set up. Details are shared at a high level under confidentiality.",
+  "myRole": "As an AI researcher, I designed the structured context templates and worked with clinical experts and engineers to standardize case workflows and the documentation that supported them.",
   "sections": [
     {
       "title": "What I Worked On",
       "content": [
-        "Designed reusable LLM instruction and context templates covering 80+ psychiatric workflow scenarios, supporting more consistent outputs across complex cases.",
-        "Designed a multi-agent review workflow with risk triage and escalation logic to support human-in-the-loop review of sensitive clinical AI outputs.",
-        "Developed model evaluation and documentation standards for workflow refinement, output review, and review milestones.",
-        "Coordinated clinicians and engineers on workflow refinement, documentation, and UI/UX improvements."
+        "Designed structured context templates for 80+ clinical scenarios, so the model received consistent, complete case context.",
+        "Worked with clinical experts and engineers to standardize 12 case workflows.",
+        "Halved new-scenario setup, from 4 weeks to 2, by reusing the standardized templates and workflows."
       ],
       "type": "list"
     },
     {
       "title": "Scope & Limitations",
-      "content": "This was a contributor role on a private platform, and the work is not publicly shareable. The summary above describes my contributions at a high level rather than reproducing any proprietary content."
+      "content": "This was a contributor role on a private platform, and the work is not publicly shareable. The summary describes my contributions at a high level rather than reproducing any proprietary content."
     }
   ],
   "technologies": [
     "LLM context design",
-    "Structured prompt evaluation",
-    "Multi-agent workflow design",
-    "Risk triage and escalation logic",
+    "Structured templates",
+    "Workflow standardization",
     "Markdown and JSON structuring"
   ],
   "outcomes": [
-    "Built reusable instruction and context templates across 80+ psychiatric workflow scenarios.",
-    "Standardized workflows across 12 psychiatric case categories, cutting new-scenario configuration time from 4 weeks to 2.",
-    "Established a multi-agent, human-in-the-loop review path with risk triage for sensitive outputs.",
-    "Created model evaluation and documentation standards that aligned clinical and engineering review."
+    "Built structured context templates covering 80+ clinical scenarios.",
+    "Standardized 12 case workflows with clinical experts and engineers.",
+    "Cut new-scenario setup time from 4 weeks to 2."
   ],
-  "status": "Prior work · 2024–2025 · Confidential"
+  "status": "Prior work · Oct 2024 – Jul 2025 · Confidential"
 }

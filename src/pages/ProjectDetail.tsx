@@ -1,18 +1,67 @@
 import React from 'react';
 import { useParams, Link } from 'react-router-dom';
-import { ArrowLeft, ArrowUpRight, ArrowDown, Github, ExternalLink, FileText, Mail } from 'lucide-react';
-import { getAllProjects, getProjectBySlug } from '../utils/projectLoader';
+import { ArrowLeft, ArrowUpRight, ArrowDown, Github, ExternalLink, FileText } from 'lucide-react';
+import { getAllProjects, getProjectBySlug, Project } from '../utils/projectLoader';
 import { usePageMeta } from '../hooks/usePageMeta';
 import '../assets/styles/Project.scss';
 import ProjectImage from '../components/ProjectImage';
 import { useScrollSpy } from '../hooks/useScrollSpy';
 
+type Block =
+  | { kind: 'text'; content: string }
+  | { kind: 'list' | 'tags'; content: string[] }
+  | { kind: 'decisions'; content: NonNullable<Project['caseStudy']>['decisions'] }
+  | { kind: 'evidence'; note?: string; content: NonNullable<Project['caseStudy']>['evidence'] }
+  | { kind: 'publication'; content: NonNullable<NonNullable<Project['caseStudy']>['publication']> };
+
+// Featured case studies follow problem → contribution → decisions → evidence → outcomes → tradeoffs.
+function buildSections(project?: Project): { id: string; title: string; block: Block }[] {
+  if (!project) return [];
+  const technologies = { id: 'technologies', title: 'Technologies & Tools', block: { kind: 'tags', content: project.technologies } as Block };
+  const contribution = { id: 'project-contribution', title: 'My contribution', block: { kind: 'text', content: project.myRole } as Block };
+  const study = project.caseStudy;
+  if (study) return [
+    { id: 'problem', title: 'Problem', block: { kind: 'text', content: study.problem } },
+    contribution,
+    { id: 'decisions', title: 'Technical & design decisions', block: { kind: 'decisions', content: study.decisions } },
+    { id: 'evidence', title: 'Evidence', block: { kind: 'evidence', note: study.evidenceNote, content: study.evidence } },
+    { id: 'outcomes', title: 'Outcomes', block: { kind: 'list', content: project.outcomes } },
+    { id: 'tradeoffs', title: 'Tradeoffs', block: { kind: 'list', content: study.tradeoffs } },
+    ...(study.publication ? [{ id: 'publication', title: 'Related publication', block: { kind: 'publication', content: study.publication } as Block }] : []),
+    technologies,
+  ];
+  return [
+    ...(project.overview ? [{ id: 'overview', title: 'Overview', block: { kind: 'text', content: project.overview } as Block }] : []),
+    contribution,
+    ...(project.sections || []).map((section, index) => ({
+      id: `section-${index + 1}`, title: section.title,
+      block: (Array.isArray(section.content) ? { kind: 'list', content: section.content } : { kind: 'text', content: section.content }) as Block,
+    })),
+    technologies,
+    { id: 'outcomes', title: 'Deliverables & outcomes', block: { kind: 'list', content: project.outcomes } },
+  ];
+}
+
+function SectionBody({ block }: { block: Block }) {
+  switch (block.kind) {
+    case 'text': return <p>{block.content}</p>;
+    case 'tags': return <ul className="tag-list">{block.content.map(tech => <li key={tech} className="tag">{tech}</li>)}</ul>;
+    case 'list': return <ul className="case-list">{block.content.map((item, i) => <li key={i}>{item}</li>)}</ul>;
+    case 'decisions': return <ol className="decision-list">{block.content.map(item => <li key={item.title}><h3>{item.title}</h3><p>{item.detail}</p></li>)}</ol>;
+    case 'evidence': return <>
+      {block.note && <p className="evidence-note">{block.note}</p>}
+      <ul className="evidence-list">{block.content.map(item => <li key={item.claim} data-basis={item.basis === 'Planned evaluation' ? 'planned' : 'measured'}><span className="evidence-basis">{item.basis}</span><p>{item.claim}</p></li>)}</ul>
+    </>;
+    case 'publication': return <p className="case-publication"><em>{block.content.title}</em>. {block.content.venue}, {block.content.year}. <a className="text-link" href={`https://doi.org/${block.content.doi}`} target="_blank" rel="noopener noreferrer">doi.org/{block.content.doi} <ArrowUpRight size={15} /></a></p>;
+  }
+}
+
 const ProjectDetail: React.FC = () => {
   const { slug } = useParams<{ slug: string }>();
   const project = getProjectBySlug(slug || '');
   usePageMeta(project ? `${project.title} | Harold Zhong` : undefined, project?.summary, project?.thumbnail);
-  const sectionIds = project ? ['overview', 'project-contribution', ...(project.sections || []).map((_, index) => `section-${index + 1}`), 'technologies', 'outcomes', ...(project.links ? ['links'] : [])] : [];
-  const activeSection = useScrollSpy(sectionIds);
+  const sections = buildSections(project);
+  const activeSection = useScrollSpy([...sections.map(section => section.id), ...(project?.links ? ['links'] : [])]);
 
   if (!project) {
     return <section className="status-page shell"><h1>Project not found</h1><Link to="/projects" className="btn btn-primary">Back to all projects</Link></section>;
@@ -20,22 +69,6 @@ const ProjectDetail: React.FC = () => {
 
   const projects = getAllProjects();
   const next = projects[(projects.indexOf(project) + 1) % projects.length];
-  const sections = [
-    { id: 'overview', title: 'Overview', content: project.overview as string | string[] },
-    { id: 'project-contribution', title: 'My contribution', content: project.myRole },
-    ...(project.sections || []).map((section, index) => ({ id: `section-${index + 1}`, title: section.title, content: section.content })),
-    { id: 'technologies', title: 'Technologies & Tools', content: project.technologies, tags: true },
-    { id: 'outcomes', title: 'Deliverables & outcomes', content: project.outcomes },
-  ];
-
-  const handleRequestAccess = () => {
-    const user = 'harold.zhong';
-    const domain = 'utexas.edu';
-    const email = `${user}@${domain}`;
-    const subject = encodeURIComponent(`Inquiry about ${project.title} Architecture`);
-    window.location.href = `mailto:${email}?subject=${subject}`;
-  };
-
   return (
     <article className="case-study">
       <header className="case-hero shell">
@@ -80,13 +113,7 @@ const ProjectDetail: React.FC = () => {
           {sections.map(section => (
             <section key={section.id} className="project-section">
               <h2 id={section.id} tabIndex={-1}>{section.title}</h2>
-              {'tags' in section ? (
-                <ul className="tag-list">{(section.content as string[]).map(tech => <li key={tech} className="tag">{tech}</li>)}</ul>
-              ) : Array.isArray(section.content) ? (
-                <ul className="case-list">{section.content.map((item, i) => <li key={i}>{item}</li>)}</ul>
-              ) : (
-                <p>{section.content}</p>
-              )}
+              <SectionBody block={section.block} />
             </section>
           ))}
 
@@ -108,11 +135,6 @@ const ProjectDetail: React.FC = () => {
                   <a href={project.links.paper} target="_blank" rel="noopener noreferrer" className="btn">
                     <FileText size={17} /> Read Paper
                   </a>
-                )}
-                {project.links.availableOnRequest && (
-                  <button type="button" onClick={handleRequestAccess} className="btn request-access">
-                    <Mail size={17} /> Code Available on Request
-                  </button>
                 )}
               </div>
             </section>

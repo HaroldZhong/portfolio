@@ -3,7 +3,7 @@ import { useLocation } from 'react-router-dom';
 
 export const siteUrl = 'https://haroldzhong.github.io';
 export const homeTitle = 'Harold Zhong | Applied AI Engineer & Researcher';
-export const homeDescription = 'AI systems and data workflows for reliable applications and rigorous research. Explore Harold Zhong’s projects, experience, and scholarly work.';
+export const homeDescription = 'Applied AI engineer and researcher working on LLM evaluation and safety, data quality and governance, and survey research. Explore Harold Zhong’s projects, experience, and scholarly work.';
 export const defaultImage = '/portfolio/images/social-card.jpg';
 
 export function pageMetadata(pathname: string, title = homeTitle, description = homeDescription, image = defaultImage) {

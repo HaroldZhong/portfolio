@@ -1,0 +1,81 @@
+{
+  "slug": "scholia",
+  "title": "Scholia",
+  "role": "Founder & Project Lead",
+  "status": "Ongoing · Oct 2025 – Present",
+  "summary": "A multi-agent AI harness for academic research and learning. A council of six models helps researchers understand papers and concepts through multiple model perspectives, with governed data access and citations tied to what was read.",
+  "thumbnail": "",
+  "tags": [
+    "Multi-agent Systems",
+    "LLM-as-a-Judge",
+    "Retrieval",
+    "Data Governance",
+    "Agent Runtime"
+  ],
+  "myRole": "I founded Scholia and lead its product and architecture: the council workflow, the governance layer that controls where project data may go, the retrieval and citation layer, and the agent runtime that plans and runs research tasks.",
+  "caseStudy": {
+    "problem": "A researcher reading an unfamiliar paper or learning a new concept usually gets one model's framing, delivered with the same confidence whether other models would see it differently or not. Scholia lets researchers understand papers and concepts through multiple model perspectives, see where those perspectives agree, and trace each claim to a source they can check, without sending private research material anywhere it is not allowed to go.",
+    "decisions": [
+      {
+        "title": "A council instead of a single answer",
+        "detail": "A council of six models answers in parallel. Each model then critiques and ranks the anonymized answers as an LLM judge, which limits model-identity bias in the rankings. Agreement is computed from the variance of those ranks, and a chair model writes the synthesis, instructed to surface mixed views when rank-variance agreement is medium or low."
+      },
+      {
+        "title": "Governance at every outbound call",
+        "detail": "Each project has a sensitivity level that restricts which models and outbound routes it may use. Private projects are routed with zero data retention, and every outbound network call passes an audit-logged gate that allows or refuses it by policy and records the decision before anything is sent."
+      },
+      {
+        "title": "Citations pinned to what was read",
+        "detail": "Query rewriting resolves follow-up questions before retrieval. Citations are pinned to versioned source snapshots, so a citation whose source has changed or been deleted since it was read is rejected instead of silently pointing at different text."
+      },
+      {
+        "title": "Retrieval rebuilt as the use changed",
+        "detail": "The first retrieval layer combined BM25 and dense search with reciprocal rank fusion. It was later replaced with PageIndex-style reasoning-based retrieval, which uses model reasoning over a document's structure instead of vector similarity. For the research library, retrieval returns to hybrid search with reranking, which has to beat keyword-only search before it is relied on."
+      },
+      {
+        "title": "An agent runtime with explicit permissions",
+        "detail": "A ReAct-style runtime checks every tool call against deny, ask and allow rules, in that order. Search runs plan-and-execute over a plan the researcher can edit. A broad search can split into up to three sub-questions, each run by a parallel subagent with a fresh context, limited tools and a 30-call cap, and each subagent returns a summary that cites only passages it actually read."
+      }
+    ],
+    "evidenceNote": "No evaluation results are reported yet. Each planned evaluation below decides whether a design becomes the default.",
+    "evidence": [
+      {
+        "basis": "Planned evaluation",
+        "claim": "Council mode has to beat a single-model critique on the same tasks; otherwise single-model critique becomes the default."
+      },
+      {
+        "basis": "Planned evaluation",
+        "claim": "Hybrid search with reranking has to beat keyword-only search on a gold set of answerable questions, with a paired 95% confidence interval above zero."
+      },
+      {
+        "basis": "Planned evaluation",
+        "claim": "A labelled set of 200 citation pairs will measure whether cited passages support the claims attached to them."
+      },
+      {
+        "basis": "Planned evaluation",
+        "claim": "Parallel subagents become the default for broad searches only if they beat the single-plan baseline."
+      }
+    ],
+    "tradeoffs": [
+      "A council question costs thirteen model calls (six answers, six rankings and one synthesis) instead of one, and rank agreement is not a probability that the answer is correct. That is why the council has to earn its place against single-model critique.",
+      "Pinning citations to snapshots means a changed source has to be read again before it can be cited. The friction is deliberate: a citation should never point to text the model did not see.",
+      "A strict outbound gate can refuse a model that a private project would otherwise use. Policy makes that call in one place, and every decision is recorded.",
+      "Parallel subagents widen a search but make cost and evidence harder to reconcile, so they are capped at three, run one level deep, and become the default only on evidence."
+    ]
+  },
+  "technologies": [
+    "Python",
+    "FastAPI",
+    "React",
+    "TypeScript",
+    "SQLite / sqlite-vec",
+    "BM25 and dense retrieval",
+    "PageIndex-style retrieval",
+    "Desktop packaging"
+  ],
+  "outcomes": [
+    "Tested Council mode with about 30 researchers in clinical psychology, psychiatry, social science and social work.",
+    "Governance controls apply at every outbound network call, with an append-only audit log of allowed and refused requests.",
+    "Every capability that adds cost or complexity has a defined evaluation that decides whether it becomes the default."
+  ]
+}
