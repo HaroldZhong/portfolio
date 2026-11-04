@@ -7,6 +7,8 @@ import { ArrowLeft, ArrowUpRight } from 'lucide-react';
 import { getAllPosts, getPostBySlug, formatDate, loadPostContent } from '../utils/blogLoader';
 import { usePageMeta } from '../hooks/usePageMeta';
 import PdfViewer from '../components/PdfViewer';
+import SuperAgentExplainer from '../components/SuperAgentExplainer';
+import { IdentityCycle, MindStages, OneDayProtocol, LifeGame } from '../components/DanKoeVisuals';
 import { useScrollSpy } from '../hooks/useScrollSpy';
 import '../assets/styles/Blog.scss';
 
@@ -47,6 +49,11 @@ export default function BlogPost({ initialPost }: { initialPost?: ArticleContent
     img: ({ node: _node, ...props }) => <img {...props} loading="lazy" decoding="async" />,
     table: ({ node: _node, ...props }) => <div className="table-scroll"><table {...props} /></div>,
     'pdf-viewer': ({ src, title }: { src?: string; title?: string }) => src ? <PdfViewer src={src} title={title} /> : null,
+    'super-agent-explainer': SuperAgentExplainer,
+    'identity-cycle': IdentityCycle,
+    'mind-stages': MindStages,
+    'one-day-protocol': OneDayProtocol,
+    'life-game': LifeGame,
   } as Components;
   const minutes = content ? Math.max(1, Math.ceil(content.split(/\s+/).length / 220)) : 0;
   const posts = getAllPosts();

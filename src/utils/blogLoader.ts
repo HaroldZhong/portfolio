@@ -14,6 +14,8 @@ import siliconSamplingImg from '../images/silicon-sampling-promise-and-peril.jpg
 import governanceGapImg from '../images/ai-research-governance-transparency-gap.jpg';
 import deepResearchImg from '../images/deep-research-agents-lit-review.jpg';
 import designingYourLifeImg from '../images/designing-your-life-gpt.jpg';
+import superAgentImg from '../images/super-agent-design-visual-reading.jpg';
+import danKoeImg from '../images/dan-koe-one-day-reset-visual-reading.jpg';
 
 // Import metadata
 import aiToolsFailedMeta from '../content/blogs/invisible-tax-ai-tools/metadata.json';
@@ -34,6 +36,8 @@ import siliconSamplingMeta from '../content/blogs/silicon-sampling-promise-and-p
 import governanceGapMeta from '../content/blogs/ai-research-governance-transparency-gap/metadata.json';
 import deepResearchMeta from '../content/blogs/deep-research-agents-lit-review/metadata.json';
 import designingYourLifeMeta from '../content/blogs/designing-your-life-gpt/metadata.json';
+import superAgentMeta from '../content/blogs/super-agent-design-visual-reading/metadata.json';
+import danKoeMeta from '../content/blogs/dan-koe-one-day-reset-visual-reading/metadata.json';
 
 export interface BlogPost {
   slug: string;
@@ -117,6 +121,14 @@ const blogPosts: BlogPost[] = [
   {
     ...designingYourLifeMeta,
     thumbnail: designingYourLifeImg
+  },
+  {
+    ...superAgentMeta,
+    thumbnail: superAgentImg
+  },
+  {
+    ...danKoeMeta,
+    thumbnail: danKoeImg
   }
 ];
 
