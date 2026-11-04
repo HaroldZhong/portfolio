@@ -4,7 +4,7 @@
   "role": "LLM Application Engineer",
   "status": "Current role · Apr 2026 – Present",
   "summary": "A content-moderation system built on a fine-tuned classifier and a separately versioned policy graph, so decisions are measured and have a traceable policy basis.",
-  "thumbnail": "",
+  "thumbnail": "/portfolio/images/praxis-ai-cover.jpg",
   "tags": [
     "LLM Evaluation",
     "Content Moderation",

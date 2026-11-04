@@ -4,7 +4,7 @@
   "role": "Product and AI Engineering Lead",
   "status": "Jan 2025 – Present · Deployed on Azure",
   "summary": "Conversational family therapy training and assessment application. Parents rehearse difficult conversations with a simulated teen in English or Spanish while a separate real-time evaluator assesses their technique.",
-  "thumbnail": "https://images.unsplash.com/photo-1531746790731-6c087fecd65a?w=800&h=400&fit=crop",
+  "thumbnail": "/portfolio/images/brat-cover.jpg",
   "tags": [
     "Conversational AI",
     "LLM Evaluation",
