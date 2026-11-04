@@ -4,7 +4,7 @@
   "role": "Founder & Project Lead",
   "status": "Ongoing · Oct 2025 – Present",
   "summary": "A multi-agent AI harness for academic research and learning. A council of six models helps researchers understand papers and concepts through multiple model perspectives, with governed data access and citations tied to what was read.",
-  "thumbnail": "",
+  "thumbnail": "/portfolio/images/scholia-cover.jpg",
   "tags": [
     "Multi-agent Systems",
     "LLM-as-a-Judge",

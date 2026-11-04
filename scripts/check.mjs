@@ -158,6 +158,10 @@ for (const [kind, filename] of [['blogs', 'metadata.json'], ['projects', 'data.j
       const markup = renderToStaticMarkup(React.createElement(ReactMarkdown, { remarkPlugins: [remarkGfm], rehypePlugins: [rehypeRaw], children: md }));
       if (folder.startsWith('nested-learning')) assert.equal((markup.match(/<img /g) || []).length, 5);
       if (folder === 'designing-your-life-gpt') assert.match(markup, /<details>\s*<summary>Read the full GPT instructions<\/summary>/);
+      // Explainer tags must be block HTML (open and close tags on separate lines), or Markdown wraps them in <p>.
+      const explainers = (html.match(/<figure class="explainer/g) || []).length;
+      assert.equal(explainers, { 'super-agent-design-visual-reading': 1, 'dan-koe-one-day-reset-visual-reading': 4 }[folder] || 0, route + ': prerendered explainers');
+      assert(!/<p><figure/.test(html), route + ': an explainer is wrapped in a paragraph');
     }
     // Inspect rendered resources, including build-generated image URLs and script/style assets.
     for (const match of html.matchAll(/(?:src|href)="(\/portfolio\/[^"#?]+)(?:[?#][^"]*)?"/g)) {
@@ -166,8 +170,16 @@ for (const [kind, filename] of [['blogs', 'metadata.json'], ['projects', 'data.j
     }
   }
 }
+// Every diagram edge and highlight must name a node in its scene, or the explainer crashes on that step.
+const chaptersModule = { exports: {} };
+vm.runInNewContext(ts.transpileModule(await readFile('src/components/superAgentChapters.ts', 'utf8'), { compilerOptions: { module: ts.ModuleKind.CommonJS } }).outputText, { module: chaptersModule, exports: chaptersModule.exports });
+for (const chapter of chaptersModule.exports.chapters) for (const scene of [chapter.scene, chapter.alt].filter(Boolean)) {
+  const ids = new Set(scene.nodes.map(node => node.id)), edges = new Set(scene.edges.map(edge => `${edge.from}>${edge.to}`));
+  for (const edge of scene.edges) assert(ids.has(edge.from) && ids.has(edge.to), `${chapter.id}: edge ${edge.from}>${edge.to}`);
+  for (const beat of scene.beats) { beat.hot.forEach(id => assert(ids.has(id), `${chapter.id}: hot ${id}`)); (beat.hotEdges || []).forEach(key => assert(edges.has(key), `${chapter.id}: hot edge ${key}`)); }
+}
 routes.push('/blog/', '/projects/');
-assert.equal(routes.length, 29);
+assert.equal(routes.length, 31);
 // The retired AI Advisory Board case study redirects to Scholia and stays out of the sitemap.
 const retired = await readFile(join(out, 'project/ai-advisory-board/index.html'), 'utf8');
 assert.match(retired, /http-equiv="refresh" content="0; url=\/portfolio\/project\/scholia\/"/);
@@ -237,4 +249,4 @@ const bundle = await readFile(join(out, mainJs), 'utf8');
 const article = await readFile('src/content/blogs/designing-your-life-gpt/content.md', 'utf8');
 assert(!bundle.includes(article.slice(0, 150)), 'Article Markdown must stay outside the home bundle');
 assert(!bundle.includes('react-markdown'), 'Markdown renderer should be on the article route');
-console.log('PASS: contact normal/empty/whitespace/spam/timing/phone/in-flight/failure paths; motion persistence/storage failure; nested-section navigation; 29 static routes, the retired-route redirect and base paths; complete project cards, expertise, experience and accepted publications; dates, metadata, assets, figures, sitemap and article splitting.');
+console.log('PASS: contact normal/empty/whitespace/spam/timing/phone/in-flight/failure paths; motion persistence/storage failure; nested-section navigation; 31 static routes, the retired-route redirect and base paths; complete project cards, expertise, experience and accepted publications; dates, metadata, assets, figures, sitemap and article splitting.');
